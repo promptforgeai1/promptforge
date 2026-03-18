@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptForge AI — Premium Content & Income Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#07061a;--bg2:#0e0c28;--bg3:#13103a;
+    --surface:#1a1640;--surface2:#221e52;
+    --border:rgba(139,120,255,0.15);--border2:rgba(139,120,255,0.3);
+    --purple:#8b78ff;--purple2:#6c5ce7;--blue:#4facfe;--gold:#f6c90e;
+    --text:#f0eeff;--text2:#a89fd4;--text3:#6b6190;
+    --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(108,92,231,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(79,172,254,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(139,120,255,.05) 0%,transparent 70%);}
+  body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:rgba(7,6,26,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+  .nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.3rem;font-weight:800;letter-spacing:-.02em;}
+  .nav-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--purple),var(--blue));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .nav-logo-text{background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .nav-right{display:flex;align-items:center;gap:12px;}
+  .btn-ghost{background:none;border:1px solid var(--border2);color:var(--text2);padding:8px 18px;border-radius:8px;cursor:pointer;font-family:var(--font-body);font-size:.85rem;transition:all .2s;}
+  .btn-ghost:hover{border-color:var(--purple);color:var(--text);}
+  .btn-pro{background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:8px 20px;border-radius:8px;cursor:pointer;font-family:var(--font-body);font-size:.85rem;font-weight:500;transition:all .2s;position:relative;overflow:hidden;}
+  .btn-pro::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);}
+  .btn-pro:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(108,92,231,.4);}
+  .tier-badge{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.75rem;color:var(--text2);cursor:pointer;}
+  .tier-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);}
+  .tier-badge.pro .tier-dot{background:var(--gold);}
+  .tier-badge.pro{border-color:rgba(246,201,14,.3);color:var(--gold);}
+
+  /* LAYOUT */
+  .app{display:flex;min-height:100vh;padding-top:64px;position:relative;z-index:1;}
+
+  /* SIDEBAR */
+  .sidebar{width:220px;flex-shrink:0;background:rgba(14,12,40,.7);border-right:1px solid var(--border);padding:1.5rem 0;position:fixed;top:64px;bottom:0;left:0;overflow-y:auto;z-index:50;}
+  .sidebar-section{padding:0 1rem 1rem;}
+  .sidebar-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);padding:0 .75rem;margin-bottom:.5rem;display:block;}
+  .sidebar-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;transition:all .15s;font-size:.85rem;color:var(--text2);margin-bottom:2px;border:1px solid transparent;width:100%;background:none;text-align:left;font-family:var(--font-body);}
+  .sidebar-item:hover{background:var(--surface);color:var(--text);border-color:var(--border);}
+  .sidebar-item.active{background:linear-gradient(135deg,rgba(139,120,255,.2),rgba(79,172,254,.1));color:var(--text);border-color:var(--border2);}
+  .sidebar-item .icon{font-size:1rem;width:20px;text-align:center;}
+  .sidebar-item .label{flex:1;}
+  .badge{font-size:.6rem;background:var(--purple2);color:#fff;padding:2px 6px;border-radius:4px;font-weight:600;}
+  .badge.gold{background:rgba(246,201,14,.2);color:var(--gold);}
+  .sidebar-divider{height:1px;background:var(--border);margin:.75rem 1rem;}
+
+  /* MAIN */
+  .main{flex:1;margin-left:220px;}
+  .generator-area{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);}
+
+  /* INPUT PANEL */
+  .input-panel{padding:2rem;border-right:1px solid var(--border);overflow-y:auto;max-height:calc(100vh - 64px);}
+  .generator-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:2rem;}
+  .generator-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;background:linear-gradient(135deg,rgba(139,120,255,.2),rgba(79,172,254,.1));border:1px solid var(--border2);}
+  .generator-title{font-family:var(--font-display);font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;}
+  .generator-desc{font-size:.82rem;color:var(--text2);line-height:1.5;}
+  .form-group{margin-bottom:1.25rem;}
+  .form-label{display:flex;align-items:center;gap:6px;font-size:.8rem;font-weight:500;color:var(--text2);margin-bottom:8px;letter-spacing:.02em;}
+  .req{color:var(--purple);}
+  .form-input,.form-select,.form-textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:.9rem;padding:11px 14px;transition:all .2s;outline:none;appearance:none;}
+  .form-input::placeholder,.form-textarea::placeholder{color:var(--text3);}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--purple);background:var(--surface2);box-shadow:0 0 0 3px rgba(139,120,255,.1);}
+  .form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6190' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;}
+  .form-select option{background:var(--bg2);}
+  .form-textarea{resize:vertical;min-height:80px;line-height:1.5;}
+  .field-note{font-size:.75rem;color:var(--text3);margin-top:6px;}
+  .btn-generate{width:100%;padding:14px;background:linear-gradient(135deg,var(--purple2) 0%,var(--blue) 100%);border:none;border-radius:12px;color:#fff;font-family:var(--font-display);font-size:1rem;font-weight:700;cursor:pointer;transition:all .25s;margin-top:.5rem;position:relative;overflow:hidden;letter-spacing:.02em;}
+  .btn-generate::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);}
+  .btn-generate:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(108,92,231,.5);}
+  .btn-generate:active{transform:translateY(0);}
+  .btn-generate:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+  /* USAGE BAR */
+  .usage-bar-wrap{margin-top:1rem;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;}
+  .usage-bar-header{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-bottom:8px;}
+  .usage-bar-track{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+  .usage-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:2px;transition:width .5s ease;}
+
+  /* OUTPUT PANEL */
+  .output-panel{padding:2rem;overflow-y:auto;max-height:calc(100vh - 64px);background:rgba(7,6,26,.5);display:flex;flex-direction:column;}
+  .output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+  .output-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text2);}
+  .output-actions{display:flex;gap:8px;}
+  .btn-action{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:6px 12px;border-radius:8px;cursor:pointer;font-family:var(--font-body);font-size:.78rem;transition:all .2s;}
+  .btn-action:hover{border-color:var(--border2);color:var(--text);}
+  .output-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1rem;opacity:.5;}
+  .output-empty-icon{font-size:3rem;}
+  .output-empty-text{font-size:.9rem;color:var(--text2);max-width:260px;line-height:1.6;}
+  .output-content{flex:1;display:none;}
+  .output-content.visible{display:block;}
+  .output-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;animation:fadeUp .4s ease forwards;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  .output-section-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
+  .output-section-text{font-size:.9rem;color:var(--text);line-height:1.7;white-space:pre-wrap;}
+  .output-loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;flex:1;padding:3rem 0;}
+  .output-loading.visible{display:flex;}
+  .loading-orb{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));animation:pulse 1.5s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(.9);opacity:.7;}50%{transform:scale(1.1);opacity:1;box-shadow:0 0 32px rgba(139,120,255,.5);}}
+  .loading-text{font-size:.85rem;color:var(--text2);}
+
+  /* LOCKED */
+  .output-locked{background:linear-gradient(135deg,rgba(139,120,255,.05),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:12px;padding:1.5rem;text-align:center;margin-top:.5rem;animation:fadeUp .4s ease .3s both;}
+  .lock-icon{font-size:1.5rem;margin-bottom:.75rem;}
+  .lock-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.5rem;background:linear-gradient(135deg,var(--purple),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .lock-desc{font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:1rem;}
+  .lock-features{display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem;text-align:left;}
+  .lock-feature{display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:var(--text2);line-height:1.5;}
+  .lock-feature::before{content:'✦';color:var(--purple);font-size:.6rem;flex-shrink:0;margin-top:4px;}
+  .btn-upgrade{background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:10px 24px;border-radius:10px;cursor:pointer;font-family:var(--font-display);font-size:.9rem;font-weight:700;transition:all .2s;width:100%;}
+  .btn-upgrade:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(108,92,231,.4);}
+
+  /* GEN FORMS */
+  .gen-form{display:none;}
+  .gen-form.active{display:block;}
+
+  /* TOAST */
+  .toast{position:fixed;bottom:2rem;right:2rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:10px 18px;border-radius:10px;font-size:.85rem;z-index:999;transform:translateY(100px);transition:transform .3s ease;pointer-events:none;}
+  .toast.show{transform:translateY(0);}
+
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(7,6,26,.92);backdrop-filter:blur(10px);z-index:200;display:none;align-items:center;justify-content:center;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;max-width:480px;width:90%;text-align:center;position:relative;}
+  .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.2rem;line-height:1;}
+  .modal-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;}
+  .modal-title{font-family:var(--font-display);font-size:1.7rem;font-weight:800;margin-bottom:.6rem;background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;}
+  .modal-desc{font-size:.88rem;color:var(--text2);margin-bottom:1.75rem;line-height:1.65;}
+  .modal-features{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;text-align:left;}
+  .modal-feature{display:flex;align-items:center;gap:12px;font-size:.85rem;color:var(--text);}
+  .modal-feature-icon{width:30px;height:30px;background:linear-gradient(135deg,rgba(139,120,255,.2),rgba(79,172,254,.1));border:1px solid var(--border2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+  .modal-pricing-block{background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem;}
+  .modal-price-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:4px;}
+  .modal-price{font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:var(--text);}
+  .modal-price-period{font-size:1.1rem;color:var(--text2);}
+  .modal-price-note{font-size:.78rem;color:var(--text3);}
+  .btn-upgrade-main{background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:15px 24px;border-radius:12px;cursor:pointer;font-family:var(--font-display);font-size:1rem;font-weight:700;transition:all .2s;width:100%;letter-spacing:.02em;position:relative;overflow:hidden;}
+  .btn-upgrade-main::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);}
+  .btn-upgrade-main:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(108,92,231,.5);}
+  .modal-cancel-note{font-size:.75rem;color:var(--text3);margin-top:.75rem;}
+
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
+
+  @media(max-width:900px){
+    .sidebar{display:none;}
+    .main{margin-left:0;}
+    .generator-area{grid-template-columns:1fr;}
+    .input-panel{border-right:none;border-bottom:1px solid var(--border);max-height:none;}
+    .output-panel{max-height:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">⚡</div>
+    <span class="nav-logo-text">PromptForge AI</span>
+  </div>
+  <div class="nav-right">
+    <div class="tier-badge" id="tierBadge" onclick="openModal()">
+      <div class="tier-dot"></div>
+      <span id="tierLabel">Free Plan</span>
+    </div>
+    <button class="btn-ghost">Sign In</button>
+    <button class="btn-pro" onclick="openModal()">⚡ Upgrade to Pro</button>
+  </div>
+</nav>
+
+<div class="app">
+  <aside class="sidebar">
+    <span class="sidebar-label">Generators</span>
+    <div class="sidebar-section">
+      <button class="sidebar-item active" onclick="switchGen('surprise',this)"><span class="icon">🎁</span><span class="label">Surprise Me</span><span class="badge">HOT</span></button>
+      <button class="sidebar-item" onclick="switchGen('money',this)"><span class="icon">💰</span><span class="label">Make Money</span></button>
+      <button class="sidebar-item" onclick="switchGen('video',this)"><span class="icon">🎬</span><span class="label">Short-Form Video</span></button>
+      <button class="sidebar-item" onclick="switchGen('sales',this)"><span class="icon">📢</span><span class="label">Sales & Marketing</span></button>
+      <button class="sidebar-item" onclick="switchGen('chibi',this)"><span class="icon">🧸</span><span class="label">Chibi Character</span></button>
+      <button class="sidebar-item" onclick="switchGen('story',this)"><span class="icon">🎭</span><span class="label">Viral Story</span></button>
+      <button class="sidebar-item" onclick="switchGen('image',this)"><span class="icon">🎨</span><span class="label">Smart Image</span></button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <span class="sidebar-label">Account</span>
+    <div class="sidebar-section">
+      <button class="sidebar-item" onclick="openModal()"><span class="icon">⚡</span><span class="label">Upgrade Pro</span><span class="badge gold">PRO</span></button>
+      <button class="sidebar-item"><span class="icon">📚</span><span class="label">Saved Prompts</span></button>
+      <button class="sidebar-item"><span class="icon">⚙️</span><span class="label">Settings</span></button>
+    </div>
+    <div style="padding:0 1rem">
+      <div class="usage-bar-wrap" style="margin-top:0">
+        <div class="usage-bar-header"><span>Daily usage</span><span id="usageCount">0 / 5</span></div>
+        <div class="usage-bar-track"><div class="usage-bar-fill" id="usageFill" style="width:0%"></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="generator-area">
+      <div class="input-panel">
+
+        <!-- SURPRISE ME -->
+        <div class="gen-form active" id="form-surprise">
+          <div class="generator-header">
+            <div class="generator-icon">🎁</div>
+            <div>
+              <div class="generator-title">Surprise Me</div>
+              <div class="generator-desc">One click. A fully connected viral content universe — concept, story, script, image prompt, and captions all built around one powerful idea.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Vibe or Theme <span style="color:var(--text3);font-weight:300">(optional)</span></label>
+            <input type="text" class="form-input" id="s-vibe" placeholder="e.g. luxury, funny, emotional, fantasy, motivational...">
+            <div class="field-note">✨ Leave blank — AI selects a trending, high-emotion concept for you</div>
+          </div>
+          <button class="btn-generate" onclick="generate('surprise')">✦ Generate Full Package</button>
+          <div class="usage-bar-wrap">
+            <div class="usage-bar-header"><span>Free generations today</span><span id="usageCount2">0 / 5</span></div>
+            <div class="usage-bar-track"><div class="usage-bar-fill" id="usageFill2" style="width:0%"></div></div>
+          </div>
+        </div>
+
+        <!-- MAKE MONEY -->
+        <div class="gen-form" id="form-money">
+          <div class="generator-header">
+            <div class="generator-icon">💰</div>
+            <div>
+              <div class="generator-title">Make Money Generator</div>
+              <div class="generator-desc">Turn any idea, skill, or niche into real income streams — with the strategic depth of a business consultant.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Topic or Niche <span class="req">*</span></label>
+            <input type="text" class="form-input" id="m-topic" placeholder="e.g. fitness, photography, finance, cooking...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Audience <span class="req">*</span></label>
+            <input type="text" class="form-input" id="m-audience" placeholder="e.g. busy mums, students, entrepreneurs...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Goal <span class="req">*</span></label>
+            <select class="form-select" id="m-goal">
+              <option value="">Select goal...</option>
+              <option>Fast cash (this week)</option>
+              <option>Passive income (long-term)</option>
+              <option>Side income (part-time)</option>
+              <option>Full-time business</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Budget / Resources</label>
+            <select class="form-select" id="m-budget">
+              <option value="">Select budget...</option>
+              <option>£0 — no money, time only</option>
+              <option>Under £100</option>
+              <option>£100–£500</option>
+              <option>£500+ to invest</option>
+              <option>Skills-only (no money needed)</option>
+            </select>
+          </div>
+          <button class="btn-generate" onclick="generate('money')">✦ Generate Income Ideas</button>
+        </div>
+
+        <!-- VIDEO -->
+        <div class="gen-form" id="form-video">
+          <div class="generator-header">
+            <div class="generator-icon">🎬</div>
+            <div>
+              <div class="generator-title">Short-Form Video</div>
+              <div class="generator-desc">Scroll-stopping scripts engineered for virality — written with the precision of a professional content director.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Topic <span class="req">*</span></label>
+            <input type="text" class="form-input" id="v-topic" placeholder="e.g. 5 habits that changed my life...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Platform <span class="req">*</span></label>
+            <select class="form-select" id="v-platform">
+              <option value="">Select platform...</option>
+              <option>TikTok</option>
+              <option>Instagram Reels</option>
+              <option>YouTube Shorts</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Style</label>
+            <select class="form-select" id="v-style">
+              <option value="">Select style...</option>
+              <option>Cinematic</option>
+              <option>Emotional / Storytelling</option>
+              <option>Funny / Entertaining</option>
+              <option>Educational</option>
+              <option>Motivational</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Goal</label>
+            <select class="form-select" id="v-goal">
+              <option value="">Select goal...</option>
+              <option>Go viral</option>
+              <option>Drive sales</option>
+              <option>Build engagement</option>
+              <option>Grow followers</option>
+            </select>
+          </div>
+          <button class="btn-generate" onclick="generate('video')">✦ Generate Video Script</button>
+        </div>
+
+        <!-- SALES -->
+        <div class="gen-form" id="form-sales">
+          <div class="generator-header">
+            <div class="generator-icon">📢</div>
+            <div>
+              <div class="generator-title">Sales & Marketing</div>
+              <div class="generator-desc">Conversion copy written with the psychology of a direct response copywriter and the precision of a brand strategist.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Product / Service <span class="req">*</span></label>
+            <input type="text" class="form-input" id="sa-product" placeholder="e.g. online fitness coaching, digital planner...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Audience <span class="req">*</span></label>
+            <input type="text" class="form-input" id="sa-audience" placeholder="e.g. women 25–40 wanting to lose weight...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tone</label>
+            <select class="form-select" id="sa-tone">
+              <option value="">Select tone...</option>
+              <option>Luxury / Premium</option>
+              <option>Urgent / Scarcity</option>
+              <option>Emotional / Empathetic</option>
+              <option>Persuasive / Direct</option>
+              <option>Friendly / Approachable</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price Point</label>
+            <select class="form-select" id="sa-price">
+              <option value="">Select price range...</option>
+              <option>Under £10 (impulse buy)</option>
+              <option>£10–£50 (mid-range)</option>
+              <option>£50–£200 (considered purchase)</option>
+              <option>£200–£500 (premium)</option>
+              <option>£500+ (high ticket)</option>
+            </select>
+          </div>
+          <button class="btn-generate" onclick="generate('sales')">✦ Generate Sales Copy</button>
+        </div>
+
+        <!-- CHIBI -->
+        <div class="gen-form" id="form-chibi">
+          <div class="generator-header">
+            <div class="generator-icon">🧸</div>
+            <div>
+              <div class="generator-title">Chibi Character Generator</div>
+              <div class="generator-desc">Ultra-detailed AI image prompts engineered for maximum visual quality — formatted precisely for your chosen tool.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Character Type <span class="req">*</span></label>
+            <select class="form-select" id="c-type">
+              <option value="">Select type...</option>
+              <option>Anime girl</option>
+              <option>Anime boy</option>
+              <option>Fantasy character</option>
+              <option>Cute creature</option>
+              <option>Warrior / Fighter</option>
+              <option>Magical girl</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mood</label>
+            <select class="form-select" id="c-mood">
+              <option value="">Select mood...</option>
+              <option>Cute / Happy</option>
+              <option>Shy / Bashful</option>
+              <option>Confident / Cool</option>
+              <option>Angry / Fierce</option>
+              <option>Sad / Emotional</option>
+              <option>Mysterious</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Outfit</label>
+            <select class="form-select" id="c-outfit">
+              <option value="">Select outfit...</option>
+              <option>School uniform</option>
+              <option>Streetwear / Urban</option>
+              <option>Princess / Royalty</option>
+              <option>Casual everyday</option>
+              <option>Fantasy armour</option>
+              <option>Magical outfit</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Style Intensity</label>
+            <select class="form-select" id="c-intensity">
+              <option value="">Select intensity...</option>
+              <option>Light / Simple</option>
+              <option>Medium / Detailed</option>
+              <option>Ultra-detailed / Cinematic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Output Format <span class="req">*</span></label>
+            <select class="form-select" id="c-format">
+              <option value="">Select AI tool...</option>
+              <option>Midjourney</option>
+              <option>DALL·E</option>
+              <option>Stable Diffusion</option>
+              <option>General (any tool)</option>
+            </select>
+          </div>
+          <button class="btn-generate" onclick="generate('chibi')">✦ Generate Chibi Prompt</button>
+        </div>
+
+        <!-- STORY -->
+        <div class="gen-form" id="form-story">
+          <div class="generator-header">
+            <div class="generator-icon">🎭</div>
+            <div>
+              <div class="generator-title">Viral Story Generator</div>
+              <div class="generator-desc">Platform-engineered stories that stop the scroll, grip the reader, and spread — written with the craft of a professional storyteller.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Story Type <span class="req">*</span></label>
+            <select class="form-select" id="st-type">
+              <option value="">Select type...</option>
+              <option>Love / Romance</option>
+              <option>Sad / Emotional</option>
+              <option>Motivational / Inspiring</option>
+              <option>Funny / Humorous</option>
+              <option>Mystery / Thriller</option>
+              <option>Kids / Family</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mood</label>
+            <select class="form-select" id="st-mood">
+              <option value="">Select mood...</option>
+              <option>Heartwarming</option>
+              <option>Suspenseful</option>
+              <option>Uplifting</option>
+              <option>Dark / Intense</option>
+              <option>Light / Playful</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ending Style</label>
+            <select class="form-select" id="st-ending">
+              <option value="">Select ending...</option>
+              <option>Shocking twist</option>
+              <option>Emotional / Tearjerker</option>
+              <option>Happy / Uplifting</option>
+              <option>Cliffhanger</option>
+              <option>Satisfying resolution</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Platform</label>
+            <select class="form-select" id="st-platform">
+              <option value="">Select platform...</option>
+              <option>TikTok</option>
+              <option>Instagram</option>
+              <option>Facebook</option>
+              <option>X / Twitter</option>
+            </select>
+          </div>
+          <button class="btn-generate" onclick="generate('story')">✦ Generate Viral Story</button>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="gen-form" id="form-image">
+          <div class="generator-header">
+            <div class="generator-icon">🎨</div>
+            <div>
+              <div class="generator-title">Smart Image Generator</div>
+              <div class="generator-desc">Professionally structured image prompts that produce cinematic, high-quality results — with style intelligently matched to your concept.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Idea or Concept <span class="req">*</span></label>
+            <textarea class="form-textarea" id="i-concept" placeholder="e.g. a lone warrior standing on a cliff at sunset, overlooking a futuristic city..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Style <span style="color:var(--text3);font-weight:300">(optional — AI selects if left blank)</span></label>
+            <select class="form-select" id="i-style">
+              <option value="">Let AI choose best style</option>
+              <option>Pixar / 3D Animation</option>
+              <option>Cinematic Realism</option>
+              <option>Anime / Manga</option>
+              <option>Fantasy Digital Art</option>
+              <option>Watercolour / Painterly</option>
+              <option>Dark / Noir</option>
+              <option>Minimalist</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mood</label>
+            <select class="form-select" id="i-mood">
+              <option value="">Select mood...</option>
+              <option>Epic / Dramatic</option>
+              <option>Peaceful / Calm</option>
+              <option>Dark / Mysterious</option>
+              <option>Warm / Joyful</option>
+              <option>Futuristic / Surreal</option>
+              <option>Romantic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Intended Use</label>
+            <select class="form-select" id="i-use">
+              <option value="">Select intended use...</option>
+              <option>AI image generation (Midjourney / DALL·E)</option>
+              <option>Social media post</option>
+              <option>Print / Poster</option>
+              <option>Website banner</option>
+              <option>Book / Story cover</option>
+            </select>
+          </div>
+          <button class="btn-generate" onclick="generate('image')">✦ Generate Image Prompt</button>
+        </div>
+
+      </div><!-- /input-panel -->
+
+      <!-- OUTPUT PANEL -->
+      <div class="output-panel">
+        <div class="output-header">
+          <div class="output-title">Generated Output</div>
+          <div class="output-actions">
+            <button class="btn-action" onclick="copyOutput()">⎘ Copy</button>
+            <button class="btn-action" onclick="saveOutput()">♡ Save</button>
+          </div>
+        </div>
+        <div class="output-empty" id="outputEmpty">
+          <div class="output-empty-icon">✦</div>
+          <div class="output-empty-text">Your premium output will appear here. Fill in the form and generate.</div>
+        </div>
+        <div class="output-loading" id="outputLoading">
+          <div class="loading-orb"></div>
+          <div class="loading-text" id="loadingText">Crafting your premium output...</div>
+        </div>
+        <div class="output-content" id="outputContent">
+          <div id="outputSections"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- PRO MODAL -->
+<div class="modal-overlay" id="proModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-eyebrow">⚡ PromptForge Pro</div>
+    <div class="modal-title">The Professional Standard for Content Creators</div>
+    <div class="modal-desc">Stop seeing preview outputs. Get the complete, structured, expert-level content your audience deserves — every single generation.</div>
+    <div class="modal-features">
+      <div class="modal-feature"><div class="modal-feature-icon">🎁</div>Complete Surprise Me packages — concept, story, script, image, captions unified</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🎬</div>Full video scripts with complete scene breakdowns and camera direction</div>
+      <div class="modal-feature"><div class="modal-feature-icon">💰</div>3 income ideas with revenue projections and full 5-step launch plans</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🎭</div>Complete stories — twist, ending, platform note, re-hook, and caption</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🧸</div>Ultra-detailed Chibi prompts with full modifiers and tool-specific formatting</div>
+      <div class="modal-feature"><div class="modal-feature-icon">∞</div>Unlimited daily generations — no caps, no counters, no limits</div>
+    </div>
+    <div class="modal-pricing-block">
+      <div class="modal-price-row">
+        <span class="modal-price">£19</span>
+        <span class="modal-price-period">/month</span>
+      </div>
+      <div class="modal-price-note">Everything unlocked. Full outputs. Unlimited generations.</div>
+    </div>
+    <button class="btn-upgrade-main" onclick="activatePro()">⚡ Upgrade to Pro — £19/month</button>
+    <div class="modal-cancel-note">No contracts. No hidden fees. Cancel anytime from your account settings.</div>
+  </div>
+</div>
+
+<script>
+// ─── PROMPTFORGE AI — SECURE FRONTEND ────────────────────────────────────────
+// No API keys. No system prompts. All generation happens via /api/generate.
+// This file is safe to deploy publicly.
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+// Dummy reference to prevent old BASE/SP references from causing errors
+const BASE = '';
+const SP = {};
+
+// Real app state
+let usageCount = 0;
+const MAX_FREE = 5;
+let isPro = false;
+let currentOutput = '';
+let currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
+
+const loadingMsgs = [
+  'Crafting your premium output...',
+  'Forging your content...',
+  'Building something extraordinary...',
+  'Generating at professional standard...',
+  'Creating your viral package...'
+];
+
+// ─── NAV ─────────────────────────────────────────────────────────────────────
+function switchGen(id, el) {
+  document.querySelectorAll('.gen-form').forEach(f => f.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('form-' + id).classList.add('active');
+  el.classList.add('active');
+  resetOutput();
+}
+
+function resetOutput() {
+  document.getElementById('outputEmpty').style.display = 'flex';
+  document.getElementById('outputLoading').classList.remove('visible');
+  document.getElementById('outputContent').classList.remove('visible');
+  document.getElementById('outputSections').innerHTML = '';
+  currentOutput = '';
+}
+
+// ─── INPUT COLLECTORS ────────────────────────────────────────────────────────
+function v(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+function collectInputs(type) {
+  const collectors = {
+    surprise: () => ({ vibe: v('s-vibe') }),
+    money: () => {
+      if (!v('m-topic') || !v('m-audience')) return null;
+      return { topic: v('m-topic'), audience: v('m-audience'), goal: v('m-goal'), budget: v('m-budget') };
+    },
+    video: () => {
+      if (!v('v-topic') || !v('v-platform')) return null;
+      return { topic: v('v-topic'), platform: v('v-platform'), style: v('v-style'), goal: v('v-goal') };
+    },
+    sales: () => {
+      if (!v('sa-product') || !v('sa-audience')) return null;
+      return { product: v('sa-product'), audience: v('sa-audience'), tone: v('sa-tone'), price: v('sa-price') };
+    },
+    chibi: () => {
+      if (!v('c-type') || !v('c-format')) return null;
+      return { characterType: v('c-type'), mood: v('c-mood'), outfit: v('c-outfit'), intensity: v('c-intensity'), format: v('c-format') };
+    },
+    story: () => {
+      if (!v('st-type')) return null;
+      return { storyType: v('st-type'), mood: v('st-mood'), ending: v('st-ending'), platform: v('st-platform') };
+    },
+    image: () => {
+      if (!v('i-concept')) return null;
+      return { concept: v('i-concept'), style: v('i-style'), mood: v('i-mood'), use: v('i-use') };
+    }
+  };
+  return collectors[type] ? collectors[type]() : null;
+}
+
+// ─── GENERATE — calls /api/generate (no API keys in frontend) ────────────────
+async function generate(type) {
+  if (!isPro && usageCount >= MAX_FREE) { openModal(); return; }
+
+  const inputs = collectInputs(type);
+  if (!inputs) { showToast('Please fill in the required fields'); return; }
+
+  document.getElementById('outputEmpty').style.display = 'none';
+  document.getElementById('outputContent').classList.remove('visible');
+  document.getElementById('outputLoading').classList.add('visible');
+  document.getElementById('loadingText').textContent = loadingMsgs[Math.floor(Math.random() * loadingMsgs.length)];
+  document.querySelectorAll('.btn-generate').forEach(b => b.disabled = true);
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type,
+        inputs,
+        tier: isPro ? 'pro' : 'free',
+        userId: currentUserId
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.status === 429) {
+      // Rate limit hit — show upgrade modal
+      openModal();
+      return;
+    }
+
+    if (!res.ok) {
+      const errMsg = data.error || 'Generation failed. Please try again.';
+      showToast(errMsg);
+      return;
+    }
+
+    const text = data.output || '';
+    if (!text) { showToast('Empty response received. Please try again.'); return; }
+
+    // Sync usage from server response
+    if (!isPro && data.used !== undefined) {
+      usageCount = data.used;
+      updateUsage();
+    }
+
+    displayOutput(text, type);
+
+  } catch (err) {
+    console.error('Generate error:', err);
+    showToast('Connection error. Please check your internet and try again.');
+  } finally {
+    document.querySelectorAll('.btn-generate').forEach(b => b.disabled = false);
+    document.getElementById('outputLoading').classList.remove('visible');
+  }
+}
+
+// ─── DEMO OUTPUTS ────────────────────────────────────────────────────────────
+function getDemo(type) {
+  const d = {
+    surprise:`CONCEPT TITLE:\nThe £0 to £5K Story\n\nTHE CORE IDEA:\nA raw first-person account of building a real income stream from nothing — told with the urgency of someone who had no other option. Targets the emotion of quiet desperation turning into quiet power. Engineered to make every viewer think "that could be me."\n\nSTORY HOOK:\n"Six months ago I had £12 in my account and rent due in three days. This is exactly what I did."\n\nSTORY OPENING:\nI wasn't broke in the romantic bootstrapped way people talk about on podcasts. I was broke in the way that makes you check your balance three times hoping the number changes.\n\nThat night, instead of sleeping, I opened my laptop and made one decision that changed everything. Not a dramatic decision. A small one. But the right one.\n\nCAPTION PREVIEW:\nI'm not going to tell you it was easy. But I am going to tell you exactly how it happened. Save this. 👇`,
+    money:`IDEA 1 — TITLE:\nThe Digital Template Empire\n\nTHE OPPORTUNITY:\nThe demand for plug-and-play digital tools has exploded across every professional niche. Busy coaches, creators, and entrepreneurs are paying £15–£97 for templates that save them hours of work. Etsy alone processes millions of digital downloads monthly — and the barrier to entry is a free Canva account and one specific problem to solve.\n\nDESCRIPTION:\nCreate premium Notion, Canva, or Excel templates designed for one specific niche audience. The genius is in the specificity — a "Content Creator Income Tracker" wildly outperforms a generic "Budget Template" because it speaks directly to one person's exact, frustrating problem.\n\nMONETISATION METHOD:\nEtsy shop for organic discovery. Gumroad for direct sales and email capture. Bundle 3–5 templates into a value pack at £29–£47. Build a buyer email list and upsell a coaching call at £97.\n\nIDEA 2 — TITLE:\nThe Ghost-Content Agency\n\nTHE OPPORTUNITY:\nEvery serious business owner knows they need to be active on LinkedIn, Instagram, or X. Almost none of them have the time or creative energy to do it well. This gap is growing — and the people filling it are making serious money with zero overhead.\n\nDESCRIPTION:\nWrite short-form social content for busy professionals and small business owners. Start with one niche — fitness coaches, estate agents, consultants, accountants — so your positioning is razor-sharp and referrals are automatic.\n\nMONETISATION METHOD:\nRetainer model: £300–£800/month per client for 15–20 posts per month. Start with 2 clients. That is £600–£1,600/month before you have a website or a business card.`,
+    video:`HOOK:\n"Stop. What I'm about to tell you took me three years to figure out — and you're going to learn it in the next 60 seconds."\n\nSECONDARY HOOK OPTION:\n"I wish someone had shown me this at 22. Here it is."\n\nDIRECTOR'S NOTE:\nDeliver this with calm authority — not hype. The power is in the stillness. Straight to camera, no intro music, no transitions until the reveal.\n\nOPENING SCRIPT — 30 SECONDS:\nStraight to camera. No smile yet — just eye contact and stillness.\n\n"Most people spend their entire career working for money." [one-beat pause]\n"The people who actually get ahead figured out how to make money work for them." [cut]\n"It's not complicated. But nobody teaches it." [pause — slight lean forward]\n"Here are three things I wish I knew at 22."\n\nCAPTION:\nThe three things that quietly separate people who build wealth from people who don't. Number 2 is the one nobody talks about. 👇 Save this before you forget.`,
+    sales:`PRIMARY HEADLINE:\n"Your content shouldn't take hours. It should take seconds."\n\nSECONDARY HEADLINE:\nProfessional-grade copy, scripts, and prompts — generated in one click.\n\nOPENING HOOK:\nYou already know what you want to say. PromptForge just says it better than you could have alone.\n\nBODY COPY PREVIEW:\nEvery creator, coach, and entrepreneur reaches the same wall. The ideas are there — but turning them into scroll-stopping content, converting copy, and viral scripts takes hours you don't have.\n\nPromptForge is the professional system that does the heavy lifting. So you can focus on what actually moves the needle.`,
+    chibi:`CHIBI PROMPT:\nA cute chibi anime girl with large luminous violet eyes, soft rosy cheeks, and silky pastel-pink twin-tails tied with oversized navy bows. Wearing a crisp white school uniform with a navy pleated skirt, white knee-high socks, and black Mary Jane shoes. Posed bashfully with hands clasped behind her back, head tilted slightly, looking upward with a shy but warm smile. Soft diffused studio lighting with warm golden rim light from upper right. Cherry blossom petals drifting in a blurred pastel background. 3D render style, ultra-glossy eyes with detailed catchlights, smooth skin texture, kawaii aesthetic, ultra-detailed, cinematic composition, 8K quality.`,
+    story:`HOOK:\n"She found the letter 23 years too late. It explained everything — and destroyed everything she thought she knew."\n\nSTORY OPENING:\nThe box had moved with Sarah four times. Three cities, two marriages, one life she barely recognised anymore. She'd always told herself she'd go through it properly one day.\n\nToday was the day her mother's house sold. Today was the last chance.\n\nHer hands were steadier than she expected as she lifted the lid. Old photographs. A dried flower from a wedding she didn't remember attending. And beneath it all, an envelope. Her name on the front. Her mother's handwriting. The postmark said 2001.`,
+    image:`IMAGE PROMPT:\nA lone warrior standing at the crumbling edge of a basalt cliff at golden hour, silhouetted against a sky bleeding amber and deep violet. Below, a sprawling cyberpunk city stretches to the horizon — neon reflections shimmering on wet streets far below. Shot from a low three-quarter angle looking upward, emphasising the scale of the figure against the infinite city. Ultra-detailed cinematic digital art, volumetric god rays cutting through haze, ray-traced neon reflections, atmospheric depth fog, dramatic rim lighting from the setting sun, deep cool shadows. Photorealistic render quality, 8K, award-winning composition, cinematic aspect ratio.`
+  };
+  return d[type] || 'Add your Anthropic API key to enable live generation.';
+}
+
+// ─── DISPLAY ─────────────────────────────────────────────────────────────────
+function displayOutput(text, type) {
+  const sections = parseOutput(text);
+  const container = document.getElementById('outputSections');
+  container.innerHTML = '';
+  currentOutput = text;
+
+  let delay = 0;
+  sections.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'output-section';
+    div.style.animationDelay = delay + 's';
+    delay += 0.07;
+    div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
+    container.appendChild(div);
+  });
+
+  if (!isPro) {
+    const lf = {
+      surprise:['Complete video script with full scene breakdown and camera direction','Ultra-detailed Chibi character prompt formatted for Midjourney','Full story with twist, ending, and platform delivery note','Complete engagement suite — long caption, short caption, and engagement question'],
+      money:['Third income idea with full strategic depth','Revenue potential projections for all ideas','Complete 5-step quick start plans','One Thing Most People Get Wrong for each model'],
+      video:['Full word-for-word script beyond 30 seconds','Complete scene-by-scene breakdown with camera direction','CTA and full hashtag strategy — niche, mid, and broad tiers','Viral potential analysis'],
+      sales:['Full persuasion arc body copy','Key benefits written as buyer outcomes','Objection handler and social proof guidance','Ad version and organic caption version'],
+      chibi:['Complete character prompt with micro-expression and pose detail','Full lighting and environment specification','Quality modifier stack with tool-specific syntax','Full variation prompt with alternative concept'],
+      story:['Complete story — rising tension, the turn, and full ending','Platform delivery note and posting strategy','Optimised caption with engagement prompt','Re-hook: second opening line for A/B testing'],
+      image:['Full cinematic prompt with environment, lighting, and camera detail','Quality modifier stack formatted for your AI tool','Mood and atmosphere summary','Style rationale for replication']
+    };
+    const features = lf[type] || ['Full output','Complete structure','Advanced variations'];
+    const locked = document.createElement('div');
+    locked.className = 'output-locked';
+    locked.style.animationDelay = delay + 's';
+    locked.innerHTML = `
+      <div class="lock-icon">🔒</div>
+      <div class="lock-title">Unlock the Complete ${genName(type)}</div>
+      <div class="lock-desc">You're seeing a preview. Pro members receive the full professionally structured output — ready to use without editing a single word.</div>
+      <div class="lock-features">${features.map(f=>`<div class="lock-feature">${esc(f)}</div>`).join('')}</div>
+      <button class="btn-upgrade" onclick="openModal()">⚡ Get Pro — £19/month</button>`;
+    container.appendChild(locked);
+  }
+
+  document.getElementById('outputContent').classList.add('visible');
+}
+
+function parseOutput(text) {
+  const lines = text.split('\n');
+  const sections = [];
+  let cur = null;
+  for (const line of lines) {
+    const t = line.trim();
+    const m = t.match(/^([A-Z][A-Z0-9\s\/&''\-–—]+):$/);
+    if (m && m[1].length >= 2) {
+      if (cur && cur.content.trim()) sections.push({...cur, content: cur.content.trim()});
+      cur = { label: m[1].trim(), content: '' };
+    } else if (cur) {
+      cur.content += (cur.content ? '\n' : '') + line;
+    } else if (t) {
+      cur = { label: 'OUTPUT', content: line };
+    }
+  }
+  if (cur && cur.content.trim()) sections.push({...cur, content: cur.content.trim()});
+  return sections.length ? sections : [{ label: 'GENERATED CONTENT', content: text.trim() }];
+}
+
+function genName(type) {
+  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'Chibi Prompt',story:'Viral Story',image:'Image Prompt'}[type] || 'Output';
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── USAGE ───────────────────────────────────────────────────────────────────
+function updateUsage() {
+  const pct = Math.min((usageCount / MAX_FREE) * 100, 100);
+  ['usageCount','usageCount2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = usageCount + ' / ' + MAX_FREE; });
+  ['usageFill','usageFill2'].forEach(id => { const el = document.getElementById(id); if (el) el.style.width = pct + '%'; });
+}
+
+// ─── ACTIONS ─────────────────────────────────────────────────────────────────
+function copyOutput() {
+  if (!currentOutput) { showToast('Nothing to copy yet'); return; }
+  navigator.clipboard.writeText(currentOutput).then(() => showToast('✓ Copied to clipboard')).catch(() => showToast('Select the text manually to copy'));
+}
+function saveOutput() { showToast('♡ Saved to your library'); }
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
+
+// ─── MODAL & STRIPE ──────────────────────────────────────────────────────────
+function openModal() { document.getElementById('proModal').classList.add('open'); }
+function closeModal() { document.getElementById('proModal').classList.remove('open'); }
+
+async function activatePro() {
+  // Attempt to create Stripe checkout session
+  const btn = document.querySelector('.btn-upgrade-main');
+  if (btn) { btn.disabled = true; btn.textContent = 'Redirecting to checkout...'; }
+
+  try {
+    const res = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: currentUserId })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+        return;
+      }
+    }
+  } catch (err) {
+    console.error('Checkout error:', err);
+  }
+
+  // Fallback: activate locally if Stripe not configured yet
+  setProActive();
+  closeModal();
+  if (btn) { btn.disabled = false; btn.textContent = '⚡ Upgrade to Pro — £19/month'; }
+}
+
+function setProActive() {
+  isPro = true;
+  document.getElementById('tierBadge').className = 'tier-badge pro';
+  document.getElementById('tierLabel').textContent = 'Pro Plan';
+  const uc = document.getElementById('usageCount'); if (uc) uc.textContent = '∞';
+  const uc2 = document.getElementById('usageCount2'); if (uc2) uc2.textContent = '∞';
+  const uf = document.getElementById('usageFill'); if (uf) uf.style.width = '0%';
+  const uf2 = document.getElementById('usageFill2'); if (uf2) uf2.style.width = '0%';
+  showToast('⚡ Pro activated — unlimited generations unlocked');
+}
+
+// Check URL for Stripe success redirect
+if (window.location.search.includes('session_id=')) {
+  setProActive();
+  window.history.replaceState({}, '', '/');
+}
+
+document.getElementById('proModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+</script>
+</body>
+</html>
