@@ -1,14 +1,16 @@
 // /api/generate.js
 // PromptForge AI — Secure Backend Generation Endpoint
-// All Claude API calls happen here. No keys ever reach the frontend.
+// All OpenAI API calls happen here. No keys ever reach the frontend.
 
-const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages';
-const MODEL = 'claude-sonnet-4-6';
+import OpenAI from 'openai';
+
+const MODEL = 'gpt-4o-mini';
 const FREE_MAX_TOKENS = 1200;
 const PRO_MAX_TOKENS = 4000;
 
 // ─── IN-MEMORY RATE LIMITER ──────────────────────────────────────────────────
-// For production: replace with Supabase or Redis
+// For production: replace with Supabase or Redis for persistence across
+// serverless function instances
 const rateLimitStore = new Map();
 
 function checkRateLimit(userId, tier) {
@@ -18,7 +20,7 @@ function checkRateLimit(userId, tier) {
   const limit = 5;
   if (used >= limit) return { allowed: false, used, limit };
   rateLimitStore.set(key, used + 1);
-  // Clean old keys periodically
+  // Prune old keys to prevent memory growth
   if (rateLimitStore.size > 10000) {
     const today = new Date().toDateString();
     for (const [k] of rateLimitStore) {
@@ -37,7 +39,7 @@ CORE RULES — NON-NEGOTIABLE:
 - Never use filler phrases, generic openings, or lazy transitions
 - Every output must be hyper-specific — no vague language, no placeholder thinking
 - Write with the authority of someone who has mastered this craft for 10 years
-- Every output must dramatically outperform what a user could produce manually in ChatGPT
+- Every output must dramatically outperform what a user could produce manually
 - Every section must have genuine substance — never a single line unless it is a headline or hook
 - Never begin with "In today's world", "Are you tired of", "Imagine if", or any cliché
 - Format: section LABEL on its own line, content below, blank line between sections`;
@@ -317,6 +319,7 @@ MOOD & ATMOSPHERE:
 
 STYLE RATIONALE:
 [One sentence explaining why this style was chosen]`
+
 };
 
 // ─── INPUT VALIDATION ────────────────────────────────────────────────────────
@@ -324,26 +327,25 @@ STYLE RATIONALE:
 function validateInput(type, inputs) {
   const required = {
     surprise: [],
-    money: ['topic', 'audience'],
-    video: ['topic', 'platform'],
-    sales: ['product', 'audience'],
-    chibi: ['characterType', 'format'],
-    story: ['storyType'],
-    image: ['concept']
+    money:    ['topic', 'audience'],
+    video:    ['topic', 'platform'],
+    sales:    ['product', 'audience'],
+    chibi:    ['characterType', 'format'],
+    story:    ['storyType'],
+    image:    ['concept']
   };
-  const fields = required[type] || [];
-  for (const field of fields) {
-    if (!inputs[field] || !inputs[field].trim()) {
+  for (const field of (required[type] || [])) {
+    if (!inputs[field] || !String(inputs[field]).trim()) {
       return { valid: false, error: `Missing required field: ${field}` };
     }
   }
   return { valid: true };
 }
 
-// ─── USER MESSAGE BUILDER ─────────────────────────────────────────────────────
+// ─── USER MESSAGE BUILDER ────────────────────────────────────────────────────
 
 function buildUserMessage(type, inputs, tier) {
-  const T = tier === 'pro' ? 'PRO' : 'FREE';
+  const T      = tier === 'pro' ? 'PRO' : 'FREE';
   const suffix = `\n\nGenerate the ${T === 'PRO' ? 'complete Pro' : 'Free preview'} output now.`;
 
   const builders = {
@@ -372,29 +374,26 @@ function buildUserMessage(type, inputs, tier) {
   return builders[type] ? builders[type]() : null;
 }
 
-// ─── MAIN HANDLER ─────────────────────────────────────────────────────────────
+// ─── MAIN HANDLER ────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
-  // Handle preflight
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+  // Preflight
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST')    return res.status(405).json({ error: 'Method not allowed' });
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  // Guard: API key must exist
+  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    console.error('ANTHROPIC_API_KEY not set');
+    console.error('OPENAI_API_KEY is not set');
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
+  // Parse body
   let body;
   try {
     body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
   } catch {
-    return res.status(400).json({ error: 'Invalid JSON' });
+    return res.status(400).json({ error: 'Invalid JSON body' });
   }
 
   const { type, inputs = {}, tier = 'free', userId = 'anonymous' } = body;
@@ -405,57 +404,46 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid generator type' });
   }
 
-  // Validate inputs
+  // Validate required inputs
   const validation = validateInput(type, inputs);
   if (!validation.valid) {
     return res.status(400).json({ error: validation.error });
   }
 
-  // Rate limiting
+  // Rate limit check
   const rateCheck = checkRateLimit(userId, tier);
   if (!rateCheck.allowed) {
     return res.status(429).json({
       error: 'Daily generation limit reached',
-      used: rateCheck.used,
+      used:  rateCheck.used,
       limit: rateCheck.limit,
       upgradeRequired: true
     });
   }
 
-  // Build message
+  // Build prompt
   const userMessage = buildUserMessage(type, inputs, tier);
   if (!userMessage) {
     return res.status(400).json({ error: 'Could not build message for this generator' });
   }
 
   const systemPrompt = SYSTEM_PROMPTS[type];
-  const maxTokens = tier === 'pro' ? PRO_MAX_TOKENS : FREE_MAX_TOKENS;
+  const maxTokens    = tier === 'pro' ? PRO_MAX_TOKENS : FREE_MAX_TOKENS;
 
-  // Call Claude API
+  // ─── Call OpenAI ──────────────────────────────────────────────────────────
   try {
-    const response = await fetch(ANTHROPIC_API, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: maxTokens,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: userMessage }]
-      })
+    const openai = new OpenAI({ apiKey });
+
+    const completion = await openai.chat.completions.create({
+      model:      MODEL,
+      max_tokens: maxTokens,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user',   content: userMessage  }
+      ]
     });
 
-    if (!response.ok) {
-      const errData = await response.json().catch(() => ({}));
-      console.error('Claude API error:', response.status, errData);
-      return res.status(502).json({ error: 'Generation service temporarily unavailable' });
-    }
-
-    const data = await response.json();
-    const text = data.content?.[0]?.text || '';
+    const text = completion.choices?.[0]?.message?.content || '';
 
     if (!text) {
       return res.status(502).json({ error: 'Empty response from generation service' });
@@ -464,12 +452,25 @@ export default async function handler(req, res) {
     return res.status(200).json({
       output: text,
       tier,
-      used: rateCheck.used,
+      used:  rateCheck.used,
       limit: rateCheck.limit
     });
 
   } catch (err) {
-    console.error('Generate handler error:', err);
+    // Surface OpenAI-specific errors cleanly
+    if (err?.status === 401) {
+      console.error('OpenAI: invalid API key');
+      return res.status(500).json({ error: 'Server configuration error' });
+    }
+    if (err?.status === 429) {
+      console.error('OpenAI: rate limit or quota exceeded');
+      return res.status(429).json({ error: 'Generation service rate limit reached. Please try again shortly.' });
+    }
+    if (err?.status === 400) {
+      console.error('OpenAI: bad request', err.message);
+      return res.status(400).json({ error: 'Invalid generation request' });
+    }
+    console.error('OpenAI generate error:', err);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }

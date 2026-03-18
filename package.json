@@ -1,0 +1,13 @@
+{
+  "name": "promptforge-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PromptForge AI — Premium Content & Income Engine",
+  "type": "module",
+  "dependencies": {
+    "openai": "^4.47.1"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
