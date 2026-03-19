@@ -5,7 +5,7 @@
   "description": "PromptForge AI — Premium Content & Income Engine",
   "type": "module",
   "dependencies": {
-    "openai": "^4.47.1"
+    "@anthropic-ai/sdk": "^0.39.0"
   },
   "engines": {
     "node": ">=18.x"

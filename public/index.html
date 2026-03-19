@@ -95,15 +95,146 @@
   .output-empty-text{font-size:.9rem;color:var(--text2);max-width:260px;line-height:1.6;}
   .output-content{flex:1;display:none;}
   .output-content.visible{display:block;}
-  .output-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;animation:fadeUp .4s ease forwards;}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-  .output-section-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
+  /* ── OUTPUT SECTIONS ── */
+  .output-section{
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:1.25rem;margin-bottom:1rem;
+    opacity:0;transform:translateY(16px);
+    animation:sectionIn .5s cubic-bezier(.22,.68,0,1.2) forwards;
+    position:relative;overflow:hidden;
+  }
+  .output-section::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(139,120,255,.04),transparent);
+    opacity:0;transition:opacity .3s;pointer-events:none;
+  }
+  .output-section:hover::after{opacity:1;}
+  @keyframes sectionIn{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  /* first section gets a subtle left-border accent glow */
+  .output-section:first-child{border-left:2px solid var(--purple);box-shadow:0 0 20px rgba(139,120,255,.07);}
+
+  .output-section-label{
+    font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--purple);margin-bottom:10px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .output-section-label::before{
+    content:'';display:inline-block;width:4px;height:4px;
+    border-radius:50%;background:var(--purple);
+    animation:labelDot 2s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @keyframes labelDot{0%,100%{opacity:.4;}50%{opacity:1;box-shadow:0 0 6px var(--purple);}}
+
   .output-section-text{font-size:.9rem;color:var(--text);line-height:1.7;white-space:pre-wrap;}
-  .output-loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;flex:1;padding:3rem 0;}
+
+  /* ── GENERATOR-SPECIFIC ACCENT COLOURS ── */
+  .gen-accent-surprise .output-section:first-child{border-left-color:#b06aff;box-shadow:0 0 20px rgba(176,106,255,.1);}
+  .gen-accent-surprise .output-section-label{color:#b06aff;}
+  .gen-accent-surprise .output-section-label::before{background:#b06aff;}
+
+  .gen-accent-money .output-section:first-child{border-left-color:var(--gold);box-shadow:0 0 20px rgba(246,201,14,.1);}
+  .gen-accent-money .output-section-label{color:var(--gold);}
+  .gen-accent-money .output-section-label::before{background:var(--gold);}
+
+  .gen-accent-video .output-section:first-child{border-left-color:#ff6b6b;box-shadow:0 0 20px rgba(255,107,107,.1);}
+  .gen-accent-video .output-section-label{color:#ff6b6b;}
+  .gen-accent-video .output-section-label::before{background:#ff6b6b;}
+
+  .gen-accent-sales .output-section:first-child{border-left-color:#4ecdc4;box-shadow:0 0 20px rgba(78,205,196,.1);}
+  .gen-accent-sales .output-section-label{color:#4ecdc4;}
+  .gen-accent-sales .output-section-label::before{background:#4ecdc4;}
+
+  .gen-accent-chibi .output-section:first-child{border-left-color:#ff9de2;box-shadow:0 0 20px rgba(255,157,226,.1);}
+  .gen-accent-chibi .output-section-label{color:#ff9de2;}
+  .gen-accent-chibi .output-section-label::before{background:#ff9de2;}
+
+  .gen-accent-story .output-section:first-child{border-left-color:#f7b731;box-shadow:0 0 20px rgba(247,183,49,.1);}
+  .gen-accent-story .output-section-label{color:#f7b731;}
+  .gen-accent-story .output-section-label::before{background:#f7b731;}
+
+  .gen-accent-image .output-section:first-child{border-left-color:#45aaf2;box-shadow:0 0 20px rgba(69,170,242,.1);}
+  .gen-accent-image .output-section-label{color:#45aaf2;}
+  .gen-accent-image .output-section-label::before{background:#45aaf2;}
+
+  /* ── LOADING STATES ── */
+  .output-loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;flex:1;padding:3rem 0;}
   .output-loading.visible{display:flex;}
-  .loading-orb{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));animation:pulse 1.5s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{transform:scale(.9);opacity:.7;}50%{transform:scale(1.1);opacity:1;box-shadow:0 0 32px rgba(139,120,255,.5);}}
-  .loading-text{font-size:.85rem;color:var(--text2);}
+
+  .loading-orb-wrap{position:relative;width:64px;height:64px;}
+  .loading-orb{
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(135deg,var(--purple2),var(--blue));
+    animation:orbPulse 1.4s ease-in-out infinite;
+  }
+  .loading-orb-ring{
+    position:absolute;inset:-6px;border-radius:50%;
+    border:1px solid rgba(139,120,255,.3);
+    animation:ringExpand 1.4s ease-out infinite;
+  }
+  .loading-orb-ring2{
+    position:absolute;inset:-14px;border-radius:50%;
+    border:1px solid rgba(139,120,255,.15);
+    animation:ringExpand 1.4s ease-out infinite .2s;
+  }
+  @keyframes orbPulse{
+    0%,100%{transform:scale(.88);box-shadow:0 0 0 0 rgba(139,120,255,.4);}
+    50%{transform:scale(1);box-shadow:0 0 32px 8px rgba(139,120,255,.2);}
+  }
+  @keyframes ringExpand{
+    0%{transform:scale(.8);opacity:.8;}
+    100%{transform:scale(1.6);opacity:0;}
+  }
+
+  .loading-dots{display:flex;gap:5px;align-items:center;}
+  .loading-dot{
+    width:5px;height:5px;border-radius:50%;background:var(--purple);
+    animation:dotBounce .9s ease-in-out infinite;
+  }
+  .loading-dot:nth-child(2){animation-delay:.15s;}
+  .loading-dot:nth-child(3){animation-delay:.3s;}
+  @keyframes dotBounce{0%,80%,100%{transform:scale(.7);opacity:.4;}40%{transform:scale(1);opacity:1;}}
+
+  .loading-text{font-size:.85rem;color:var(--text2);text-align:center;max-width:220px;line-height:1.5;}
+  .loading-subtext{font-size:.72rem;color:var(--text3);text-align:center;}
+
+  /* ── GENERATE BUTTON ACTIVE STATE ── */
+  .btn-generate.generating{
+    background:linear-gradient(135deg,var(--bg3),var(--surface2));
+    cursor:not-allowed;
+  }
+  .btn-generate.generating::before{
+    background:linear-gradient(90deg,transparent,rgba(139,120,255,.15),transparent);
+    animation:btnShimmer 1.5s linear infinite;
+  }
+  @keyframes btnShimmer{from{transform:translateX(-100%);}to{transform:translateX(100%);}}
+
+  /* ── OUTPUT PANEL SUCCESS FLASH ── */
+  @keyframes panelFlash{
+    0%{box-shadow:inset 0 0 0 0 rgba(139,120,255,0);}
+    30%{box-shadow:inset 0 0 40px 0 rgba(139,120,255,.08);}
+    100%{box-shadow:inset 0 0 0 0 rgba(139,120,255,0);}
+  }
+  .output-panel.flash{animation:panelFlash .8s ease-out forwards;}
+
+  /* ── SURPRISE ME CONCEPT TITLE SPECIAL TREATMENT ── */
+  .section-concept-title .output-section-text{
+    font-family:var(--font-display);
+    font-size:1.4rem;font-weight:800;
+    letter-spacing:-.02em;
+    background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    line-height:1.3;
+  }
+
+  /* ── COPY FLASH on section text ── */
+  .output-section-text.copied{
+    background:rgba(139,120,255,.08);border-radius:6px;
+    transition:background .3s;
+  }
 
   /* LOCKED */
   .output-locked{background:linear-gradient(135deg,rgba(139,120,255,.05),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:12px;padding:1.5rem;text-align:center;margin-top:.5rem;animation:fadeUp .4s ease .3s both;}
@@ -534,7 +665,7 @@
       </div><!-- /input-panel -->
 
       <!-- OUTPUT PANEL -->
-      <div class="output-panel">
+      <div class="output-panel gen-accent-surprise" id="outputPanel">
         <div class="output-header">
           <div class="output-title">Generated Output</div>
           <div class="output-actions">
@@ -547,8 +678,18 @@
           <div class="output-empty-text">Your premium output will appear here. Fill in the form and generate.</div>
         </div>
         <div class="output-loading" id="outputLoading">
-          <div class="loading-orb"></div>
+          <div class="loading-orb-wrap">
+            <div class="loading-orb"></div>
+            <div class="loading-orb-ring"></div>
+            <div class="loading-orb-ring2"></div>
+          </div>
+          <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+          </div>
           <div class="loading-text" id="loadingText">Crafting your premium output...</div>
+          <div class="loading-subtext" id="loadingSubtext">Claude Sonnet 4.6 — thinking</div>
         </div>
         <div class="output-content" id="outputContent">
           <div id="outputSections"></div>
@@ -605,13 +746,67 @@ let isPro = false;
 let currentOutput = '';
 let currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
 
-const loadingMsgs = [
-  'Crafting your premium output...',
-  'Forging your content...',
-  'Building something extraordinary...',
-  'Generating at professional standard...',
-  'Creating your viral package...'
-];
+// Generator-specific loading messages + subtexts
+const loadingMsgs = {
+  surprise: [
+    'Architecting your viral concept...',
+    'Building your content universe...',
+    'Forging something nobody has seen yet...',
+    'Connecting story, script, and character...',
+    'Crafting your signature package...'
+  ],
+  money: [
+    'Finding the non-obvious angle...',
+    'Building your income blueprint...',
+    'Mapping the specific, not the generic...',
+    'Engineering your money strategy...',
+    'Calculating your fast cash path...'
+  ],
+  video: [
+    'Writing your scroll-stopping hook...',
+    'Scripting the pattern interrupt...',
+    'Building your scene-by-scene breakdown...',
+    'Crafting your viral script...',
+    'Engineering the addictive version...'
+  ],
+  sales: [
+    'Calibrating to your price point...',
+    'Writing copy that converts...',
+    'Engineering your persuasion arc...',
+    'Building your conversion sequence...',
+    'Crafting your direct response copy...'
+  ],
+  chibi: [
+    'Engineering your character prompt...',
+    'Sequencing all 9 visual layers...',
+    'Formatting for your chosen AI tool...',
+    'Building your Midjourney spec...',
+    'Crafting your premium character brief...'
+  ],
+  story: [
+    'Opening the loop...',
+    'Building your tension arc...',
+    'Crafting your platform-native story...',
+    'Engineering the hook that holds...',
+    'Writing the turn that earns the share...'
+  ],
+  image: [
+    'Building your technical creative brief...',
+    'Selecting the perfect style...',
+    'Engineering your cinematic prompt...',
+    'Calibrating lighting and rendering specs...',
+    'Formatting for your intended use...'
+  ]
+};
+const loadingSubtexts = {
+  surprise: 'Story + Script + Chibi + Captions',
+  money: 'Real income. Real platform. Real price.',
+  video: 'Platform-calibrated for maximum watch time',
+  sales: 'Price point psychology applied',
+  chibi: '9-step sequence + Midjourney parameters',
+  story: 'Platform-adapted narrative structure',
+  image: 'Cinematic specs + rendering engine'
+};
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
 function switchGen(id, el) {
@@ -619,6 +814,10 @@ function switchGen(id, el) {
   document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
   document.getElementById('form-' + id).classList.add('active');
   el.classList.add('active');
+  // Apply accent class immediately on switch so loading colours are correct
+  const panel = document.getElementById('outputPanel');
+  panel.className = panel.className.replace(/gen-accent-\S+/g, '').trim();
+  panel.classList.add('gen-accent-' + id);
   resetOutput();
 }
 
@@ -674,8 +873,17 @@ async function generate(type) {
   document.getElementById('outputEmpty').style.display = 'none';
   document.getElementById('outputContent').classList.remove('visible');
   document.getElementById('outputLoading').classList.add('visible');
-  document.getElementById('loadingText').textContent = loadingMsgs[Math.floor(Math.random() * loadingMsgs.length)];
-  document.querySelectorAll('.btn-generate').forEach(b => b.disabled = true);
+  // Generator-specific loading message and subtext
+  const msgs = loadingMsgs[type] || loadingMsgs.surprise;
+  document.getElementById('loadingText').textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  const sub = loadingSubtexts[type] || '';
+  document.getElementById('loadingSubtext').textContent = sub;
+  // Set generator accent class on output panel
+  const panel = document.getElementById('outputPanel');
+  panel.className = panel.className.replace(/gen-accent-\S+/g, '').trim();
+  panel.classList.add('gen-accent-' + type);
+  // Animate generate button
+  document.querySelectorAll('.btn-generate').forEach(b => { b.disabled = true; b.classList.add('generating'); });
 
   try {
     const res = await fetch('/api/generate', {
@@ -699,12 +907,19 @@ async function generate(type) {
 
     if (!res.ok) {
       const errMsg = data.error || 'Generation failed. Please try again.';
-      showToast(errMsg);
+      // Show specific helpful messages for common errors
+      if (res.status === 500 && errMsg.includes('configuration')) {
+        showToast('API key not configured. Add ANTHROPIC_API_KEY to Vercel.');
+      } else if (res.status === 503) {
+        showToast('Claude is temporarily busy. Please try again in a moment.');
+      } else {
+        showToast(errMsg);
+      }
       return;
     }
 
     const text = data.output || '';
-    if (!text) { showToast('Empty response received. Please try again.'); return; }
+    if (!text) { showToast('Empty response. Please try again.'); return; }
 
     // Sync usage from server response
     if (!isPro && data.used !== undefined) {
@@ -716,26 +931,18 @@ async function generate(type) {
 
   } catch (err) {
     console.error('Generate error:', err);
-    showToast('Connection error. Please check your internet and try again.');
+    if (err.name === 'TypeError' && err.message.includes('fetch')) {
+      showToast('Cannot reach the server. Check your internet connection.');
+    } else {
+      showToast('Something went wrong. Please try again in a moment.');
+    }
   } finally {
-    document.querySelectorAll('.btn-generate').forEach(b => b.disabled = false);
+    document.querySelectorAll('.btn-generate').forEach(b => { b.disabled = false; b.classList.remove('generating'); });
     document.getElementById('outputLoading').classList.remove('visible');
   }
 }
 
-// ─── DEMO OUTPUTS ────────────────────────────────────────────────────────────
-function getDemo(type) {
-  const d = {
-    surprise:`CONCEPT TITLE:\nThe £0 to £5K Story\n\nTHE CORE IDEA:\nA raw first-person account of building a real income stream from nothing — told with the urgency of someone who had no other option. Targets the emotion of quiet desperation turning into quiet power. Engineered to make every viewer think "that could be me."\n\nSTORY HOOK:\n"Six months ago I had £12 in my account and rent due in three days. This is exactly what I did."\n\nSTORY OPENING:\nI wasn't broke in the romantic bootstrapped way people talk about on podcasts. I was broke in the way that makes you check your balance three times hoping the number changes.\n\nThat night, instead of sleeping, I opened my laptop and made one decision that changed everything. Not a dramatic decision. A small one. But the right one.\n\nCAPTION PREVIEW:\nI'm not going to tell you it was easy. But I am going to tell you exactly how it happened. Save this. 👇`,
-    money:`IDEA 1 — TITLE:\nThe Digital Template Empire\n\nTHE OPPORTUNITY:\nThe demand for plug-and-play digital tools has exploded across every professional niche. Busy coaches, creators, and entrepreneurs are paying £15–£97 for templates that save them hours of work. Etsy alone processes millions of digital downloads monthly — and the barrier to entry is a free Canva account and one specific problem to solve.\n\nDESCRIPTION:\nCreate premium Notion, Canva, or Excel templates designed for one specific niche audience. The genius is in the specificity — a "Content Creator Income Tracker" wildly outperforms a generic "Budget Template" because it speaks directly to one person's exact, frustrating problem.\n\nMONETISATION METHOD:\nEtsy shop for organic discovery. Gumroad for direct sales and email capture. Bundle 3–5 templates into a value pack at £29–£47. Build a buyer email list and upsell a coaching call at £97.\n\nIDEA 2 — TITLE:\nThe Ghost-Content Agency\n\nTHE OPPORTUNITY:\nEvery serious business owner knows they need to be active on LinkedIn, Instagram, or X. Almost none of them have the time or creative energy to do it well. This gap is growing — and the people filling it are making serious money with zero overhead.\n\nDESCRIPTION:\nWrite short-form social content for busy professionals and small business owners. Start with one niche — fitness coaches, estate agents, consultants, accountants — so your positioning is razor-sharp and referrals are automatic.\n\nMONETISATION METHOD:\nRetainer model: £300–£800/month per client for 15–20 posts per month. Start with 2 clients. That is £600–£1,600/month before you have a website or a business card.`,
-    video:`HOOK:\n"Stop. What I'm about to tell you took me three years to figure out — and you're going to learn it in the next 60 seconds."\n\nSECONDARY HOOK OPTION:\n"I wish someone had shown me this at 22. Here it is."\n\nDIRECTOR'S NOTE:\nDeliver this with calm authority — not hype. The power is in the stillness. Straight to camera, no intro music, no transitions until the reveal.\n\nOPENING SCRIPT — 30 SECONDS:\nStraight to camera. No smile yet — just eye contact and stillness.\n\n"Most people spend their entire career working for money." [one-beat pause]\n"The people who actually get ahead figured out how to make money work for them." [cut]\n"It's not complicated. But nobody teaches it." [pause — slight lean forward]\n"Here are three things I wish I knew at 22."\n\nCAPTION:\nThe three things that quietly separate people who build wealth from people who don't. Number 2 is the one nobody talks about. 👇 Save this before you forget.`,
-    sales:`PRIMARY HEADLINE:\n"Your content shouldn't take hours. It should take seconds."\n\nSECONDARY HEADLINE:\nProfessional-grade copy, scripts, and prompts — generated in one click.\n\nOPENING HOOK:\nYou already know what you want to say. PromptForge just says it better than you could have alone.\n\nBODY COPY PREVIEW:\nEvery creator, coach, and entrepreneur reaches the same wall. The ideas are there — but turning them into scroll-stopping content, converting copy, and viral scripts takes hours you don't have.\n\nPromptForge is the professional system that does the heavy lifting. So you can focus on what actually moves the needle.`,
-    chibi:`CHIBI PROMPT:\nA cute chibi anime girl with large luminous violet eyes, soft rosy cheeks, and silky pastel-pink twin-tails tied with oversized navy bows. Wearing a crisp white school uniform with a navy pleated skirt, white knee-high socks, and black Mary Jane shoes. Posed bashfully with hands clasped behind her back, head tilted slightly, looking upward with a shy but warm smile. Soft diffused studio lighting with warm golden rim light from upper right. Cherry blossom petals drifting in a blurred pastel background. 3D render style, ultra-glossy eyes with detailed catchlights, smooth skin texture, kawaii aesthetic, ultra-detailed, cinematic composition, 8K quality.`,
-    story:`HOOK:\n"She found the letter 23 years too late. It explained everything — and destroyed everything she thought she knew."\n\nSTORY OPENING:\nThe box had moved with Sarah four times. Three cities, two marriages, one life she barely recognised anymore. She'd always told herself she'd go through it properly one day.\n\nToday was the day her mother's house sold. Today was the last chance.\n\nHer hands were steadier than she expected as she lifted the lid. Old photographs. A dried flower from a wedding she didn't remember attending. And beneath it all, an envelope. Her name on the front. Her mother's handwriting. The postmark said 2001.`,
-    image:`IMAGE PROMPT:\nA lone warrior standing at the crumbling edge of a basalt cliff at golden hour, silhouetted against a sky bleeding amber and deep violet. Below, a sprawling cyberpunk city stretches to the horizon — neon reflections shimmering on wet streets far below. Shot from a low three-quarter angle looking upward, emphasising the scale of the figure against the infinite city. Ultra-detailed cinematic digital art, volumetric god rays cutting through haze, ray-traced neon reflections, atmospheric depth fog, dramatic rim lighting from the setting sun, deep cool shadows. Photorealistic render quality, 8K, award-winning composition, cinematic aspect ratio.`
-  };
-  return d[type] || 'Add your Anthropic API key to enable live generation.';
-}
+// ─── NO MOCK DATA — all outputs are real Claude API responses ───────────────
 
 // ─── DISPLAY ─────────────────────────────────────────────────────────────────
 function displayOutput(text, type) {
@@ -744,15 +951,30 @@ function displayOutput(text, type) {
   container.innerHTML = '';
   currentOutput = text;
 
+  // Generator-specific stagger timing
+  const staggerMap = { surprise: 0.1, money: 0.09, video: 0.08, sales: 0.09, chibi: 0.1, story: 0.1, image: 0.09 };
+  const stagger = staggerMap[type] || 0.09;
+
+  // Concept/title labels that get special display treatment
+  const titleLabels = ['CONCEPT TITLE', 'CONCEPT', 'MONEY IDEA TITLE', 'UNIQUE CONCEPT', 'HOOK', 'PRIMARY HEADLINE', 'CHARACTER CONCEPT'];
+
   let delay = 0;
-  sections.forEach(s => {
+  sections.forEach((s, i) => {
     const div = document.createElement('div');
-    div.className = 'output-section';
+    const isTitle = titleLabels.some(t => s.label.toUpperCase().includes(t));
+    div.className = 'output-section' + (isTitle ? ' section-concept-title' : '');
     div.style.animationDelay = delay + 's';
-    delay += 0.07;
+    delay += stagger;
     div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
     container.appendChild(div);
   });
+
+  // Panel success flash
+  const panel = document.getElementById('outputPanel');
+  panel.classList.remove('flash');
+  void panel.offsetWidth; // reflow to restart animation
+  panel.classList.add('flash');
+  setTimeout(() => panel.classList.remove('flash'), 900);
 
   if (!isPro) {
     const lf = {
@@ -818,7 +1040,14 @@ function updateUsage() {
 // ─── ACTIONS ─────────────────────────────────────────────────────────────────
 function copyOutput() {
   if (!currentOutput) { showToast('Nothing to copy yet'); return; }
-  navigator.clipboard.writeText(currentOutput).then(() => showToast('✓ Copied to clipboard')).catch(() => showToast('Select the text manually to copy'));
+  navigator.clipboard.writeText(currentOutput).then(() => {
+    showToast('✓ Copied to clipboard');
+    // Brief flash on all section texts to confirm copy
+    document.querySelectorAll('.output-section-text').forEach(el => {
+      el.classList.add('copied');
+      setTimeout(() => el.classList.remove('copied'), 600);
+    });
+  }).catch(() => showToast('Select the text manually to copy'));
 }
 function saveOutput() { showToast('♡ Saved to your library'); }
 function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }

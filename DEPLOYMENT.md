@@ -19,19 +19,19 @@ promptforge/
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STEP 1 — GET YOUR OPENAI API KEY (5 minutes)
+STEP 1 — GET YOUR ANTHROPIC API KEY (5 minutes)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1. Go to https://platform.openai.com
+1. Go to https://console.anthropic.com
 2. Sign up or log in
 3. Click "API Keys" in the left sidebar
-4. Click "Create new secret key"
-5. Copy the key (starts with sk-)
+4. Click "Create Key"
+5. Copy the key (starts with sk-ant-)
 6. Save it — you only see it once
 
-This is your OPENAI_API_KEY.
-Model used: gpt-4o-mini
-Cost: approximately £0.001–0.003 per generation.
+This is your ANTHROPIC_API_KEY.
+Model used: claude-3-7-sonnet-20250219
+Cost: approximately £0.008–0.025 per generation.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -137,7 +137,7 @@ STEP 5 — ADD ENVIRONMENT VARIABLES TO VERCEL (5 minutes)
 
    Name                          Value
    ─────────────────────────────────────────────────────
-   OPENAI_API_KEY                sk-your-openai-key
+   ANTHROPIC_API_KEY             sk-ant-your-key
    SUPABASE_URL                  https://xxx.supabase.co
    SUPABASE_SERVICE_KEY          eyJ...your-service-key
    STRIPE_SECRET_KEY             sk_live_...
@@ -207,7 +207,7 @@ Service          Free tier            Paid
 ─────────────────────────────────────────────────────
 Vercel           Unlimited deploys    £0 (hobby is free)
 Supabase         500MB, 50k rows      £0 (free tier sufficient to start)
-OpenAI API       Pay per use          ~£15–60/month at 100 active users (gpt-4o-mini)
+Anthropic API    Pay per use          ~£50–100/month at 100 active users (claude-3-7-sonnet)
 Stripe           No monthly fee       1.4% + 20p per transaction (UK)
 
 At 100 Pro subscribers (£19/month):
@@ -224,7 +224,7 @@ TROUBLESHOOTING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 "Generation service temporarily unavailable"
-→ Check OPENAI_API_KEY is set correctly in Vercel
+→ Check ANTHROPIC_API_KEY is set correctly in Vercel
 → Check Vercel Function Logs (Dashboard → Functions)
 
 "Payment session creation failed"  
