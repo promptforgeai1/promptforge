@@ -11,6 +11,7 @@
     --surface:#1a1640;--surface2:#221e52;
     --border:rgba(139,120,255,0.15);--border2:rgba(139,120,255,0.3);
     --purple:#8b78ff;--purple2:#6c5ce7;--blue:#4facfe;--gold:#f6c90e;
+    --red:#ff6b6b;--teal:#4ecdc4;--pink:#ff9de2;--amber:#f7b731;
     --text:#f0eeff;--text2:#a89fd4;--text3:#6b6190;
     --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
   }
@@ -51,6 +52,16 @@
   .badge.gold{background:rgba(246,201,14,.2);color:var(--gold);}
   .sidebar-divider{height:1px;background:var(--border);margin:.75rem 1rem;}
 
+  /* USAGE BAR */
+  .usage-bar-wrap{padding:0 0 .5rem;margin-top:.5rem;}
+  .usage-bar-header{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text3);margin-bottom:6px;}
+  .usage-bar-track{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;}
+  .usage-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple2),var(--blue));border-radius:2px;transition:width .4s ease;}
+  .usage-bar-fill.warn{background:linear-gradient(90deg,#f7b731,#ff6b6b);}
+  .usage-bar-fill.full{background:var(--red);}
+  .usage-limit-msg{font-size:.72rem;color:var(--red);margin-top:6px;display:none;}
+  .usage-limit-msg.show{display:block;}
+
   /* MAIN */
   .main{flex:1;margin-left:220px;}
   .generator-area{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);}
@@ -77,12 +88,6 @@
   .btn-generate:active{transform:translateY(0);}
   .btn-generate:disabled{opacity:.5;cursor:not-allowed;transform:none;}
 
-  /* USAGE BAR */
-  .usage-bar-wrap{margin-top:1rem;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;}
-  .usage-bar-header{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-bottom:8px;}
-  .usage-bar-track{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
-  .usage-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:2px;transition:width .5s ease;}
-
   /* OUTPUT PANEL */
   .output-panel{padding:2rem;overflow-y:auto;max-height:calc(100vh - 64px);background:rgba(7,6,26,.5);display:flex;flex-direction:column;}
   .output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
@@ -95,149 +100,61 @@
   .output-empty-text{font-size:.9rem;color:var(--text2);max-width:260px;line-height:1.6;}
   .output-content{flex:1;display:none;}
   .output-content.visible{display:block;}
-  /* ── OUTPUT SECTIONS ── */
-  .output-section{
-    background:var(--surface);border:1px solid var(--border);border-radius:12px;
-    padding:1.25rem;margin-bottom:1rem;
-    opacity:0;transform:translateY(16px);
-    animation:sectionIn .5s cubic-bezier(.22,.68,0,1.2) forwards;
-    position:relative;overflow:hidden;
-  }
-  .output-section::after{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(135deg,rgba(139,120,255,.04),transparent);
-    opacity:0;transition:opacity .3s;pointer-events:none;
-  }
-  .output-section:hover::after{opacity:1;}
-  @keyframes sectionIn{
-    from{opacity:0;transform:translateY(16px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  /* first section gets a subtle left-border accent glow */
-  .output-section:first-child{border-left:2px solid var(--purple);box-shadow:0 0 20px rgba(139,120,255,.07);}
 
-  .output-section-label{
-    font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--purple);margin-bottom:10px;
-    display:flex;align-items:center;gap:6px;
-  }
-  .output-section-label::before{
-    content:'';display:inline-block;width:4px;height:4px;
-    border-radius:50%;background:var(--purple);
-    animation:labelDot 2s ease-in-out infinite;
-    flex-shrink:0;
-  }
-  @keyframes labelDot{0%,100%{opacity:.4;}50%{opacity:1;box-shadow:0 0 6px var(--purple);}}
-
+  /* OUTPUT SECTIONS */
+  .output-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;opacity:0;transform:translateY(16px);animation:sectionIn .5s cubic-bezier(.22,.68,0,1.2) forwards;position:relative;overflow:hidden;}
+  @keyframes sectionIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  .output-section:first-child{border-left:2px solid var(--purple);}
+  .output-section-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .output-section-label::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);flex-shrink:0;}
   .output-section-text{font-size:.9rem;color:var(--text);line-height:1.7;white-space:pre-wrap;}
+  .output-section-text.copied{background:rgba(139,120,255,.08);border-radius:6px;transition:background .3s;}
+  .section-concept-title .output-section-text{font-family:var(--font-display);font-size:1.4rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.3;}
 
-  /* ── GENERATOR-SPECIFIC ACCENT COLOURS ── */
-  .gen-accent-surprise .output-section:first-child{border-left-color:#b06aff;box-shadow:0 0 20px rgba(176,106,255,.1);}
-  .gen-accent-surprise .output-section-label{color:#b06aff;}
-  .gen-accent-surprise .output-section-label::before{background:#b06aff;}
-
-  .gen-accent-money .output-section:first-child{border-left-color:var(--gold);box-shadow:0 0 20px rgba(246,201,14,.1);}
+  /* ACCENT COLOURS PER GENERATOR */
+  .gen-accent-surprise .output-section:first-child{border-left-color:#b06aff;}
+  .gen-accent-surprise .output-section-label,.gen-accent-surprise .output-section-label::before{color:#b06aff;background:#b06aff;}
+  .gen-accent-money .output-section:first-child{border-left-color:var(--gold);}
   .gen-accent-money .output-section-label{color:var(--gold);}
   .gen-accent-money .output-section-label::before{background:var(--gold);}
-
-  .gen-accent-video .output-section:first-child{border-left-color:#ff6b6b;box-shadow:0 0 20px rgba(255,107,107,.1);}
-  .gen-accent-video .output-section-label{color:#ff6b6b;}
-  .gen-accent-video .output-section-label::before{background:#ff6b6b;}
-
-  .gen-accent-sales .output-section:first-child{border-left-color:#4ecdc4;box-shadow:0 0 20px rgba(78,205,196,.1);}
-  .gen-accent-sales .output-section-label{color:#4ecdc4;}
-  .gen-accent-sales .output-section-label::before{background:#4ecdc4;}
-
-  .gen-accent-chibi .output-section:first-child{border-left-color:#ff9de2;box-shadow:0 0 20px rgba(255,157,226,.1);}
-  .gen-accent-chibi .output-section-label{color:#ff9de2;}
-  .gen-accent-chibi .output-section-label::before{background:#ff9de2;}
-
-  .gen-accent-story .output-section:first-child{border-left-color:#f7b731;box-shadow:0 0 20px rgba(247,183,49,.1);}
-  .gen-accent-story .output-section-label{color:#f7b731;}
-  .gen-accent-story .output-section-label::before{background:#f7b731;}
-
-  .gen-accent-image .output-section:first-child{border-left-color:#45aaf2;box-shadow:0 0 20px rgba(69,170,242,.1);}
+  .gen-accent-video .output-section:first-child{border-left-color:var(--red);}
+  .gen-accent-video .output-section-label{color:var(--red);}
+  .gen-accent-video .output-section-label::before{background:var(--red);}
+  .gen-accent-sales .output-section:first-child{border-left-color:var(--teal);}
+  .gen-accent-sales .output-section-label{color:var(--teal);}
+  .gen-accent-sales .output-section-label::before{background:var(--teal);}
+  .gen-accent-chibi .output-section:first-child{border-left-color:var(--pink);}
+  .gen-accent-chibi .output-section-label{color:var(--pink);}
+  .gen-accent-chibi .output-section-label::before{background:var(--pink);}
+  .gen-accent-story .output-section:first-child{border-left-color:var(--amber);}
+  .gen-accent-story .output-section-label{color:var(--amber);}
+  .gen-accent-story .output-section-label::before{background:var(--amber);}
+  .gen-accent-image .output-section:first-child{border-left-color:#45aaf2;}
   .gen-accent-image .output-section-label{color:#45aaf2;}
   .gen-accent-image .output-section-label::before{background:#45aaf2;}
 
-  /* ── LOADING STATES ── */
+  /* LOADING */
   .output-loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;flex:1;padding:3rem 0;}
   .output-loading.visible{display:flex;}
-
   .loading-orb-wrap{position:relative;width:64px;height:64px;}
-  .loading-orb{
-    width:64px;height:64px;border-radius:50%;
-    background:linear-gradient(135deg,var(--purple2),var(--blue));
-    animation:orbPulse 1.4s ease-in-out infinite;
-  }
-  .loading-orb-ring{
-    position:absolute;inset:-6px;border-radius:50%;
-    border:1px solid rgba(139,120,255,.3);
-    animation:ringExpand 1.4s ease-out infinite;
-  }
-  .loading-orb-ring2{
-    position:absolute;inset:-14px;border-radius:50%;
-    border:1px solid rgba(139,120,255,.15);
-    animation:ringExpand 1.4s ease-out infinite .2s;
-  }
-  @keyframes orbPulse{
-    0%,100%{transform:scale(.88);box-shadow:0 0 0 0 rgba(139,120,255,.4);}
-    50%{transform:scale(1);box-shadow:0 0 32px 8px rgba(139,120,255,.2);}
-  }
-  @keyframes ringExpand{
-    0%{transform:scale(.8);opacity:.8;}
-    100%{transform:scale(1.6);opacity:0;}
-  }
-
+  .loading-orb{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));animation:orbPulse 1.4s ease-in-out infinite;}
+  .loading-orb-ring{position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(139,120,255,.3);animation:ringExpand 1.4s ease-out infinite;}
+  .loading-orb-ring2{position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(139,120,255,.15);animation:ringExpand 1.4s ease-out infinite .2s;}
+  @keyframes orbPulse{0%,100%{transform:scale(.88);}50%{transform:scale(1);box-shadow:0 0 32px 8px rgba(139,120,255,.2);}}
+  @keyframes ringExpand{0%{transform:scale(.8);opacity:.8;}100%{transform:scale(1.6);opacity:0;}}
   .loading-dots{display:flex;gap:5px;align-items:center;}
-  .loading-dot{
-    width:5px;height:5px;border-radius:50%;background:var(--purple);
-    animation:dotBounce .9s ease-in-out infinite;
-  }
+  .loading-dot{width:5px;height:5px;border-radius:50%;background:var(--purple);animation:dotBounce .9s ease-in-out infinite;}
   .loading-dot:nth-child(2){animation-delay:.15s;}
   .loading-dot:nth-child(3){animation-delay:.3s;}
   @keyframes dotBounce{0%,80%,100%{transform:scale(.7);opacity:.4;}40%{transform:scale(1);opacity:1;}}
-
   .loading-text{font-size:.85rem;color:var(--text2);text-align:center;max-width:220px;line-height:1.5;}
   .loading-subtext{font-size:.72rem;color:var(--text3);text-align:center;}
-
-  /* ── GENERATE BUTTON ACTIVE STATE ── */
-  .btn-generate.generating{
-    background:linear-gradient(135deg,var(--bg3),var(--surface2));
-    cursor:not-allowed;
-  }
-  .btn-generate.generating::before{
-    background:linear-gradient(90deg,transparent,rgba(139,120,255,.15),transparent);
-    animation:btnShimmer 1.5s linear infinite;
-  }
-  @keyframes btnShimmer{from{transform:translateX(-100%);}to{transform:translateX(100%);}}
-
-  /* ── OUTPUT PANEL SUCCESS FLASH ── */
-  @keyframes panelFlash{
-    0%{box-shadow:inset 0 0 0 0 rgba(139,120,255,0);}
-    30%{box-shadow:inset 0 0 40px 0 rgba(139,120,255,.08);}
-    100%{box-shadow:inset 0 0 0 0 rgba(139,120,255,0);}
-  }
+  .btn-generate.generating{background:linear-gradient(135deg,var(--bg3),var(--surface2));cursor:not-allowed;}
+  @keyframes panelFlash{0%{box-shadow:inset 0 0 0 0 rgba(139,120,255,0);}30%{box-shadow:inset 0 0 40px 0 rgba(139,120,255,.08);}100%{box-shadow:inset 0 0 0 0 rgba(139,120,255,0);}}
   .output-panel.flash{animation:panelFlash .8s ease-out forwards;}
 
-  /* ── SURPRISE ME CONCEPT TITLE SPECIAL TREATMENT ── */
-  .section-concept-title .output-section-text{
-    font-family:var(--font-display);
-    font-size:1.4rem;font-weight:800;
-    letter-spacing:-.02em;
-    background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    line-height:1.3;
-  }
-
-  /* ── COPY FLASH on section text ── */
-  .output-section-text.copied{
-    background:rgba(139,120,255,.08);border-radius:6px;
-    transition:background .3s;
-  }
-
   /* LOCKED */
-  .output-locked{background:linear-gradient(135deg,rgba(139,120,255,.05),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:12px;padding:1.5rem;text-align:center;margin-top:.5rem;animation:fadeUp .4s ease .3s both;}
+  .output-locked{background:linear-gradient(135deg,rgba(139,120,255,.05),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:12px;padding:1.5rem;text-align:center;margin-top:.5rem;animation:sectionIn .5s ease .3s both;}
   .lock-icon{font-size:1.5rem;margin-bottom:.75rem;}
   .lock-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.5rem;background:linear-gradient(135deg,var(--purple),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
   .lock-desc{font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:1rem;}
@@ -258,7 +175,7 @@
   /* MODAL */
   .modal-overlay{position:fixed;inset:0;background:rgba(7,6,26,.92);backdrop-filter:blur(10px);z-index:200;display:none;align-items:center;justify-content:center;}
   .modal-overlay.open{display:flex;}
-  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;max-width:480px;width:90%;text-align:center;position:relative;}
+  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;max-width:480px;width:90%;text-align:center;position:relative;max-height:90vh;overflow-y:auto;}
   .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.2rem;line-height:1;}
   .modal-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;}
   .modal-title{font-family:var(--font-display);font-size:1.7rem;font-weight:800;margin-bottom:.6rem;background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;}
@@ -275,6 +192,50 @@
   .btn-upgrade-main::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);}
   .btn-upgrade-main:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(108,92,231,.5);}
   .modal-cancel-note{font-size:.75rem;color:var(--text3);margin-top:.75rem;}
+  .modal-back-link{font-size:.8rem;color:var(--text3);margin-top:.75rem;cursor:pointer;display:block;text-decoration:underline;}
+  .modal-back-link:hover{color:var(--text2);}
+  .modal-explore-link{font-size:.78rem;color:var(--purple);margin-top:.5rem;cursor:pointer;display:block;}
+  .modal-explore-link:hover{color:#fff;}
+
+  /* SETTINGS MODAL */
+  .settings-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;text-align:left;}
+  .settings-label{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;display:block;}
+  .settings-row{display:flex;align-items:center;justify-content:space-between;font-size:.88rem;}
+  .settings-value{color:var(--text2);}
+  .settings-value.pro{color:var(--gold);font-weight:600;}
+  .settings-usage-bar{margin-top:.75rem;}
+
+  /* ONBOARDING POPUP */
+  .onboarding-overlay{position:fixed;inset:0;background:rgba(7,6,26,.7);backdrop-filter:blur(8px);z-index:300;display:flex;align-items:center;justify-content:center;}
+  .onboarding{background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2rem;max-width:420px;width:90%;text-align:center;}
+  .onboarding-icon{font-size:2.5rem;margin-bottom:1rem;}
+  .onboarding-title{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .onboarding-sub{font-size:.85rem;color:var(--text2);line-height:1.6;margin-bottom:1.5rem;}
+  .onboarding-steps{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem;text-align:left;}
+  .onboarding-step{display:flex;align-items:center;gap:12px;font-size:.85rem;color:var(--text);}
+  .onboarding-step-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;}
+  .btn-onboard{width:100%;padding:13px;background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;border-radius:12px;color:#fff;font-family:var(--font-display);font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:.02em;}
+  .btn-onboard:hover{box-shadow:0 8px 24px rgba(108,92,231,.4);}
+
+  /* HOW IT WORKS PAGE */
+  .how-page{display:none;padding:2.5rem;overflow-y:auto;max-height:calc(100vh - 64px);}
+  .how-page.active{display:block;}
+  .how-page-title{font-family:var(--font-display);font-size:2rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .how-page-sub{font-size:.95rem;color:var(--text2);line-height:1.6;margin-bottom:2.5rem;max-width:600px;}
+  .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2.5rem;}
+  .how-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;}
+  .how-card-icon{font-size:1.6rem;margin-bottom:.75rem;}
+  .how-card-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.4rem;}
+  .how-card-desc{font-size:.82rem;color:var(--text2);line-height:1.6;}
+  .how-for-section{background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:14px;padding:1.5rem;margin-bottom:2rem;}
+  .how-for-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1rem;}
+  .how-for-list{display:flex;flex-direction:column;gap:.6rem;}
+  .how-for-item{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--text2);}
+  .how-for-item::before{content:'✦';color:var(--purple);font-size:.6rem;flex-shrink:0;}
+  .how-cta{text-align:center;padding:1.5rem;background:var(--surface);border:1px solid var(--border2);border-radius:14px;}
+  .how-cta-text{font-size:.9rem;color:var(--text2);margin-bottom:1rem;}
+  .btn-how-start{padding:12px 32px;background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;border-radius:10px;color:#fff;font-family:var(--font-display);font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:.02em;}
+  .btn-how-start:hover{box-shadow:0 8px 24px rgba(108,92,231,.4);}
 
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
@@ -286,6 +247,7 @@
     .generator-area{grid-template-columns:1fr;}
     .input-panel{border-right:none;border-bottom:1px solid var(--border);max-height:none;}
     .output-panel{max-height:none;}
+    .how-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -322,19 +284,83 @@
     <span class="sidebar-label">Account</span>
     <div class="sidebar-section">
       <button class="sidebar-item" onclick="openModal()"><span class="icon">⚡</span><span class="label">Upgrade Pro</span><span class="badge gold">PRO</span></button>
-      <button class="sidebar-item"><span class="icon">📚</span><span class="label">Saved Prompts</span></button>
-      <button class="sidebar-item"><span class="icon">⚙️</span><span class="label">Settings</span></button>
+      <button class="sidebar-item" onclick="showHowPage()"><span class="icon">📚</span><span class="label">How It Works</span></button>
+      <button class="sidebar-item" onclick="openSettings()"><span class="icon">⚙️</span><span class="label">Settings</span></button>
     </div>
     <div style="padding:0 1rem">
       <div class="usage-bar-wrap" style="margin-top:0">
         <div class="usage-bar-header"><span>Daily usage</span><span id="usageCount">0 / 5</span></div>
         <div class="usage-bar-track"><div class="usage-bar-fill" id="usageFill" style="width:0%"></div></div>
+        <div class="usage-limit-msg" id="usageLimitMsg">Limit reached — <span style="color:var(--purple);cursor:pointer" onclick="openModal()">Upgrade for unlimited</span></div>
       </div>
     </div>
   </aside>
 
   <main class="main">
-    <div class="generator-area">
+
+    <!-- HOW IT WORKS PAGE -->
+    <div class="how-page" id="howPage">
+      <div style="max-width:760px">
+        <div class="how-page-title">How PromptForge Works</div>
+        <div class="how-page-sub">PromptForge is a premium AI content engine. Every generator produces outputs that feel written by a professional who has actually done this — not a template machine.</div>
+
+        <div class="how-for-section">
+          <div class="how-for-title">Who it's for</div>
+          <div class="how-for-list">
+            <div class="how-for-item">Content creators who want outputs that feel specific to their niche, not copy-pasted from the internet</div>
+            <div class="how-for-item">Digital entrepreneurs who need income ideas with real execution steps, not theory</div>
+            <div class="how-for-item">Marketers who write sales copy and need hooks that convert, not motivate</div>
+            <div class="how-for-item">Anyone building a personal brand who has tried AI tools and found them generic</div>
+          </div>
+        </div>
+
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-card-icon">🎁</div>
+            <div class="how-card-title">Surprise Me</div>
+            <div class="how-card-desc">Generates a complete viral content ecosystem — 3 hooks, a full script with scenes, caption, hashtags, AI image prompt, monetisation angle, and posting strategy. One click. One coherent package.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">💰</div>
+            <div class="how-card-title">Make Money</div>
+            <div class="how-card-desc">Produces 3 realistic income ideas with exact target audience, step-by-step startup plan, first £100 path, and the specific failure point to avoid. No motivation. Operational only.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎬</div>
+            <div class="how-card-title">Short-Form Video</div>
+            <div class="how-card-desc">Writes hook, full line-by-line script, scene directions, text overlays, caption, and platform strategy. Engineered to feel viral, not educational.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">📢</div>
+            <div class="how-card-title">Sales & Marketing</div>
+            <div class="how-card-desc">Real conversion copy — hook, problem expansion, product intro, value stack, and CTA. Calibrated to your price point. Reads like a copywriter who gets paid per sale, not per word.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🧸</div>
+            <div class="how-card-title">Chibi Character</div>
+            <div class="how-card-desc">Production-level image prompts with concept, personality, outfit, pose, lighting, background, and style modifiers. Direct paste into Midjourney, DALL·E, or Stable Diffusion.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎭</div>
+            <div class="how-card-title">Viral Story</div>
+            <div class="how-card-desc">Hook, build-up, twist, and ending — emotionally unpredictable. Platform-formatted with caption included. Stops the scroll because something feels slightly wrong or too specific.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎨</div>
+            <div class="how-card-title">Smart Image</div>
+            <div class="how-card-desc">Professional creative direction — scene, style, lighting, composition, camera angle, and mood. Outputs a full technical brief formatted for your intended AI image tool.</div>
+          </div>
+        </div>
+
+        <div class="how-cta">
+          <div class="how-cta-text">Ready to generate outputs that feel like they came from someone who has actually done this?</div>
+          <button class="btn-how-start" onclick="showGenerators()">✦ Start Generating</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GENERATOR AREA -->
+    <div class="generator-area" id="generatorArea">
       <div class="input-panel">
 
         <!-- SURPRISE ME -->
@@ -343,18 +369,19 @@
             <div class="generator-icon">🎁</div>
             <div>
               <div class="generator-title">Surprise Me</div>
-              <div class="generator-desc">One click. A fully connected viral content universe — concept, story, script, image prompt, and captions all built around one powerful idea.</div>
+              <div class="generator-desc">One click. A complete viral content package — hooks, script, image prompt, monetisation, and posting strategy built around one sharp concept.</div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Vibe or Theme <span style="color:var(--text3);font-weight:300">(optional)</span></label>
-            <input type="text" class="form-input" id="s-vibe" placeholder="e.g. luxury, funny, emotional, fantasy, motivational...">
-            <div class="field-note">✨ Leave blank — AI selects a trending, high-emotion concept for you</div>
+            <input type="text" class="form-input" id="s-vibe" placeholder="e.g. money mindset, burnout, creator life, luxury, dark...">
+            <div class="field-note">✨ Leave blank — AI selects the freshest, most uncomfortable concept for you</div>
           </div>
           <button class="btn-generate" onclick="generate('surprise')">✦ Generate Full Package</button>
-          <div class="usage-bar-wrap">
+          <div class="usage-bar-wrap" style="margin-top:1rem">
             <div class="usage-bar-header"><span>Free generations today</span><span id="usageCount2">0 / 5</span></div>
             <div class="usage-bar-track"><div class="usage-bar-fill" id="usageFill2" style="width:0%"></div></div>
+            <div class="usage-limit-msg" id="usageLimitMsg2">Daily limit reached — <span style="color:var(--purple);cursor:pointer" onclick="openModal()">Upgrade for unlimited</span></div>
           </div>
         </div>
 
@@ -364,7 +391,7 @@
             <div class="generator-icon">💰</div>
             <div>
               <div class="generator-title">Make Money Generator</div>
-              <div class="generator-desc">Turn any idea, skill, or niche into real income streams — with the strategic depth of a business consultant.</div>
+              <div class="generator-desc">3 realistic income ideas with exact execution steps, first £100 plan, and the specific failure point most people hit. No motivation. Operational only.</div>
             </div>
           </div>
           <div class="form-group">
@@ -373,14 +400,13 @@
           </div>
           <div class="form-group">
             <label class="form-label">Target Audience <span class="req">*</span></label>
-            <input type="text" class="form-input" id="m-audience" placeholder="e.g. busy mums, students, entrepreneurs...">
+            <input type="text" class="form-input" id="m-audience" placeholder="e.g. busy mums, junior designers, freelancers over 40...">
           </div>
           <div class="form-group">
-            <label class="form-label">Goal <span class="req">*</span></label>
+            <label class="form-label">Goal</label>
             <select class="form-select" id="m-goal">
               <option value="">Select goal...</option>
               <option>Fast cash (this week)</option>
-              <option>Passive income (long-term)</option>
               <option>Side income (part-time)</option>
               <option>Full-time business</option>
             </select>
@@ -392,7 +418,6 @@
               <option>£0 — no money, time only</option>
               <option>Under £100</option>
               <option>£100–£500</option>
-              <option>£500+ to invest</option>
               <option>Skills-only (no money needed)</option>
             </select>
           </div>
@@ -405,12 +430,12 @@
             <div class="generator-icon">🎬</div>
             <div>
               <div class="generator-title">Short-Form Video</div>
-              <div class="generator-desc">Scroll-stopping scripts engineered for virality — written with the precision of a professional content director.</div>
+              <div class="generator-desc">Scroll-stopping scripts with hooks, line-by-line delivery, scene directions, text overlays, and platform strategy. Viral, not educational.</div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Topic <span class="req">*</span></label>
-            <input type="text" class="form-input" id="v-topic" placeholder="e.g. 5 habits that changed my life...">
+            <input type="text" class="form-input" id="v-topic" placeholder="e.g. why I quit my job, how I lost 3k followers, my honest opinion on...">
           </div>
           <div class="form-group">
             <label class="form-label">Platform <span class="req">*</span></label>
@@ -425,11 +450,11 @@
             <label class="form-label">Style</label>
             <select class="form-select" id="v-style">
               <option value="">Select style...</option>
-              <option>Cinematic</option>
-              <option>Emotional / Storytelling</option>
+              <option>Confession / Personal</option>
+              <option>Controversial / Debate</option>
+              <option>Cinematic / Storytelling</option>
               <option>Funny / Entertaining</option>
-              <option>Educational</option>
-              <option>Motivational</option>
+              <option>Expose / Behind-the-scenes</option>
             </select>
           </div>
           <div class="form-group">
@@ -438,8 +463,7 @@
               <option value="">Select goal...</option>
               <option>Go viral</option>
               <option>Drive sales</option>
-              <option>Build engagement</option>
-              <option>Grow followers</option>
+              <option>Build engaged following</option>
             </select>
           </div>
           <button class="btn-generate" onclick="generate('video')">✦ Generate Video Script</button>
@@ -451,16 +475,16 @@
             <div class="generator-icon">📢</div>
             <div>
               <div class="generator-title">Sales & Marketing</div>
-              <div class="generator-desc">Conversion copy written with the psychology of a direct response copywriter and the precision of a brand strategist.</div>
+              <div class="generator-desc">Conversion copy calibrated to your price point — hook, problem, product intro, value stack, and CTA. Reads like it was written by someone who gets paid per sale.</div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Product / Service <span class="req">*</span></label>
-            <input type="text" class="form-input" id="sa-product" placeholder="e.g. online fitness coaching, digital planner...">
+            <input type="text" class="form-input" id="sa-product" placeholder="e.g. online fitness coaching, Notion template, 1:1 copywriting...">
           </div>
           <div class="form-group">
             <label class="form-label">Target Audience <span class="req">*</span></label>
-            <input type="text" class="form-input" id="sa-audience" placeholder="e.g. women 25–40 wanting to lose weight...">
+            <input type="text" class="form-input" id="sa-audience" placeholder="e.g. women 30–45 who've tried every diet, junior devs who hate writing CVs...">
           </div>
           <div class="form-group">
             <label class="form-label">Tone</label>
@@ -477,9 +501,9 @@
             <label class="form-label">Price Point</label>
             <select class="form-select" id="sa-price">
               <option value="">Select price range...</option>
-              <option>Under £10 (impulse buy)</option>
-              <option>£10–£50 (mid-range)</option>
-              <option>£50–£200 (considered purchase)</option>
+              <option>Under £20 (impulse buy)</option>
+              <option>£20–£75 (mid-range)</option>
+              <option>£75–£200 (considered purchase)</option>
               <option>£200–£500 (premium)</option>
               <option>£500+ (high ticket)</option>
             </select>
@@ -493,7 +517,7 @@
             <div class="generator-icon">🧸</div>
             <div>
               <div class="generator-title">Chibi Character Generator</div>
-              <div class="generator-desc">Ultra-detailed AI image prompts engineered for maximum visual quality — formatted precisely for your chosen tool.</div>
+              <div class="generator-desc">Production-level AI image prompts — concept, personality, outfit, pose, lighting, background, style modifiers. Direct paste into your chosen tool.</div>
             </div>
           </div>
           <div class="form-group">
@@ -516,7 +540,7 @@
               <option>Shy / Bashful</option>
               <option>Confident / Cool</option>
               <option>Angry / Fierce</option>
-              <option>Sad / Emotional</option>
+              <option>Melancholic / Emotional</option>
               <option>Mysterious</option>
             </select>
           </div>
@@ -560,41 +584,40 @@
             <div class="generator-icon">🎭</div>
             <div>
               <div class="generator-title">Viral Story Generator</div>
-              <div class="generator-desc">Platform-engineered stories that stop the scroll, grip the reader, and spread — written with the craft of a professional storyteller.</div>
+              <div class="generator-desc">Hook, build-up, twist, and ending — emotionally unpredictable. Stops the scroll because something feels wrong, or too specific to be made up.</div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Story Type <span class="req">*</span></label>
             <select class="form-select" id="st-type">
               <option value="">Select type...</option>
+              <option>Confession / Uncomfortable truth</option>
+              <option>Reversal / I was wrong</option>
               <option>Love / Romance</option>
               <option>Sad / Emotional</option>
-              <option>Motivational / Inspiring</option>
-              <option>Funny / Humorous</option>
               <option>Mystery / Thriller</option>
-              <option>Kids / Family</option>
+              <option>Underdog arc</option>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Mood</label>
             <select class="form-select" id="st-mood">
               <option value="">Select mood...</option>
-              <option>Heartwarming</option>
+              <option>Uncomfortably honest</option>
               <option>Suspenseful</option>
-              <option>Uplifting</option>
+              <option>Heartwarming</option>
               <option>Dark / Intense</option>
-              <option>Light / Playful</option>
+              <option>Bittersweet</option>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Ending Style</label>
             <select class="form-select" id="st-ending">
               <option value="">Select ending...</option>
-              <option>Shocking twist</option>
+              <option>Twist that recontextualises everything</option>
               <option>Emotional / Tearjerker</option>
-              <option>Happy / Uplifting</option>
               <option>Cliffhanger</option>
-              <option>Satisfying resolution</option>
+              <option>Satisfying but unexpected</option>
             </select>
           </div>
           <div class="form-group">
@@ -616,7 +639,7 @@
             <div class="generator-icon">🎨</div>
             <div>
               <div class="generator-title">Smart Image Generator</div>
-              <div class="generator-desc">Professionally structured image prompts that produce cinematic, high-quality results — with style intelligently matched to your concept.</div>
+              <div class="generator-desc">Professional creative direction — scene, style, lighting, composition, camera angle, and mood formatted as a complete technical brief.</div>
             </div>
           </div>
           <div class="form-group">
@@ -624,7 +647,7 @@
             <textarea class="form-textarea" id="i-concept" placeholder="e.g. a lone warrior standing on a cliff at sunset, overlooking a futuristic city..."></textarea>
           </div>
           <div class="form-group">
-            <label class="form-label">Style <span style="color:var(--text3);font-weight:300">(optional — AI selects if left blank)</span></label>
+            <label class="form-label">Style <span style="color:var(--text3);font-weight:300">(optional — AI selects if blank)</span></label>
             <select class="form-select" id="i-style">
               <option value="">Let AI choose best style</option>
               <option>Pixar / 3D Animation</option>
@@ -696,125 +719,170 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- /generator-area -->
   </main>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- ONBOARDING POPUP -->
+<div class="onboarding-overlay" id="onboardingOverlay">
+  <div class="onboarding">
+    <div class="onboarding-icon">⚡</div>
+    <div class="onboarding-title">Welcome to PromptForge</div>
+    <div class="onboarding-sub">Premium AI outputs built around real creative and commercial strategy — not templates.</div>
+    <div class="onboarding-steps">
+      <div class="onboarding-step">
+        <div class="onboarding-step-num">1</div>
+        <span>Pick a generator from the sidebar on the left</span>
+      </div>
+      <div class="onboarding-step">
+        <div class="onboarding-step-num">2</div>
+        <span>Enter your topic, vibe, or leave blank for AI to choose</span>
+      </div>
+      <div class="onboarding-step">
+        <div class="onboarding-step-num">3</div>
+        <span>Click Generate — get a structured, specific, usable output</span>
+      </div>
+    </div>
+    <div style="font-size:.78rem;color:var(--text3);margin-bottom:1rem">Free plan: 5 generations per day. No card required.</div>
+    <button class="btn-onboard" onclick="dismissOnboarding()">✦ Start Generating</button>
+  </div>
+</div>
 
 <!-- PRO MODAL -->
 <div class="modal-overlay" id="proModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-eyebrow">⚡ PromptForge Pro</div>
-    <div class="modal-title">The Professional Standard for Content Creators</div>
-    <div class="modal-desc">Stop seeing preview outputs. Get the complete, structured, expert-level content your audience deserves — every single generation.</div>
+    <div class="modal-title">The Professional Standard</div>
+    <div class="modal-desc">Stop seeing preview outputs. Get the complete, structured output every generation — ready to use without editing a single word.</div>
     <div class="modal-features">
-      <div class="modal-feature"><div class="modal-feature-icon">🎁</div>Complete Surprise Me packages — concept, story, script, image, captions unified</div>
-      <div class="modal-feature"><div class="modal-feature-icon">🎬</div>Full video scripts with complete scene breakdowns and camera direction</div>
-      <div class="modal-feature"><div class="modal-feature-icon">💰</div>3 income ideas with revenue projections and full 5-step launch plans</div>
-      <div class="modal-feature"><div class="modal-feature-icon">🎭</div>Complete stories — twist, ending, platform note, re-hook, and caption</div>
-      <div class="modal-feature"><div class="modal-feature-icon">🧸</div>Ultra-detailed Chibi prompts with full modifiers and tool-specific formatting</div>
-      <div class="modal-feature"><div class="modal-feature-icon">∞</div>Unlimited daily generations — no caps, no counters, no limits</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🎁</div>Full Surprise Me packages — 3 hooks, script, image prompt, monetisation, posting strategy</div>
+      <div class="modal-feature"><div class="modal-feature-icon">💰</div>3 income ideas with full startup steps, first £100 plan, and failure point</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🎬</div>Full video scripts — line-by-line, scene directions, overlays, platform strategy</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🎭</div>Complete stories — twist, ending, caption, platform note, re-hook</div>
+      <div class="modal-feature"><div class="modal-feature-icon">🧸</div>Full Chibi prompts with variations — VTuber, sticker pack, brand mascot formats</div>
+      <div class="modal-feature"><div class="modal-feature-icon">∞</div>Unlimited daily generations — no caps, no counters</div>
     </div>
     <div class="modal-pricing-block">
       <div class="modal-price-row">
         <span class="modal-price">£19</span>
         <span class="modal-price-period">/month</span>
       </div>
-      <div class="modal-price-note">Everything unlocked. Full outputs. Unlimited generations.</div>
+      <div class="modal-price-note">Everything unlocked. Cancel anytime.</div>
     </div>
     <button class="btn-upgrade-main" onclick="activatePro()">⚡ Upgrade to Pro — £19/month</button>
-    <div class="modal-cancel-note">No contracts. No hidden fees. Cancel anytime from your account settings.</div>
+    <div class="modal-cancel-note">No contracts. No hidden fees. Cancel anytime.</div>
+    <a class="modal-back-link" onclick="closeModal()">← Back to the app</a>
+    <a class="modal-explore-link" onclick="closeModal()">Not ready? Continue exploring for free</a>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeSettings()">✕</button>
+    <div class="modal-eyebrow">⚙️ Settings</div>
+    <div class="modal-title" style="font-size:1.4rem;margin-bottom:1.5rem">Your Account</div>
+
+    <div class="settings-section">
+      <span class="settings-label">Current Plan</span>
+      <div class="settings-row">
+        <span>Plan</span>
+        <span class="settings-value" id="settingsPlan">Free</span>
+      </div>
+      <div class="settings-row" style="margin-top:.75rem">
+        <span>Generations today</span>
+        <span class="settings-value" id="settingsUsage">0 / 5</span>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <span class="settings-label">Daily Usage</span>
+      <div class="usage-bar-wrap" style="margin-top:0;padding:0">
+        <div class="usage-bar-header"><span id="settingsUsageLabel">0 of 5 used today</span><span id="settingsUsagePct">0%</span></div>
+        <div class="usage-bar-track"><div class="usage-bar-fill" id="settingsUsageFill" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <span class="settings-label">Model</span>
+      <div class="settings-row">
+        <span>AI Engine</span>
+        <span class="settings-value">Claude Sonnet 4.6</span>
+      </div>
+      <div class="settings-row" style="margin-top:.75rem">
+        <span>Provider</span>
+        <span class="settings-value">Anthropic</span>
+      </div>
+    </div>
+
+    <button class="btn-upgrade-main" id="settingsUpgradeBtn" onclick="closeSettings();openModal();" style="margin-top:.5rem">⚡ Upgrade to Pro — £19/month</button>
+    <a class="modal-back-link" onclick="closeSettings()">← Back to the app</a>
   </div>
 </div>
 
 <script>
 // ─── PROMPTFORGE AI — SECURE FRONTEND ────────────────────────────────────────
 // No API keys. No system prompts. All generation happens via /api/generate.
-// This file is safe to deploy publicly.
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
-// Dummy reference to prevent old BASE/SP references from causing errors
-const BASE = '';
-const SP = {};
-
-// Real app state
 let usageCount = 0;
 const MAX_FREE = 5;
 let isPro = false;
 let currentOutput = '';
 let currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
 
-// Generator-specific loading messages + subtexts
+// ─── ONBOARDING ──────────────────────────────────────────────────────────────
+function dismissOnboarding() {
+  document.getElementById('onboardingOverlay').style.display = 'none';
+  localStorage.setItem('pf_onboarded', '1');
+}
+if (localStorage.getItem('pf_onboarded')) {
+  document.getElementById('onboardingOverlay').style.display = 'none';
+}
+
+// ─── HOW IT WORKS ────────────────────────────────────────────────────────────
+function showHowPage() {
+  document.getElementById('howPage').classList.add('active');
+  document.getElementById('generatorArea').style.display = 'none';
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+}
+function showGenerators() {
+  document.getElementById('howPage').classList.remove('active');
+  document.getElementById('generatorArea').style.display = 'grid';
+  document.querySelectorAll('.sidebar-item')[0].classList.add('active');
+}
+
+// ─── LOADING MESSAGES ────────────────────────────────────────────────────────
 const loadingMsgs = {
-  surprise: [
-    'Architecting your viral concept...',
-    'Building your content universe...',
-    'Forging something nobody has seen yet...',
-    'Connecting story, script, and character...',
-    'Crafting your signature package...'
-  ],
-  money: [
-    'Finding the non-obvious angle...',
-    'Building your income blueprint...',
-    'Mapping the specific, not the generic...',
-    'Engineering your money strategy...',
-    'Calculating your fast cash path...'
-  ],
-  video: [
-    'Writing your scroll-stopping hook...',
-    'Scripting the pattern interrupt...',
-    'Building your scene-by-scene breakdown...',
-    'Crafting your viral script...',
-    'Engineering the addictive version...'
-  ],
-  sales: [
-    'Calibrating to your price point...',
-    'Writing copy that converts...',
-    'Engineering your persuasion arc...',
-    'Building your conversion sequence...',
-    'Crafting your direct response copy...'
-  ],
-  chibi: [
-    'Engineering your character prompt...',
-    'Sequencing all 9 visual layers...',
-    'Formatting for your chosen AI tool...',
-    'Building your Midjourney spec...',
-    'Crafting your premium character brief...'
-  ],
-  story: [
-    'Opening the loop...',
-    'Building your tension arc...',
-    'Crafting your platform-native story...',
-    'Engineering the hook that holds...',
-    'Writing the turn that earns the share...'
-  ],
-  image: [
-    'Building your technical creative brief...',
-    'Selecting the perfect style...',
-    'Engineering your cinematic prompt...',
-    'Calibrating lighting and rendering specs...',
-    'Formatting for your intended use...'
-  ]
+  surprise:['Architecting your viral concept...','Building your content ecosystem...','Forging something nobody has seen yet...','Finding the uncomfortable angle...','Crafting your signature package...'],
+  money:['Finding the non-obvious income angle...','Building your execution blueprint...','Mapping the specific, not the generic...','Calculating your first £100 path...','Rejecting the obvious ideas...'],
+  video:['Writing your scroll-stopping hook...','Scripting the pattern interrupt...','Building your scene-by-scene breakdown...','Crafting the viral version...','Engineering the addictive opening...'],
+  sales:['Calibrating to your price point...','Writing copy that names the real problem...','Engineering your persuasion arc...','Building your value stack...','Writing the objection handler...'],
+  chibi:['Sequencing all visual layers...','Engineering your character concept...','Formatting for your chosen tool...','Building your production-level prompt...','Specifying lighting and rendering...'],
+  story:['Opening the story mid-scene...','Building your tension arc...','Crafting the twist...','Engineering the hook that holds...','Writing the ending that earns it...'],
+  image:['Building your technical creative brief...','Selecting the precise style...','Specifying lighting and composition...','Engineering your cinematic prompt...','Formatting for your intended tool...']
 };
 const loadingSubtexts = {
-  surprise: 'Story + Script + Chibi + Captions',
-  money: 'Real income. Real platform. Real price.',
-  video: 'Platform-calibrated for maximum watch time',
-  sales: 'Price point psychology applied',
-  chibi: '9-step sequence + Midjourney parameters',
-  story: 'Platform-adapted narrative structure',
-  image: 'Cinematic specs + rendering engine'
+  surprise:'Hooks + Script + Image Prompt + Monetisation',
+  money:'Specific. Executable. No motivation.',
+  video:'Platform-calibrated for maximum watch time',
+  sales:'Price point psychology applied',
+  chibi:'Concept + Prompt + Midjourney parameters',
+  story:'Hook + Build-up + Twist + Ending',
+  image:'Scene + Style + Lighting + Composition'
 };
 
-// ─── NAV ─────────────────────────────────────────────────────────────────────
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
 function switchGen(id, el) {
+  document.getElementById('howPage').classList.remove('active');
+  document.getElementById('generatorArea').style.display = 'grid';
   document.querySelectorAll('.gen-form').forEach(f => f.classList.remove('active'));
   document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
   document.getElementById('form-' + id).classList.add('active');
   el.classList.add('active');
-  // Apply accent class immediately on switch so loading colours are correct
   const panel = document.getElementById('outputPanel');
   panel.className = panel.className.replace(/gen-accent-\S+/g, '').trim();
   panel.classList.add('gen-accent-' + id);
@@ -863,7 +931,7 @@ function collectInputs(type) {
   return collectors[type] ? collectors[type]() : null;
 }
 
-// ─── GENERATE — calls /api/generate (no API keys in frontend) ────────────────
+// ─── GENERATE ────────────────────────────────────────────────────────────────
 async function generate(type) {
   if (!isPro && usageCount >= MAX_FREE) { openModal(); return; }
 
@@ -873,47 +941,36 @@ async function generate(type) {
   document.getElementById('outputEmpty').style.display = 'none';
   document.getElementById('outputContent').classList.remove('visible');
   document.getElementById('outputLoading').classList.add('visible');
-  // Generator-specific loading message and subtext
+
   const msgs = loadingMsgs[type] || loadingMsgs.surprise;
   document.getElementById('loadingText').textContent = msgs[Math.floor(Math.random() * msgs.length)];
-  const sub = loadingSubtexts[type] || '';
-  document.getElementById('loadingSubtext').textContent = sub;
-  // Set generator accent class on output panel
+  document.getElementById('loadingSubtext').textContent = loadingSubtexts[type] || '';
+
   const panel = document.getElementById('outputPanel');
   panel.className = panel.className.replace(/gen-accent-\S+/g, '').trim();
   panel.classList.add('gen-accent-' + type);
-  // Animate generate button
+
   document.querySelectorAll('.btn-generate').forEach(b => { b.disabled = true; b.classList.add('generating'); });
 
   try {
     const res = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        type,
-        inputs,
-        tier: isPro ? 'pro' : 'free',
-        userId: currentUserId
-      })
+      body: JSON.stringify({ type, inputs, tier: isPro ? 'pro' : 'free', userId: currentUserId })
     });
 
     const data = await res.json();
 
-    if (res.status === 429) {
-      // Rate limit hit — show upgrade modal
-      openModal();
-      return;
-    }
+    if (res.status === 429) { openModal(); return; }
 
     if (!res.ok) {
-      const errMsg = data.error || 'Generation failed. Please try again.';
-      // Show specific helpful messages for common errors
-      if (res.status === 500 && errMsg.includes('configuration')) {
+      const msg = data.error || 'Generation failed. Please try again.';
+      if (res.status === 500 && msg.includes('configuration')) {
         showToast('API key not configured. Add ANTHROPIC_API_KEY to Vercel.');
       } else if (res.status === 503) {
         showToast('Claude is temporarily busy. Please try again in a moment.');
       } else {
-        showToast(errMsg);
+        showToast(msg);
       }
       return;
     }
@@ -921,7 +978,6 @@ async function generate(type) {
     const text = data.output || '';
     if (!text) { showToast('Empty response. Please try again.'); return; }
 
-    // Sync usage from server response
     if (!isPro && data.used !== undefined) {
       usageCount = data.used;
       updateUsage();
@@ -932,17 +988,15 @@ async function generate(type) {
   } catch (err) {
     console.error('Generate error:', err);
     if (err.name === 'TypeError' && err.message.includes('fetch')) {
-      showToast('Cannot reach the server. Check your internet connection.');
+      showToast('Cannot reach the server. Check your connection.');
     } else {
-      showToast('Something went wrong. Please try again in a moment.');
+      showToast('Something went wrong. Please try again.');
     }
   } finally {
     document.querySelectorAll('.btn-generate').forEach(b => { b.disabled = false; b.classList.remove('generating'); });
     document.getElementById('outputLoading').classList.remove('visible');
   }
 }
-
-// ─── NO MOCK DATA — all outputs are real Claude API responses ───────────────
 
 // ─── DISPLAY ─────────────────────────────────────────────────────────────────
 function displayOutput(text, type) {
@@ -951,15 +1005,12 @@ function displayOutput(text, type) {
   container.innerHTML = '';
   currentOutput = text;
 
-  // Generator-specific stagger timing
-  const staggerMap = { surprise: 0.1, money: 0.09, video: 0.08, sales: 0.09, chibi: 0.1, story: 0.1, image: 0.09 };
+  const staggerMap = { surprise:0.1, money:0.09, video:0.08, sales:0.09, chibi:0.1, story:0.1, image:0.09 };
   const stagger = staggerMap[type] || 0.09;
-
-  // Concept/title labels that get special display treatment
-  const titleLabels = ['CONCEPT TITLE', 'CONCEPT', 'MONEY IDEA TITLE', 'UNIQUE CONCEPT', 'HOOK', 'PRIMARY HEADLINE', 'CHARACTER CONCEPT'];
+  const titleLabels = ['CONCEPT TITLE','CORE IDEA','HOOK','3 HOOKS','IDEA TITLE','UNIQUE CONCEPT','PRIMARY HEADLINE','CHARACTER CONCEPT','SCENE'];
 
   let delay = 0;
-  sections.forEach((s, i) => {
+  sections.forEach(s => {
     const div = document.createElement('div');
     const isTitle = titleLabels.some(t => s.label.toUpperCase().includes(t));
     div.className = 'output-section' + (isTitle ? ' section-concept-title' : '');
@@ -969,22 +1020,17 @@ function displayOutput(text, type) {
     container.appendChild(div);
   });
 
-  // Panel success flash
-  const panel = document.getElementById('outputPanel');
-  panel.classList.remove('flash');
-  void panel.offsetWidth; // reflow to restart animation
-  panel.classList.add('flash');
-  setTimeout(() => panel.classList.remove('flash'), 900);
+  panel_flash();
 
   if (!isPro) {
     const lf = {
-      surprise:['Complete video script with full scene breakdown and camera direction','Ultra-detailed Chibi character prompt formatted for Midjourney','Full story with twist, ending, and platform delivery note','Complete engagement suite — long caption, short caption, and engagement question'],
-      money:['Third income idea with full strategic depth','Revenue potential projections for all ideas','Complete 5-step quick start plans','One Thing Most People Get Wrong for each model'],
-      video:['Full word-for-word script beyond 30 seconds','Complete scene-by-scene breakdown with camera direction','CTA and full hashtag strategy — niche, mid, and broad tiers','Viral potential analysis'],
-      sales:['Full persuasion arc body copy','Key benefits written as buyer outcomes','Objection handler and social proof guidance','Ad version and organic caption version'],
-      chibi:['Complete character prompt with micro-expression and pose detail','Full lighting and environment specification','Quality modifier stack with tool-specific syntax','Full variation prompt with alternative concept'],
-      story:['Complete story — rising tension, the turn, and full ending','Platform delivery note and posting strategy','Optimised caption with engagement prompt','Re-hook: second opening line for A/B testing'],
-      image:['Full cinematic prompt with environment, lighting, and camera detail','Quality modifier stack formatted for your AI tool','Mood and atmosphere summary','Style rationale for replication']
+      surprise:['Full posting strategy — day-by-day for week 1','Expansion idea — the mechanism that turns this into £2k/month','All 3 hooks plus the AI image prompt','Monetisation angle with copy that converts'],
+      money:['Third income idea with full execution','Month 3 and Month 6 revenue projections','The exact failure point for each idea','Full 5-step startup sequence per idea'],
+      video:['Full line-by-line script beyond the opening','Complete scene directions and text overlays','Platform strategy and monetisation play','Pattern interrupts with exact timestamps'],
+      sales:['Full body copy — complete persuasion arc','Objection handler — the thought before they close the tab','Ad version for paid social','Organic caption version'],
+      chibi:['Full production prompt with all visual layers','Lighting and background specification','Variation A, B, and C — different register, era, and commercial use','Complete Midjourney parameter block'],
+      story:['Complete story — build-up, twist, and ending written in full','Platform delivery note and formatting guide','Caption and re-hook for A/B testing','Monetisation — the product this story feeds'],
+      image:['Full technical brief — lighting, camera, rendering engine','Midjourney-formatted parameter block','Variation A, B, and C — lighting, register, use case','Style rationale and mood description']
     };
     const features = lf[type] || ['Full output','Complete structure','Advanced variations'];
     const locked = document.createElement('div');
@@ -993,7 +1039,7 @@ function displayOutput(text, type) {
     locked.innerHTML = `
       <div class="lock-icon">🔒</div>
       <div class="lock-title">Unlock the Complete ${genName(type)}</div>
-      <div class="lock-desc">You're seeing a preview. Pro members receive the full professionally structured output — ready to use without editing a single word.</div>
+      <div class="lock-desc">You're seeing a preview. Pro members get the full structured output — every section, every detail, ready to use.</div>
       <div class="lock-features">${features.map(f=>`<div class="lock-feature">${esc(f)}</div>`).join('')}</div>
       <button class="btn-upgrade" onclick="openModal()">⚡ Get Pro — £19/month</button>`;
     container.appendChild(locked);
@@ -1002,14 +1048,22 @@ function displayOutput(text, type) {
   document.getElementById('outputContent').classList.add('visible');
 }
 
+function panel_flash() {
+  const panel = document.getElementById('outputPanel');
+  panel.classList.remove('flash');
+  void panel.offsetWidth;
+  panel.classList.add('flash');
+  setTimeout(() => panel.classList.remove('flash'), 900);
+}
+
 function parseOutput(text) {
   const lines = text.split('\n');
   const sections = [];
   let cur = null;
   for (const line of lines) {
     const t = line.trim();
-    const m = t.match(/^([A-Z][A-Z0-9\s\/&''\-–—]+):$/);
-    if (m && m[1].length >= 2) {
+    const m = t.match(/^([A-Z][A-Z0-9\s\/&''£\-–—()]+):$/);
+    if (m && m[1].length >= 2 && m[1].length <= 60) {
       if (cur && cur.content.trim()) sections.push({...cur, content: cur.content.trim()});
       cur = { label: m[1].trim(), content: '' };
     } else if (cur) {
@@ -1023,9 +1077,8 @@ function parseOutput(text) {
 }
 
 function genName(type) {
-  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'Chibi Prompt',story:'Viral Story',image:'Image Prompt'}[type] || 'Output';
+  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'Chibi Prompt',story:'Viral Story',image:'Image Prompt'}[type]||'Output';
 }
-
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
@@ -1033,8 +1086,30 @@ function esc(s) {
 // ─── USAGE ───────────────────────────────────────────────────────────────────
 function updateUsage() {
   const pct = Math.min((usageCount / MAX_FREE) * 100, 100);
-  ['usageCount','usageCount2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = usageCount + ' / ' + MAX_FREE; });
-  ['usageFill','usageFill2'].forEach(id => { const el = document.getElementById(id); if (el) el.style.width = pct + '%'; });
+  const atLimit = usageCount >= MAX_FREE;
+
+  ['usageCount','usageCount2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = isPro ? '∞' : usageCount + ' / ' + MAX_FREE;
+  });
+
+  ['usageFill','usageFill2','settingsUsageFill'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.width = isPro ? '0%' : pct + '%';
+      el.className = 'usage-bar-fill' + (pct >= 100 ? ' full' : pct >= 60 ? ' warn' : '');
+    }
+  });
+
+  ['usageLimitMsg','usageLimitMsg2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.className = 'usage-limit-msg' + (atLimit && !isPro ? ' show' : '');
+  });
+
+  const sl = document.getElementById('settingsUsageLabel');
+  if (sl) sl.textContent = isPro ? 'Unlimited (Pro plan)' : usageCount + ' of ' + MAX_FREE + ' used today';
+  const sp = document.getElementById('settingsUsagePct');
+  if (sp) sp.textContent = isPro ? '—' : Math.round(pct) + '%';
 }
 
 // ─── ACTIONS ─────────────────────────────────────────────────────────────────
@@ -1042,7 +1117,6 @@ function copyOutput() {
   if (!currentOutput) { showToast('Nothing to copy yet'); return; }
   navigator.clipboard.writeText(currentOutput).then(() => {
     showToast('✓ Copied to clipboard');
-    // Brief flash on all section texts to confirm copy
     document.querySelectorAll('.output-section-text').forEach(el => {
       el.classList.add('copied');
       setTimeout(() => el.classList.remove('copied'), 600);
@@ -1050,36 +1124,44 @@ function copyOutput() {
   }).catch(() => showToast('Select the text manually to copy'));
 }
 function saveOutput() { showToast('♡ Saved to your library'); }
-function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
 
-// ─── MODAL & STRIPE ──────────────────────────────────────────────────────────
+// ─── MODALS ──────────────────────────────────────────────────────────────────
 function openModal() { document.getElementById('proModal').classList.add('open'); }
 function closeModal() { document.getElementById('proModal').classList.remove('open'); }
+function openSettings() {
+  const sp = document.getElementById('settingsPlan');
+  if (sp) sp.textContent = isPro ? 'Pro' : 'Free';
+  if (sp) sp.className = 'settings-value' + (isPro ? ' pro' : '');
+  const su = document.getElementById('settingsUsage');
+  if (su) su.textContent = isPro ? 'Unlimited' : usageCount + ' / ' + MAX_FREE;
+  const ub = document.getElementById('settingsUpgradeBtn');
+  if (ub) ub.style.display = isPro ? 'none' : 'block';
+  updateUsage();
+  document.getElementById('settingsModal').classList.add('open');
+}
+function closeSettings() { document.getElementById('settingsModal').classList.remove('open'); }
 
+// ─── PRO ACTIVATION ──────────────────────────────────────────────────────────
 async function activatePro() {
-  // Attempt to create Stripe checkout session
   const btn = document.querySelector('.btn-upgrade-main');
   if (btn) { btn.disabled = true; btn.textContent = 'Redirecting to checkout...'; }
-
   try {
     const res = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: currentUserId })
     });
-
     if (res.ok) {
       const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
+      if (data.url) { window.location.href = data.url; return; }
     }
-  } catch (err) {
-    console.error('Checkout error:', err);
-  }
-
-  // Fallback: activate locally if Stripe not configured yet
+  } catch (err) { console.error('Checkout error:', err); }
   setProActive();
   closeModal();
   if (btn) { btn.disabled = false; btn.textContent = '⚡ Upgrade to Pro — £19/month'; }
@@ -1089,20 +1171,20 @@ function setProActive() {
   isPro = true;
   document.getElementById('tierBadge').className = 'tier-badge pro';
   document.getElementById('tierLabel').textContent = 'Pro Plan';
-  const uc = document.getElementById('usageCount'); if (uc) uc.textContent = '∞';
-  const uc2 = document.getElementById('usageCount2'); if (uc2) uc2.textContent = '∞';
-  const uf = document.getElementById('usageFill'); if (uf) uf.style.width = '0%';
-  const uf2 = document.getElementById('usageFill2'); if (uf2) uf2.style.width = '0%';
+  updateUsage();
   showToast('⚡ Pro activated — unlimited generations unlocked');
 }
 
-// Check URL for Stripe success redirect
+// Close modals on backdrop click
+['proModal','settingsModal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
+});
+
+// Stripe success redirect
 if (window.location.search.includes('session_id=')) {
   setProActive();
   window.history.replaceState({}, '', '/');
 }
-
-document.getElementById('proModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 </script>
 </body>
 </html>
