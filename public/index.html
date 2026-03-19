@@ -772,7 +772,7 @@
             <div class="loading-dot"></div>
           </div>
           <div class="loading-text" id="loadingText">Crafting your premium output...</div>
-          <div class="loading-subtext" id="loadingSubtext">Claude Sonnet 4.6 — thinking</div>
+          <div class="loading-subtext" id="loadingSubtext">Generating your output...</div>
         </div>
         <div class="output-content" id="outputContent">
           <div id="outputSections"></div>
@@ -872,17 +872,7 @@
       </div>
     </div>
 
-    <div class="settings-section">
-      <span class="settings-label">Model</span>
-      <div class="settings-row">
-        <span>AI Engine</span>
-        <span class="settings-value">Claude Sonnet 4.6</span>
-      </div>
-      <div class="settings-row" style="margin-top:.75rem">
-        <span>Provider</span>
-        <span class="settings-value">Anthropic</span>
-      </div>
-    </div>
+
 
     <button class="btn-upgrade-main" id="settingsUpgradeBtn" onclick="closeSettings();openModal();" style="margin-top:.5rem">⚡ Upgrade to Pro — £19/month</button>
     <a class="modal-back-link" onclick="closeSettings()">← Back to the app</a>
@@ -935,7 +925,7 @@ const loadingMsgs = {
   image:['Building your technical creative brief...','Selecting the precise style...','Specifying lighting and composition...','Engineering your cinematic prompt...','Formatting for your intended tool...']
 };
 const loadingSubtexts = {
-  surprise:'Hooks + Script + Image Prompt + Monetisation',
+  surprise:'Hooks · Script · Image Prompt · Monetisation',
   money:'Specific. Executable. No motivation.',
   video:'Platform-calibrated for maximum watch time',
   sales:'Price point psychology applied',
@@ -1035,9 +1025,9 @@ async function generate(type) {
     if (!res.ok) {
       const msg = data.error || 'Generation failed. Please try again.';
       if (res.status === 500 && msg.includes('configuration')) {
-        showToast('API key not configured. Add ANTHROPIC_API_KEY to Vercel.');
+        showToast('Generation service not configured. Contact support.');
       } else if (res.status === 503) {
-        showToast('Claude is temporarily busy. Please try again in a moment.');
+        showToast('Our AI is temporarily busy. Please try again in a moment.');
       } else {
         showToast(msg);
       }
