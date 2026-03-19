@@ -349,8 +349,10 @@ function buildUserMessage(type, inputs, tier, viralBoost = false) {
   const b = {
     surprise: () => {
       const vibe = inputs.vibe
-        ? `REQUESTED ANGLE: "${inputs.vibe}" — find the non-obvious, slightly uncomfortable version. Not the safe interpretation.`
-        : `NO THEME — choose whichever concept type feels freshest: confession/reversal, industry exposure, specific turning-point moment, micro-niche arc, or uncomfortable truth nobody says out loud.`;
+        ? `THEME: "${inputs.vibe}"
+
+The user has chosen this specific theme. Build the ENTIRE content package around it — every section, every hook, the script, the image prompt, the monetisation angle — all must be directly relevant to "${inputs.vibe}". Do NOT drift into a different concept. Do NOT find an "alternative angle". Give them exactly what they asked for, executed at the highest level.`
+        : `NO THEME GIVEN — you are free to choose. Pick whichever concept type feels freshest right now: confession/reversal, industry exposure, a specific turning-point moment, micro-niche arc, or an uncomfortable truth nobody says out loud.`;
       return `${tNote}\n\n${vibe}${force}`;
     },
     money: () =>
