@@ -335,13 +335,16 @@ function validateInput(type, inputs) {
 }
 
 // ─── USER MESSAGE BUILDER ─────────────────────────────────────────────────────
-function buildUserMessage(type, inputs, tier) {
+function buildUserMessage(type, inputs, tier, viralBoost = false) {
   const pro   = tier === 'pro';
   const tNote = pro
     ? 'TIER: PRO — Deliver the complete output. Every section. This user is paying. Give everything.'
     : 'TIER: FREE — Strong preview. Must demonstrate quality and create desire for more. Stop at MONETISATION ANGLE for Surprise Me, after idea 2 for Make Money, after CAPTION for others.';
 
-  const force = '\n\nCRITICAL: Reject your first obvious angle. Find the specific, uncomfortable, non-obvious version. Include at least 3 of: a real £ amount, a named platform, a named specific audience, a physical action, a specific consequence. Start immediately with the first section label — no preamble.';
+  const boostInstruction = viralBoost
+    ? '\n\nVIRAL BOOST MODE ACTIVE — This is a second attempt. The previous output was not sharp enough. For this version:\n- Increase the curiosity gap: the viewer must be unable to NOT find out what happens next\n- Increase emotional tension: something is at stake, the reader should feel it\n- Make the hook more scroll-stopping: it must feel slightly wrong or uncomfortably specific\n- Make the ending more unexpected: it should recontextualise the opening in a way nobody saw coming\n- Cut any line that does not raise tension or withhold information\nThis must be meaningfully different from the first output — sharper concept, stronger hook, more emotional intensity throughout.'
+    : '';
+  const force = '\n\nCRITICAL: Reject your first obvious angle. Find the specific, uncomfortable, non-obvious version. Include at least 3 of: a real £ amount, a named platform, a named specific audience, a physical action, a specific consequence. Start immediately with the first section label — no preamble.' + boostInstruction;
 
   const b = {
     surprise: () => {
@@ -385,7 +388,7 @@ export default async function handler(req, res) {
   try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; }
   catch { return res.status(400).json({ error: 'Invalid JSON body' }); }
 
-  const { type, inputs = {}, tier = 'free', userId = 'anonymous' } = body;
+  const { type, inputs = {}, tier = 'free', userId = 'anonymous', viralBoost = false } = body;
 
   const validTypes = ['surprise','money','video','sales','chibi','story','image'];
   if (!validTypes.includes(type)) return res.status(400).json({ error: 'Invalid generator type' });
@@ -401,7 +404,7 @@ export default async function handler(req, res) {
     });
   }
 
-  const userMessage = buildUserMessage(type, inputs, tier);
+  const userMessage = buildUserMessage(type, inputs, tier, viralBoost);
   if (!userMessage) return res.status(400).json({ error: 'Could not build message' });
 
   try {

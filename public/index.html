@@ -237,6 +237,50 @@
   .btn-how-start{padding:12px 32px;background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;border-radius:10px;color:#fff;font-family:var(--font-display);font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:.02em;}
   .btn-how-start:hover{box-shadow:0 8px 24px rgba(108,92,231,.4);}
 
+
+  /* ACTION BUTTON SYSTEM */
+  .output-action-bar{display:flex;gap:10px;margin-top:1.25rem;flex-wrap:wrap;}
+  .btn-act{flex:1;min-width:120px;padding:11px 14px;border:none;border-radius:10px;font-family:var(--font-display);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.01em;position:relative;overflow:hidden;}
+  .btn-act-copy{background:linear-gradient(135deg,var(--surface2),var(--bg3));color:var(--text);border:1px solid var(--border2);}
+  .btn-act-copy:hover{border-color:var(--purple);background:var(--surface);}
+  .btn-act-again{background:linear-gradient(135deg,rgba(79,172,254,.15),rgba(139,120,255,.1));color:var(--blue);border:1px solid rgba(79,172,254,.3);}
+  .btn-act-again:hover{background:linear-gradient(135deg,rgba(79,172,254,.25),rgba(139,120,255,.2));border-color:var(--blue);}
+  .btn-act-improve{background:linear-gradient(135deg,var(--purple2),var(--blue));color:#fff;}
+  .btn-act-improve:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(108,92,231,.5);}
+  .btn-act-improve::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);}
+
+  /* WHAT TO DO NEXT SECTION */
+  .next-steps-section{background:linear-gradient(135deg,rgba(79,172,254,.06),rgba(139,120,255,.04));border:1px solid rgba(79,172,254,.2);border-radius:12px;padding:1.25rem;margin-top:1rem;animation:sectionIn .5s ease both;}
+  .next-steps-title{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:var(--blue);margin-bottom:.85rem;display:flex;align-items:center;gap:6px;}
+  .next-steps-list{display:flex;flex-direction:column;gap:.55rem;}
+  .next-step-item{display:flex;align-items:flex-start;gap:10px;font-size:.83rem;color:var(--text2);line-height:1.5;}
+  .next-step-num{width:20px;height:20px;border-radius:50%;background:rgba(79,172,254,.2);color:var(--blue);font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .next-steps-note{font-size:.75rem;color:var(--text3);margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--border);}
+
+  /* ENGAGEMENT NUDGE */
+  .engagement-nudge{background:linear-gradient(135deg,rgba(246,201,14,.06),rgba(108,92,231,.06));border:1px solid rgba(246,201,14,.2);border-radius:12px;padding:1.1rem 1.25rem;margin-top:1rem;display:none;animation:sectionIn .4s ease both;}
+  .engagement-nudge.show{display:block;}
+  .engagement-nudge-text{font-size:.85rem;color:var(--text2);line-height:1.6;margin-bottom:.85rem;}
+  .engagement-nudge-text strong{color:var(--gold);}
+  .btn-nudge-upgrade{width:100%;padding:10px;background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;border-radius:8px;color:#fff;font-family:var(--font-display);font-size:.85rem;font-weight:700;cursor:pointer;letter-spacing:.02em;}
+  .btn-nudge-upgrade:hover{box-shadow:0 6px 20px rgba(108,92,231,.4);}
+
+  /* UPGRADE PANEL — RESULTS FRAMING */
+  .lock-results-header{font-size:.78rem;font-weight:600;color:var(--gold);margin-bottom:.5rem;letter-spacing:.04em;text-transform:uppercase;}
+  .lock-result-item{display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:var(--text);line-height:1.5;margin-bottom:.5rem;}
+  .lock-result-item::before{content:'→';color:var(--blue);font-size:.75rem;flex-shrink:0;margin-top:2px;}
+
+  /* EMPTY STATE */
+  .empty-hero{text-align:center;padding:1rem 0;}
+  .empty-hero-title{font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:.75rem;background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .empty-feature-list{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0;text-align:left;max-width:240px;}
+  .empty-feature{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text2);}
+  .empty-feature::before{content:'•';color:var(--purple);font-size:1rem;}
+  .empty-cta{font-size:.82rem;color:var(--text3);margin-top:.5rem;}
+
+  /* MICRO TRUST */
+  .micro-trust{font-size:.73rem;color:var(--text3);text-align:center;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:8px;}
+
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
@@ -377,7 +421,8 @@
             <input type="text" class="form-input" id="s-vibe" placeholder="e.g. money mindset, burnout, creator life, luxury, dark...">
             <div class="field-note">✨ Leave blank — AI selects the freshest, most uncomfortable concept for you</div>
           </div>
-          <button class="btn-generate" onclick="generate('surprise')">✦ Generate Full Package</button>
+          <button class="btn-generate" onclick="generate('surprise')">⚡ Generate My Viral Idea</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎯 No idea needed — AI can choose</span></div>
           <div class="usage-bar-wrap" style="margin-top:1rem">
             <div class="usage-bar-header"><span>Free generations today</span><span id="usageCount2">0 / 5</span></div>
             <div class="usage-bar-track"><div class="usage-bar-fill" id="usageFill2" style="width:0%"></div></div>
@@ -421,7 +466,8 @@
               <option>Skills-only (no money needed)</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('money')">✦ Generate Income Ideas</button>
+          <button class="btn-generate" onclick="generate('money')">⚡ Generate My Income Ideas</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>💰 Real execution steps included</span></div>
         </div>
 
         <!-- VIDEO -->
@@ -466,7 +512,8 @@
               <option>Build engaged following</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('video')">✦ Generate Video Script</button>
+          <button class="btn-generate" onclick="generate('video')">⚡ Generate My Viral Script</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎬 Hook + full script + platform strategy</span></div>
         </div>
 
         <!-- SALES -->
@@ -508,7 +555,8 @@
               <option>£500+ (high ticket)</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('sales')">✦ Generate Sales Copy</button>
+          <button class="btn-generate" onclick="generate('sales')">⚡ Generate My Sales Copy</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎯 Calibrated to your price point</span></div>
         </div>
 
         <!-- CHIBI -->
@@ -575,7 +623,8 @@
               <option>General (any tool)</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('chibi')">✦ Generate Chibi Prompt</button>
+          <button class="btn-generate" onclick="generate('chibi')">⚡ Generate My Character Prompt</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Direct paste into Midjourney</span></div>
         </div>
 
         <!-- STORY -->
@@ -630,7 +679,8 @@
               <option>X / Twitter</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('story')">✦ Generate Viral Story</button>
+          <button class="btn-generate" onclick="generate('story')">⚡ Generate My Viral Story</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎭 Hook + twist + platform note</span></div>
         </div>
 
         <!-- IMAGE -->
@@ -682,7 +732,8 @@
               <option>Book / Story cover</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('image')">✦ Generate Image Prompt</button>
+          <button class="btn-generate" onclick="generate('image')">⚡ Generate My Image Prompt</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🖼️ Technical brief ready to paste</span></div>
         </div>
 
       </div><!-- /input-panel -->
@@ -697,8 +748,17 @@
           </div>
         </div>
         <div class="output-empty" id="outputEmpty">
-          <div class="output-empty-icon">✦</div>
-          <div class="output-empty-text">Your premium output will appear here. Fill in the form and generate.</div>
+          <div class="empty-hero">
+            <div style="font-size:2.5rem;margin-bottom:.75rem">🔥</div>
+            <div class="empty-hero-title">Turn 1 Idea Into Viral Content in Seconds</div>
+            <div class="empty-feature-list">
+              <div class="empty-feature">Hooks that stop the scroll</div>
+              <div class="empty-feature">Full script ready to record</div>
+              <div class="empty-feature">Caption + posting strategy</div>
+              <div class="empty-feature">Monetisation angle included</div>
+            </div>
+            <div class="empty-cta">👇 Generate your first content package</div>
+          </div>
         </div>
         <div class="output-loading" id="outputLoading">
           <div class="loading-orb-wrap">
@@ -718,6 +778,12 @@
           <div id="outputSections"></div>
         </div>
       </div>
+
+    <!-- ENGAGEMENT NUDGE -->
+    <div class="engagement-nudge" id="engagementNudge" style="margin:0 2rem 1.5rem;max-width:760px">
+      <div class="engagement-nudge-text">⚡ You've generated <strong id="nudgeCount">multiple</strong> viral ideas. Creators who post daily grow <strong>significantly faster</strong>. Unlock unlimited generation + fully structured outputs →</div>
+      <button class="btn-nudge-upgrade" onclick="openModal()">🚀 Unlock Unlimited — £19/month</button>
+    </div>
 
     </div><!-- /generator-area -->
   </main>
@@ -832,6 +898,9 @@ let usageCount = 0;
 const MAX_FREE = 5;
 let isPro = false;
 let currentOutput = '';
+let currentType = '';
+let currentInputs = {};
+let sessionGenCount = 0;
 let currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
 
 // ─── ONBOARDING ──────────────────────────────────────────────────────────────
@@ -983,7 +1052,11 @@ async function generate(type) {
       updateUsage();
     }
 
+    currentType = type;
+    currentInputs = inputs;
+    sessionGenCount++;
     displayOutput(text, type);
+    checkEngagementNudge();
 
   } catch (err) {
     console.error('Generate error:', err);
@@ -1022,28 +1095,91 @@ function displayOutput(text, type) {
 
   panel_flash();
 
+  // ── WHAT TO DO NEXT section ────────────────────────────────────────────────
+  const nextSteps = document.createElement('div');
+  nextSteps.className = 'next-steps-section';
+  nextSteps.style.animationDelay = delay + 's';
+  delay += stagger;
+  nextSteps.innerHTML = `
+    <div class="next-steps-title">🚀 WHAT TO DO NEXT</div>
+    <div class="next-steps-list">
+      <div class="next-step-item"><div class="next-step-num">1</div><span>Copy the hook and paste it as your first line or caption</span></div>
+      <div class="next-step-item"><div class="next-step-num">2</div><span>Record the script (30–60 seconds)</span></div>
+      <div class="next-step-item"><div class="next-step-num">3</div><span>Follow the pacing from the platform note</span></div>
+      <div class="next-step-item"><div class="next-step-num">4</div><span>Post immediately — do not overthink it</span></div>
+    </div>
+    <div class="next-steps-note">⚡ Best results come from posting immediately</div>`;
+  container.appendChild(nextSteps);
+
+  // ── UPGRADE LOCK PANEL (free tier) — framed as unlocking RESULTS ──────────
   if (!isPro) {
-    const lf = {
-      surprise:['Full posting strategy — day-by-day for week 1','Expansion idea — the mechanism that turns this into £2k/month','All 3 hooks plus the AI image prompt','Monetisation angle with copy that converts'],
-      money:['Third income idea with full execution','Month 3 and Month 6 revenue projections','The exact failure point for each idea','Full 5-step startup sequence per idea'],
-      video:['Full line-by-line script beyond the opening','Complete scene directions and text overlays','Platform strategy and monetisation play','Pattern interrupts with exact timestamps'],
-      sales:['Full body copy — complete persuasion arc','Objection handler — the thought before they close the tab','Ad version for paid social','Organic caption version'],
-      chibi:['Full production prompt with all visual layers','Lighting and background specification','Variation A, B, and C — different register, era, and commercial use','Complete Midjourney parameter block'],
-      story:['Complete story — build-up, twist, and ending written in full','Platform delivery note and formatting guide','Caption and re-hook for A/B testing','Monetisation — the product this story feeds'],
-      image:['Full technical brief — lighting, camera, rendering engine','Midjourney-formatted parameter block','Variation A, B, and C — lighting, register, use case','Style rationale and mood description']
+    const resultMap = {
+      surprise: [
+        'Your full posting strategy — exactly what to do each day for 7 days',
+        'The expansion mechanism that turns this into £2k/month',
+        'All 3 scroll-stopping hooks ready to test against each other',
+        'Monetisation copy — the one sentence that converts viewers into buyers'
+      ],
+      money: [
+        'A third income idea — often the most unexpected and scalable one',
+        'Month 3 and Month 6 revenue projections with the lever that determines them',
+        'The exact failure point — the specific mistake that kills each model',
+        'Full 5-step startup sequence with named tools and specific outputs'
+      ],
+      video: [
+        'Full line-by-line script — every word, every pause, every emphasis',
+        'Complete scene directions and text overlays for the whole video',
+        'Platform strategy — when to post, what to pin, what the first comment should be',
+        '3 pattern interrupt moments with exact timestamps and techniques'
+      ],
+      sales: [
+        'Full body copy — the complete persuasion arc from problem to close',
+        'The objection handler — the exact thought before they close the tab, dissolved',
+        'Ad version for paid social — 3–4 lines engineered for cold audiences',
+        'Organic caption version — sounds like a recommendation, not a pitch'
+      ],
+      chibi: [
+        'Full production prompt with all 9 visual layers completely specified',
+        'Lighting, background, and rendering engine — nothing left to chance',
+        'Variation A, B, and C — different emotional register, era, and commercial use',
+        'Complete Midjourney parameter block ready to paste'
+      ],
+      story: [
+        'Complete story — build-up, twist, and ending written in full',
+        'Platform delivery note — exactly how to format this for maximum impact',
+        'Caption + re-hook — two different opening strategies to A/B test',
+        'The monetisation play — the product this story feeds and the CTA placement'
+      ],
+      image: [
+        'Full technical brief — lighting in Kelvin, camera lens, rendering engine',
+        'Midjourney parameter block formatted for direct paste',
+        'Variation A, B, and C — different lighting, emotional register, and use case',
+        'Style rationale — the specific reason this style serves this concept'
+      ]
     };
-    const features = lf[type] || ['Full output','Complete structure','Advanced variations'];
+    const results = resultMap[type] || ['Full output','Complete structure','Advanced variations','Monetisation angle'];
     const locked = document.createElement('div');
     locked.className = 'output-locked';
     locked.style.animationDelay = delay + 's';
+    delay += stagger;
     locked.innerHTML = `
       <div class="lock-icon">🔒</div>
-      <div class="lock-title">Unlock the Complete ${genName(type)}</div>
-      <div class="lock-desc">You're seeing a preview. Pro members get the full structured output — every section, every detail, ready to use.</div>
-      <div class="lock-features">${features.map(f=>`<div class="lock-feature">${esc(f)}</div>`).join('')}</div>
-      <button class="btn-upgrade" onclick="openModal()">⚡ Get Pro — £19/month</button>`;
+      <div class="lock-results-header">What Pro unlocks for this output:</div>
+      <div class="lock-features" style="margin-bottom:1rem">${results.map(r=>`<div class="lock-result-item">${esc(r)}</div>`).join('')}</div>
+      <div class="lock-desc" style="margin-bottom:1rem;font-size:.8rem">Pro isn't about unlocking content. It's about unlocking the parts that turn a good idea into a result — the posting strategy, the monetisation play, the script you can record today.</div>
+      <button class="btn-upgrade" onclick="openModal()">⚡ Get the Full Output — £19/month</button>`;
     container.appendChild(locked);
   }
+
+  // ── ACTION BUTTON BAR ──────────────────────────────────────────────────────
+  const actionBar = document.createElement('div');
+  actionBar.className = 'output-action-bar';
+  actionBar.style.animationDelay = delay + 's';
+  actionBar.innerHTML = `
+    <button class="btn-act btn-act-copy" onclick="copyEverything()">⎘ Copy Everything</button>
+    <button class="btn-act btn-act-again" onclick="generateAnother()">↺ Generate Another</button>
+    <button class="btn-act btn-act-improve" onclick="improveIdea()">⚡ Improve This Idea</button>`;
+  container.appendChild(actionBar);
 
   document.getElementById('outputContent').classList.add('visible');
 }
@@ -1123,6 +1259,90 @@ function copyOutput() {
     });
   }).catch(() => showToast('Select the text manually to copy'));
 }
+
+// Copy Everything — copies full output including next steps note
+function copyEverything() {
+  if (!currentOutput) { showToast('Nothing to copy yet'); return; }
+  const withNote = currentOutput + '\n\n---\nWHAT TO DO NEXT:\n1. Copy the hook and paste it as your first line or caption\n2. Record the script (30–60 seconds)\n3. Follow the pacing from the platform note\n4. Post immediately — do not overthink it\n\n⚡ Best results come from posting immediately';
+  navigator.clipboard.writeText(withNote).then(() => {
+    showToast('✓ Full output copied — ready to use');
+    document.querySelectorAll('.output-section-text').forEach(el => {
+      el.classList.add('copied');
+      setTimeout(() => el.classList.remove('copied'), 600);
+    });
+  }).catch(() => showToast('Select the text manually to copy'));
+}
+
+// Generate Another — re-runs same generator with same inputs
+function generateAnother() {
+  if (!currentType) { showToast('Generate something first'); return; }
+  generate(currentType);
+}
+
+// Improve This Idea — re-runs with viral boost modifier injected via boost flag
+async function improveIdea() {
+  if (!currentType || !currentOutput) { showToast('Generate something first'); return; }
+  if (!isPro && usageCount >= MAX_FREE) { openModal(); return; }
+
+  // Visual feedback
+  showToast('⚡ Making it sharper...');
+
+  document.getElementById('outputEmpty').style.display = 'none';
+  document.getElementById('outputContent').classList.remove('visible');
+  document.getElementById('outputLoading').classList.add('visible');
+  document.getElementById('loadingText').textContent = 'Pushing the curiosity gap further...';
+  document.getElementById('loadingSubtext').textContent = 'Viral Boost Mode — higher tension';
+  document.querySelectorAll('.btn-generate').forEach(b => { b.disabled = true; b.classList.add('generating'); });
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: currentType,
+        inputs: currentInputs,
+        tier: isPro ? 'pro' : 'free',
+        userId: currentUserId,
+        viralBoost: true  // Backend receives this to apply Viral Boost Mode
+      })
+    });
+
+    const data = await res.json();
+    if (res.status === 429) { openModal(); return; }
+    if (!res.ok) { showToast(data.error || 'Improve failed. Please try again.'); return; }
+
+    const text = data.output || '';
+    if (!text) { showToast('Empty response. Please try again.'); return; }
+
+    if (!isPro && data.used !== undefined) {
+      usageCount = data.used;
+      updateUsage();
+    }
+    sessionGenCount++;
+    displayOutput(text, currentType);
+    checkEngagementNudge();
+
+  } catch (err) {
+    console.error('Improve error:', err);
+    showToast('Something went wrong. Please try again.');
+  } finally {
+    document.querySelectorAll('.btn-generate').forEach(b => { b.disabled = false; b.classList.remove('generating'); });
+    document.getElementById('outputLoading').classList.remove('visible');
+  }
+}
+
+// Engagement nudge — shown after 2-3 generations for free users
+function checkEngagementNudge() {
+  if (isPro) return;
+  const nudge = document.getElementById('engagementNudge');
+  if (!nudge) return;
+  if (sessionGenCount >= 2) {
+    const nc = document.getElementById('nudgeCount');
+    if (nc) nc.textContent = sessionGenCount;
+    nudge.classList.add('show');
+  }
+}
+
 function saveOutput() { showToast('♡ Saved to your library'); }
 function showToast(msg) {
   const t = document.getElementById('toast');
