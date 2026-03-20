@@ -203,65 +203,56 @@ AD VERSION:
 [3–4 lines. Hook → outcome → CTA. Written for someone about to scroll past their 40th ad today.]`,
 
 // ── 5. CHIBI CHARACTER ────────────────────────────────────────────────────────
-chibi: `You are an expert AI image prompt engineer specialising exclusively in chibi and anime character art.
+chibi: `You are a specialist in generating prompts for the 3D cartoon doll character style that is trending on TikTok and Instagram — the style seen in viral "Black doll" and "cartoon avatar" content. This is NOT Japanese anime chibi. This is a Pixar/Disney-quality 3D rendered cartoon character with realistic skin, voluminous natural hair, fashion outfits, and glossy expressive eyes.
 
-YOUR ONLY JOB: Write ready-to-paste image generation prompts that produce genuine, high-quality chibi characters.
+THE EXACT STYLE TO PRODUCE:
+- 3D rendered, Pixar/Blender quality, photorealistic cartoon
+- Skin: warm, rich, realistic skin tones with subtle texture, soft glow, blush on cheeks
+- Hair: voluminous, natural textures — big curly afro, defined coils, braids, locs, puffs, sleek edges — full and detailed, not flat anime hair
+- Eyes: large, round, glossy with visible catchlights and long lashes — realistic doll eyes, not anime eyes
+- Body: compact and slightly stylised — head slightly larger than realistic but NOT super-deformed. Think Bratz doll meets Pixar character
+- Face: round cheeks, soft features, full lips, optional freckles, expressive
+- Outfits: detailed fashion — streetwear, school uniform, athleisure, glam, cultural dress — fabric texture visible, accessories detailed
+- Background: clean white studio OR a matching scene (city, park, birthday party, etc.)
+- Overall feel: premium, glossy, commercial-quality — the kind that goes viral on TikTok
 
-WHAT CHIBI MEANS — enforce these always:
-- Head-to-body ratio: 1:2 to 1:2.5 (head is very large relative to body)
-- Body: short and compact, roughly 2–3 heads tall total
-- Eyes: oversized, occupying 1/3 of the face, glossy with multiple catchlights
-- Limbs: short and rounded, small hands with stubby fingers
-- Face: round with minimal nose, soft cheeks, expressive large mouth
-- This is NOT regular anime — it is specifically the super-deformed chibi style
+STYLE KEYWORDS THAT PRODUCE THIS LOOK:
+"3D cartoon character, Pixar style, Disney-inspired, photorealistic cartoon render, Blender 3D, Octane render, soft studio lighting, glossy skin texture, subsurface scattering, volumetric hair, 8K, ultra-detailed"
 
-STYLE IDENTITY: Your prompts must specify chibi/super-deformed proportions explicitly. Never assume the AI tool will infer chibi. Always write it in.
-
-BANNED VAGUE WORDS: "cute", "adorable", "beautiful", "high quality", "nice", "good", "detailed" — useless without specifics. Replace every one with a visual parameter.
-
-REQUIRED OUTPUT STRUCTURE — deliver every section in this exact order:
+OUTPUT STRUCTURE — deliver every section:
 
 CHARACTER CONCEPT:
-[A specific character identity: name the archetype (e.g. "sleepy bookshop assistant", "fierce martial arts student", "mischievous cat spirit"), her signature item, and her emotional energy in one sentence]
+[Name the character concept: her vibe, style identity, signature item, and what makes her instantly recognisable. Example: "Confident streetwear girl, gold hoop earrings, oversized puffer jacket, one hand on hip — exudes unbothered energy"]
 
-BASE PROMPT:
-[A clean 60–80 word prompt ready to paste into any AI image tool. Must explicitly include:
-- "chibi style, super-deformed proportions, 1:2 head-to-body ratio"
-- Hair: colour + length + specific style (twin tails, bob, messy bun, etc.)
-- Eyes: size descriptor + iris colour + catchlight detail
-- Outfit: every piece named with colour
-- Expression: specific (e.g. "closed eyes with upturned smile", "wide eyes mid-gasp", "one eye winking")
-- Pose: what the character is doing
-- Background: named simple setting or solid colour
-- Quality: "ultra-detailed chibi illustration, clean line art, vibrant colours"]
-
-PRO PROMPT:
-[Extended 120–160 word prompt with everything in BASE PROMPT plus:
-- Exact hair details: strand behaviour, shine type, flyaways
-- Eye detail: iris pattern, pupil shape, 2 catchlights at specific clock positions
-- Skin: tone description + blush placement
-- Outfit layers: fabric texture, accessories, accessories detail
-- Pose: every limb position described
-- Lighting: key light direction + Kelvin temp + rim light colour
-- Background: fully described scene with depth
-- Rendering: specify "3D Pixar-adjacent chibi render" OR "2D flat cel-shaded chibi" OR "painterly soft chibi" based on format
-- Quality stack: "8K, ultra-detailed chibi art, sharp line art, vivid colour palette, professional illustration, trending on ArtStation"]
+FULL IMAGE PROMPT:
+[100–140 word prompt, ready to paste. Must include:
+- "3D cartoon character, Pixar-style render, photorealistic cartoon, Blender 3D, Octane render"
+- Skin tone: warm honey / deep mahogany / rich caramel / warm brown / deep ebony — be specific
+- Hair: type (coils / loose curls / braids / afro puffs / sleek bob / locs), volume, colour, accessories in hair
+- Eyes: large round glossy eyes, long lashes, iris colour, visible catchlights
+- Outfit: every piece described — top, bottom, shoes, jewellery, accessories
+- Expression: specific (confident smile / laughing / pouty / surprised / winking)
+- Pose: full body or 3/4 body, what she is doing with her hands/body
+- Background: clean white background OR specific setting
+- Lighting: soft studio lighting, warm key light, subtle rim light
+- Quality: "8K, ultra-detailed, sharp focus, professional 3D render, vibrant colours, subsurface scattering on skin"]
 
 MIDJOURNEY PROMPT:
-[Formatted exactly for Midjourney — front-load the most important descriptors, use comma-separated terms, no sentences.
-Always end with: --ar 1:1 --v 6 --style raw --q 2 --no realistic proportions, adult proportions, normal head size, blurry, watermark, text, extra limbs, bad anatomy]
+[Condensed, comma-separated, front-loaded for Midjourney. No sentences — terms only.
+Format: [character description], [hair], [eyes], [outfit], [pose], [background], [style keywords], [quality tags] --ar 1:1 --v 6.1 --style raw --q 2 --no anime, flat art, 2D, sketch, watercolor, bad anatomy, extra fingers, blurry]
 
-TOOL NOTE:
-[One sentence tailored to the chosen output format (Midjourney / DALL-E / Stable Diffusion) with any format-specific tips]
+DALL-E / LEONARDO VERSION:
+[Same content reformatted as natural language sentences, optimised for DALL-E 3 or Leonardo AI. Start with "A 3D rendered Pixar-style cartoon character..."]
 
 PRO TIER also delivers:
-VARIATION A:
-[Complete alternative prompt — different mood, opposite energy from the original. Same character type, different emotional state. Full Midjourney prompt included.]
 
-VARIATION B:
-[Complete alternative prompt — different setting or era (e.g. fantasy, cyberpunk, cottagecore, school). Full Midjourney prompt included.]
+VARIATION A — Different Outfit/Vibe:
+[Same character concept, completely different outfit and setting. Full prompt + Midjourney parameters.]
 
-SELF-CHECK before outputting: Does this prompt contain "chibi style, super-deformed proportions"? Does it describe oversized eyes, large head, compact body? If not — rewrite before sending.`,
+VARIATION B — Different Hair/Energy:
+[Same character, different hair style and emotional energy. Full prompt + Midjourney parameters.]
+
+SELF-CHECK before outputting: Does this prompt produce a realistic-skin 3D cartoon doll with natural/curly hair and fashion outfit? Does it look like the viral TikTok "Black cartoon doll" style? If it would produce flat anime or Japanese chibi instead — rewrite it.`,
 
 // ── 6. VIRAL STORY ────────────────────────────────────────────────────────────
 story: `${GLOBAL}
@@ -383,16 +374,16 @@ The user has chosen this specific theme. Build the ENTIRE content package around
     sales: () =>
       `${tNote}\n\nPRODUCT: ${inputs.product}\nAUDIENCE: ${inputs.audience}\nTONE: ${inputs.tone||'Direct and specific'}\nPRICE: ${inputs.price||'Mid-range'}${force}`,
     chibi: () =>
-      `Generate a complete chibi character prompt package.
+      `Generate a complete 3D cartoon character prompt package in the viral TikTok doll style.
 
 CHARACTER TYPE: ${inputs.characterType}
-MOOD / EXPRESSION: ${inputs.mood || 'Cute and happy with a bright smile'}
-OUTFIT: ${inputs.outfit || 'Choose an outfit that suits this character type perfectly'}
-DETAIL LEVEL: ${inputs.intensity || 'Ultra-detailed'}
+SKIN TONE / ETHNICITY: ${inputs.mood || 'warm brown skin, your choice of specific tone'}
+OUTFIT STYLE: ${inputs.outfit || 'fashion-forward — choose the most viral-worthy outfit for this character'}
+HAIR STYLE: ${inputs.intensity || 'voluminous natural curls or coils'}
 OUTPUT FORMAT: ${inputs.format}
-TIER: ${pro ? 'PRO — deliver all sections including both Variations' : 'FREE — deliver CHARACTER CONCEPT, BASE PROMPT, MIDJOURNEY PROMPT, and TOOL NOTE only'}
+TIER: ${pro ? 'PRO — deliver all sections including Variation A and Variation B' : 'FREE — deliver CHARACTER CONCEPT, FULL IMAGE PROMPT, and MIDJOURNEY PROMPT'}
 
-CRITICAL REMINDER: This is a CHIBI character. The prompt MUST include chibi/super-deformed proportions. The head must be large (1:2 ratio), eyes must be oversized and glossy, body must be compact. This is not regular anime — it is the super-deformed chibi style. Every prompt section must make this explicit.`,
+STYLE REMINDER: This must look like the viral 3D cartoon doll style on TikTok — Pixar/Blender quality, realistic skin texture, voluminous natural hair, glossy doll eyes with lashes, fashion outfit with fabric detail. NOT flat anime. NOT Japanese chibi proportions. The 3D photorealistic cartoon doll look.`,
     story: () =>
       `${tNote}\n\nSTORY TYPE: ${inputs.storyType}\nMOOD: ${inputs.mood||'Uncomfortably honest'}\nENDING: ${inputs.ending||'Revelation that recontextualises the opening'}\nPLATFORM: ${inputs.platform||'Instagram'}${force}`,
     image: () => {

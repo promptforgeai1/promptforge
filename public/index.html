@@ -304,6 +304,95 @@
   .chip-clear{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.68rem;font-family:var(--font-body);padding:0;margin-left:auto;}
   .chip-clear:hover{color:var(--text2);}
   #chipSelectedText{flex:1;}
+
+  /* ── LANDING PAGE ── */
+  #landingPage{position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;display:none;}
+  #landingPage.show{display:block;}
+  .lp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(7,6,26,.92);backdrop-filter:blur(20px);z-index:10;}
+  .lp-logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em;}
+  .lp-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--purple),var(--blue));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .lp-logo-text{background:linear-gradient(135deg,#fff 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .lp-nav-actions{display:flex;align-items:center;gap:10px;}
+  .lp-btn-ghost{background:none;border:1px solid var(--border2);color:var(--text2);padding:7px 18px;border-radius:8px;cursor:pointer;font-size:.82rem;font-family:'Inter',sans-serif;transition:all .2s;}
+  .lp-btn-ghost:hover{border-color:var(--purple);color:var(--text);}
+  .lp-btn-cta{background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:8px 22px;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif;transition:all .2s;}
+  .lp-btn-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(108,92,231,.4);}
+  .lp-hero{max-width:780px;margin:0 auto;padding:5rem 2rem 3rem;text-align:center;}
+  .lp-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(139,120,255,.1);border:1px solid rgba(139,120,255,.2);border-radius:20px;padding:4px 14px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:1.75rem;}
+  .lp-h1{font-family:'Syne',sans-serif;font-size:3.2rem;font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem;}
+  .lp-h1 span{background:linear-gradient(135deg,var(--purple) 0%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .lp-sub{font-size:.95rem;color:var(--text2);line-height:1.7;max-width:520px;margin:0 auto 2.5rem;}
+  .lp-cta-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:1rem;}
+  .lp-cta-primary{background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:14px 32px;border-radius:12px;cursor:pointer;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.03em;transition:all .2s;position:relative;overflow:hidden;}
+  .lp-cta-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);}
+  .lp-cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(108,92,231,.5);}
+  .lp-cta-secondary{background:none;border:1px solid var(--border2);color:var(--text2);padding:14px 28px;border-radius:12px;cursor:pointer;font-size:.88rem;font-family:'Inter',sans-serif;transition:all .2s;}
+  .lp-cta-secondary:hover{border-color:var(--purple);color:var(--text);}
+  .lp-trust{font-size:.72rem;color:var(--text3);letter-spacing:.02em;}
+  .lp-generators{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:900px;margin:3.5rem auto;padding:0 2rem;}
+  .lp-gen-card{background:rgba(22,20,56,.7);border:1px solid var(--border);border-radius:12px;padding:1.1rem;text-align:center;transition:border-color .2s;}
+  .lp-gen-card:hover{border-color:var(--border2);}
+  .lp-gen-icon{font-size:1.4rem;margin-bottom:.5rem;}
+  .lp-gen-name{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;margin-bottom:.3rem;}
+  .lp-gen-desc{font-size:.7rem;color:var(--text3);line-height:1.5;}
+  .lp-features{max-width:860px;margin:0 auto 4rem;padding:0 2rem;}
+  .lp-section-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:2rem;letter-spacing:-.01em;}
+  .lp-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .lp-feature-item{background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+  .lp-feature-icon{font-size:1.2rem;margin-bottom:.6rem;}
+  .lp-feature-title{font-size:.82rem;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:.4rem;}
+  .lp-feature-desc{font-size:.72rem;color:var(--text3);line-height:1.6;}
+  .lp-pricing{background:rgba(22,20,56,.4);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 2rem;text-align:center;margin-bottom:4rem;}
+  .lp-price-cards{display:flex;gap:16px;max-width:600px;margin:2rem auto 0;justify-content:center;}
+  .lp-price-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;flex:1;}
+  .lp-price-card.featured{border-color:var(--purple2);background:linear-gradient(135deg,rgba(108,92,231,.12),rgba(79,172,254,.06));}
+  .lp-price-plan{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;}
+  .lp-price-card.featured .lp-price-plan{color:var(--purple);}
+  .lp-price-amount{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;margin-bottom:.25rem;}
+  .lp-price-period{font-size:.78rem;color:var(--text3);}
+  .lp-price-items{list-style:none;margin:1rem 0 1.5rem;text-align:left;}
+  .lp-price-items li{font-size:.76rem;color:var(--text2);padding:.3rem 0;display:flex;align-items:flex-start;gap:7px;line-height:1.5;}
+  .lp-price-items li::before{content:'✓';color:var(--purple);font-size:.7rem;flex-shrink:0;margin-top:2px;}
+  .lp-price-btn{width:100%;padding:11px;border-radius:9px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;border:none;}
+  .lp-price-btn-free{background:var(--surface2);color:var(--text2);}
+  .lp-price-btn-free:hover{color:var(--text);}
+  .lp-price-btn-pro{background:linear-gradient(135deg,var(--purple2),var(--blue));color:#fff;}
+  .lp-price-btn-pro:hover{box-shadow:0 6px 20px rgba(108,92,231,.4);}
+  .lp-footer{text-align:center;padding:2rem;font-size:.72rem;color:var(--text3);border-top:1px solid var(--border);}
+
+  /* ── AUTH MODAL ── */
+  .auth-modal-overlay{position:fixed;inset:0;background:rgba(7,6,26,.88);backdrop-filter:blur(12px);z-index:600;display:none;align-items:center;justify-content:center;}
+  .auth-modal-overlay.open{display:flex;}
+  .auth-modal{background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2.25rem;max-width:400px;width:90%;text-align:center;}
+  .auth-tabs{display:flex;gap:0;margin-bottom:1.75rem;background:var(--surface);border-radius:10px;padding:3px;}
+  .auth-tab{flex:1;padding:8px;border:none;background:none;color:var(--text3);font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;border-radius:8px;transition:all .15s;}
+  .auth-tab.active{background:var(--surface2);color:var(--text);}
+  .auth-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:.35rem;}
+  .auth-sub{font-size:.76rem;color:var(--text3);margin-bottom:1.5rem;line-height:1.5;}
+  .auth-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text);font-family:'Inter',sans-serif;font-size:.82rem;padding:10px 13px;outline:none;margin-bottom:.75rem;transition:all .2s;}
+  .auth-input:focus{border-color:var(--purple);background:var(--surface2);}
+  .auth-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;border-radius:10px;color:#fff;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:.75rem;}
+  .auth-btn:hover{box-shadow:0 8px 24px rgba(108,92,231,.4);}
+  .auth-divider{display:flex;align-items:center;gap:10px;margin:.5rem 0;color:var(--text3);font-size:.7rem;}
+  .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+  .auth-social{width:100%;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text2);font-family:'Inter',sans-serif;font-size:.8rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;}
+  .auth-social:hover{border-color:var(--border2);color:var(--text);}
+  .auth-note{font-size:.68rem;color:var(--text3);line-height:1.6;}
+  .auth-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.1rem;}
+
+  /* ── CHIBI STYLE PICKER ── */
+  .chibi-picker-btn{display:flex;align-items:center;gap:6px;font-size:.68rem;font-weight:600;color:var(--purple);background:rgba(139,120,255,.08);border:1px solid rgba(139,120,255,.2);border-radius:6px;padding:4px 10px;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:.02em;transition:all .15s;white-space:nowrap;}
+  .chibi-picker-btn:hover{background:rgba(139,120,255,.14);border-color:var(--purple);}
+  .chibi-style-picker{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem;display:none;}
+  .chibi-style-picker.open{display:block;}
+  .chibi-style-picker-title{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem;}
+  .chibi-style-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .chibi-style-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.75rem;cursor:pointer;transition:all .15s;text-align:left;}
+  .chibi-style-card:hover{border-color:var(--border2);}
+  .chibi-style-card.picked{border-color:var(--purple);background:linear-gradient(135deg,rgba(139,120,255,.1),rgba(79,172,254,.06));}
+  .chibi-style-emoji{font-size:1.2rem;margin-bottom:.4rem;display:block;}
+  .chibi-style-name{font-size:.75rem;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:.2rem;}
+  .chibi-style-desc{font-size:.65rem;color:var(--text3);line-height:1.4;}
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
@@ -330,7 +419,7 @@
       <div class="tier-dot"></div>
       <span id="tierLabel">Free Plan</span>
     </div>
-    <button class="btn-ghost">Sign In</button>
+    <button class="btn-ghost" onclick="showLanding()">Sign In</button>
     <button class="btn-pro" onclick="openModal()">⚡ Upgrade to Pro</button>
   </div>
 </nav>
@@ -343,7 +432,7 @@
       <button class="sidebar-item" onclick="switchGen('money',this)"><span class="icon">💰</span><span class="label">Make Money</span></button>
       <button class="sidebar-item" onclick="switchGen('video',this)"><span class="icon">🎬</span><span class="label">Short-Form Video</span></button>
       <button class="sidebar-item" onclick="switchGen('sales',this)"><span class="icon">📢</span><span class="label">Sales & Marketing</span></button>
-      <button class="sidebar-item" onclick="switchGen('chibi',this)"><span class="icon">🧸</span><span class="label">Chibi Character</span></button>
+      <button class="sidebar-item" onclick="switchGen('chibi',this)"><span class="icon">🧸</span><span class="label">3D Doll <span style="opacity:.5;font-size:.72em">(Chibi)</span></span></button>
       <button class="sidebar-item" onclick="switchGen('story',this)"><span class="icon">🎭</span><span class="label">Viral Story</span></button>
       <button class="sidebar-item" onclick="switchGen('image',this)"><span class="icon">🎨</span><span class="label">Smart Image</span></button>
     </div>
@@ -404,8 +493,8 @@
           </div>
           <div class="how-card">
             <div class="how-card-icon">🧸</div>
-            <div class="how-card-title">Chibi Character</div>
-            <div class="how-card-desc">Production-level image prompts with concept, personality, outfit, pose, lighting, background, and style modifiers. Direct paste into Midjourney, DALL·E, or Stable Diffusion.</div>
+            <div class="how-card-title">3D Doll Character</div>
+            <div class="how-card-desc">Prompts for the viral TikTok 3D cartoon doll style — Pixar-quality render, realistic skin tones, voluminous natural hair, fashion outfits. Direct paste into Midjourney or DALL·E.</div>
           </div>
           <div class="how-card">
             <div class="how-card-icon">🎭</div>
@@ -629,54 +718,122 @@
         <div class="gen-form" id="form-chibi">
           <div class="generator-header">
             <div class="generator-icon">🧸</div>
-            <div>
-              <div class="generator-title">Chibi Character Generator</div>
-              <div class="generator-desc">Production-level AI image prompts — concept, personality, outfit, pose, lighting, background, style modifiers. Direct paste into your chosen tool.</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
+                <div class="generator-title" style="margin-bottom:0">3D Doll Character</div>
+                <button class="chibi-picker-btn" onclick="toggleChibiPicker()">✦ See style examples</button>
+              </div>
+              <div class="generator-desc">Prompts for the viral TikTok 3D cartoon doll style — Pixar-quality render, realistic skin, natural hair, fashion outfits.</div>
+            </div>
+          </div>
+
+          <!-- CHIBI STYLE PICKER -->
+          <div class="chibi-style-picker" id="chibiStylePicker">
+            <div class="chibi-style-picker-title">Pick a style — AI will generate exactly this type</div>
+            <div class="chibi-style-grid">
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Glam fashion girl: full glam makeup, big curly hair, elegant dress or co-ord set, gold jewellery, confident pose')">
+                <span class="chibi-style-emoji">💄</span>
+                <div class="chibi-style-name">Glam Girl</div>
+                <div class="chibi-style-desc">Full glam makeup, big curly hair, elegant outfit, gold jewellery</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Streetwear girl: fresh urban look, oversized hoodie or crop top, ripped jeans or biker shorts, chunky sneakers, gold hoops, confident unbothered energy')">
+                <span class="chibi-style-emoji">🧢</span>
+                <div class="chibi-style-name">Streetwear Girl</div>
+                <div class="chibi-style-desc">Urban look, hoodies, sneakers, gold hoops, unbothered energy</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'School uniform girl: navy blazer with gold trim, white shirt, pink satin bow, plaid skirt, braided or curly hair with accessories, diamond earrings, slightly sassy expression')">
+                <span class="chibi-style-emoji">📚</span>
+                <div class="chibi-style-name">School Uniform</div>
+                <div class="chibi-style-desc">Blazer, bow tie, plaid skirt, styled hair, polished look</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Athletic girl: colourful crop top and biker shorts, chunky sneakers, afro puffs or braids, wristbands, energetic dynamic pose like she just won something')">
+                <span class="chibi-style-emoji">🏆</span>
+                <div class="chibi-style-name">Athletic Girl</div>
+                <div class="chibi-style-desc">Crop top, biker shorts, sneakers, puffs, energetic pose</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Little girl: sweet and playful, afro puffs or space buns with colourful hair ties, simple cute dress or skirt and top, round chubby cheeks, big innocent eyes, joyful laughing expression')">
+                <span class="chibi-style-emoji">🎀</span>
+                <div class="chibi-style-name">Little Girl</div>
+                <div class="chibi-style-desc">Afro puffs, cute dress, chubby cheeks, joyful expression</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Streetwear boy: cool urban look, graphic tee, joggers, fresh sneakers, curly or fade haircut, hands in pockets, relaxed cool smile, graffiti wall background')">
+                <span class="chibi-style-emoji">😎</span>
+                <div class="chibi-style-name">Cool Boy</div>
+                <div class="chibi-style-desc">Graphic tee, joggers, fresh sneakers, fade or curls, chill vibe</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Princess girl: floor-length ball gown in jewel tones, tiara, natural curly or braided updo, gloves, sparkling jewellery, regal graceful pose, magical palace or starry background')">
+                <span class="chibi-style-emoji">👑</span>
+                <div class="chibi-style-name">Princess</div>
+                <div class="chibi-style-desc">Ball gown, tiara, jewels, regal pose, magical background</div>
+              </div>
+              <div class="chibi-style-card" onclick="pickChibiStyle(this,'Birthday girl: festive birthday outfit, colourful balloons and confetti background, party hat or crown, afro puffs or curls with ribbons, holding cake or gifts, biggest smile')">
+                <span class="chibi-style-emoji">🎂</span>
+                <div class="chibi-style-name">Birthday Girl</div>
+                <div class="chibi-style-desc">Party outfit, balloons, confetti, cake, biggest celebration smile</div>
+              </div>
+            </div>
+            <div id="chibiPickedMsg" style="display:none;margin-top:.75rem;font-size:.72rem;color:var(--purple);background:rgba(139,120,255,.07);border-radius:6px;padding:.4rem .65rem;display:none;align-items:center;gap:8px;">
+              <span id="chibiPickedText" style="flex:1"></span>
+              <button onclick="clearChibiStyle()" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:.68rem;font-family:'Inter',sans-serif">✕ clear</button>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Character Type <span class="req">*</span></label>
             <select class="form-select" id="c-type">
               <option value="">Select type...</option>
-              <option>Anime girl</option>
-              <option>Anime boy</option>
-              <option>Fantasy character</option>
-              <option>Cute creature</option>
-              <option>Warrior / Fighter</option>
-              <option>Magical girl</option>
+              <option>Girl — glam / fashion</option>
+              <option>Girl — casual / cute</option>
+              <option>Girl — streetwear / urban</option>
+              <option>Girl — elegant / classy</option>
+              <option>Girl — sporty / athletic</option>
+              <option>Boy — streetwear / cool</option>
+              <option>Boy — casual / cute</option>
+              <option>Boy — smart / preppy</option>
+              <option>Little girl — sweet / playful</option>
+              <option>Little boy — fun / energetic</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Mood</label>
+            <label class="form-label">Skin Tone</label>
             <select class="form-select" id="c-mood">
-              <option value="">Select mood...</option>
-              <option>Cute / Happy</option>
-              <option>Shy / Bashful</option>
-              <option>Confident / Cool</option>
-              <option>Angry / Fierce</option>
-              <option>Melancholic / Emotional</option>
-              <option>Mysterious</option>
+              <option value="">AI chooses</option>
+              <option>Deep ebony — rich dark brown</option>
+              <option>Deep mahogany — warm dark brown</option>
+              <option>Rich caramel — medium warm brown</option>
+              <option>Honey brown — medium golden tone</option>
+              <option>Warm tan — light-medium brown</option>
+              <option>Fair / light skin</option>
+              <option>Mixed / ambiguous warm tone</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Outfit</label>
+            <label class="form-label">Hair Style</label>
             <select class="form-select" id="c-outfit">
-              <option value="">Select outfit...</option>
-              <option>School uniform</option>
-              <option>Streetwear / Urban</option>
-              <option>Princess / Royalty</option>
-              <option>Casual everyday</option>
-              <option>Fantasy armour</option>
-              <option>Magical outfit</option>
+              <option value="">AI chooses best style</option>
+              <option>Big curly afro puffs</option>
+              <option>Voluminous loose coils</option>
+              <option>Long braids / box braids</option>
+              <option>Sleek edges with puff</option>
+              <option>Defined spiral curls</option>
+              <option>Short natural / TWA</option>
+              <option>Straight sleek blowout</option>
+              <option>Space buns / double puffs</option>
+              <option>Locs / faux locs</option>
+              <option>Wavy / beach waves</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Style Intensity</label>
+            <label class="form-label">Outfit Vibe</label>
             <select class="form-select" id="c-intensity">
-              <option value="">Select intensity...</option>
-              <option>Light / Simple</option>
-              <option>Medium / Detailed</option>
-              <option>Ultra-detailed / Cinematic</option>
+              <option value="">AI chooses</option>
+              <option>Streetwear — hoodie, sneakers, cap</option>
+              <option>Glam — dress, heels, jewellery</option>
+              <option>School uniform — blazer, bow, skirt</option>
+              <option>Athleisure — crop top, biker shorts</option>
+              <option>Casual cute — jeans, tee, trainers</option>
+              <option>Princess / royal gown</option>
+              <option>Cultural / traditional dress</option>
+              <option>Party / birthday outfit</option>
             </select>
           </div>
           <div class="form-group">
@@ -684,13 +841,14 @@
             <select class="form-select" id="c-format">
               <option value="">Select AI tool...</option>
               <option>Midjourney</option>
-              <option>DALL·E</option>
+              <option>DALL·E 3</option>
+              <option>Leonardo AI</option>
               <option>Stable Diffusion</option>
               <option>General (any tool)</option>
             </select>
           </div>
-          <button class="btn-generate" onclick="generate('chibi')">⚡ Generate My Character Prompt</button>
-          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Direct paste into Midjourney</span></div>
+          <button class="btn-generate" onclick="generate('chibi')">⚡ Generate My 3D Doll Prompt</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Paste directly into your AI tool</span></div>
         </div>
 
         <!-- STORY -->
@@ -945,6 +1103,178 @@
   </div>
 </div>
 
+
+<!-- ── LANDING PAGE ────────────────────────────────────────────────────── -->
+<div id="landingPage" class="show">
+  <nav class="lp-nav">
+    <div class="lp-logo">
+      <div class="lp-logo-icon">⚡</div>
+      <span class="lp-logo-text">PromptForge AI</span>
+    </div>
+    <div class="lp-nav-actions">
+      <button class="lp-btn-ghost" onclick="openAuth('signin')">Sign In</button>
+      <button class="lp-btn-cta" onclick="openAuth('signup')">Get Started Free</button>
+    </div>
+  </nav>
+
+  <div class="lp-hero">
+    <div class="lp-eyebrow">⚡ Premium Content Engine</div>
+    <h1 class="lp-h1">Turn Any Idea Into<br><span>Viral Content</span><br>in Seconds</h1>
+    <p class="lp-sub">7 professional generators — scripts, income ideas, 3D doll characters, sales copy, viral stories, and image prompts. Built for creators who are serious about results.</p>
+    <div class="lp-cta-row">
+      <button class="lp-cta-primary" onclick="openAuth('signup')">⚡ Start Free — No Card Needed</button>
+      <button class="lp-cta-secondary" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div class="lp-trust">5 free generations daily · No credit card · Cancel anytime</div>
+  </div>
+
+  <div class="lp-generators">
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">🎁</div>
+      <div class="lp-gen-name">Surprise Me</div>
+      <div class="lp-gen-desc">Full content package — hooks, script, image prompt, monetisation</div>
+    </div>
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">💰</div>
+      <div class="lp-gen-name">Make Money</div>
+      <div class="lp-gen-desc">Realistic income ideas with step-by-step execution plans</div>
+    </div>
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">🎬</div>
+      <div class="lp-gen-name">Short-Form Video</div>
+      <div class="lp-gen-desc">Scroll-stopping scripts with scene directions and platform strategy</div>
+    </div>
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">📢</div>
+      <div class="lp-gen-name">Sales Copy</div>
+      <div class="lp-gen-desc">Conversion copy calibrated to your exact price point</div>
+    </div>
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">🧸</div>
+      <div class="lp-gen-name">3D Doll (Chibi)</div>
+      <div class="lp-gen-desc">Viral TikTok 3D character prompts — Pixar-style, natural hair, fashion</div>
+    </div>
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">🎭</div>
+      <div class="lp-gen-name">Viral Story</div>
+      <div class="lp-gen-desc">Platform-engineered stories with hook, twist, and ending</div>
+    </div>
+    <div class="lp-gen-card">
+      <div class="lp-gen-icon">🎨</div>
+      <div class="lp-gen-name">Smart Image</div>
+      <div class="lp-gen-desc">Technical image briefs formatted for Midjourney and DALL·E</div>
+    </div>
+    <div class="lp-gen-card" style="background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border-color:var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="lp-gen-icon">⚡</div>
+      <div class="lp-gen-name" style="color:var(--purple)">Pro Unlocks All</div>
+      <div class="lp-gen-desc">Full outputs · Unlimited generations · £19/month</div>
+    </div>
+  </div>
+
+  <div class="lp-features">
+    <div class="lp-section-title">Why creators choose PromptForge</div>
+    <div class="lp-feature-grid">
+      <div class="lp-feature-item">
+        <div class="lp-feature-icon">🎯</div>
+        <div class="lp-feature-title">Specific, not generic</div>
+        <div class="lp-feature-desc">Every output is built around real numbers, real platforms, and real situations — not templates anyone could write in five minutes.</div>
+      </div>
+      <div class="lp-feature-item">
+        <div class="lp-feature-icon">⚡</div>
+        <div class="lp-feature-title">Ready to use instantly</div>
+        <div class="lp-feature-desc">Copy and post. No editing. No rewriting. Every output is structured, complete, and formatted for the platform it belongs on.</div>
+      </div>
+      <div class="lp-feature-item">
+        <div class="lp-feature-icon">💰</div>
+        <div class="lp-feature-title">Built to monetise</div>
+        <div class="lp-feature-desc">Every generator includes a monetisation angle — who pays, how much, through which platform. Not inspiration. Transactions.</div>
+      </div>
+      <div class="lp-feature-item">
+        <div class="lp-feature-icon">🧸</div>
+        <div class="lp-feature-title">3D Doll characters</div>
+        <div class="lp-feature-desc">The viral TikTok 3D doll style — Pixar-quality renders with natural hair, realistic skin tones, and fashion outfits. Paste directly into Midjourney.</div>
+      </div>
+      <div class="lp-feature-item">
+        <div class="lp-feature-icon">🎬</div>
+        <div class="lp-feature-title">Scripts that convert</div>
+        <div class="lp-feature-desc">Line-by-line scripts with scene directions, text overlays, and platform strategy. Written for someone filming alone on a phone.</div>
+      </div>
+      <div class="lp-feature-item">
+        <div class="lp-feature-icon">🔒</div>
+        <div class="lp-feature-title">Secure and private</div>
+        <div class="lp-feature-desc">Your inputs never leave the server. System prompts are never exposed. Built with the same security standards as professional SaaS tools.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-pricing">
+    <div class="lp-section-title">Simple pricing</div>
+    <div class="lp-price-cards">
+      <div class="lp-price-card">
+        <div class="lp-price-plan">Free</div>
+        <div class="lp-price-amount">£0</div>
+        <div class="lp-price-period">forever</div>
+        <ul class="lp-price-items">
+          <li>5 generations per day</li>
+          <li>All 7 generators</li>
+          <li>Preview outputs</li>
+          <li>No credit card needed</li>
+        </ul>
+        <button class="lp-price-btn lp-price-btn-free" onclick="enterApp()">Start Free</button>
+      </div>
+      <div class="lp-price-card featured">
+        <div class="lp-price-plan">Pro</div>
+        <div class="lp-price-amount">£19</div>
+        <div class="lp-price-period">per month</div>
+        <ul class="lp-price-items">
+          <li>Unlimited generations</li>
+          <li>Complete structured outputs</li>
+          <li>Full scripts, strategies, variations</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <button class="lp-price-btn lp-price-btn-pro" onclick="openAuth('signup')">⚡ Get Pro</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-footer">
+    © 2026 PromptForge AI · Built for creators ·
+    <span style="cursor:pointer;text-decoration:underline" onclick="enterApp()">Enter app</span>
+  </div>
+</div>
+
+<!-- ── AUTH MODAL ────────────────────────────────────────────────────────── -->
+<div class="auth-modal-overlay" id="authModal">
+  <div class="auth-modal" style="position:relative">
+    <button class="auth-close" onclick="closeAuth()">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabSignup" onclick="switchAuthTab('signup')">Create Account</button>
+      <button class="auth-tab" id="tabSignin" onclick="switchAuthTab('signin')">Sign In</button>
+    </div>
+    <div id="authSignup">
+      <div class="auth-title">Join PromptForge</div>
+      <div class="auth-sub">Start with 5 free generations daily.<br>No credit card required.</div>
+      <input class="auth-input" type="text" placeholder="Your name">
+      <input class="auth-input" type="email" placeholder="Email address">
+      <input class="auth-input" type="password" placeholder="Create a password">
+      <button class="auth-btn" onclick="enterApp()">⚡ Create Free Account</button>
+      <div class="auth-divider">or</div>
+      <button class="auth-social" onclick="enterApp()">🔷 Continue with Google</button>
+      <div class="auth-note">By signing up you agree to our Terms and Privacy Policy.</div>
+    </div>
+    <div id="authSignin" style="display:none">
+      <div class="auth-title">Welcome back</div>
+      <div class="auth-sub">Sign in to your PromptForge account.</div>
+      <input class="auth-input" type="email" placeholder="Email address">
+      <input class="auth-input" type="password" placeholder="Password">
+      <button class="auth-btn" onclick="enterApp()">Sign In</button>
+      <div class="auth-divider">or</div>
+      <button class="auth-social" onclick="enterApp()">🔷 Continue with Google</button>
+      <div class="auth-note" style="cursor:pointer;text-decoration:underline" onclick="switchAuthTab('signup')">Don't have an account? Sign up free</div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ─── PROMPTFORGE AI — SECURE FRONTEND ────────────────────────────────────────
 // No API keys. No system prompts. All generation happens via /api/generate.
@@ -958,6 +1288,68 @@ let currentType = '';
 let currentInputs = {};
 let sessionGenCount = 0;
 let currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
+
+
+// ─── LANDING PAGE ────────────────────────────────────────────────────────────
+function enterApp() {
+  document.getElementById('landingPage').classList.remove('show');
+  document.getElementById('authModal').classList.remove('open');
+  localStorage.setItem('pf_entered', '1');
+}
+
+function showLanding() {
+  document.getElementById('landingPage').classList.add('show');
+}
+
+function openAuth(tab) {
+  switchAuthTab(tab);
+  document.getElementById('authModal').classList.add('open');
+}
+
+function closeAuth() {
+  document.getElementById('authModal').classList.remove('open');
+}
+
+function switchAuthTab(tab) {
+  document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+  document.getElementById('tabSignin').classList.toggle('active', tab === 'signin');
+  document.getElementById('authSignup').style.display = tab === 'signup' ? 'block' : 'none';
+  document.getElementById('authSignin').style.display = tab === 'signin'  ? 'block' : 'none';
+}
+
+// Skip landing if already entered
+if (localStorage.getItem('pf_entered')) {
+  document.getElementById('landingPage').classList.remove('show');
+}
+
+// ─── CHIBI STYLE PICKER ───────────────────────────────────────────────────────
+let chibiStyleValue = '';
+
+function toggleChibiPicker() {
+  const picker = document.getElementById('chibiStylePicker');
+  picker.classList.toggle('open');
+}
+
+function pickChibiStyle(el, styleDesc) {
+  document.querySelectorAll('.chibi-style-card').forEach(c => c.classList.remove('picked'));
+  el.classList.add('picked');
+  chibiStyleValue = styleDesc;
+  const msg = document.getElementById('chibiPickedMsg');
+  const txt = document.getElementById('chibiPickedText');
+  if (msg && txt) {
+    txt.textContent = '✦ Style selected: ' + el.querySelector('.chibi-style-name').textContent;
+    msg.style.display = 'flex';
+  }
+  // Auto-close picker after pick
+  document.getElementById('chibiStylePicker').classList.remove('open');
+}
+
+function clearChibiStyle() {
+  chibiStyleValue = '';
+  document.querySelectorAll('.chibi-style-card').forEach(c => c.classList.remove('picked'));
+  const msg = document.getElementById('chibiPickedMsg');
+  if (msg) msg.style.display = 'none';
+}
 
 // ─── ONBOARDING ──────────────────────────────────────────────────────────────
 function dismissOnboarding() {
@@ -986,7 +1378,7 @@ const loadingMsgs = {
   money:['Finding the non-obvious income angle...','Building your execution blueprint...','Mapping the specific, not the generic...','Calculating your first £100 path...','Rejecting the obvious ideas...'],
   video:['Writing your scroll-stopping hook...','Scripting the pattern interrupt...','Building your scene-by-scene breakdown...','Crafting the viral version...','Engineering the addictive opening...'],
   sales:['Calibrating to your price point...','Writing copy that names the real problem...','Engineering your persuasion arc...','Building your value stack...','Writing the objection handler...'],
-  chibi:['Sequencing all visual layers...','Engineering your character concept...','Formatting for your chosen tool...','Building your production-level prompt...','Specifying lighting and rendering...'],
+  chibi:['Building your 3D doll character...','Crafting her hair and outfit details...','Formatting for your AI tool...','Specifying skin tone and features...','Creating your Midjourney-ready prompt...'],
   story:['Opening the story mid-scene...','Building your tension arc...','Crafting the twist...','Engineering the hook that holds...','Writing the ending that earns it...'],
   image:['Building your technical creative brief...','Selecting the precise style...','Specifying lighting and composition...','Engineering your cinematic prompt...','Formatting for your intended tool...']
 };
@@ -995,7 +1387,7 @@ const loadingSubtexts = {
   money:'Specific. Executable. No motivation.',
   video:'Platform-calibrated for maximum watch time',
   sales:'Price point psychology applied',
-  chibi:'Concept + Prompt + Midjourney parameters',
+  chibi:'3D Pixar-style doll · Fashion outfit · Ready to paste',
   story:'Hook + Build-up + Twist + Ending',
   image:'Scene + Style + Lighting + Composition'
 };
@@ -1054,7 +1446,16 @@ function collectInputs(type) {
     },
     chibi: () => {
       if (!v('c-type') || !v('c-format')) return null;
-      return { characterType: v('c-type'), mood: v('c-mood'), outfit: v('c-outfit'), intensity: v('c-intensity'), format: v('c-format') };
+      // If user picked a style from the picker, use that as the character type
+      const styleOverride = chibiStyleValue || '';
+      return {
+        characterType: styleOverride || v('c-type'),
+        mood: v('c-mood'),
+        outfit: v('c-outfit'),
+        intensity: v('c-intensity'),
+        format: v('c-format'),
+        styleOverride: !!styleOverride
+      };
     },
     story: () => {
       if (!v('st-type')) return null;
@@ -1281,7 +1682,7 @@ function parseOutput(text) {
 }
 
 function genName(type) {
-  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'Chibi Prompt',story:'Viral Story',image:'Image Prompt'}[type]||'Output';
+  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'3D Doll Prompt',story:'Viral Story',image:'Image Prompt'}[type]||'Output';
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
