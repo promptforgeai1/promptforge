@@ -393,6 +393,22 @@
   .chibi-style-emoji{font-size:1.2rem;margin-bottom:.4rem;display:block;}
   .chibi-style-name{font-size:.75rem;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:.2rem;}
   .chibi-style-desc{font-size:.65rem;color:var(--text3);line-height:1.4;}
+
+  /* ── PHOTO UPLOAD ── */
+  .photo-upload-zone{border:1px dashed var(--border2);border-radius:10px;padding:1rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(139,120,255,.03);margin-bottom:1rem;position:relative;}
+  .photo-upload-zone:hover{border-color:var(--purple);background:rgba(139,120,255,.07);}
+  .photo-upload-zone.has-photo{border-style:solid;border-color:var(--purple);background:rgba(139,120,255,.06);}
+  .photo-upload-icon{font-size:1.4rem;margin-bottom:.4rem;}
+  .photo-upload-label{font-size:.75rem;font-weight:600;color:var(--text2);margin-bottom:.2rem;font-family:'Inter',sans-serif;}
+  .photo-upload-sub{font-size:.65rem;color:var(--text3);}
+  .photo-upload-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
+  .photo-preview-wrap{display:none;align-items:center;gap:10px;padding:.5rem .75rem;background:rgba(139,120,255,.06);border:1px solid var(--border2);border-radius:8px;margin-bottom:.75rem;}
+  .photo-preview-wrap.show{display:flex;}
+  .photo-preview-thumb{width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;}
+  .photo-preview-name{font-size:.72rem;color:var(--text2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .photo-preview-clear{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.8rem;padding:0;line-height:1;}
+  .photo-preview-clear:hover{color:var(--red);}
+  .photo-mode-note{font-size:.68rem;color:var(--purple);background:rgba(139,120,255,.08);border-radius:6px;padding:.35rem .6rem;margin-bottom:.85rem;line-height:1.5;}
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
@@ -435,6 +451,7 @@
       <button class="sidebar-item" onclick="switchGen('chibi',this)"><span class="icon">🧸</span><span class="label">3D Doll <span style="opacity:.5;font-size:.72em">(Chibi)</span></span></button>
       <button class="sidebar-item" onclick="switchGen('story',this)"><span class="icon">🎭</span><span class="label">Viral Story</span></button>
       <button class="sidebar-item" onclick="switchGen('image',this)"><span class="icon">🎨</span><span class="label">Smart Image</span></button>
+      <button class="sidebar-item" onclick="switchGen('design',this)"><span class="icon">✏️</span><span class="label">Design Studio</span><span class="badge" style="background:linear-gradient(135deg,#f7b731,#ff6b6b);color:#fff">NEW</span></button>
     </div>
     <div class="sidebar-divider"></div>
     <span class="sidebar-label">Account</span>
@@ -781,45 +798,115 @@
             <label class="form-label">Character Type <span class="req">*</span></label>
             <select class="form-select" id="c-type">
               <option value="">Select type...</option>
-              <option>Girl — glam / fashion</option>
-              <option>Girl — casual / cute</option>
-              <option>Girl — streetwear / urban</option>
+              <optgroup label="── Girls ──">
+              <option>Girl — glam / fashion forward</option>
+              <option>Girl — casual / cute everyday</option>
+              <option>Girl — streetwear / urban cool</option>
               <option>Girl — elegant / classy</option>
               <option>Girl — sporty / athletic</option>
-              <option>Boy — streetwear / cool</option>
+              <option>Girl — bohemian / artsy</option>
+              <option>Girl — preppy / school smart</option>
+              <option>Girl — princess / royal</option>
+              </optgroup>
+              <optgroup label="── Boys ──">
+              <option>Boy — streetwear / fresh</option>
               <option>Boy — casual / cute</option>
               <option>Boy — smart / preppy</option>
+              <option>Boy — sporty / athletic</option>
+              <option>Boy — artistic / creative</option>
+              </optgroup>
+              <optgroup label="── Little Kids ──">
               <option>Little girl — sweet / playful</option>
+              <option>Little girl — birthday / celebration</option>
               <option>Little boy — fun / energetic</option>
+              <option>Little boy — superhero / adventure</option>
+              <option>Toddler — adorable / chunky</option>
+              </optgroup>
+              <optgroup label="── Special ──">
+              <option>Couple — matching outfits</option>
+              <option>Best friends — duo set</option>
+              <option>Family portrait set</option>
+              </optgroup>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Skin Tone</label>
             <select class="form-select" id="c-mood">
               <option value="">AI chooses</option>
-              <option>Deep ebony — rich dark brown</option>
-              <option>Deep mahogany — warm dark brown</option>
-              <option>Rich caramel — medium warm brown</option>
-              <option>Honey brown — medium golden tone</option>
-              <option>Warm tan — light-medium brown</option>
-              <option>Fair / light skin</option>
-              <option>Mixed / ambiguous warm tone</option>
+              <optgroup label="── Deep Tones ──">
+              <option>Deep ebony — rich blue-black undertone</option>
+              <option>Deep mahogany — warm red-brown dark</option>
+              <option>Dark chocolate — smooth deep brown</option>
+              </optgroup>
+              <optgroup label="── Medium Tones ──">
+              <option>Rich caramel — warm medium brown</option>
+              <option>Honey brown — golden medium tone</option>
+              <option>Cinnamon — reddish warm brown</option>
+              <option>Warm olive — Mediterranean medium</option>
+              </optgroup>
+              <optgroup label="── Light-Medium Tones ──">
+              <option>Warm tan — light-medium golden</option>
+              <option>Sandy beige — warm light brown</option>
+              <option>Golden — warm South Asian light</option>
+              <option>Peachy warm — East Asian light warm</option>
+              </optgroup>
+              <optgroup label="── Fair & Light ──">
+              <option>Fair — light with pink undertone</option>
+              <option>Porcelain — very light cool tone</option>
+              <option>Ivory — light with warm undertone</option>
+              <option>Pale with freckles</option>
+              </optgroup>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Hair Style</label>
             <select class="form-select" id="c-outfit">
               <option value="">AI chooses best style</option>
+              <optgroup label="── Afro-textured & Natural ──">
               <option>Big curly afro puffs</option>
-              <option>Voluminous loose coils</option>
-              <option>Long braids / box braids</option>
-              <option>Sleek edges with puff</option>
-              <option>Defined spiral curls</option>
-              <option>Short natural / TWA</option>
-              <option>Straight sleek blowout</option>
-              <option>Space buns / double puffs</option>
-              <option>Locs / faux locs</option>
-              <option>Wavy / beach waves</option>
+              <option>Voluminous coily afro — full and round</option>
+              <option>Defined 4C coils — tight and springy</option>
+              <option>Space buns / double puffs with edges laid</option>
+              <option>Long box braids — waist length</option>
+              <option>Knotless braids with beads</option>
+              <option>Goddess locs — long flowing</option>
+              <option>Faux locs — medium length</option>
+              <option>Cornrows — geometric pattern</option>
+              <option>Sleek edges with high puff</option>
+              <option>Short natural TWA — tapered</option>
+              <option>Wash and go — defined coils loose</option>
+              </optgroup>
+              <optgroup label="── Curly & Wavy ──">
+              <option>Loose ringlets — 3A curl pattern</option>
+              <option>Voluminous 3B curls — shoulder length</option>
+              <option>Curly bob — chin length bouncy</option>
+              <option>Long curly — waist length wild volume</option>
+              <option>Beachy waves — loose relaxed</option>
+              <option>S-wave — medium length glossy</option>
+              <option>Wavy bob with curtain fringe</option>
+              </optgroup>
+              <optgroup label="── Straight & Sleek ──">
+              <option>Long straight — pin straight glossy</option>
+              <option>Straight with blunt fringe — classic bob</option>
+              <option>Sleek high ponytail — pulled tight</option>
+              <option>Straight with highlights — ombre tips</option>
+              <option>Straight side-swept fringe</option>
+              </optgroup>
+              <optgroup label="── Asian Hair Styles ──">
+              <option>Wolf cut — layered choppy Korean style</option>
+              <option>Two-block cut — undercut with volume on top</option>
+              <option>Straight with see-through fringe</option>
+              <option>Half-up bow — ribbon tied at crown</option>
+              <option>Long straight with wispy fringe</option>
+              </optgroup>
+              <optgroup label="── Fashion & Fantasy ──">
+              <option>Pastel coloured curls — soft pink or lilac</option>
+              <option>Half-up space buns — playful</option>
+              <option>Coloured tips — ombre fade</option>
+              <option>Pigtails with ribbons — cute and youthful</option>
+              <option>High sleek bun — elegant updo</option>
+              <option>Braided crown updo — regal</option>
+              </optgroup>
             </select>
           </div>
           <div class="form-group">
@@ -847,6 +934,23 @@
               <option>General (any tool)</option>
             </select>
           </div>
+          <!-- PHOTO UPLOAD FOR CHIBI -->
+          <div class="form-group" style="margin-top:.25rem">
+            <label class="form-label">📸 Upload Your Photo <span style="color:var(--text3);font-weight:400;text-transform:none;letter-spacing:0">(optional — AI creates a doll that looks like you)</span></label>
+            <div class="photo-upload-zone" id="chibiUploadZone">
+              <input type="file" class="photo-upload-input" id="chibiPhotoInput" accept="image/*" onchange="handlePhotoUpload('chibi',this)">
+              <div class="photo-upload-icon">📷</div>
+              <div class="photo-upload-label">Tap to upload your photo</div>
+              <div class="photo-upload-sub">JPG, PNG or WEBP · Max 5MB</div>
+            </div>
+            <div class="photo-preview-wrap" id="chibiPhotoPreview">
+              <img class="photo-preview-thumb" id="chibiPhotoThumb" src="" alt="">
+              <span class="photo-preview-name" id="chibiPhotoName"></span>
+              <button class="photo-preview-clear" onclick="clearPhoto('chibi')">✕</button>
+            </div>
+            <div class="photo-mode-note" id="chibiPhotoNote" style="display:none">✦ AI will analyse your photo and build the prompt around your features — skin tone, hair, face shape</div>
+          </div>
+
           <button class="btn-generate" onclick="generate('chibi')">⚡ Generate My 3D Doll Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Paste directly into your AI tool</span></div>
         </div>
@@ -956,10 +1060,294 @@
               <option>Book / Story cover</option>
             </select>
           </div>
+          <!-- PHOTO UPLOAD FOR IMAGE -->
+          <div class="form-group" style="margin-top:.25rem">
+            <label class="form-label">📸 Upload a Reference Photo <span style="color:var(--text3);font-weight:400;text-transform:none;letter-spacing:0">(optional — AI builds prompt around this image)</span></label>
+            <div class="photo-upload-zone" id="imageUploadZone">
+              <input type="file" class="photo-upload-input" id="imagePhotoInput" accept="image/*" onchange="handlePhotoUpload('image',this)">
+              <div class="photo-upload-icon">🖼️</div>
+              <div class="photo-upload-label">Tap to upload a reference image</div>
+              <div class="photo-upload-sub">Your photo, a style reference, a scene — AI will describe it as a prompt</div>
+            </div>
+            <div class="photo-preview-wrap" id="imagePhotoPreview">
+              <img class="photo-preview-thumb" id="imagePhotoThumb" src="" alt="">
+              <span class="photo-preview-name" id="imagePhotoName"></span>
+              <button class="photo-preview-clear" onclick="clearPhoto('image')">✕</button>
+            </div>
+            <div class="photo-mode-note" id="imagePhotoNote" style="display:none">✦ AI will analyse your image and generate a detailed prompt that recreates or transforms it</div>
+          </div>
+
           <button class="btn-generate" onclick="generate('image')">⚡ Generate My Image Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🖼️ Technical brief ready to paste</span></div>
         </div>
 
+
+        <!-- DESIGN STUDIO -->
+        <div class="gen-form" id="form-design">
+          <div class="generator-header">
+            <div class="generator-icon">✏️</div>
+            <div>
+              <div class="generator-title">Design Studio</div>
+              <div class="generator-desc">Professional prompts for clipart sets, t-shirt designs, and product mockups — built for Etsy, Redbubble, Printful, and every POD platform.</div>
+            </div>
+          </div>
+
+          <!-- DESIGN TYPE SELECTOR -->
+          <div class="form-group">
+            <label class="form-label">What are you creating? <span class="req">*</span></label>
+            <select class="form-select" id="ds-type" onchange="updateDesignForm()" required>
+              <option value="">Select design type...</option>
+              <option value="tshirt">👕 T-Shirt Design</option>
+              <option value="clipart">🎨 Clipart Set</option>
+              <option value="mockup-apparel">🧍 Mockup — Apparel / Clothing</option>
+              <option value="mockup-product">📦 Mockup — Product / Digital</option>
+            </select>
+          </div>
+
+          <!-- NICHE — always visible -->
+          <div class="form-group">
+            <label class="form-label">Niche or Audience</label>
+            <select class="form-select" id="ds-niche-select" onchange="syncNicheInput()">
+              <option value="">Choose from list or type below...</option>
+              <optgroup label="── Culture & Identity ──">
+              <option>Black excellence & Afrocentric pride</option>
+              <option>Melanin & natural beauty</option>
+              <option>Latina culture & heritage</option>
+              <option>South Asian & Desi culture</option>
+              <option>Asian American culture</option>
+              <option>Caribbean & island life</option>
+              <option>African heritage & roots</option>
+              </optgroup>
+              <optgroup label="── Faith & Inspiration ──">
+              <option>Christian faith & scripture</option>
+              <option>Muslim faith & modest lifestyle</option>
+              <option>Spiritual & mindfulness</option>
+              <option>Motivational & self-belief</option>
+              </optgroup>
+              <optgroup label="── Family & Lifestyle ──">
+              <option>Mum life & motherhood</option>
+              <option>Dad life & fatherhood</option>
+              <option>Grandparent & family love</option>
+              <option>Natural hair mum community</option>
+              <option>Homeschool family life</option>
+              <option>Dog mum & pet lover</option>
+              </optgroup>
+              <optgroup label="── Profession & Community ──">
+              <option>Nurse & healthcare worker</option>
+              <option>Teacher & educator</option>
+              <option>Social worker & advocate</option>
+              <option>Entrepreneur & boss energy</option>
+              <option>Hair stylist & beauty professional</option>
+              </optgroup>
+              <optgroup label="── Style & Aesthetic ──">
+              <option>Streetwear & urban culture</option>
+              <option>Cottagecore & vintage</option>
+              <option>Boho & wellness lifestyle</option>
+              <option>Retro 90s nostalgia</option>
+              <option>Minimalist & modern</option>
+              <option>K-beauty & Korean aesthetic</option>
+              <option>Pride & LGBTQ+ celebration</option>
+              </optgroup>
+              <optgroup label="── Seasonal & Occasion ──">
+              <option>Birthday & celebration</option>
+              <option>Christmas & holiday</option>
+              <option>Valentine's Day</option>
+              <option>Summer vibes</option>
+              <option>Back to school</option>
+              </optgroup>
+            </select>
+            <input type="text" class="form-input" id="ds-niche" placeholder="Or type your own niche — e.g. Black homeschool mums, natural hair community, faith-based women over 40..." style="margin-top:6px">
+            <div class="field-note">Pick from the list OR type your own — AI will generate specifically for this audience</div>
+          </div>
+
+          <!-- T-SHIRT SPECIFIC -->
+          <div id="ds-tshirt-fields" style="display:none">
+            <div class="form-group">
+              <label class="form-label">Design Style</label>
+              <select class="form-select" id="ds-tshirt-style">
+                <option value="">AI chooses best style</option>
+                <option>Bold graphic illustration</option>
+                <option>Text-based — powerful quote or slogan</option>
+                <option>Vintage distressed — worn retro look</option>
+                <option>Minimalist line art</option>
+                <option>Watercolour illustration</option>
+                <option>Streetwear graphic — urban bold</option>
+                <option>Floral & nature — botanical</option>
+                <option>Cartoon character / mascot</option>
+                <option>Abstract geometric</option>
+                <option>Hand-lettering calligraphy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Colour Palette</label>
+              <select class="form-select" id="ds-tshirt-colour">
+                <option value="">AI chooses</option>
+                <option>Black, white and gold — premium classic</option>
+                <option>Bold bright — high impact multicolour</option>
+                <option>Earthy tones — terracotta, sage, cream</option>
+                <option>Pastel soft — blush, mint, lavender</option>
+                <option>Red, black and green — Pan-African</option>
+                <option>Neon and dark — streetwear energy</option>
+                <option>Navy and gold — regal elegant</option>
+                <option>Monochrome — black and white only</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Platform / Print Method</label>
+              <select class="form-select" id="ds-tshirt-platform">
+                <option value="">Select platform...</option>
+                <option>Etsy digital download — PNG transparent</option>
+                <option>Merch by Amazon — simple clean design</option>
+                <option>Redbubble — detailed illustration</option>
+                <option>Printful / Printify — DTG print</option>
+                <option>Canva template — editable</option>
+                <option>Cricut / vinyl cutting — SVG format</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Include Text / Slogan?</label>
+              <select class="form-select" id="ds-tshirt-text">
+                <option value="">AI decides</option>
+                <option>Yes — generate a powerful slogan</option>
+                <option>Graphic only — no text</option>
+                <option>Text only — typography design</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- CLIPART SPECIFIC -->
+          <div id="ds-clipart-fields" style="display:none">
+            <div class="form-group">
+              <label class="form-label">Art Style</label>
+              <select class="form-select" id="ds-clipart-style">
+                <option value="">AI chooses best style</option>
+                <option>Watercolour — soft painterly wash</option>
+                <option>Flat vector — clean bold shapes</option>
+                <option>Line art — simple black outline</option>
+                <option>3D cartoon — Pixar-adjacent render</option>
+                <option>Vintage illustration — retro engraved</option>
+                <option>Boho folk art — organic patterns</option>
+                <option>Kawaii cute — big eyes pastel</option>
+                <option>Realistic botanical — detailed nature</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Clipart Theme</label>
+              <input type="text" class="form-input" id="ds-clipart-theme" placeholder="e.g. Black girl magic elements, faith symbols and flowers, mum life icons, natural hair styles...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Set Size</label>
+              <select class="form-select" id="ds-clipart-size">
+                <option value="">Standard set</option>
+                <option>Small set — 5 to 8 elements</option>
+                <option>Medium set — 10 to 15 elements</option>
+                <option>Large bundle — 20+ elements</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Background</label>
+              <select class="form-select" id="ds-clipart-bg">
+                <option>Transparent PNG — for digital use</option>
+                <option>White background — simple</option>
+                <option>Coloured background — styled scene</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- APPAREL MOCKUP SPECIFIC -->
+          <div id="ds-mockup-apparel-fields" style="display:none">
+            <div class="form-group">
+              <label class="form-label">Garment Type</label>
+              <select class="form-select" id="ds-mockup-garment">
+                <option value="">Select garment...</option>
+                <option>Classic unisex crew neck tee</option>
+                <option>Fitted women's t-shirt</option>
+                <option>Oversized streetwear tee</option>
+                <option>Hoodie — pullover</option>
+                <option>Zip-up hoodie</option>
+                <option>Long sleeve tee</option>
+                <option>Tank top / vest</option>
+                <option>Kids t-shirt</option>
+                <option>Tote bag</option>
+                <option>Sweatshirt / crewneck</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Model / Scene</label>
+              <select class="form-select" id="ds-mockup-scene">
+                <option value="">Select scene...</option>
+                <option>Model wearing — Black woman, natural hair, confident pose</option>
+                <option>Model wearing — Black man, streetwear setting</option>
+                <option>Model wearing — diverse mixed group</option>
+                <option>Model wearing — Latina woman, vibrant setting</option>
+                <option>Model wearing — Asian woman, minimal background</option>
+                <option>Model wearing — plus size model, empowering pose</option>
+                <option>Flat lay — clean white or marble surface</option>
+                <option>Ghost mannequin — professional studio</option>
+                <option>Lifestyle — outdoor urban setting</option>
+                <option>Lifestyle — home / cosy interior</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mood / Lighting</label>
+              <select class="form-select" id="ds-mockup-mood">
+                <option value="">AI chooses</option>
+                <option>Bright and airy — natural daylight</option>
+                <option>Warm golden — sunset lifestyle</option>
+                <option>Studio clean — neutral professional</option>
+                <option>Moody dark — dramatic editorial</option>
+                <option>Vibrant colourful — bold and fun</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PRODUCT MOCKUP SPECIFIC -->
+          <div id="ds-mockup-product-fields" style="display:none">
+            <div class="form-group">
+              <label class="form-label">Product Type</label>
+              <select class="form-select" id="ds-mockup-product">
+                <option value="">Select product...</option>
+                <option>Digital download — phone screen mockup</option>
+                <option>Printable — framed art print on wall</option>
+                <option>Mug — lifestyle kitchen scene</option>
+                <option>Tote bag — lifestyle outdoor</option>
+                <option>Phone case — styled desk or hand</option>
+                <option>Notebook / journal — flat lay</option>
+                <option>Sticker sheet — flat lay on surface</option>
+                <option>Canvas print — room scene</option>
+                <option>Packaging — brand box unboxing</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Scene Style</label>
+              <select class="form-select" id="ds-mockup-product-scene">
+                <option value="">AI chooses</option>
+                <option>Minimal white — clean product focus</option>
+                <option>Boho flat lay — dried flowers and textures</option>
+                <option>Cosy home — warm interior lifestyle</option>
+                <option>Outdoor — natural setting</option>
+                <option>Brand aesthetic — cohesive styled scene</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- OUTPUT FORMAT always visible -->
+          <div class="form-group">
+            <label class="form-label">Output Format <span class="req">*</span></label>
+            <select class="form-select" id="ds-format">
+              <option value="">Select AI tool...</option>
+              <option>Midjourney</option>
+              <option>DALL·E 3</option>
+              <option>Leonardo AI</option>
+              <option>Adobe Firefly</option>
+              <option>Stable Diffusion</option>
+              <option>General (any tool)</option>
+            </select>
+          </div>
+
+          <button class="btn-generate" onclick="generate('design')">⚡ Generate My Design Prompt</button>
+          <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Ready to paste into your design tool</span></div>
+        </div>
       </div><!-- /input-panel -->
 
       <!-- OUTPUT PANEL -->
@@ -1290,6 +1678,64 @@ let sessionGenCount = 0;
 let currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
 
 
+
+// ─── PHOTO UPLOAD ─────────────────────────────────────────────────────────────
+const photoData = { chibi: null, image: null }; // stores base64 data
+
+function handlePhotoUpload(gen, input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('Photo must be under 5MB'); return; }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const base64 = e.target.result; // full data URL e.g. data:image/jpeg;base64,...
+    photoData[gen] = base64;
+
+    // Show preview
+    const thumb  = document.getElementById(gen + 'PhotoThumb');
+    const name   = document.getElementById(gen + 'PhotoName');
+    const prev   = document.getElementById(gen + 'PhotoPreview');
+    const note   = document.getElementById(gen + 'PhotoNote');
+    const zone   = document.getElementById(gen + 'UploadZone');
+
+    if (thumb) thumb.src = base64;
+    if (name)  name.textContent = file.name;
+    if (prev)  prev.classList.add('show');
+    if (note)  note.style.display = 'block';
+    if (zone)  zone.classList.add('has-photo');
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearPhoto(gen) {
+  photoData[gen] = null;
+  const input = document.getElementById(gen + 'PhotoInput');
+  const prev  = document.getElementById(gen + 'PhotoPreview');
+  const note  = document.getElementById(gen + 'PhotoNote');
+  const zone  = document.getElementById(gen + 'UploadZone');
+  if (input) input.value = '';
+  if (prev)  prev.classList.remove('show');
+  if (note)  note.style.display = 'none';
+  if (zone)  zone.classList.remove('has-photo');
+}
+
+
+// ─── DESIGN STUDIO ────────────────────────────────────────────────────────────
+function updateDesignForm() {
+  const type = document.getElementById('ds-type').value;
+  document.getElementById('ds-tshirt-fields').style.display          = type === 'tshirt'          ? 'block' : 'none';
+  document.getElementById('ds-clipart-fields').style.display         = type === 'clipart'         ? 'block' : 'none';
+  document.getElementById('ds-mockup-apparel-fields').style.display  = type === 'mockup-apparel'  ? 'block' : 'none';
+  document.getElementById('ds-mockup-product-fields').style.display  = type === 'mockup-product'  ? 'block' : 'none';
+}
+
+function syncNicheInput() {
+  const sel = document.getElementById('ds-niche-select');
+  const inp = document.getElementById('ds-niche');
+  if (sel.value) inp.value = sel.value;
+}
+
 // ─── LANDING PAGE ────────────────────────────────────────────────────────────
 function enterApp() {
   document.getElementById('landingPage').classList.remove('show');
@@ -1380,6 +1826,7 @@ const loadingMsgs = {
   sales:['Calibrating to your price point...','Writing copy that names the real problem...','Engineering your persuasion arc...','Building your value stack...','Writing the objection handler...'],
   chibi:['Building your 3D doll character...','Crafting her hair and outfit details...','Formatting for your AI tool...','Specifying skin tone and features...','Creating your Midjourney-ready prompt...'],
   story:['Opening the story mid-scene...','Building your tension arc...','Crafting the twist...','Engineering the hook that holds...','Writing the ending that earns it...'],
+  design:['Building your design brief...','Crafting your t-shirt concept...','Engineering your clipart set prompt...','Styling your mockup scene...','Creating your design prompt...'],
   image:['Building your technical creative brief...','Selecting the precise style...','Specifying lighting and composition...','Engineering your cinematic prompt...','Formatting for your intended tool...']
 };
 const loadingSubtexts = {
@@ -1389,6 +1836,7 @@ const loadingSubtexts = {
   sales:'Price point psychology applied',
   chibi:'3D Pixar-style doll · Fashion outfit · Ready to paste',
   story:'Hook + Build-up + Twist + Ending',
+  design:'T-shirt · Clipart · Mockup — Ready to paste',
   image:'Scene + Style + Lighting + Composition'
 };
 
@@ -1461,6 +1909,33 @@ function collectInputs(type) {
       if (!v('st-type')) return null;
       return { storyType: v('st-type'), mood: v('st-mood'), ending: v('st-ending'), platform: v('st-platform') };
     },
+    design: () => {
+      const dtype = v('ds-type');
+      if (!dtype || !v('ds-format')) return null;
+      const niche = v('ds-niche') || v('ds-niche-select') || 'general audience';
+      return {
+        designType:    dtype,
+        niche:         niche,
+        format:        v('ds-format'),
+        // t-shirt
+        tshirtStyle:   v('ds-tshirt-style'),
+        tshirtColour:  v('ds-tshirt-colour'),
+        tshirtPlatform:v('ds-tshirt-platform'),
+        tshirtText:    v('ds-tshirt-text'),
+        // clipart
+        clipartStyle:  v('ds-clipart-style'),
+        clipartTheme:  v('ds-clipart-theme'),
+        clipartSize:   v('ds-clipart-size'),
+        clipartBg:     v('ds-clipart-bg'),
+        // mockup apparel
+        mockupGarment: v('ds-mockup-garment'),
+        mockupScene:   v('ds-mockup-scene'),
+        mockupMood:    v('ds-mockup-mood'),
+        // mockup product
+        mockupProduct: v('ds-mockup-product'),
+        mockupProductScene: v('ds-mockup-product-scene'),
+      };
+    },
     image: () => {
       if (!v('i-concept')) return null;
       return { concept: v('i-concept'), style: v('i-style'), mood: v('i-mood'), use: v('i-use') };
@@ -1494,7 +1969,13 @@ async function generate(type) {
     const res = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, inputs, tier: isPro ? 'pro' : 'free', userId: currentUserId })
+      body: JSON.stringify({
+        type,
+        inputs,
+        tier: isPro ? 'pro' : 'free',
+        userId: currentUserId,
+        photoData: (type === 'chibi' || type === 'image') ? (photoData[type] || null) : null
+      })
     });
 
     const data = await res.json();
@@ -1682,7 +2163,7 @@ function parseOutput(text) {
 }
 
 function genName(type) {
-  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'3D Doll Prompt',story:'Viral Story',image:'Image Prompt'}[type]||'Output';
+  return {surprise:'Surprise Package',money:'Income Ideas',video:'Video Script',sales:'Sales Copy',chibi:'3D Doll Prompt',story:'Viral Story',image:'Image Prompt',design:'Design Prompt'}[type]||'Output';
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -1772,7 +2253,8 @@ async function improveIdea() {
         inputs: currentInputs,
         tier: isPro ? 'pro' : 'free',
         userId: currentUserId,
-        viralBoost: true  // Backend receives this to apply Viral Boost Mode
+        viralBoost: true,
+        photoData: (currentType === 'chibi' || currentType === 'image') ? (photoData[currentType] || null) : null
       })
     });
 
