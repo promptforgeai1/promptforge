@@ -307,6 +307,7 @@
 
   /* ── LANDING PAGE ── */
   #landingPage{position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;display:none;}
+  #landingPage button{pointer-events:auto;position:relative;z-index:2;}
   #landingPage.show{display:block !important;}
   .lp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(7,6,26,.92);backdrop-filter:blur(20px);z-index:10;}
   .lp-logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em;}
@@ -425,6 +426,8 @@
   .qty-btn:hover{border-color:var(--border2);color:var(--text);}
   .qty-btn.active{background:linear-gradient(135deg,rgba(139,120,255,.2),rgba(79,172,254,.1));border-color:var(--purple);color:var(--text);}
   .qty-note{font-size:.65rem;color:var(--text3);letter-spacing:.01em;}
+  .lp-btn-mid-cta{background:linear-gradient(135deg,rgba(139,120,255,.15),rgba(79,172,254,.1));border:1px solid var(--border2);color:var(--text);padding:13px 32px;border-radius:12px;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:all .2s;}
+  .lp-btn-mid-cta:hover{background:linear-gradient(135deg,var(--purple2),var(--blue));border-color:transparent;}
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
@@ -1610,16 +1613,49 @@
   </nav>
 
   <div class="lp-hero">
-    <div style="font-size:.82rem;color:var(--text3);margin-bottom:.75rem;font-style:italic;">Most creators post every day and still get ignored.</div>
+    <div style="font-size:.82rem;color:var(--text3);margin-bottom:.4rem;font-style:italic;">Most creators post every day and still get ignored.</div>
+    <div style="font-size:.88rem;color:var(--text2);margin-bottom:.85rem;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto;">Most people don't fail because of effort.<br>They fail because they're creating the <em>wrong content.</em></div>
     <div class="lp-eyebrow">⚡ Premium Content Engine</div>
     <h1 class="lp-h1">Turn Any Idea Into<br><span>Viral Content</span><br>in Seconds</h1>
-    <p style="font-size:.95rem;color:var(--purple);font-weight:500;margin-bottom:.75rem;letter-spacing:.01em;">Generate content that gets views, saves, and actually makes money.</p>
+    <p style="font-size:.95rem;color:var(--purple);font-weight:500;margin-bottom:.6rem;letter-spacing:.01em;">Generate content that gets views, saves, and actually makes money.</p>
+    <div style="display:inline-flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:.85rem;">
+      <span style="background:rgba(139,120,255,.1);border:1px solid rgba(139,120,255,.2);border-radius:20px;padding:3px 11px;font-size:.72rem;color:var(--text2);">🎯 Hook</span>
+      <span style="background:rgba(139,120,255,.1);border:1px solid rgba(139,120,255,.2);border-radius:20px;padding:3px 11px;font-size:.72rem;color:var(--text2);">📝 Script</span>
+      <span style="background:rgba(139,120,255,.1);border:1px solid rgba(139,120,255,.2);border-radius:20px;padding:3px 11px;font-size:.72rem;color:var(--text2);">💬 Caption</span>
+      <span style="background:rgba(139,120,255,.1);border:1px solid rgba(139,120,255,.2);border-radius:20px;padding:3px 11px;font-size:.72rem;color:var(--text2);"># Hashtags</span>
+      <span style="background:rgba(139,120,255,.1);border:1px solid rgba(139,120,255,.2);border-radius:20px;padding:3px 11px;font-size:.72rem;color:var(--text2);">💰 Monetisation</span>
+    </div>
     <p class="lp-sub">8 professional generators — scripts, income ideas, 3D doll characters, sales copy, viral stories, image prompts, and design studio. Built for creators who are serious about results.</p>
     <div class="lp-cta-row">
       <button class="lp-cta-primary" onclick="openAuth('signup')">⚡ Sign Up Free — No Card Needed</button>
       <button class="lp-cta-secondary" onclick="enterApp()">Sign In</button>
     </div>
     <div class="lp-trust">5 free generations daily · No credit card · Cancel anytime · <strong style="color:var(--text2)">No experience needed. No editing required.</strong></div>
+    <div style="font-size:.72rem;color:var(--text3);margin-top:.4rem;font-style:italic;">Free plan resets daily — use it before it's gone.</div>
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <div style="max-width:600px;margin:0 auto 2.5rem;padding:0 2rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:rgba(255,107,107,.05);border:1px solid rgba(255,107,107,.15);border-radius:12px;padding:1rem;">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:.65rem;">Before PromptForge</div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;">
+          <div style="font-size:.78rem;color:var(--text3);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--red);flex-shrink:0">✗</span>Staring at a blank screen for an hour</div>
+          <div style="font-size:.78rem;color:var(--text3);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--red);flex-shrink:0">✗</span>Posting and getting zero traction</div>
+          <div style="font-size:.78rem;color:var(--text3);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--red);flex-shrink:0">✗</span>Overthinking every caption</div>
+          <div style="font-size:.78rem;color:var(--text3);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--red);flex-shrink:0">✗</span>No clear monetisation strategy</div>
+        </div>
+      </div>
+      <div style="background:rgba(78,205,196,.05);border:1px solid rgba(78,205,196,.2);border-radius:12px;padding:1rem;">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.65rem;">After PromptForge</div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;">
+          <div style="font-size:.78rem;color:var(--text2);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--teal);flex-shrink:0">✓</span>Complete content package in 10 seconds</div>
+          <div style="font-size:.78rem;color:var(--text2);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--teal);flex-shrink:0">✓</span>Hooks built to stop the scroll</div>
+          <div style="font-size:.78rem;color:var(--text2);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--teal);flex-shrink:0">✓</span>Ready to post — no editing needed</div>
+          <div style="font-size:.78rem;color:var(--text2);display:flex;align-items:flex-start;gap:7px;"><span style="color:var(--teal);flex-shrink:0">✓</span>Monetisation angle included every time</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- HOW IT WORKS SHORT VERSION -->
@@ -1734,12 +1770,17 @@
             <div style="font-size:.85rem;margin-bottom:.5rem;">🔒</div>
             <div style="font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.3rem;">Unlock full script, posting strategy &amp; more</div>
             <div style="font-size:.7rem;color:var(--text3);margin-bottom:.75rem;">Pro members get the complete output every time</div>
-            <button onclick="openAuth('signup')" style="background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:7px 18px;border-radius:8px;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;">⚡ Try Free — See Full Output</button>
+            <button class="lp-btn-cta" style="font-size:.75rem;padding:7px 18px;" onclick="openAuth('signup')">⚡ Try Free — See Full Output</button>
           </div>
         </div>
       </div>
     </div>
     <div style="text-align:center;margin-top:.85rem;font-size:.75rem;color:var(--text3);">⚡ Some users generate ideas in under 10 seconds.</div>
+  </div>
+
+  <!-- MICRO EXPLANATION -->
+  <div style="text-align:center;padding:.5rem 2rem 2rem;max-width:600px;margin:0 auto;">
+    <div style="font-size:.78rem;color:var(--text3);line-height:1.6;">Each generator is trained to produce <strong style="color:var(--text2);">platform-ready content</strong> — not generic text.<br>Built using real viral patterns and monetisation logic, not random AI output.</div>
   </div>
 
   <div class="lp-features">
@@ -1778,6 +1819,20 @@
     </div>
   </div>
 
+  <!-- WHO THIS IS NOT FOR -->
+  <div style="max-width:520px;margin:0 auto 2rem;padding:0 2rem;text-align:center;">
+    <div style="background:rgba(22,20,56,.6);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem;">This is not for everyone</div>
+      <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:.85rem;text-align:left;">
+        <div style="font-size:.8rem;color:var(--text3);display:flex;align-items:center;gap:8px;"><span style="color:var(--red);">✗</span>Not for people looking for inspiration without action</div>
+        <div style="font-size:.8rem;color:var(--text3);display:flex;align-items:center;gap:8px;"><span style="color:var(--red);">✗</span>Not for people who want to overthink forever</div>
+        <div style="font-size:.8rem;color:var(--text3);display:flex;align-items:center;gap:8px;"><span style="color:var(--red);">✗</span>Not for people who won't use what they generate</div>
+      </div>
+      <div style="height:1px;background:var(--border);margin-bottom:.85rem;"></div>
+      <div style="font-size:.8rem;color:var(--text2);display:flex;align-items:center;gap:8px;justify-content:center;"><span style="color:var(--teal);">✓</span><strong>Built for creators who generate, post, and repeat.</strong></div>
+    </div>
+  </div>
+
   <!-- WHO IT'S FOR -->
   <div style="max-width:700px;margin:0 auto 3rem;padding:0 2rem;text-align:center;">
     <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;">Built for</div>
@@ -1789,6 +1844,11 @@
       <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text2);"><span style="color:var(--purple)">✓</span> Etsy &amp; POD sellers</div>
       <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text2);"><span style="color:var(--purple)">✓</span> Anyone who wants to grow</div>
     </div>
+  </div>
+
+  <!-- MID PAGE SECONDARY CTA -->
+  <div style="text-align:center;padding:0 2rem 3rem;">
+    <button class="lp-btn-mid-cta" onclick="openAuth('signup')">👉 Generate your first idea now — it's free</button>
   </div>
 
   <div class="lp-pricing">
@@ -1826,45 +1886,30 @@
   <div style="text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);">
     <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:.5rem;">Ready to generate your first viral idea?</div>
     <div style="font-size:.82rem;color:var(--text3);margin-bottom:1.25rem;">No experience needed. No editing required. No credit card.</div>
-    <button onclick="openAuth('signup')" style="background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;color:#fff;padding:14px 36px;border-radius:12px;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:.03em;">⚡ Start Free — No Card Needed</button>
+    <button class="lp-cta-primary" onclick="openAuth('signup')">⚡ Start Free — No Card Needed</button>
     <div style="font-size:.72rem;color:var(--text3);margin-top:.75rem;">Join creators already using PromptForge · 5 free generations daily</div>
   </div>
 
   <div class="lp-footer">
+    <div style="margin-bottom:.5rem;font-size:.7rem;color:var(--text3);">🔐 No spam. No selling your data. No hidden fees. Cancel anytime.</div>
     © 2026 PromptForge AI · Built for creators ·
-    <span style="cursor:pointer;text-decoration:underline" onclick="enterApp()">Enter app</span>
+    <button onclick="enterApp()" style="background:none;border:none;color:var(--text3);cursor:pointer;text-decoration:underline;font-family:'Inter',sans-serif;font-size:.72rem;">Enter app</button>
   </div>
 </div>
 
 <!-- ── AUTH MODAL ────────────────────────────────────────────────────────── -->
-<div class="auth-modal-overlay" id="authModal">
-  <div class="auth-modal" style="position:relative">
-    <button class="auth-close" onclick="closeAuth()">✕</button>
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tabSignup" onclick="switchAuthTab('signup')">Create Account</button>
-      <button class="auth-tab" id="tabSignin" onclick="switchAuthTab('signin')">Sign In</button>
-    </div>
-    <div id="authSignup">
-      <div class="auth-title">Join PromptForge</div>
-      <div class="auth-sub">Start with 5 free generations daily.<br>No credit card required.</div>
-      <input class="auth-input" type="text" placeholder="Your name">
-      <input class="auth-input" type="email" placeholder="Email address">
-      <input class="auth-input" type="password" placeholder="Create a password">
-      <button class="auth-btn" onclick="enterApp()">⚡ Create Free Account</button>
-      <div class="auth-divider">or</div>
-      <button class="auth-social" onclick="enterApp()">🔷 Continue with Google</button>
-      <div class="auth-note">By signing up you agree to our Terms and Privacy Policy.</div>
-    </div>
-    <div id="authSignin" style="display:none">
-      <div class="auth-title">Welcome back</div>
-      <div class="auth-sub">Sign in to your PromptForge account.</div>
-      <input class="auth-input" type="email" placeholder="Email address">
-      <input class="auth-input" type="password" placeholder="Password">
-      <button class="auth-btn" onclick="enterApp()">Sign In</button>
-      <div class="auth-divider">or</div>
-      <button class="auth-social" onclick="enterApp()">🔷 Continue with Google</button>
-      <div class="auth-note" style="cursor:pointer;text-decoration:underline" onclick="switchAuthTab('signup')">Don't have an account? Sign up free</div>
-    </div>
+<div id="authModal" style="display:none;position:fixed;inset:0;background:rgba(7,6,26,.92);backdrop-filter:blur(12px);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2.25rem;max-width:380px;width:90%;text-align:center;position:relative;">
+    <button onclick="closeAuth()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.2rem;line-height:1;">✕</button>
+    <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:.35rem;color:var(--text);">Join PromptForge</div>
+    <div style="font-size:.76rem;color:var(--text3);margin-bottom:1.5rem;">5 free generations daily · No credit card required</div>
+    <input style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text);font-family:'Inter',sans-serif;font-size:.82rem;padding:10px 13px;outline:none;margin-bottom:.75rem;box-sizing:border-box;" type="text" placeholder="Your name">
+    <input style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text);font-family:'Inter',sans-serif;font-size:.82rem;padding:10px 13px;outline:none;margin-bottom:.75rem;box-sizing:border-box;" type="email" placeholder="Email address">
+    <input style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text);font-family:'Inter',sans-serif;font-size:.82rem;padding:10px 13px;outline:none;margin-bottom:.85rem;box-sizing:border-box;" type="password" placeholder="Create a password">
+    <button onclick="enterApp()" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--purple2),var(--blue));border:none;border-radius:10px;color:#fff;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;margin-bottom:.65rem;">⚡ Create Free Account</button>
+    <div style="display:flex;align-items:center;gap:10px;margin:.25rem 0;color:var(--text3);font-size:.7rem;"><div style="flex:1;height:1px;background:var(--border);"></div>or<div style="flex:1;height:1px;background:var(--border);"></div></div>
+    <button onclick="enterApp()" style="width:100%;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text2);font-family:'Inter',sans-serif;font-size:.8rem;cursor:pointer;margin-top:.5rem;">🔷 Continue with Google</button>
+    <div style="font-size:.68rem;color:var(--text3);margin-top:.85rem;line-height:1.5;">By signing up you agree to our Terms and Privacy Policy.<br><span onclick="enterApp()" style="cursor:pointer;text-decoration:underline;">Already have an account? Sign in</span></div>
   </div>
 </div>
 
@@ -2035,26 +2080,17 @@ function showLanding() {
 }
 
 function openAuth(tab) {
-  // Show signup modal for new users, enter app directly for sign in
   if (tab === 'signup') {
-    switchAuthTab('signup');
     const am = document.getElementById('authModal');
-    if (am) {
-      am.style.display = 'flex';
-      am.classList.add('open');
-    }
+    if (am) am.style.display = 'flex';
   } else {
-    // Sign in — enter app directly for now
     enterApp();
   }
 }
 
 function closeAuth() {
   const am = document.getElementById('authModal');
-  if (am) {
-    am.classList.remove('open');
-    am.style.display = 'none';
-  }
+  if (am) am.style.display = 'none';
 }
 
 function switchAuthTab(tab) {
@@ -2780,12 +2816,13 @@ function clearChip() {
   if (msg) msg.style.display = 'none';
 }
 // Close modals on backdrop click
-['proModal','settingsModal','authModal'].forEach(id => {
+['proModal','settingsModal'].forEach(id => {
   const el = document.getElementById(id);
-  if (el) el.addEventListener('click', function(e) {
-    if (e.target === this) { this.classList.remove('open'); this.style.display='none'; }
-  });
+  if (el) el.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
 });
+// Auth modal backdrop
+const _am = document.getElementById('authModal');
+if (_am) _am.addEventListener('click', function(e) { if (e.target === this) this.style.display = 'none'; });
 
 // Stripe success redirect
 if (window.location.search.includes('session_id=')) {
