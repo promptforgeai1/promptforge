@@ -306,9 +306,8 @@
   #chipSelectedText{flex:1;}
 
   /* ── LANDING PAGE ── */
-  #landingPage{position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;display:none;}
+  #landingPage{position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;}
   #landingPage button{pointer-events:auto;position:relative;z-index:2;}
-  #landingPage.show{display:block !important;}
   .lp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(7,6,26,.92);backdrop-filter:blur(20px);z-index:10;}
   .lp-logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em;}
   .lp-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--purple),var(--blue));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;}
@@ -2065,9 +2064,12 @@ function copySingle(idx) {
 function enterApp() {
   const DEPLOY_VERSION = 'pf_v8';
   const lp = document.getElementById('landingPage');
-  if (lp) { lp.classList.remove('show'); lp.style.display = 'none'; }
+  if (lp) {
+    lp.classList.remove('show');
+    lp.style.cssText = 'display:none !important';
+  }
   const am = document.getElementById('authModal');
-  if (am) am.classList.remove('open');
+  if (am) am.style.display = 'none';
   try {
     localStorage.setItem(DEPLOY_VERSION, '1');
     sessionStorage.setItem('pf_session', '1');
@@ -2100,24 +2102,20 @@ function switchAuthTab(tab) {
   document.getElementById('authSignin').style.display = tab === 'signin'  ? 'block' : 'none';
 }
 
-// Landing page — version-aware check
-// Each deploy version has its own key so new deploys always show landing to new visitors
+// Landing page — version-aware init
 (function() {
-  const DEPLOY_VERSION = 'pf_v8'; // increment this with each major update
+  const DEPLOY_VERSION = 'pf_v8';
+  const lp = document.getElementById('landingPage');
+  if (!lp) return;
   try {
-    const hasEntered = localStorage.getItem(DEPLOY_VERSION);
-    const lp = document.getElementById('landingPage');
-    if (!lp) return;
+    const hasEntered = localStorage.getItem(DEPLOY_VERSION) || sessionStorage.getItem('pf_session');
     if (hasEntered) {
-      lp.classList.remove('show');
-      lp.style.display = 'none';
+      lp.style.cssText = 'display:none !important';
     } else {
-      lp.classList.add('show');
       lp.style.display = 'block';
     }
   } catch(e) {
-    const lp = document.getElementById('landingPage');
-    if (lp) { lp.classList.remove('show'); lp.style.display = 'none'; }
+    lp.style.cssText = 'display:none !important';
   }
 })();
 
