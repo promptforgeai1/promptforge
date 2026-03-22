@@ -307,7 +307,7 @@
 
   /* ── LANDING PAGE ── */
   #landingPage{position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;display:none;}
-  #landingPage.show{display:block;}
+  #landingPage.show{display:block !important;}
   .lp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(7,6,26,.92);backdrop-filter:blur(20px);z-index:10;}
   .lp-logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em;}
   .lp-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--purple),var(--blue));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;}
@@ -409,6 +409,22 @@
   .photo-preview-clear{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.8rem;padding:0;line-height:1;}
   .photo-preview-clear:hover{color:var(--red);}
   .photo-mode-note{font-size:.68rem;color:var(--purple);background:rgba(139,120,255,.08);border-radius:6px;padding:.35rem .6rem;margin-bottom:.85rem;line-height:1.5;}
+
+  /* ── QUICK PROMPT SPECIAL CARD ── */
+  .section-quick-prompt{border:1px solid rgba(78,205,196,.3) !important;background:rgba(78,205,196,.05) !important;}
+  .quick-prompt-box{position:relative;}
+  .quick-copy-btn{display:block;width:100%;margin-top:.75rem;padding:9px;background:linear-gradient(135deg,rgba(78,205,196,.2),rgba(79,172,254,.15));border:1px solid rgba(78,205,196,.4);border-radius:8px;color:#4ecdc4;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.03em;}
+  .quick-copy-btn:hover{background:linear-gradient(135deg,rgba(78,205,196,.35),rgba(79,172,254,.25));border-color:#4ecdc4;}
+  .quick-copy-btn.copied{background:rgba(78,205,196,.3);color:#fff;}
+
+  /* ── QUANTITY PICKER ── */
+  .qty-picker{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;margin-top:.25rem;}
+  .qty-label{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);flex-shrink:0;}
+  .qty-btns{display:flex;gap:4px;}
+  .qty-btn{width:34px;height:30px;border:1px solid var(--border);background:var(--surface);color:var(--text2);border-radius:7px;cursor:pointer;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;transition:all .15s;display:flex;align-items:center;justify-content:center;}
+  .qty-btn:hover{border-color:var(--border2);color:var(--text);}
+  .qty-btn.active{background:linear-gradient(135deg,rgba(139,120,255,.2),rgba(79,172,254,.1));border-color:var(--purple);color:var(--text);}
+  .qty-note{font-size:.65rem;color:var(--text3);letter-spacing:.01em;}
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
@@ -473,61 +489,74 @@
 
     <!-- HOW IT WORKS PAGE -->
     <div class="how-page" id="howPage">
-      <div style="max-width:760px">
+      <div style="max-width:780px">
         <div class="how-page-title">How PromptForge Works</div>
-        <div class="how-page-sub">PromptForge is a premium AI content engine. Every generator produces outputs that feel written by a professional who has actually done this — not a template machine.</div>
+        <div class="how-page-sub">Pick a generator. Fill in your details. Click generate. Get a complete, specific, ready-to-use output in under 10 seconds. No experience needed.</div>
+
+        <div style="background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:14px;padding:1.5rem;margin-bottom:2rem;">
+          <div class="how-for-title" style="margin-bottom:1.25rem">3 steps — that is all</div>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff">1</div>
+              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:2px;">Pick a generator from the left sidebar</div><div style="font-size:.76rem;color:var(--text3);line-height:1.5;">Surprise Me, 3D Doll, Design Studio, Video Script, Make Money, Sales Copy, Viral Story, or Smart Image.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff">2</div>
+              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:2px;">Fill in your details — or just pick from the dropdowns</div><div style="font-size:.76rem;color:var(--text3);line-height:1.5;">Type your niche, theme, or product. Or pick from the options provided. For 3D Doll — you can upload a photo of yourself.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff">3</div>
+              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:2px;">Copy your output and use it immediately</div><div style="font-size:.76rem;color:var(--text3);line-height:1.5;">Scripts are ready to film. Prompts are ready to paste. Sales copy is ready to publish. Everything is complete — no editing required.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:2rem;">
+          <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.85rem;">Where to paste your image prompts</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://app.artistly.ai" target="_blank" style="color:var(--text2);">Artistly — app.artistly.ai</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://firefly.adobe.com" target="_blank" style="color:var(--text2);">Adobe Firefly — firefly.adobe.com</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://canva.com" target="_blank" style="color:var(--text2);">Canva AI — Magic Media</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://chatgpt.com" target="_blank" style="color:var(--text2);">ChatGPT — image mode</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://leonardo.ai" target="_blank" style="color:var(--text2);">Leonardo AI — leonardo.ai</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://midjourney.com" target="_blank" style="color:var(--text2);">Midjourney (advanced users)</a></div>
+          </div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:.75rem;padding-top:.65rem;border-top:1px solid var(--border);">Always use the QUICK PROMPT section first — it works in every tool above. The Midjourney prompt is the long technical version and is only needed if you specifically use Midjourney.</div>
+        </div>
 
         <div class="how-for-section">
-          <div class="how-for-title">Who it's for</div>
+          <div class="how-for-title">Who PromptForge is for</div>
           <div class="how-for-list">
-            <div class="how-for-item">Content creators who want outputs that feel specific to their niche, not copy-pasted from the internet</div>
-            <div class="how-for-item">Digital entrepreneurs who need income ideas with real execution steps, not theory</div>
-            <div class="how-for-item">Marketers who write sales copy and need hooks that convert, not motivate</div>
-            <div class="how-for-item">Anyone building a personal brand who has tried AI tools and found them generic</div>
+            <div class="how-for-item">Content creators who want viral scripts and hooks that feel specific — not generic AI filler anyone could write</div>
+            <div class="how-for-item">Digital sellers who need 3D doll characters, clipart sets, and t-shirt designs for Etsy, Redbubble, and Printful</div>
+            <div class="how-for-item">Entrepreneurs who want real income ideas with step-by-step execution — not motivational advice</div>
+            <div class="how-for-item">Marketers who need sales copy that makes the right person think "they are talking about me"</div>
+            <div class="how-for-item">Anyone who has used AI tools before and found the outputs too generic to actually use</div>
           </div>
         </div>
 
         <div class="how-grid">
-          <div class="how-card">
-            <div class="how-card-icon">🎁</div>
-            <div class="how-card-title">Surprise Me</div>
-            <div class="how-card-desc">Generates a complete viral content ecosystem — 3 hooks, a full script with scenes, caption, hashtags, AI image prompt, monetisation angle, and posting strategy. One click. One coherent package.</div>
-          </div>
-          <div class="how-card">
-            <div class="how-card-icon">💰</div>
-            <div class="how-card-title">Make Money</div>
-            <div class="how-card-desc">Produces 3 realistic income ideas with exact target audience, step-by-step startup plan, first £100 path, and the specific failure point to avoid. No motivation. Operational only.</div>
-          </div>
-          <div class="how-card">
-            <div class="how-card-icon">🎬</div>
-            <div class="how-card-title">Short-Form Video</div>
-            <div class="how-card-desc">Writes hook, full line-by-line script, scene directions, text overlays, caption, and platform strategy. Engineered to feel viral, not educational.</div>
-          </div>
-          <div class="how-card">
-            <div class="how-card-icon">📢</div>
-            <div class="how-card-title">Sales & Marketing</div>
-            <div class="how-card-desc">Real conversion copy — hook, problem expansion, product intro, value stack, and CTA. Calibrated to your price point. Reads like a copywriter who gets paid per sale, not per word.</div>
-          </div>
-          <div class="how-card">
-            <div class="how-card-icon">🧸</div>
-            <div class="how-card-title">3D Doll Character</div>
-            <div class="how-card-desc">Prompts for the viral TikTok 3D cartoon doll style — Pixar-quality render, realistic skin tones, voluminous natural hair, fashion outfits. Direct paste into Midjourney or DALL·E.</div>
-          </div>
-          <div class="how-card">
-            <div class="how-card-icon">🎭</div>
-            <div class="how-card-title">Viral Story</div>
-            <div class="how-card-desc">Hook, build-up, twist, and ending — emotionally unpredictable. Platform-formatted with caption included. Stops the scroll because something feels slightly wrong or too specific.</div>
-          </div>
-          <div class="how-card">
-            <div class="how-card-icon">🎨</div>
-            <div class="how-card-title">Smart Image</div>
-            <div class="how-card-desc">Professional creative direction — scene, style, lighting, composition, camera angle, and mood. Outputs a full technical brief formatted for your intended AI image tool.</div>
+          <div class="how-card"><div class="how-card-icon">🎁</div><div class="how-card-title">Surprise Me</div><div class="how-card-desc">Pick a theme or let AI choose. Get 3 scroll-stopping hooks, a full script ready to film, caption, hashtags, image prompt, and a monetisation angle. One click — complete package.</div></div>
+          <div class="how-card"><div class="how-card-icon">💰</div><div class="how-card-title">Make Money</div><div class="how-card-desc">Real income ideas for your niche — with the exact customer, exact platform, 5 startup steps you can begin today, a first £100 plan, and the specific mistake that kills most people who try.</div></div>
+          <div class="how-card"><div class="how-card-icon">🎬</div><div class="how-card-title">Short-Form Video</div><div class="how-card-desc">A line-by-line script with scene directions, text overlays, a re-hook at 12 seconds, caption, and platform strategy. Written for someone filming alone on a phone.</div></div>
+          <div class="how-card"><div class="how-card-icon">📢</div><div class="how-card-title">Sales &amp; Marketing</div><div class="how-card-desc">Conversion copy calibrated to your exact price point. Hook, problem, product intro, value stack, CTA, and objection handler. Makes the right person feel seen before you ask for the sale.</div></div>
+          <div class="how-card"><div class="how-card-icon">🧸</div><div class="how-card-title">3D Doll (Chibi)</div><div class="how-card-desc">The viral TikTok 3D cartoon doll style. All skin tones, all hair textures. Pick a style card or upload your own photo. Gets a simple Quick Prompt you paste directly into Artistly, Canva, or Adobe Firefly.</div></div>
+          <div class="how-card"><div class="how-card-icon">🎭</div><div class="how-card-title">Viral Story</div><div class="how-card-desc">Opening that creates a question nobody can answer, a build-up that raises tension, a twist that changes what the beginning meant, and an ending that does not explain itself.</div></div>
+          <div class="how-card"><div class="how-card-icon">🎨</div><div class="how-card-title">Smart Image</div><div class="how-card-desc">Professional image direction — scene, style, lighting, composition, mood. Upload a reference photo and AI builds a prompt around it. Simple Quick Prompt for any tool included.</div></div>
+          <div class="how-card" style="border-color:rgba(247,183,49,.25);background:rgba(247,183,49,.04)"><div class="how-card-icon">✏️</div><div class="how-card-title" style="color:var(--amber)">Design Studio — NEW</div><div class="how-card-desc">T-shirt designs, clipart sets, and product mockups for Etsy, Redbubble, Printful, Canva, and Cricut. Works for every niche — Black excellence, faith, mum life, streetwear, cottagecore, any audience.</div></div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(139,120,255,.06),rgba(79,172,254,.04));border:1px solid var(--border2);border-radius:14px;padding:1.5rem;margin-bottom:2rem;">
+          <div class="how-for-title" style="margin-bottom:1rem">Free plan vs Pro</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div><div style="font-size:.72rem;font-weight:700;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Free</div><div style="font-size:.78rem;color:var(--text2);line-height:1.9;">✓ All 8 generators<br>✓ 5 generations per day<br>✓ Preview quality outputs<br>✓ No card needed</div></div>
+            <div><div style="font-size:.72rem;font-weight:700;color:var(--purple);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Pro — £19/month</div><div style="font-size:.78rem;color:var(--text2);line-height:1.9;">✓ Unlimited generations<br>✓ Complete full outputs<br>✓ All variations<br>✓ Cancel anytime</div></div>
           </div>
         </div>
 
         <div class="how-cta">
-          <div class="how-cta-text">Ready to generate outputs that feel like they came from someone who has actually done this?</div>
-          <button class="btn-how-start" onclick="showGenerators()">✦ Start Generating</button>
+          <div class="how-cta-text">Ready to generate something you can actually use today?</div>
+          <button class="btn-how-start" onclick="showGenerators()">⚡ Start Generating</button>
         </div>
       </div>
     </div>
@@ -593,6 +622,15 @@
           <!-- hidden input carries the final vibe value -->
           <input type="hidden" id="s-vibe-final" value="">
 
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
+          </div>
           <button class="btn-generate" onclick="generate('surprise')">⚡ Generate My Viral Package</button>
           <div class="micro-trust"><span>⚡ 5–10 seconds</span><span>·</span><span>Complete content package</span><span>·</span><span>Ready to use</span></div>
           <div class="usage-bar-wrap" style="margin-top:1rem">
@@ -637,6 +675,15 @@
               <option>£100–£500</option>
               <option>Skills-only (no money needed)</option>
             </select>
+          </div>
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
           </div>
           <button class="btn-generate" onclick="generate('money')">⚡ Generate My Income Ideas</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>💰 Real execution steps included</span></div>
@@ -684,6 +731,15 @@
               <option>Build engaged following</option>
             </select>
           </div>
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
+          </div>
           <button class="btn-generate" onclick="generate('video')">⚡ Generate My Viral Script</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎬 Hook + full script + platform strategy</span></div>
         </div>
@@ -726,6 +782,15 @@
               <option>£200–£500 (premium)</option>
               <option>£500+ (high ticket)</option>
             </select>
+          </div>
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
           </div>
           <button class="btn-generate" onclick="generate('sales')">⚡ Generate My Sales Copy</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎯 Calibrated to your price point</span></div>
@@ -951,6 +1016,15 @@
             <div class="photo-mode-note" id="chibiPhotoNote" style="display:none">✦ AI will analyse your photo and build the prompt around your features — skin tone, hair, face shape</div>
           </div>
 
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
+          </div>
           <button class="btn-generate" onclick="generate('chibi')">⚡ Generate My 3D Doll Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Paste directly into your AI tool</span></div>
         </div>
@@ -1006,6 +1080,15 @@
               <option>Facebook</option>
               <option>X / Twitter</option>
             </select>
+          </div>
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
           </div>
           <button class="btn-generate" onclick="generate('story')">⚡ Generate My Viral Story</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎭 Hook + twist + platform note</span></div>
@@ -1077,6 +1160,15 @@
             <div class="photo-mode-note" id="imagePhotoNote" style="display:none">✦ AI will analyse your image and generate a detailed prompt that recreates or transforms it</div>
           </div>
 
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
+          </div>
           <button class="btn-generate" onclick="generate('image')">⚡ Generate My Image Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🖼️ Technical brief ready to paste</span></div>
         </div>
@@ -1345,6 +1437,15 @@
             </select>
           </div>
 
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
+          </div>
           <button class="btn-generate" onclick="generate('design')">⚡ Generate My Design Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 Ready to paste into your design tool</span></div>
         </div>
@@ -1358,6 +1459,9 @@
             <button class="btn-action" onclick="copyOutput()">⎘ Copy</button>
             <button class="btn-action" onclick="saveOutput()">♡ Save</button>
           </div>
+        </div>
+        <div id="quickUseHint" style="display:none;background:rgba(79,172,254,.06);border:1px solid rgba(79,172,254,.15);border-radius:8px;padding:.6rem .85rem;margin-bottom:.85rem;font-size:.7rem;color:var(--text2);line-height:1.6;">
+          <span style="color:var(--blue);font-weight:600;">💡 How to use:</span> Find the <strong>QUICK PROMPT</strong> section → copy it → paste into <a href="https://app.artistly.ai" target="_blank" style="color:var(--blue)">Artistly</a>, <a href="https://firefly.adobe.com" target="_blank" style="color:var(--blue)">Adobe Firefly</a>, <a href="https://canva.com" target="_blank" style="color:var(--blue)">Canva AI</a>, or <a href="https://chatgpt.com" target="_blank" style="color:var(--blue)">ChatGPT</a>. The Midjourney section is for advanced users only.
         </div>
         <div class="output-empty" id="outputEmpty">
           <div class="empty-hero">
@@ -1736,15 +1840,97 @@ function syncNicheInput() {
   if (sel.value) inp.value = sel.value;
 }
 
+
+// ─── QUANTITY PICKER ──────────────────────────────────────────────────────────
+let currentQty = 1;
+
+function setQty(n, el) {
+  currentQty = n;
+  document.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
+  // Activate all buttons with this number across all forms
+  document.querySelectorAll('.qty-btn').forEach(b => {
+    if (b.textContent.trim() === String(n)) b.classList.add('active');
+  });
+}
+
+
+// ─── MULTIPLE OUTPUTS DISPLAY ─────────────────────────────────────────────────
+function displayMultipleOutputs(outputs, type) {
+  const container = document.getElementById('outputSections');
+  container.innerHTML = '';
+  currentOutput = outputs.join('\n\n---\n\n');
+
+  outputs.forEach((text, idx) => {
+    // Variation header
+    const header = document.createElement('div');
+    header.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:.5rem;' + (idx > 0 ? 'margin-top:1.5rem;' : '');
+    header.innerHTML = `
+      <div style="background:linear-gradient(135deg,var(--purple2),var(--blue));color:#fff;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.06em;">VARIATION ${idx + 1}</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+      <button onclick="copySingle(${idx})" style="background:var(--surface);border:1px solid var(--border);color:var(--text3);padding:3px 10px;border-radius:6px;cursor:pointer;font-size:.68rem;font-family:'Inter',sans-serif;">⎘ Copy</button>
+    `;
+    container.appendChild(header);
+
+    // Render the sections for this variation
+    const sections = parseOutput(text);
+    const stagger = 0.06;
+    let delay = idx * 0.15;
+    const titleLabels = ['CONCEPT TITLE','CORE IDEA','HOOK','CHARACTER CONCEPT','SCENE','DESIGN CONCEPT','IDEA TITLE'];
+    sections.forEach(s => {
+      const div = document.createElement('div');
+      const isTitle = titleLabels.some(t => s.label.toUpperCase().includes(t));
+      div.className = 'output-section' + (isTitle ? ' section-concept-title' : '');
+      div.style.animationDelay = delay + 's';
+      delay += stagger;
+      div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
+      container.appendChild(div);
+    });
+  });
+
+  // Show upgrade lock for free users
+  if (!isPro) {
+    const locked = document.createElement('div');
+    locked.className = 'output-locked';
+    locked.innerHTML = `
+      <div class="lock-icon">🔒</div>
+      <div class="lock-title">Get More Variations with Pro</div>
+      <div class="lock-desc">Pro members get complete full outputs on every variation — plus unlimited generations.</div>
+      <button class="btn-upgrade" onclick="openModal()">⚡ Get Pro — £19/month</button>`;
+    container.appendChild(locked);
+  }
+
+  panel_flash();
+
+  const hint = document.getElementById('quickUseHint');
+  if (hint) hint.style.display = (type === 'chibi' || type === 'image' || type === 'design') ? 'block' : 'none';
+
+  document.getElementById('outputContent').classList.add('visible');
+}
+
+// Store individual outputs for per-variation copy
+let multiOutputs = [];
+
+function copySingle(idx) {
+  if (!multiOutputs[idx]) { showToast('Nothing to copy'); return; }
+  navigator.clipboard.writeText(multiOutputs[idx]).then(() => showToast('✓ Variation ' + (idx+1) + ' copied'));
+}
+
 // ─── LANDING PAGE ────────────────────────────────────────────────────────────
 function enterApp() {
-  document.getElementById('landingPage').classList.remove('show');
-  document.getElementById('authModal').classList.remove('open');
-  localStorage.setItem('pf_entered', '1');
+  const DEPLOY_VERSION = 'pf_v8';
+  const lp = document.getElementById('landingPage');
+  if (lp) { lp.classList.remove('show'); lp.style.display = 'none'; }
+  const am = document.getElementById('authModal');
+  if (am) am.classList.remove('open');
+  try {
+    localStorage.setItem(DEPLOY_VERSION, '1');
+    sessionStorage.setItem('pf_session', '1');
+  } catch(e) {}
 }
 
 function showLanding() {
-  document.getElementById('landingPage').classList.add('show');
+  const lp = document.getElementById('landingPage');
+  if (lp) { lp.classList.add('show'); lp.style.display = 'block'; }
 }
 
 function openAuth(tab) {
@@ -1763,10 +1949,26 @@ function switchAuthTab(tab) {
   document.getElementById('authSignin').style.display = tab === 'signin'  ? 'block' : 'none';
 }
 
-// Skip landing if already entered
-if (localStorage.getItem('pf_entered')) {
-  document.getElementById('landingPage').classList.remove('show');
-}
+// Landing page — version-aware check
+// Each deploy version has its own key so new deploys always show landing to new visitors
+(function() {
+  const DEPLOY_VERSION = 'pf_v8'; // increment this with each major update
+  try {
+    const hasEntered = localStorage.getItem(DEPLOY_VERSION);
+    const lp = document.getElementById('landingPage');
+    if (!lp) return;
+    if (hasEntered) {
+      lp.classList.remove('show');
+      lp.style.display = 'none';
+    } else {
+      lp.classList.add('show');
+      lp.style.display = 'block';
+    }
+  } catch(e) {
+    const lp = document.getElementById('landingPage');
+    if (lp) { lp.classList.remove('show'); lp.style.display = 'none'; }
+  }
+})();
 
 // ─── CHIBI STYLE PICKER ───────────────────────────────────────────────────────
 let chibiStyleValue = '';
@@ -1974,7 +2176,8 @@ async function generate(type) {
         inputs,
         tier: isPro ? 'pro' : 'free',
         userId: currentUserId,
-        photoData: (type === 'chibi' || type === 'image') ? (photoData[type] || null) : null
+        photoData: (type === 'chibi' || type === 'image') ? (photoData[type] || null) : null,
+        quantity: currentQty
       })
     });
 
@@ -2005,7 +2208,14 @@ async function generate(type) {
     currentType = type;
     currentInputs = inputs;
     sessionGenCount++;
-    displayOutput(text, type);
+    // Handle multiple outputs
+    if (currentQty > 1 && data.outputs && Array.isArray(data.outputs)) {
+      multiOutputs = data.outputs; // store for per-variation copy
+      displayMultipleOutputs(data.outputs, type);
+    } else {
+      multiOutputs = [];
+      displayOutput(text, type);
+    }
     checkEngagementNudge();
 
   } catch (err) {
@@ -2030,7 +2240,7 @@ function displayOutput(text, type) {
 
   const staggerMap = { surprise:0.1, money:0.09, video:0.08, sales:0.09, chibi:0.1, story:0.1, image:0.09 };
   const stagger = staggerMap[type] || 0.09;
-  const titleLabels = ['CONCEPT TITLE','CORE IDEA','HOOK','3 HOOKS','IDEA TITLE','UNIQUE CONCEPT','PRIMARY HEADLINE','CHARACTER CONCEPT','SCENE'];
+  const titleLabels = ['CONCEPT TITLE','CORE IDEA','HOOK','3 HOOKS','IDEA TITLE','UNIQUE CONCEPT','PRIMARY HEADLINE','CHARACTER CONCEPT','SCENE','DESIGN CONCEPT'];
 
   let delay = 0;
   sections.forEach(s => {
@@ -2039,26 +2249,50 @@ function displayOutput(text, type) {
     div.className = 'output-section' + (isTitle ? ' section-concept-title' : '');
     div.style.animationDelay = delay + 's';
     delay += stagger;
-    div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
+    // Special treatment for QUICK PROMPT — show as a copyable highlighted box
+    const isQuickPrompt = s.label.includes('QUICK PROMPT') || s.label.includes('WHERE TO PASTE');
+    if (isQuickPrompt) {
+      div.className += ' section-quick-prompt';
+    }
+    if (isQuickPrompt && s.label.includes('QUICK PROMPT')) {
+      div.innerHTML = `
+        <div class="output-section-label" style="color:#4ecdc4">🎯 ${esc(s.label)} — paste this into any AI tool</div>
+        <div class="quick-prompt-box">
+          <div class="output-section-text" id="quickPromptText">${esc(s.content)}</div>
+          <button class="quick-copy-btn" onclick="copyQuickPrompt(this)">⎘ Copy Prompt</button>
+        </div>`;
+    } else if (isQuickPrompt && s.label.includes('WHERE TO PASTE')) {
+      div.innerHTML = `<div class="output-section-label" style="color:#4ecdc4">📍 ${esc(s.label)}</div><div class="output-section-text" style="color:#9d94c8">${esc(s.content)}</div>`;
+    } else {
+      div.innerHTML = \`<div class="output-section-label">\${esc(s.label)}</div><div class="output-section-text">\${esc(s.content)}</div>\`;
+    }
     container.appendChild(div);
   });
 
   panel_flash();
 
-  // ── WHAT TO DO NEXT section ────────────────────────────────────────────────
+  // ── WHAT TO DO NEXT — smart per generator ────────────────────────────────────
+  const nextMap = {
+    surprise: ['Copy the hook — paste it as your first line', 'Film the script today (30–60 seconds)', 'Paste the AI image prompt into Midjourney, Artistly, or Adobe Firefly', 'Post immediately — do not wait for perfect'],
+    money:    ['Pick the idea that matches your skills and start time', 'Do Step 1 today — it takes under 2 hours', 'Set your price and create the product before you tell anyone', 'Get your first £100 before you think about scaling'],
+    video:    ['Copy the hook — this is your first line, nothing before it', 'Film in one take if possible — authenticity beats polish', 'Add the text overlays exactly as written', 'Post within the hour — momentum matters'],
+    sales:    ['Copy the hook — paste it as the first line of your post or page', 'Add the problem expansion directly below', 'Place the CTA exactly where specified', 'Test it before you change anything'],
+    chibi:    ['Copy the QUICK PROMPT — paste it into Artistly, Adobe Firefly, Canva AI, or ChatGPT', 'If using Midjourney — copy the Midjourney Prompt instead', 'Generate 3–4 variations and pick the best one', 'Save the output for stickers, merch, or your brand character'],
+    story:    ['Copy the hook — paste it as the very first line, no intro before it', 'Post the story in short paragraphs — one thought per paragraph', 'Add the caption exactly as written', 'Pin the first comment as soon as you post'],
+    image:    ['Copy the QUICK PROMPT and paste into your AI image tool', 'For Midjourney — use the Midjourney Prompt at the bottom', 'Generate 4 variations and pick the strongest one', 'Use the output for your content, product, or brand'],
+    design:   ['Copy the image prompt and paste into your AI design tool', 'Generate several variations before choosing', 'Export on transparent or white background for POD platforms', 'List on Etsy, Redbubble, or Printful within 24 hours']
+  };
+  const steps = nextMap[type] || nextMap.surprise;
   const nextSteps = document.createElement('div');
   nextSteps.className = 'next-steps-section';
   nextSteps.style.animationDelay = delay + 's';
   delay += stagger;
-  nextSteps.innerHTML = `
+  nextSteps.innerHTML = \`
     <div class="next-steps-title">🚀 WHAT TO DO NEXT</div>
     <div class="next-steps-list">
-      <div class="next-step-item"><div class="next-step-num">1</div><span>Copy the hook and paste it as your first line or caption</span></div>
-      <div class="next-step-item"><div class="next-step-num">2</div><span>Record the script (30–60 seconds)</span></div>
-      <div class="next-step-item"><div class="next-step-num">3</div><span>Follow the pacing from the platform note</span></div>
-      <div class="next-step-item"><div class="next-step-num">4</div><span>Post immediately — do not overthink it</span></div>
+      \${steps.map((s,i) => \`<div class="next-step-item"><div class="next-step-num">\${i+1}</div><span>\${esc(s)}</span></div>\`).join('')}
     </div>
-    <div class="next-steps-note">⚡ Best results come from posting immediately</div>`;
+    <div class="next-steps-note">⚡ Best results come from doing step 1 within the next 30 minutes</div>\`;
   container.appendChild(nextSteps);
 
   // ── UPGRADE LOCK PANEL (free tier) — framed as unlocking RESULTS ──────────
@@ -2132,6 +2366,12 @@ function displayOutput(text, type) {
   container.appendChild(actionBar);
 
   document.getElementById('outputContent').classList.add('visible');
+
+  // Show quick use hint for image-type generators
+  const hint = document.getElementById('quickUseHint');
+  if (hint) {
+    hint.style.display = (type === 'chibi' || type === 'image' || type === 'design') ? 'block' : 'none';
+  }
 }
 
 function panel_flash() {
@@ -2143,23 +2383,54 @@ function panel_flash() {
 }
 
 function parseOutput(text) {
+  // Strip markdown formatting for clean display
+  function cleanMd(s) {
+    return s
+      .replace(/^#{1,3}\s*/gm, '')           // ## headings
+      .replace(/\*\*(.+?)\*\*/g, '$1')       // **bold**
+      .replace(/\*(.+?)\*/g, '$1')            // *italic*
+      .replace(/^>\s*/gm, '')                 // > blockquotes
+      .replace(/^```[\w]*\n?/gm, '')          // ```code blocks open
+      .replace(/^```$/gm, '')                 // ```code blocks close
+      .replace(/^---+$/gm, '')                // --- dividers
+      .replace(/^\*\s+/gm, '• ')              // * bullet → bullet
+      .replace(/^-\s+/gm, '• ')               // - bullet → bullet
+      .trim();
+  }
+
   const lines = text.split('\n');
   const sections = [];
   let cur = null;
+
   for (const line of lines) {
     const t = line.trim();
-    const m = t.match(/^([A-Z][A-Z0-9\s\/&''£\-–—()]+):$/);
-    if (m && m[1].length >= 2 && m[1].length <= 60) {
+    if (!t || t === '---') { if (cur) cur.content += '\n'; continue; }
+
+    // Match: ## SECTION TITLE or ALL CAPS LABEL: or **LABEL**
+    const mdH = t.match(/^#{1,3}\s+(.+)$/);
+    const capsL = t.match(/^([A-Z][A-Z0-9\s\/&''£\-–—()\.]+):$/);
+    const boldL = t.match(/^\*\*([A-Z][A-Za-z0-9\s\/&\-]+)\*\*:?$/);
+
+    let label = null;
+    if (mdH) label = cleanMd(mdH[1]).toUpperCase();
+    else if (capsL && capsL[1].length >= 2 && capsL[1].length <= 70) label = capsL[1].trim();
+    else if (boldL) label = boldL[1].trim().toUpperCase();
+
+    if (label) {
       if (cur && cur.content.trim()) sections.push({...cur, content: cur.content.trim()});
-      cur = { label: m[1].trim(), content: '' };
+      cur = { label, content: '' };
     } else if (cur) {
-      cur.content += (cur.content ? '\n' : '') + line;
+      const cleaned = cleanMd(line);
+      cur.content += (cur.content ? '\n' : '') + cleaned;
     } else if (t) {
-      cur = { label: 'OUTPUT', content: line };
+      cur = { label: 'OUTPUT', content: cleanMd(line) };
     }
   }
   if (cur && cur.content.trim()) sections.push({...cur, content: cur.content.trim()});
-  return sections.length ? sections : [{ label: 'GENERATED CONTENT', content: text.trim() }];
+
+  // Clean up empty sections
+  const filtered = sections.filter(s => s.content.trim().length > 3);
+  return filtered.length ? filtered : [{ label: 'GENERATED CONTENT', content: cleanMd(text.trim()) }];
 }
 
 function genName(type) {
@@ -2208,6 +2479,19 @@ function copyOutput() {
       setTimeout(() => el.classList.remove('copied'), 600);
     });
   }).catch(() => showToast('Select the text manually to copy'));
+}
+
+
+// Copy just the quick prompt
+function copyQuickPrompt(btn) {
+  const box = btn.previousElementSibling;
+  if (!box) return;
+  const text = box.textContent || '';
+  navigator.clipboard.writeText(text.trim()).then(() => {
+    btn.textContent = '✓ Copied — paste into your AI tool now';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '⎘ Copy Prompt'; btn.classList.remove('copied'); }, 2500);
+  }).catch(() => showToast('Select and copy the text manually'));
 }
 
 // Copy Everything — copies full output including next steps note

@@ -163,6 +163,12 @@ Niche (3 — under 100k): [hyper-specific to the exact topic and audience]
 Mid (3 — 100k–1M): [the broader topic category]
 Broad (2 — over 1M): [platform-level reach tags]
 
+QUICK USE GUIDE:
+Step 1 → Copy the hook from HOOK 1 and paste it as your first line or caption
+Step 2 → Film the script in one take — do not overthink it
+Step 3 → Copy the caption exactly as written
+Step 4 → Post immediately — the best time is always now
+
 AI IMAGE PROMPT:
 [A cinematic still that captures the emotional feeling of this concept — not an illustration of the topic. Think: what single image would a documentary director use as the opening frame? Describe the subject, environment, one dominant light source with Kelvin temperature, lens equivalent, and one phrase that names the precise emotional register. End with: --ar 9:16 --v 6.1 --style raw --q 2 --no text, watermark, generic stock photo feel]
 
@@ -236,7 +242,10 @@ FIRST £100 PLAN:
 [The exact sequence: what they do on day 1, day 3, day 7, day 14 to produce the first £100. Realistic. No "go viral" required. Name the uncomfortable action — the one most people avoid — that is actually the thing that moves money. The one they will want to skip and shouldn't.]
 
 FAILURE POINT:
-[The one specific operational mistake that kills this model for 80% of people who try it. Not "they give up." The actual error: the price that gets zero sales, the platform feature they ignore, the customer message they don't send, the moment they pivot before giving it time to work. Name it so specifically that the person reading this immediately knows whether they would make this mistake.]`,
+[The one specific operational mistake that kills this model for 80% of people who try it. Not "they give up." The actual error: the price that gets zero sales, the platform feature they ignore, the customer message they don't send, the moment they pivot before giving it time to work. Name it so specifically that the person reading this immediately knows whether they would make this mistake.]
+
+QUICK START — what to do in the next 2 hours:
+[3 bullet points maximum. The single most important action from Step 1 of each idea. Plain English. No jargon. What they open, what they type, what they do. Anyone reading this should be able to start in the next 10 minutes.]`,
 
 // ── 3. SHORT-FORM VIDEO ───────────────────────────────────────────────────────
 video: `${GLOBAL}
@@ -303,6 +312,11 @@ Creates one reason to comment that is not "great video."
 GRADE F: "This one really got me. Let me know your thoughts in the comments! 💕"
 GRADE A: "still thinking about this two years later"
 GRADE A: "nobody warned me this part would be the hardest"]
+
+FILMING IN 3 STEPS:
+Step 1 → Read the script once out loud before filming — do not memorise it, just feel it
+Step 2 → Film in one take if possible — imperfect delivery feels more real
+Step 3 → Add the text overlays exactly as written — they are timed for a reason
 
 PLATFORM STRATEGY:
 [The specific platform this script performs best on and why. The exact posting time (day + hour). What to pin. What goes in the first comment. What the bio should say during this video's peak window. How this video connects to the next 2 videos in the series.]
@@ -390,6 +404,11 @@ Under £50: "Get it now — £[price]" — impulse-friendly, no commitment langu
 PLATFORM:
 [Where this copy lives. The exact format on that platform. What the 30 seconds before and after look like in the buyer's journey. What happens when they click.]
 
+HOW TO USE THIS COPY:
+Step 1 → Copy the HOOK and use it as your first sentence — on your sales page, in your Instagram bio, as the first line of your ad
+Step 2 → Copy the PROBLEM EXPANSION and put it directly below — this is what makes people feel seen
+Step 3 → Copy the CTA exactly — do not rewrite it, it is calibrated to your price point
+
 PRO TIER also delivers:
 
 OBJECTION HANDLER:
@@ -438,43 +457,43 @@ RIGHT: "long knotless box braids falling past the waist, deep natural brown at t
 RIGHT: "sleek Korean wolf cut — layers at the front falling in soft curtain bangs, the back shorter and choppy, deep black with subtle dark navy shimmer in light, extremely glossy"
 RIGHT: "a loose curly bob — type 3A ringlets at chin length, deep dark brown with copper highlights visible in warm light, full at the crown, light flyaways giving it a natural lived-in feel"
 
-OUTPUT SECTIONS:
+OUTPUT STRUCTURE — deliver in this exact order. Simple first, technical second.
 
 CHARACTER CONCEPT:
-[One sentence that captures her entire identity — who she is, her energy, her signature visual element, the feeling she projects. This should read like a character brief a Pixar director would approve in one read.
-EXAMPLE: "A quietly confident 17-year-old with an oversized vintage denim jacket she never takes off, honey-brown coils in a loose puff, holding a half-drunk iced coffee — she has somewhere to be and is not rushing."
-EXAMPLE: "A glam girl in full makeup at 2pm on a Tuesday for no reason except she wanted to — deep mahogany skin, long braided updo with gold cuffs, wearing a silk co-ord set like she just came from a photoshoot that she organised herself."]
+[One sentence. Who she is, her energy, her signature element, the feeling she projects. Reads like a Pixar character brief.
+EXAMPLE: "A quietly confident girl with an enormous honey-brown type 4C afro, white tee tucked into light-wash jeans, one hand in her back pocket — effortlessly cool and completely unbothered."
+EXAMPLE: "A full-glam girl in a silk co-ord set and long braided updo with gold cuffs — the kind of person who looks this good on a regular Tuesday for no reason except she wanted to."]
 
-FULL IMAGE PROMPT:
-[130–160 words. Complete. Ready to paste. Built in this exact order:
-1. Style declaration: "3D cartoon character render, Pixar animation style, Blender 3D, Octane render, photorealistic cartoon"
-2. Character identity and energy in one phrase
-3. Skin tone: specific + undertone + texture + any glow or blush detail
-4. Hair: type + texture + pattern + movement + colour + any accessories in the hair
-5. Eyes: size descriptor + iris colour + catchlight count and position + lash detail
-6. Expression: exactly what her face is doing and what it communicates
-7. Outfit: every item — top, bottom, shoes, jewellery, accessories — with specific fabric texture and colour
-8. Pose: full body position, exact hand position, weight distribution, body language intent
-9. Background: specific location or "clean gradient white studio background"
-10. Lighting: key light direction + Kelvin temperature + rim light detail
-11. Quality stack: "8K ultra-sharp render, subsurface scattering on skin, volumetric hair physics, professional studio colour grading, vibrant but natural colour palette"]
+QUICK PROMPT (works in ANY tool — Artistly, Canva AI, Adobe Firefly, ChatGPT, DALL-E, Leonardo):
+[This is the MOST IMPORTANT section. Keep it under 60 words. Simple English. No technical jargon. Anyone must be able to paste this into any AI image tool and get a great result.
+FORMAT: "3D cartoon doll character, Pixar style, [skin tone in plain English], [hair description in plain English], [outfit in plain English], [expression], [pose], [background], cute and realistic, professional 3D render, 8K quality"
+EXAMPLE: "3D cartoon doll character, Pixar style, warm honey-brown skin with a natural glow, enormous voluminous type 4C afro, white fitted tee tucked into light-wash jeans, white trainers, gold hoop earrings, relaxed confident smile, full body standing pose, clean cream background, cute and realistic, professional 3D render, 8K quality"
+This must work when pasted directly into Artistly, Adobe Firefly, or ChatGPT image generation with zero modification.]
 
-MIDJOURNEY PROMPT:
-[Condensed comma-separated terms. Front-load the 5 most critical descriptors first. Keep under 200 words.
-End with: --ar 2:3 --v 6.1 --style raw --q 2 --no anime, manga, flat shading, 2D illustration, sketch, super deformed, chibi proportions, bad anatomy, extra fingers, blurry, watermark, text overlay, cartoon network style]
+WHERE TO PASTE THIS:
+Artistly (app.artistly.ai) → New Design → Describe → paste QUICK PROMPT
+Adobe Firefly (firefly.adobe.com) → Text to Image → paste QUICK PROMPT
+Canva AI → Magic Media → paste QUICK PROMPT
+ChatGPT → ask it to generate an image → paste QUICK PROMPT
+Leonardo AI (leonardo.ai) → Image Generation → paste QUICK PROMPT
 
-DALL-E 3 / LEONARDO VERSION:
-[Same character rewritten as flowing natural language sentences — DALL-E 3 and Leonardo respond better to descriptive prose than comma-separated terms. Start: "A 3D rendered Pixar-style cartoon character..."]
+MIDJOURNEY PROMPT (for advanced users only):
+[Full technical version for Midjourney users. Comma-separated terms. Front-load the 5 most important descriptors. Under 200 words.
+End with: --ar 2:3 --v 6.1 --style raw --q 2 --no anime, manga, flat shading, 2D illustration, sketch, super deformed, bad anatomy, extra fingers, blurry, watermark, text overlay]
 
 PRO TIER also delivers:
 
-VARIATION A — ENERGY SHIFT:
-[Same character identity, completely opposite emotional energy and outfit. If original was confident and glam → variation is soft, cosy, and vulnerable. If original was athletic → variation is elegant and still. Full complete prompt + Midjourney parameters.]
+VARIATION A — OPPOSITE ENERGY:
+[Same character, completely different mood and outfit. If original was casual cool → variation is full glam. If original was glam → variation is soft and cosy. Full QUICK PROMPT + Midjourney version.]
 
-VARIATION B — WORLD TRANSFORMATION:
-[Same character placed in a completely different setting — different era, different aesthetic universe, different emotional context. A streetwear girl transported to a royal court. A school girl in a cyberpunk city at 3am. Full complete prompt + Midjourney parameters.]
+VARIATION B — DIFFERENT WORLD:
+[Same character in a completely different setting — different era, different aesthetic. Full QUICK PROMPT + Midjourney version.]
 
-SELF-CHECK before finalising: Read your prompt aloud. Does every element serve the Pixar 3D doll aesthetic? Would this produce the TikTok viral doll style or would it drift toward flat anime? If any word could cause drift — replace it with a specific 3D render term before outputting.`,
+SELF-CHECK before outputting:
+① Does the QUICK PROMPT use plain English only — no "subsurface scattering", no "Octane render", no technical terms?
+② Can someone with zero AI experience paste the QUICK PROMPT into Artistly and get the right result?
+③ Does every prompt avoid anime, flat illustration, and chibi drift?
+If any check fails — rewrite before sending.`,
 
 // ── 6. VIRAL STORY ────────────────────────────────────────────────────────────
 story: `${GLOBAL}
@@ -543,6 +562,11 @@ GRADE A: "the part i keep thinking about is that she never asked why. not once."
 
 PLATFORM NOTE:
 [Which platform. Exact paragraph length for that platform. Line break strategy. If X/Twitter: thread structure — what each tweet contains, what the cliffhanger is at the end of each one. What goes in the first comment to extend reach.]
+
+HOW TO POST THIS:
+Step 1 → Copy the full story and paste it exactly — do not edit the line breaks
+Step 2 → Copy the caption and post it as written
+Step 3 → Post the story first, then add the caption — wait 2 minutes between them on TikTok
 
 PRO TIER also delivers:
 
@@ -618,8 +642,17 @@ WRONG: "happy and vibrant"
 RIGHT: "the specific stillness that arrives after a decision that cannot be unmade — when the body has accepted something the mind hasn't caught up to yet"
 RIGHT: "the feeling of being the only person awake in a city of eight million people — not lonely, but separately alive"]
 
-PRODUCTION PROMPT:
+SIMPLE PROMPT (paste this anywhere — Canva AI, Adobe Firefly, ChatGPT, Leonardo):
+[Under 40 words. Plain English. No technical terms. What the image looks like in one sentence followed by the style and mood. Anyone must be able to paste this into any AI image tool and get a good result immediately.]
+
+PRODUCTION PROMPT (Midjourney — advanced users):
 [Complete technical brief — all sections synthesised into one paste-ready prompt. Minimum 130 words. End with Midjourney: --ar [correct ratio for stated use] --v 6.1 --style raw --q 2 --no [specific unwanted elements listed explicitly]]
+
+WHERE TO PASTE:
+Canva AI → Magic Media → Text to Image
+Adobe Firefly → firefly.adobe.com → Text to Image
+Leonardo AI → leonardo.ai → Image Generation
+Midjourney → Discord → /imagine command
 
 PRO TIER also delivers:
 VARIATION A: Same scene, completely different lighting — changes the entire emotional register
@@ -701,6 +734,12 @@ IMAGE PROMPT:
 USAGE NOTES:
 [Exactly which tools to composite the design onto the mockup. Which garment or background colours work with this scene. Export resolution. How this mockup should be used differently on Etsy vs Instagram vs a Printful product page.]
 
+QUICK ACTION STEPS:
+Step 1 → Copy the IMAGE PROMPT and paste into Leonardo AI (leonardo.ai) or Adobe Firefly — both are free to start
+Step 2 → Download the generated image
+Step 3 → Upload to Canva, place on your mockup or t-shirt template
+Step 4 → Export and upload to your Etsy listing or POD platform
+
 PRO TIER also delivers:
 VARIATION PROMPT: A second complete prompt — different emotional register, different setting, or different model — for A/B testing listings or building a cohesive product image gallery.`
 
@@ -747,23 +786,50 @@ function buildUserMessage(type, inputs, tier, viralBoost = false, photoData = nu
     sales: () =>
       `${tNote}\n\nPRODUCT: ${inputs.product}\nAUDIENCE: ${inputs.audience}\nTONE: ${inputs.tone||'Direct — makes the right person feel seen'}\nPRICE POINT: ${inputs.price||'Mid-range'}\n\nApply the PRICE PSYCHOLOGY FRAMEWORK. Apply the RECOGNITION PRINCIPLE to the hook.${force}`,
     chibi: () => {
+      const pf = getPlatformRules(inputs.format);
       const photoInstruction = photoData
-        ? `PHOTO PROVIDED — Study this image carefully before writing a single word:\n— Skin tone: identify the exact undertone (warm/cool/neutral), depth, any distinctive features\n— Hair: type, texture, curl pattern, volume, colour, and length\n— Face shape, eye shape, distinctive facial features, overall energy\n— Any accessories, jewellery, clothing visible\n\nBuild the ENTIRE character around this specific person. The 3D doll must look like them. Reference specific observed details in every prompt section.\n\n`
+        ? `PHOTO PROVIDED — Study this image carefully before writing a single word:\n— Skin tone: identify the exact undertone (warm/cool/neutral), depth, any distinctive features\n— Hair: type, texture, curl pattern, volume, colour, and length\n— Face shape, eye shape, distinctive facial features, overall energy\n— Any accessories, jewellery, clothing visible\n\nBuild the ENTIRE character around this specific person. The 3D doll must look like them.\n\n`
         : '';
-      return `${photoInstruction}Generate a complete 3D cartoon doll character prompt package.\n\nCHARACTER TYPE: ${inputs.characterType}\nSKIN TONE: ${inputs.mood||'Observe and specify an authentic, specific skin tone'}\nHAIR: ${inputs.outfit||'Choose hair that best expresses this character — apply the HAIR STANDARD'}\nOUTFIT ENERGY: ${inputs.intensity||'Fashion-forward and specific'}\nOUTPUT FORMAT: ${inputs.format}\nTIER: ${pro ? 'PRO — deliver all 4 sections plus Variation A and Variation B' : 'FREE — deliver CHARACTER CONCEPT, FULL IMAGE PROMPT, and MIDJOURNEY PROMPT only'}\n\nApply the SKIN TONE STANDARD and HAIR STANDARD before finalising. Apply the SELF-CHECK. If any word would produce anime or flat illustration — replace it before outputting.`;
+
+      return `${photoInstruction}Generate a 3D cartoon doll character prompt package.
+
+CHARACTER TYPE: ${inputs.characterType}
+SKIN TONE: ${inputs.mood||'Choose an authentic specific skin tone'}
+HAIR: ${inputs.outfit||'Choose the best hair for this character'}
+OUTFIT: ${inputs.intensity||'Fashion-forward and specific'}
+TIER: ${pro ? 'PRO — deliver CHARACTER CONCEPT, PLATFORM PROMPT, and both Variations' : 'FREE — deliver CHARACTER CONCEPT and PLATFORM PROMPT only'}
+
+OUTPUT FORMAT: ${pf.name}
+PLATFORM RULES: ${pf.note}
+PROMPT LENGTH: ${pf.length}
+PROMPT STYLE: ${pf.style}
+${pf.suffix ? 'END YOUR PROMPT WITH THIS EXACTLY: ' + pf.suffix : 'No special suffix needed for this platform.'}
+
+CRITICAL OUTPUT INSTRUCTIONS:
+① Deliver CHARACTER CONCEPT first — one sentence
+② Deliver the prompt labelled exactly as "${pf.name} PROMPT" — formatted specifically for ${pf.name} using the rules above
+③ Do NOT include Midjourney parameters (--ar --v --style) unless the platform is Midjourney
+④ Do NOT include Leonardo negative prompts unless the platform is Leonardo
+⑤ The prompt must be usable by pasting directly into ${pf.name} with zero modification
+⑥ Only one prompt — formatted for ${pf.name}. Not multiple formats.
+
+Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat illustration.`;
     },
     story: () =>
       `${tNote}\n\nSTORY TYPE: ${inputs.storyType}\nMOOD: ${inputs.mood||'Uncomfortably specific — true enough to feel like it really happened'}\nENDING: ${inputs.ending||'A revelation that recontextualises the opening line'}\nPLATFORM: ${inputs.platform||'Instagram'}\n\nApply the UNANSWERED QUESTION TEST to the hook. Apply the REREAD TEST to the twist.${force}`,
     image: () => {
+      const pf = getPlatformRules(inputs.use || 'general');
       const photoNote = photoData
-        ? `REFERENCE PHOTO PROVIDED — Analyse this image before writing anything:\nStudy the subject, lighting direction and quality, colour palette, emotional register, compositional choices, and style. Then generate a prompt that would either faithfully recreate this image or transform it — elevated into the requested style. Reference specific visual details from the photo throughout the prompt.\n\n`
+        ? `REFERENCE PHOTO PROVIDED — Analyse this image before writing anything. Study the subject, lighting, colour palette, mood, composition, and style. Generate a prompt that recreates or transforms it in the requested style.\n\n`
         : '';
       const sNote = inputs.style
-        ? `STYLE: ${inputs.style} — apply full technical parameters for this style using the framework`
-        : `NO STYLE SPECIFIED — apply the STYLE DECISION FRAMEWORK. State your choice explicitly in the STYLE section and justify it in one sentence.`;
-      return `${tNote}\n\n${photoNote}CONCEPT: ${inputs.concept||'Described in the uploaded reference image'}\n${sNote}\nMOOD: ${inputs.mood||'Apply the MOOD standard — one sentence, the precise feeling, not the genre'}\nINTENDED USE: ${inputs.use||'AI image generation'}\n\nApply the BANNED QUALITY WORDS rule. Every vague word replaced with a specific technical or emotional descriptor.${force}`;
+        ? `STYLE: ${inputs.style}`
+        : `NO STYLE SPECIFIED — apply the STYLE DECISION FRAMEWORK and name your choice.`;
+
+      return `${tNote}\n\n${photoNote}CONCEPT: ${inputs.concept||'Described in the uploaded reference image'}\n${sNote}\nMOOD: ${inputs.mood||'Choose the precise emotional register'}\n\nOUTPUT FORMAT: ${pf.name}\nPLATFORM RULES: ${pf.note}\nPROMPT LENGTH: ${pf.length}\nPROMPT STYLE: ${pf.style}\n${pf.suffix_image ? 'END WITH: ' + pf.suffix_image : 'No special suffix for this platform.'}\n\nCRITICAL: Deliver only ONE prompt formatted specifically for ${pf.name}. Do not include Midjourney parameters unless the platform is Midjourney. Do not include Leonardo negative prompts unless the platform is Leonardo. The prompt must work by pasting directly into ${pf.name} with zero modification. Apply the BANNED QUALITY WORDS rule.${force}`;
     },
     design: () => {
+      const pf_design = getPlatformRules(inputs.format);
       const typeLabels = { 'tshirt':'T-SHIRT DESIGN', 'clipart':'CLIPART SET', 'mockup-apparel':'APPAREL MOCKUP', 'mockup-product':'PRODUCT MOCKUP' };
       const typeLabel = typeLabels[inputs.designType] || inputs.designType;
       let specific = '';
@@ -776,10 +842,108 @@ function buildUserMessage(type, inputs, tier, viralBoost = false, photoData = nu
       } else if (inputs.designType === 'mockup-product') {
         specific = `PRODUCT TYPE: ${inputs.mockupProduct||'Choose the product type'}\nSCENE STYLE: ${inputs.mockupProductScene||'Choose the scene that converts for this specific audience'}`;
       }
-      return `${tNote}\n\nDESIGN TYPE: ${typeLabel}\nNICHE / TARGET AUDIENCE: ${inputs.niche||'General — apply the COMMERCIAL TRUTH principle to define the most specific viable audience'}\nOUTPUT FORMAT: ${inputs.format}\n${specific}\n\nApply the GRADING SYSTEM. Apply the COMMERCIAL TRUTH. The test for every section: would someone in this niche read this and think "they made this specifically for me"? If the answer is "maybe" — rewrite it until the answer is "yes." Start immediately with the first section label. Zero preamble.`;
+      return `${tNote}\n\nDESIGN TYPE: ${typeLabel}\nNICHE / TARGET AUDIENCE: ${inputs.niche||'General — apply the COMMERCIAL TRUTH principle to define the most specific viable audience'}\nOUTPUT FORMAT: ${inputs.format}\n${specific}\n\nApply the GRADING SYSTEM. Apply the COMMERCIAL TRUTH. The test for every section: would someone in this niche read this and think "they made this specifically for me"? If the answer is "maybe" — rewrite it until the answer is "yes." Start immediately with the first section label. Zero preamble.
+
+OUTPUT FORMAT: ${pf_design.name}
+FORMAT RULE: ${pf_design.note}
+Format the IMAGE PROMPT section specifically for ${pf_design.name}. ${pf_design.suffix ? 'End the prompt with: ' + pf_design.suffix : 'No special suffix for this platform.'} Only one prompt format — the one for ${pf_design.name}. No other formats.`;
     }
   };
   return b[type] ? b[type]() : null;
+}
+
+
+// ─── PLATFORM FORMAT RULES ───────────────────────────────────────────────────
+function getPlatformRules(format) {
+  const f = (format || '').toLowerCase();
+
+  if (f.includes('midjourney')) {
+    return {
+      name: 'Midjourney',
+      style: 'comma-separated descriptive terms, front-loaded with most important elements',
+      suffix: '--ar 2:3 --v 6.1 --style raw --q 2 --no anime, manga, flat shading, 2D, sketch, bad anatomy, extra fingers, blurry, watermark',
+      suffix_image: '--ar 1:1 --v 6.1 --style raw --q 2 --no blurry, watermark, text overlay, bad anatomy',
+      note: 'Midjourney format: comma-separated terms only. No sentences. End with the -- parameters.',
+      length: 'medium — 80 to 150 words of descriptive terms',
+      jargon: 'allowed — Midjourney users understand technical terms'
+    };
+  }
+  if (f.includes('leonardo')) {
+    return {
+      name: 'Leonardo AI',
+      style: 'natural descriptive sentences mixed with key comma-separated terms. Leonardo responds well to a hybrid approach.',
+      suffix: 'Negative prompt: anime, manga, flat 2D illustration, bad anatomy, extra fingers, blurry, watermark',
+      suffix_image: 'Negative prompt: blurry, watermark, text overlay, bad anatomy, distorted',
+      note: 'Leonardo AI format: write as flowing descriptive sentences. Add a separate Negative Prompt line at the end.',
+      length: 'medium — 80 to 120 words',
+      jargon: 'moderate — avoid Midjourney-specific syntax like --ar or --v'
+    };
+  }
+  if (f.includes('adobe') || f.includes('firefly')) {
+    return {
+      name: 'Adobe Firefly',
+      style: 'clear natural English sentences. Firefly works best with descriptive prose — no technical parameters.',
+      suffix: 'Style: photorealistic 3D cartoon render. Exclude: anime style, flat illustration, blurry.',
+      suffix_image: 'Style: photorealistic. Exclude: blurry, watermark, distorted proportions.',
+      note: 'Adobe Firefly format: plain English sentences only. No -- parameters. Add a Style line and an Exclude line at the end.',
+      length: 'short to medium — 50 to 90 words',
+      jargon: 'none — plain English only, no technical render terms'
+    };
+  }
+  if (f.includes('dall') || f.includes('chatgpt')) {
+    return {
+      name: 'DALL·E 3 / ChatGPT',
+      style: 'descriptive prose paragraphs. DALL-E 3 and ChatGPT respond best to full sentences that paint a picture.',
+      suffix: '',
+      suffix_image: '',
+      note: 'DALL-E 3 / ChatGPT format: write in full descriptive sentences. No comma spam. No -- parameters. Describe as if telling someone what to draw.',
+      length: 'medium — 60 to 100 words in natural prose',
+      jargon: 'none — conversational descriptive English'
+    };
+  }
+  if (f.includes('canva')) {
+    return {
+      name: 'Canva AI',
+      style: 'very short, very simple English. Canva AI works best with brief clear descriptions — 20 to 40 words maximum.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Canva AI format: keep it under 40 words. Simple vocabulary. One sentence describing the main subject, one for style, one for mood.',
+      length: 'short — 20 to 40 words only',
+      jargon: 'none — the simpler the better'
+    };
+  }
+  if (f.includes('stable') || f.includes('diffusion')) {
+    return {
+      name: 'Stable Diffusion',
+      style: 'comma-separated tags and descriptors. Stable Diffusion uses weighted tag syntax.',
+      suffix: 'Negative prompt: (anime:1.4), (manga:1.4), (flat shading:1.3), (2D:1.3), bad anatomy, extra fingers, blurry, watermark, (cartoon network style:1.2)',
+      suffix_image: 'Negative prompt: blurry, watermark, text, bad anatomy, extra fingers, distorted, (flat shading:1.3)',
+      note: 'Stable Diffusion format: comma-separated tags. Add weighted negative prompts in brackets at the end.',
+      length: 'medium — 60 to 120 words of tags',
+      jargon: 'allowed — SD users understand weighted tags'
+    };
+  }
+  if (f.includes('artistly')) {
+    return {
+      name: 'Artistly',
+      style: 'simple descriptive English sentences — the same way you would describe a photo to a friend.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Artistly format: simple plain English. Short sentences. Describe what you see, not technical parameters.',
+      length: 'short — 30 to 60 words',
+      jargon: 'none — plain conversational English only'
+    };
+  }
+  // General / any tool
+  return {
+    name: 'General',
+    style: 'simple plain English that works in any AI image tool',
+    suffix: '',
+    suffix_image: '',
+    note: 'General format: plain English, no tool-specific parameters. Works in Artistly, Canva, Firefly, ChatGPT, and Leonardo.',
+    length: 'short — 40 to 70 words',
+    jargon: 'none — plain English only'
+  };
 }
 
 // ─── HANDLER ──────────────────────────────────────────────────────────────────
@@ -797,7 +961,8 @@ export default async function handler(req, res) {
   try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; }
   catch { return res.status(400).json({ error: 'Invalid JSON body' }); }
 
-  const { type, inputs = {}, tier = 'free', userId = 'anonymous', viralBoost = false, photoData = null } = body;
+  const { type, inputs = {}, tier = 'free', userId = 'anonymous', viralBoost = false, photoData = null, quantity = 1 } = body;
+  const qty = Math.min(Math.max(parseInt(quantity) || 1, 1), 3); // clamp 1–3
 
   const validTypes = ['surprise','money','video','sales','chibi','story','image','design'];
   if (!validTypes.includes(type)) return res.status(400).json({ error: 'Invalid generator type' });
@@ -819,32 +984,64 @@ export default async function handler(req, res) {
   try {
     const client = new Anthropic({ apiKey });
 
-    let userContent;
-    if (photoData && (type === 'chibi' || type === 'image')) {
-      const matches = photoData.match(/^data:([^;]+);base64,(.+)$/);
-      if (matches) {
-        userContent = [
-          { type: 'image', source: { type: 'base64', media_type: matches[1], data: matches[2] } },
-          { type: 'text', text: userMessage }
-        ];
-      } else {
-        userContent = userMessage;
+    // Build user content (with optional image)
+    function buildContent(msg) {
+      if (photoData && (type === 'chibi' || type === 'image')) {
+        const matches = photoData.match(/^data:([^;]+);base64,(.+)$/);
+        if (matches) {
+          return [
+            { type: 'image', source: { type: 'base64', media_type: matches[1], data: matches[2] } },
+            { type: 'text', text: msg }
+          ];
+        }
       }
-    } else {
-      userContent = userMessage;
+      return msg;
     }
 
-    const message = await client.messages.create({
-      model:      MODEL,
-      max_tokens: tier === 'pro' ? PRO_MAX_TOKENS : FREE_MAX_TOKENS,
-      system:     SP[type],
-      messages:   [{ role: 'user', content: userContent }]
-    });
+    // For multiple quantities, add variation instruction to each call
+    const variationPrefixes = [
+      '',
+      '\n\nVARIATION 2 — This must be meaningfully different from a first attempt on the same inputs. Different angle, different energy, different concept direction. Same quality standard.',
+      '\n\nVARIATION 3 — This must be the most unexpected interpretation of these inputs. Different from both previous variations. Push further.'
+    ];
 
-    const text = message.content?.[0]?.text || '';
-    if (!text) return res.status(502).json({ error: 'Empty response from generation service' });
+    if (qty === 1) {
+      // Single generation — standard flow
+      const message = await client.messages.create({
+        model:      MODEL,
+        max_tokens: tier === 'pro' ? PRO_MAX_TOKENS : FREE_MAX_TOKENS,
+        system:     SP[type],
+        messages:   [{ role: 'user', content: buildContent(userMessage) }]
+      });
+      const text = message.content?.[0]?.text || '';
+      if (!text) return res.status(502).json({ error: 'Empty response from generation service' });
+      return res.status(200).json({ output: text, tier, used: rateCheck.used, limit: rateCheck.limit });
 
-    return res.status(200).json({ output: text, tier, used: rateCheck.used, limit: rateCheck.limit });
+    } else {
+      // Multiple generations — run in parallel
+      const promises = Array.from({ length: qty }, (_, i) => {
+        const msg = userMessage + variationPrefixes[i];
+        return client.messages.create({
+          model:      MODEL,
+          max_tokens: tier === 'pro' ? PRO_MAX_TOKENS : Math.floor(FREE_MAX_TOKENS * 0.85), // slightly lower per variation on free
+          system:     SP[type],
+          messages:   [{ role: 'user', content: buildContent(msg) }]
+        });
+      });
+
+      const results = await Promise.all(promises);
+      const outputs = results.map(r => r.content?.[0]?.text || '').filter(Boolean);
+
+      if (!outputs.length) return res.status(502).json({ error: 'Empty response from generation service' });
+
+      return res.status(200).json({
+        output: outputs[0],   // first output for backward compat
+        outputs,              // all outputs for quantity display
+        tier,
+        used: rateCheck.used,
+        limit: rateCheck.limit
+      });
+    }
 
   } catch (err) {
     if (err?.status === 401) return res.status(500).json({ error: 'Server configuration error' });
