@@ -630,7 +630,7 @@
               </div>
             </div>
             <div>
-              <div style="font-size:.72rem;font-weight:700;color:var(--purple);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;">Pro — £19/month</div>
+              <div style="font-size:.72rem;font-weight:700;color:var(--purple);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;">Pro — £29/month</div>
               <div style="font-size:.78rem;color:var(--text2);line-height:2;">
                 ✓ Unlimited generations<br>
                 ✓ Complete full outputs<br>
@@ -1587,7 +1587,7 @@
     <!-- ENGAGEMENT NUDGE -->
     <div class="engagement-nudge" id="engagementNudge" style="margin:0 2rem 1.5rem;max-width:760px">
       <div class="engagement-nudge-text">⚡ You've generated <strong id="nudgeCount">multiple</strong> viral ideas. Creators who post daily grow <strong>significantly faster</strong>. Unlock unlimited generation + fully structured outputs →</div>
-      <button class="btn-nudge-upgrade" onclick="openModal()">🚀 Unlock Unlimited — £19/month</button>
+      <button class="btn-nudge-upgrade" onclick="openModal()">🚀 Unlock Unlimited — £29/month</button>
     </div>
 
     </div><!-- /generator-area -->
@@ -1638,12 +1638,12 @@
     </div>
     <div class="modal-pricing-block">
       <div class="modal-price-row">
-        <span class="modal-price">£19</span>
+        <span class="modal-price">£29</span>
         <span class="modal-price-period">/month</span>
       </div>
-      <div class="modal-price-note">Everything unlocked. Cancel anytime.</div>
+      <div class="modal-price-note">Everything unlocked. Unlimited generations. Cancel anytime.</div>
     </div>
-    <button class="btn-upgrade-main" onclick="activatePro()">⚡ Upgrade to Pro — £19/month</button>
+    <button class="btn-upgrade-main" onclick="activatePro()">⚡ Upgrade to Pro — £29/month</button>
     <div class="modal-cancel-note">No contracts. No hidden fees. Cancel anytime.</div>
     <a class="modal-back-link" onclick="closeModal()">← Back to the app</a>
     <a class="modal-explore-link" onclick="closeModal()">Not ready? Continue exploring for free</a>
@@ -1679,7 +1679,7 @@
 
 
 
-    <button class="btn-upgrade-main" id="settingsUpgradeBtn" onclick="closeSettings();openModal();" style="margin-top:.5rem">⚡ Upgrade to Pro — £19/month</button>
+    <button class="btn-upgrade-main" id="settingsUpgradeBtn" onclick="closeSettings();openModal();" style="margin-top:.5rem">⚡ Upgrade to Pro — £29/month</button>
     <a class="modal-back-link" onclick="closeSettings()">← Back to the app</a>
     <button onclick="signOut()" style="background:none;border:none;color:var(--red);font-size:.78rem;cursor:pointer;margin-top:.5rem;font-family:'Inter',sans-serif;padding:0;">↩ Sign Out</button>
   </div>
@@ -1808,7 +1808,7 @@
     <div class="lp-gen-card" style="background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border-color:var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;">
       <div class="lp-gen-icon">⚡</div>
       <div class="lp-gen-name" style="color:var(--purple)">Pro Unlocks All</div>
-      <div class="lp-gen-desc">Full outputs · Unlimited generations · £19/month</div>
+      <div class="lp-gen-desc">Full outputs · Unlimited generations · £29/month</div>
     </div>
   </div>
 
@@ -1956,7 +1956,7 @@
       </div>
       <div class="lp-price-card featured">
         <div class="lp-price-plan">Pro</div>
-        <div class="lp-price-amount">£19</div>
+        <div class="lp-price-amount">£29</div>
         <div class="lp-price-period">per month</div>
         <ul class="lp-price-items">
           <li>Unlimited generations</li>
@@ -1964,7 +1964,7 @@
           <li>Full scripts, strategies, variations</li>
           <li>Cancel anytime</li>
         </ul>
-        <button class="lp-price-btn lp-price-btn-pro" onclick="openAuth('signup')">⚡ Get Pro — £19/month</button>
+        <button class="lp-price-btn lp-price-btn-pro" onclick="openAuth('signup')">⚡ Get Pro — £29/month</button>
       </div>
     </div>
   </div>
@@ -2128,7 +2128,7 @@ function displayMultipleOutputs(outputs, type) {
       <div class="lock-icon">🔒</div>
       <div class="lock-title">Get More Variations with Pro</div>
       <div class="lock-desc">Pro members get complete full outputs on every variation — plus unlimited generations.</div>
-      <button class="btn-upgrade" onclick="openModal()">⚡ Get Pro — £19/month</button>`;
+      <button class="btn-upgrade" onclick="openModal()">⚡ Get Pro — £29/month</button>`;
     container.appendChild(locked);
   }
 
@@ -2587,8 +2587,8 @@ function displayOutput(text, type) {
       <div class="lock-icon">🔒</div>
       <div class="lock-results-header">What Pro unlocks for this output:</div>
       <div class="lock-features" style="margin-bottom:1rem">${results.map(r=>`<div class="lock-result-item">${esc(r)}</div>`).join('')}</div>
-      <div class="lock-desc" style="margin-bottom:1rem;font-size:.8rem">Pro isn't about unlocking content. It's about unlocking the parts that turn a good idea into a result — the posting strategy, the monetisation play, the script you can record today.</div>
-      <button class="btn-upgrade" onclick="openModal()">⚡ Get the Full Output — £19/month</button>`;
+      <div class="lock-desc" style="margin-bottom:1rem;font-size:.8rem">Pro unlocks everything — full outputs, unlimited generations, all variations, posting strategies, and monetisation angles. £29/month. Cancel anytime.</div>
+      <button class="btn-upgrade" onclick="openModal()">⚡ Get the Full Output — £29/month</button>`;
     container.appendChild(locked);
   }
 
@@ -2876,7 +2876,7 @@ async function activatePro() {
   } catch (err) { console.error('Checkout error:', err); }
   setProActive();
   closeModal();
-  if (btn) { btn.disabled = false; btn.textContent = '⚡ Upgrade to Pro — £19/month'; }
+  if (btn) { btn.disabled = false; btn.textContent = '⚡ Upgrade to Pro — £29/month'; }
 }
 
 function setProActive() {

@@ -1,6 +1,6 @@
 // /api/create-checkout-session.js
 // PromptForge AI — Stripe Checkout Endpoint
-// Creates a Stripe checkout session for Pro subscription (£19/month)
+// Creates a Stripe checkout session for Pro subscription (£29/month)
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
