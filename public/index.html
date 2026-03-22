@@ -477,6 +477,7 @@
       <button class="sidebar-item" onclick="openModal()"><span class="icon">⚡</span><span class="label">Upgrade Pro</span><span class="badge gold">PRO</span></button>
       <button class="sidebar-item" onclick="showHowPage()"><span class="icon">📚</span><span class="label">How It Works</span></button>
       <button class="sidebar-item" onclick="openSettings()"><span class="icon">⚙️</span><span class="label">Settings</span></button>
+      <button class="sidebar-item" onclick="signOut()" style="color:var(--red);margin-top:2px;"><span class="icon">↩</span><span class="label">Sign Out</span></button>
     </div>
     <div style="padding:0 1rem">
       <div class="usage-bar-wrap" style="margin-top:0">
@@ -493,66 +494,152 @@
     <div class="how-page" id="howPage">
       <div style="max-width:780px">
         <div class="how-page-title">How PromptForge Works</div>
-        <div class="how-page-sub">Pick a generator. Fill in your details. Click generate. Get a complete, specific, ready-to-use output in under 10 seconds. No experience needed.</div>
+        <div class="how-page-sub">Everything you need to know to get the most out of PromptForge — from your first generation to saving your best outputs.</div>
 
-        <div style="background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:14px;padding:1.5rem;margin-bottom:2rem;">
-          <div class="how-for-title" style="margin-bottom:1.25rem">3 steps — that is all</div>
+        <!-- QUICK START -->
+        <div style="background:linear-gradient(135deg,rgba(139,120,255,.08),rgba(79,172,254,.05));border:1px solid var(--border2);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;">
+          <div class="how-for-title" style="margin-bottom:1.25rem">⚡ Quick start — 3 steps</div>
           <div style="display:flex;flex-direction:column;gap:1rem;">
             <div style="display:flex;align-items:flex-start;gap:14px;">
               <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff">1</div>
-              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:2px;">Pick a generator from the left sidebar</div><div style="font-size:.76rem;color:var(--text3);line-height:1.5;">Surprise Me, 3D Doll, Design Studio, Video Script, Make Money, Sales Copy, Viral Story, or Smart Image.</div></div>
+              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:3px;">Pick a generator from the sidebar on the left</div><div style="font-size:.76rem;color:var(--text3);line-height:1.6;">8 generators available — Surprise Me, Make Money, Short-Form Video, Sales &amp; Marketing, 3D Doll, Viral Story, Smart Image, Design Studio. If you are new — start with <strong style="color:var(--text2)">Surprise Me</strong>.</div></div>
             </div>
             <div style="display:flex;align-items:flex-start;gap:14px;">
               <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff">2</div>
-              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:2px;">Fill in your details — or just pick from the dropdowns</div><div style="font-size:.76rem;color:var(--text3);line-height:1.5;">Type your niche, theme, or product. Or pick from the options provided. For 3D Doll — you can upload a photo of yourself.</div></div>
+              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:3px;">Fill in the form — or just pick from the dropdowns</div><div style="font-size:.76rem;color:var(--text3);line-height:1.6;">Every field has a dropdown with options. You can also type your own. Most fields are optional — if you leave something blank, the AI chooses for you. You can also choose <strong style="color:var(--text2)">1, 2, or 3 variations</strong> before generating.</div></div>
             </div>
             <div style="display:flex;align-items:flex-start;gap:14px;">
               <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple2),var(--blue));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff">3</div>
-              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:2px;">Copy your output and use it immediately</div><div style="font-size:.76rem;color:var(--text3);line-height:1.5;">Scripts are ready to film. Prompts are ready to paste. Sales copy is ready to publish. Everything is complete — no editing required.</div></div>
+              <div><div style="font-size:.85rem;font-weight:600;margin-bottom:3px;">Copy your output and use it — or save it for later</div><div style="font-size:.76rem;color:var(--text3);line-height:1.6;">Every output is ready to use immediately. Click <strong style="color:var(--text2)">⎘ Copy</strong> to copy everything. Click <strong style="color:var(--text2)">♡ Save</strong> to save the output to your library so you can come back to it later.</div></div>
             </div>
           </div>
         </div>
 
-        <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:2rem;">
-          <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.85rem;">Where to paste your image prompts</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
-            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://app.artistly.ai" target="_blank" style="color:var(--text2);">Artistly — app.artistly.ai</a></div>
-            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://firefly.adobe.com" target="_blank" style="color:var(--text2);">Adobe Firefly — firefly.adobe.com</a></div>
-            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://canva.com" target="_blank" style="color:var(--text2);">Canva AI — Magic Media</a></div>
-            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://chatgpt.com" target="_blank" style="color:var(--text2);">ChatGPT — image mode</a></div>
-            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://leonardo.ai" target="_blank" style="color:var(--text2);">Leonardo AI — leonardo.ai</a></div>
-            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://midjourney.com" target="_blank" style="color:var(--text2);">Midjourney (advanced users)</a></div>
+        <!-- VARIATIONS FEATURE -->
+        <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:14px;">
+          <div style="font-size:1.3rem;flex-shrink:0;">🔢</div>
+          <div>
+            <div style="font-size:.82rem;font-weight:600;margin-bottom:3px;">Variations — generate 1, 2, or 3 at once</div>
+            <div style="font-size:.75rem;color:var(--text3);line-height:1.6;">Before clicking generate, choose how many variations you want. Picking 3 gives you 3 completely different outputs in one go — all generated at the same time. Each one has its own Copy button so you can pick the one you prefer.</div>
           </div>
-          <div style="font-size:.7rem;color:var(--text3);margin-top:.75rem;padding-top:.65rem;border-top:1px solid var(--border);">Always use the QUICK PROMPT section first — it works in every tool above. The Midjourney prompt is the long technical version and is only needed if you specifically use Midjourney.</div>
         </div>
 
+        <!-- PHOTO UPLOAD FEATURE -->
+        <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:14px;">
+          <div style="font-size:1.3rem;flex-shrink:0;">📸</div>
+          <div>
+            <div style="font-size:.82rem;font-weight:600;margin-bottom:3px;">Photo upload — 3D Doll and Smart Image</div>
+            <div style="font-size:.75rem;color:var(--text3);line-height:1.6;">On the <strong style="color:var(--text2)">3D Doll</strong> generator you can upload a photo of yourself or anyone. The AI analyses your skin tone, hair type, and features and builds the prompt around you — so the 3D doll looks like you. On <strong style="color:var(--text2)">Smart Image</strong> you can upload any reference image and the AI creates a prompt based on what it sees.</div>
+          </div>
+        </div>
+
+        <!-- SAVE FEATURE -->
+        <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:14px;">
+          <div style="font-size:1.3rem;flex-shrink:0;">♡</div>
+          <div>
+            <div style="font-size:.82rem;font-weight:600;margin-bottom:3px;">Save to your library</div>
+            <div style="font-size:.75rem;color:var(--text3);line-height:1.6;">Every output has a <strong style="color:var(--text2)">♡ Save</strong> button. Click it to save the output to your personal library. You can access your saved outputs any time from <strong style="color:var(--text2)">Saved Prompts</strong> in the sidebar — even if you close the app and come back days later. Good for saving hooks, chibi prompts, or scripts you want to use later.</div>
+          </div>
+        </div>
+
+        <!-- WHERE TO PASTE PROMPTS -->
+        <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem;">
+          <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.85rem;">🎨 Where to paste your image prompts</div>
+          <div style="font-size:.76rem;color:var(--text3);margin-bottom:.85rem;line-height:1.6;">When you generate a 3D Doll, Smart Image, or Design Studio prompt — you will see a <strong style="color:var(--text2)">QUICK PROMPT</strong> section. Copy that and paste it into any of these tools:</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.75rem;">
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://app.artistly.ai" target="_blank" style="color:var(--blue);">Artistly — app.artistly.ai</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://firefly.adobe.com" target="_blank" style="color:var(--blue);">Adobe Firefly — firefly.adobe.com</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://canva.com" target="_blank" style="color:var(--blue);">Canva AI — Magic Media</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://chatgpt.com" target="_blank" style="color:var(--blue);">ChatGPT — image mode</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://leonardo.ai" target="_blank" style="color:var(--blue);">Leonardo AI — leonardo.ai</a></div>
+            <div style="font-size:.78rem;color:var(--text2);">→ <a href="https://midjourney.com" target="_blank" style="color:var(--blue);">Midjourney (advanced users)</a></div>
+          </div>
+          <div style="font-size:.7rem;color:var(--text3);padding-top:.65rem;border-top:1px solid var(--border);">💡 Always use the QUICK PROMPT first — it works in every tool above with no changes needed. The Midjourney prompt at the bottom is for advanced users only.</div>
+        </div>
+
+        <!-- WHO IT IS FOR -->
         <div class="how-for-section">
           <div class="how-for-title">Who PromptForge is for</div>
           <div class="how-for-list">
-            <div class="how-for-item">Content creators who want viral scripts and hooks that feel specific — not generic AI filler anyone could write</div>
+            <div class="how-for-item">Content creators who want hooks, scripts, and captions that feel specific and human — not generic AI output</div>
             <div class="how-for-item">Digital sellers who need 3D doll characters, clipart sets, and t-shirt designs for Etsy, Redbubble, and Printful</div>
-            <div class="how-for-item">Entrepreneurs who want real income ideas with step-by-step execution — not motivational advice</div>
-            <div class="how-for-item">Marketers who need sales copy that makes the right person think "they are talking about me"</div>
-            <div class="how-for-item">Anyone who has used AI tools before and found the outputs too generic to actually use</div>
+            <div class="how-for-item">Entrepreneurs who want income ideas with real execution steps — not motivation or theory</div>
+            <div class="how-for-item">Marketers who need conversion copy calibrated to their exact price point and audience</div>
+            <div class="how-for-item">Complete beginners — no experience needed, no editing required, everything is ready to use</div>
           </div>
         </div>
 
+        <!-- ALL 8 GENERATORS -->
+        <div class="how-for-title" style="margin-bottom:1rem;">The 8 generators</div>
         <div class="how-grid">
-          <div class="how-card"><div class="how-card-icon">🎁</div><div class="how-card-title">Surprise Me</div><div class="how-card-desc">Pick a theme or let AI choose. Get 3 scroll-stopping hooks, a full script ready to film, caption, hashtags, image prompt, and a monetisation angle. One click — complete package.</div></div>
-          <div class="how-card"><div class="how-card-icon">💰</div><div class="how-card-title">Make Money</div><div class="how-card-desc">Real income ideas for your niche — with the exact customer, exact platform, 5 startup steps you can begin today, a first £100 plan, and the specific mistake that kills most people who try.</div></div>
-          <div class="how-card"><div class="how-card-icon">🎬</div><div class="how-card-title">Short-Form Video</div><div class="how-card-desc">A line-by-line script with scene directions, text overlays, a re-hook at 12 seconds, caption, and platform strategy. Written for someone filming alone on a phone.</div></div>
-          <div class="how-card"><div class="how-card-icon">📢</div><div class="how-card-title">Sales &amp; Marketing</div><div class="how-card-desc">Conversion copy calibrated to your exact price point. Hook, problem, product intro, value stack, CTA, and objection handler. Makes the right person feel seen before you ask for the sale.</div></div>
-          <div class="how-card"><div class="how-card-icon">🧸</div><div class="how-card-title">3D Doll (Chibi)</div><div class="how-card-desc">The viral TikTok 3D cartoon doll style. All skin tones, all hair textures. Pick a style card or upload your own photo. Gets a simple Quick Prompt you paste directly into Artistly, Canva, or Adobe Firefly.</div></div>
-          <div class="how-card"><div class="how-card-icon">🎭</div><div class="how-card-title">Viral Story</div><div class="how-card-desc">Opening that creates a question nobody can answer, a build-up that raises tension, a twist that changes what the beginning meant, and an ending that does not explain itself.</div></div>
-          <div class="how-card"><div class="how-card-icon">🎨</div><div class="how-card-title">Smart Image</div><div class="how-card-desc">Professional image direction — scene, style, lighting, composition, mood. Upload a reference photo and AI builds a prompt around it. Simple Quick Prompt for any tool included.</div></div>
-          <div class="how-card" style="border-color:rgba(247,183,49,.25);background:rgba(247,183,49,.04)"><div class="how-card-icon">✏️</div><div class="how-card-title" style="color:var(--amber)">Design Studio — NEW</div><div class="how-card-desc">T-shirt designs, clipart sets, and product mockups for Etsy, Redbubble, Printful, Canva, and Cricut. Works for every niche — Black excellence, faith, mum life, streetwear, cottagecore, any audience.</div></div>
+          <div class="how-card">
+            <div class="how-card-icon">🎁</div>
+            <div class="how-card-title">Surprise Me <span style="font-size:.6rem;background:var(--purple2);color:#fff;padding:1px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">START HERE</span></div>
+            <div class="how-card-desc">Pick a theme, choose a suggestion chip, or leave blank for AI to choose. Get 3 hooks, a full script, caption, hashtags, an AI image prompt, and a monetisation angle. One click — complete package.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">💰</div>
+            <div class="how-card-title">Make Money</div>
+            <div class="how-card-desc">Enter your niche and audience. Get real income ideas with the exact customer profile, exact platform, 5 startup steps you can begin today, a first £100 plan, and the specific mistake most people make.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎬</div>
+            <div class="how-card-title">Short-Form Video</div>
+            <div class="how-card-desc">Enter a topic and choose your platform. Get a line-by-line script with scene directions, text overlays, a re-hook at 12 seconds, caption, and platform strategy. Written for someone filming alone on a phone.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">📢</div>
+            <div class="how-card-title">Sales &amp; Marketing</div>
+            <div class="how-card-desc">Enter your product and audience. Get conversion copy calibrated to your exact price point — hook, problem expansion, product intro, value stack, CTA, and objection handler.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🧸</div>
+            <div class="how-card-title">3D Doll (Chibi)</div>
+            <div class="how-card-desc">Pick a style card or choose your own options. Optionally upload a photo of yourself. Get a QUICK PROMPT ready to paste into Artistly, Canva AI, Adobe Firefly, or ChatGPT. All skin tones and hair types supported.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎭</div>
+            <div class="how-card-title">Viral Story</div>
+            <div class="how-card-desc">Choose a story type, mood, and platform. Get a complete story — opening hook, build-up with tension, a twist that recontextualises everything, and an ending that does not explain itself.</div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎨</div>
+            <div class="how-card-title">Smart Image</div>
+            <div class="how-card-desc">Describe a concept or upload a reference photo. Choose your AI tool from the dropdown. Get a prompt formatted specifically for that tool — Midjourney, Leonardo, Firefly, Canva, DALL·E, or Artistly.</div>
+          </div>
+          <div class="how-card" style="border-color:rgba(247,183,49,.25);background:rgba(247,183,49,.04)">
+            <div class="how-card-icon">✏️</div>
+            <div class="how-card-title" style="color:var(--amber)">Design Studio <span style="font-size:.6rem;background:rgba(247,183,49,.3);color:var(--amber);padding:1px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">NEW</span></div>
+            <div class="how-card-desc">Choose T-shirt Design, Clipart Set, Apparel Mockup, or Product Mockup. Enter your niche — Black excellence, faith, mum life, Korean aesthetic, cottagecore, or any audience. Get a commercial-quality design brief and image prompt formatted for your chosen tool.</div>
+          </div>
         </div>
 
+        <!-- FREE VS PRO -->
         <div style="background:linear-gradient(135deg,rgba(139,120,255,.06),rgba(79,172,254,.04));border:1px solid var(--border2);border-radius:14px;padding:1.5rem;margin-bottom:2rem;">
           <div class="how-for-title" style="margin-bottom:1rem">Free plan vs Pro</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-            <div><div style="font-size:.72rem;font-weight:700;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Free</div><div style="font-size:.78rem;color:var(--text2);line-height:1.9;">✓ All 8 generators<br>✓ 5 generations per day<br>✓ Preview quality outputs<br>✓ No card needed</div></div>
-            <div><div style="font-size:.72rem;font-weight:700;color:var(--purple);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Pro — £19/month</div><div style="font-size:.78rem;color:var(--text2);line-height:1.9;">✓ Unlimited generations<br>✓ Complete full outputs<br>✓ All variations<br>✓ Cancel anytime</div></div>
+            <div>
+              <div style="font-size:.72rem;font-weight:700;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;">Free</div>
+              <div style="font-size:.78rem;color:var(--text2);line-height:2;">
+                ✓ All 8 generators<br>
+                ✓ 5 generations per day<br>
+                ✓ 1, 2, or 3 variations<br>
+                ✓ Photo upload<br>
+                ✓ Preview quality outputs<br>
+                ✓ No card needed
+              </div>
+            </div>
+            <div>
+              <div style="font-size:.72rem;font-weight:700;color:var(--purple);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;">Pro — £19/month</div>
+              <div style="font-size:.78rem;color:var(--text2);line-height:2;">
+                ✓ Unlimited generations<br>
+                ✓ Complete full outputs<br>
+                ✓ All variations included<br>
+                ✓ Save to library (coming soon)<br>
+                ✓ Google Sign In<br>
+                ✓ Cancel anytime
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1594,6 +1681,7 @@
 
     <button class="btn-upgrade-main" id="settingsUpgradeBtn" onclick="closeSettings();openModal();" style="margin-top:.5rem">⚡ Upgrade to Pro — £19/month</button>
     <a class="modal-back-link" onclick="closeSettings()">← Back to the app</a>
+    <button onclick="signOut()" style="background:none;border:none;color:var(--red);font-size:.78rem;cursor:pointer;margin-top:.5rem;font-family:'Inter',sans-serif;padding:0;">↩ Sign Out</button>
   </div>
 </div>
 
@@ -2750,6 +2838,26 @@ function openSettings() {
   document.getElementById('settingsModal').classList.add('open');
 }
 function closeSettings() { document.getElementById('settingsModal').classList.remove('open'); }
+
+function signOut() {
+  // Clear all session data
+  try {
+    const DEPLOY_VERSION = 'pf_v8';
+    localStorage.removeItem(DEPLOY_VERSION);
+    localStorage.removeItem('pf_entered');
+    sessionStorage.removeItem('pf_session');
+  } catch(e) {}
+  // Close any open modals
+  closeSettings();
+  closeModal();
+  // Reset app state
+  isPro = false;
+  usageCount = 0;
+  currentOutput = '';
+  // Show landing page
+  showLanding();
+  showToast('✓ Signed out successfully');
+}
 
 // ─── PRO ACTIVATION ──────────────────────────────────────────────────────────
 async function activatePro() {
