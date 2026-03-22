@@ -2413,7 +2413,7 @@ function displayOutput(text, type) {
     } else if (isQuickPrompt && s.label.includes('WHERE TO PASTE')) {
       div.innerHTML = `<div class="output-section-label" style="color:#4ecdc4">📍 ${esc(s.label)}</div><div class="output-section-text" style="color:#9d94c8">${esc(s.content)}</div>`;
     } else {
-      div.innerHTML = \`<div class="output-section-label">\${esc(s.label)}</div><div class="output-section-text">\${esc(s.content)}</div>\`;
+      div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
     }
     container.appendChild(div);
   });
@@ -2436,12 +2436,12 @@ function displayOutput(text, type) {
   nextSteps.className = 'next-steps-section';
   nextSteps.style.animationDelay = delay + 's';
   delay += stagger;
-  nextSteps.innerHTML = \`
+  nextSteps.innerHTML = `
     <div class="next-steps-title">🚀 WHAT TO DO NEXT</div>
     <div class="next-steps-list">
-      \${steps.map((s,i) => \`<div class="next-step-item"><div class="next-step-num">\${i+1}</div><span>\${esc(s)}</span></div>\`).join('')}
+      ${steps.map((s,i) => `<div class="next-step-item"><div class="next-step-num">${i+1}</div><span>${esc(s)}</span></div>`).join('')}
     </div>
-    <div class="next-steps-note">⚡ Best results come from doing step 1 within the next 30 minutes</div>\`;
+    <div class="next-steps-note">⚡ Best results come from doing step 1 within the next 30 minutes</div>`;
   container.appendChild(nextSteps);
 
   // ── UPGRADE LOCK PANEL (free tier) — framed as unlocking RESULTS ──────────
