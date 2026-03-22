@@ -2190,6 +2190,30 @@ function switchAuthTab(tab) {
   document.getElementById('authSignin').style.display = tab === 'signin'  ? 'block' : 'none';
 }
 
+// ── STRIPE SUCCESS HANDLER ────────────────────────────────────────────────────
+// When Stripe redirects back after payment, URL has ?upgraded=true
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('upgraded') === 'true') {
+    // Remove the param from URL without reload
+    const url = new URL(window.location.href);
+    url.searchParams.delete('upgraded');
+    url.searchParams.delete('session_id');
+    window.history.replaceState({}, '', url.toString());
+    // Activate Pro and show success message
+    setTimeout(() => {
+      setProActive();
+      // Show a prominent success message
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.textContent = '🎉 Welcome to Pro! Unlimited generations unlocked.';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 5000);
+      }
+    }, 500);
+  }
+})();
+
 // Landing page — version-aware init
 (function() {
   const DEPLOY_VERSION = 'pf_v8';
@@ -2861,22 +2885,28 @@ function signOut() {
 
 // ─── PRO ACTIVATION ──────────────────────────────────────────────────────────
 async function activatePro() {
-  const btn = document.querySelector('.btn-upgrade-main');
-  if (btn) { btn.disabled = true; btn.textContent = 'Redirecting to checkout...'; }
+  const btns = document.querySelectorAll('.btn-upgrade-main');
+  btns.forEach(b => { b.disabled = true; b.textContent = '⏳ Redirecting to secure checkout...'; });
   try {
     const res = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: currentUserId })
     });
-    if (res.ok) {
-      const data = await res.json();
-      if (data.url) { window.location.href = data.url; return; }
+    const data = await res.json();
+    if (res.ok && data.url) {
+      // Redirect to Stripe checkout
+      window.location.href = data.url;
+      return;
+    } else {
+      console.error('Checkout error:', data.error);
+      showToast('Payment setup error — please try again');
     }
-  } catch (err) { console.error('Checkout error:', err); }
-  setProActive();
-  closeModal();
-  if (btn) { btn.disabled = false; btn.textContent = '⚡ Upgrade to Pro — £29/month'; }
+  } catch (err) {
+    console.error('Checkout error:', err);
+    showToast('Could not connect to payment service — please try again');
+  }
+  btns.forEach(b => { b.disabled = false; b.textContent = '⚡ Upgrade to Pro — £29/month'; });
 }
 
 function setProActive() {

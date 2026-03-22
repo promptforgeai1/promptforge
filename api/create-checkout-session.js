@@ -7,9 +7,10 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const stripeKey = process.env.STRIPE_SECRET_KEY;
-  if (!stripeKey) {
-    return res.status(500).json({ error: 'Payment service not configured' });
-  }
+  const priceId   = process.env.STRIPE_PRICE_ID;
+
+  if (!stripeKey) return res.status(500).json({ error: 'Payment service not configured' });
+  if (!priceId)   return res.status(500).json({ error: 'Price not configured' });
 
   let body;
   try {
@@ -20,15 +21,20 @@ export default async function handler(req, res) {
 
   const { userId = 'anonymous', email = '' } = body;
 
-  // Build Stripe checkout session via API
+  // Base URL — always use the live domain
+  const baseUrl = 'https://promptforge-black-rho.vercel.app';
+
   try {
     const params = new URLSearchParams({
       'payment_method_types[]': 'card',
       'mode': 'subscription',
-      'line_items[0][price]': process.env.STRIPE_PRICE_ID || '',
-      'success_url': `${process.env.NEXT_PUBLIC_URL || 'https://promptforge.ai'}/success?session_id={CHECKOUT_SESSION_ID}`,
-      'cancel_url': `${process.env.NEXT_PUBLIC_URL || 'https://promptforge.ai'}`,
+      'line_items[0][price]': priceId,
+      'line_items[0][quantity]': '1',
+      'success_url': `${baseUrl}/?session_id={CHECKOUT_SESSION_ID}&upgraded=true`,
+      'cancel_url': `${baseUrl}/`,
       'metadata[userId]': userId,
+      'allow_promotion_codes': 'true',
+      'billing_address_collection': 'auto',
     });
 
     if (email) params.append('customer_email', email);
@@ -42,13 +48,13 @@ export default async function handler(req, res) {
       body: params.toString()
     });
 
+    const session = await stripeRes.json();
+
     if (!stripeRes.ok) {
-      const err = await stripeRes.json().catch(() => ({}));
-      console.error('Stripe error:', err);
-      return res.status(502).json({ error: 'Payment session creation failed' });
+      console.error('Stripe error:', session);
+      return res.status(502).json({ error: session?.error?.message || 'Payment session creation failed' });
     }
 
-    const session = await stripeRes.json();
     return res.status(200).json({ url: session.url, sessionId: session.id });
 
   } catch (err) {
