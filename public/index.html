@@ -446,27 +446,49 @@
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
 
   @media(max-width:900px){
-    .sidebar{display:none;}
+    .sidebar{display:none;position:fixed;top:0;left:0;bottom:0;width:260px;z-index:900;background:var(--bg2);border-right:1px solid var(--border2);padding-top:70px;transform:translateX(-100%);transition:transform .25s ease;}
+    .sidebar.mobile-open{display:block;transform:translateX(0);}
+    .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:850;backdrop-filter:blur(2px);}
+    .mobile-overlay.show{display:block;}
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all .2s;}
     .main{margin-left:0;}
     .generator-area{grid-template-columns:1fr;}
     .input-panel{border-right:none;border-bottom:1px solid var(--border);max-height:none;}
     .output-panel{max-height:none;}
     .how-grid{grid-template-columns:1fr;}
   }
+  @media(min-width:901px){
+    .hamburger{display:none;}
+    .mobile-overlay{display:none !important;}
+    #navUsageDisplay{display:none !important;}
+  }
+  @media(max-width:900px){
+    #navUsageDisplay{display:inline !important;}
+  }
 </style>
 </head>
 <body>
 
+<!-- Mobile overlay -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileSidebar()"></div>
+
 <nav>
-  <div class="nav-logo">
-    <div class="nav-logo-icon">⚡</div>
-    <span class="nav-logo-text">PromptForge AI</span>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileSidebar()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">⚡</div>
+      <span class="nav-logo-text">PromptForge AI</span>
+    </div>
   </div>
   <div class="nav-right">
     <div class="tier-badge" id="tierBadge" onclick="openModal()">
       <div class="tier-dot"></div>
       <span id="tierLabel">Free Plan</span>
     </div>
+    <span id="navUsageDisplay" style="font-size:.68rem;color:var(--text3);display:none;">0/5</span>
     <button class="btn-ghost" onclick="showLanding()">Sign In</button>
     <button class="btn-pro" onclick="openModal()">⚡ Upgrade to Pro</button>
   </div>
@@ -2231,6 +2253,31 @@ function copySingle(idx) {
 }
 
 // ─── LANDING PAGE ────────────────────────────────────────────────────────────
+// ─── MOBILE SIDEBAR ───────────────────────────────────────────────────────────
+function toggleMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('mobileOverlay');
+  if (!sidebar) return;
+  const isOpen = sidebar.classList.contains('mobile-open');
+  if (isOpen) {
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('show');
+  } else {
+    sidebar.classList.add('mobile-open');
+    overlay.classList.add('show');
+  }
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('mobileOverlay');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+  if (overlay) overlay.classList.remove('show');
+}
+
+// Close sidebar when a generator is selected on mobile
+const origSwitchGen = window.switchGen;
+
 function enterApp() {
   const DEPLOY_VERSION = 'pf_v8';
   const lp = document.getElementById('landingPage');
@@ -2387,6 +2434,7 @@ const loadingSubtexts = {
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 function switchGen(id, el) {
+  closeMobileSidebar();
   document.getElementById('howPage').classList.remove('active');
   document.getElementById('generatorArea').style.display = 'grid';
   document.querySelectorAll('.gen-form').forEach(f => f.classList.remove('active'));
@@ -2801,6 +2849,10 @@ function renderContentWithActions(text) {
 function updateUsage() {
   const pct = Math.min((usageCount / MAX_FREE) * 100, 100);
   const atLimit = usageCount >= MAX_FREE;
+
+  // Update mobile nav usage display
+  const navUsage = document.getElementById('navUsageDisplay');
+  if (navUsage && !isPro) navUsage.textContent = usageCount + '/5 today';
 
   ['usageCount','usageCount2'].forEach(id => {
     const el = document.getElementById(id);
