@@ -446,25 +446,55 @@
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
 
   @media(max-width:900px){
-    .sidebar{display:none;position:fixed;top:0;left:0;bottom:0;width:260px;z-index:900;background:var(--bg2);border-right:1px solid var(--border2);padding-top:70px;transform:translateX(-100%);transition:transform .25s ease;}
-    .sidebar.mobile-open{display:block;transform:translateX(0);}
-    .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:850;backdrop-filter:blur(2px);}
-    .mobile-overlay.show{display:block;}
-    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;}
-    .hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all .2s;}
     .main{margin-left:0;}
     .generator-area{grid-template-columns:1fr;}
     .input-panel{border-right:none;border-bottom:1px solid var(--border);max-height:none;}
     .output-panel{max-height:none;}
     .how-grid{grid-template-columns:1fr;}
+    #navUsageDisplay{display:inline !important;}
+  }
+  /* Mobile sidebar — completely isolated layer */
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1500;}
+  .mobile-overlay.show{display:block;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;z-index:1600;position:relative;}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;}
+  @media(max-width:900px){
+    .hamburger{display:flex;}
+    .sidebar{
+      display:block !important;
+      position:fixed;
+      top:0;left:0;bottom:0;
+      width:280px;
+      z-index:2000;
+      background:#0f0d2a;
+      border-right:1px solid var(--border2);
+      padding-top:80px;
+      padding-bottom:2rem;
+      overflow-y:auto;
+      transform:translateX(-110%);
+      transition:transform .3s cubic-bezier(.4,0,.2,1);
+      box-shadow:4px 0 30px rgba(0,0,0,.8);
+    }
+    .sidebar.mobile-open{transform:translateX(0) !important;}
+    .sidebar .sidebar-item{
+      font-size:1rem !important;
+      padding:14px 16px !important;
+      margin-bottom:4px !important;
+      color:#fff !important;
+      background:rgba(255,255,255,.04) !important;
+      border-radius:10px !important;
+      border:1px solid rgba(255,255,255,.06) !important;
+    }
+    .sidebar .sidebar-item:active{background:rgba(139,120,255,.3) !important;}
+    .sidebar .sidebar-item.active{background:rgba(139,120,255,.2) !important;border-color:var(--purple) !important;}
+    .sidebar .sidebar-item .icon{font-size:1.2rem !important;}
+    .sidebar .sidebar-label{font-size:.7rem !important;padding:0 1rem !important;}
+    .sidebar .sidebar-section{padding:0 .75rem 1rem !important;}
   }
   @media(min-width:901px){
-    .hamburger{display:none;}
+    .hamburger{display:none !important;}
     .mobile-overlay{display:none !important;}
     #navUsageDisplay{display:none !important;}
-  }
-  @media(max-width:900px){
-    #navUsageDisplay{display:inline !important;}
   }
 </style>
 </head>
@@ -480,7 +510,7 @@
     </button>
     <div class="nav-logo">
       <div class="nav-logo-icon">⚡</div>
-      <span class="nav-logo-text">PromptForge AI</span>
+      <span class="nav-logo-text" style="white-space:nowrap;">PromptForge AI</span>
     </div>
   </div>
   <div class="nav-right">
@@ -2257,14 +2287,16 @@ function copySingle(idx) {
 function toggleMobileSidebar() {
   const sidebar = document.querySelector('.sidebar');
   const overlay = document.getElementById('mobileOverlay');
-  if (!sidebar) return;
+  if (!sidebar || !overlay) return;
   const isOpen = sidebar.classList.contains('mobile-open');
   if (isOpen) {
     sidebar.classList.remove('mobile-open');
     overlay.classList.remove('show');
+    document.body.style.overflow = '';
   } else {
     sidebar.classList.add('mobile-open');
     overlay.classList.add('show');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
   }
 }
 
@@ -2273,6 +2305,7 @@ function closeMobileSidebar() {
   const overlay = document.getElementById('mobileOverlay');
   if (sidebar) sidebar.classList.remove('mobile-open');
   if (overlay) overlay.classList.remove('show');
+  document.body.style.overflow = '';
 }
 
 // Close sidebar when a generator is selected on mobile
