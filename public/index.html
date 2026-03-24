@@ -427,6 +427,20 @@
   .qty-note{font-size:.65rem;color:var(--text3);letter-spacing:.01em;}
   .lp-btn-mid-cta{background:linear-gradient(135deg,rgba(139,120,255,.15),rgba(79,172,254,.1));border:1px solid var(--border2);color:var(--text);padding:13px 32px;border-radius:12px;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:all .2s;}
   .lp-btn-mid-cta:hover{background:linear-gradient(135deg,var(--purple2),var(--blue));border-color:transparent;}
+
+  /* ── INPUT TIPS ── */
+  .input-tip{background:linear-gradient(135deg,rgba(139,120,255,.06),rgba(79,172,254,.04));border:1px solid rgba(139,120,255,.15);border-radius:9px;padding:.65rem .85rem;margin-bottom:.85rem;font-size:.71rem;color:var(--text3);line-height:1.65;}
+  .input-tip strong{color:var(--purple);font-weight:600;}
+  .input-tip .tip-example{display:flex;flex-direction:column;gap:4px;margin-top:.5rem;}
+  .input-tip .tip-bad{color:var(--red);font-size:.68rem;}
+  .input-tip .tip-good{color:var(--teal);font-size:.68rem;font-weight:500;}
+  /* ── OUTPUT TIP BAR ── */
+  .output-tip-bar{background:rgba(139,120,255,.05);border:1px solid rgba(139,120,255,.12);border-radius:8px;padding:.55rem .85rem;margin-bottom:.75rem;font-size:.69rem;color:var(--text3);line-height:1.6;display:none;}
+  .output-tip-bar.show{display:block;}
+  .output-tip-bar .tip-label{color:var(--purple);font-weight:700;margin-right:4px;}
+
+  /* ── ACTION INSTRUCTION LINES ── */
+  .output-action-line{background:rgba(79,172,254,.07);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:5px 10px;margin-top:6px;font-size:.72rem;color:var(--blue);font-weight:500;line-height:1.5;}
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px;}
@@ -643,6 +657,38 @@
           </div>
         </div>
 
+        <!-- HOW TO GET THE BEST OUTPUTS -->
+        <div style="margin-bottom:2rem;">
+          <div class="how-for-title" style="margin-bottom:1rem;">🎯 How to get non-generic hooks and outputs</div>
+          <div style="background:rgba(22,20,56,.5);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:.85rem;">
+            <div style="font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:.5rem;">The specificity rule — the most important thing to know</div>
+            <div style="font-size:.75rem;color:var(--text3);line-height:1.7;">The more specific your input, the more specific and powerful your output. PromptForge is trained to produce non-generic content — but it needs specific material to work with. A vague input produces a decent output. A specific input produces a wow output.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.85rem;">
+            <div style="background:rgba(255,107,107,.05);border:1px solid rgba(255,107,107,.15);border-radius:10px;padding:.85rem;">
+              <div style="font-size:.65rem;font-weight:700;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;">✗ Weak inputs</div>
+              <div style="display:flex;flex-direction:column;gap:.4rem;">
+                <div style="font-size:.73rem;color:var(--text3);">"fitness journey"</div>
+                <div style="font-size:.73rem;color:var(--text3);">"my business"</div>
+                <div style="font-size:.73rem;color:var(--text3);">"social media tips"</div>
+                <div style="font-size:.73rem;color:var(--text3);">"anyone" as audience</div>
+              </div>
+            </div>
+            <div style="background:rgba(78,205,196,.05);border:1px solid rgba(78,205,196,.2);border-radius:10px;padding:.85rem;">
+              <div style="font-size:.65rem;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;">✓ Strong inputs</div>
+              <div style="display:flex;flex-direction:column;gap:.4rem;">
+                <div style="font-size:.73rem;color:var(--text2);">"trained 90 days, lost nothing, then this"</div>
+                <div style="font-size:.73rem;color:var(--text2);">"made £0 for 8 months as a creator"</div>
+                <div style="font-size:.73rem;color:var(--text2);">"I stopped posting and got more followers"</div>
+                <div style="font-size:.73rem;color:var(--text2);">"busy Black mums who want natural hair"</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:rgba(139,120,255,.05);border:1px solid rgba(139,120,255,.15);border-radius:10px;padding:.85rem;">
+            <div style="font-size:.75rem;color:var(--text2);line-height:1.7;"><strong style="color:var(--purple)">If you are not happy with an output</strong> — click <strong style="color:var(--text)">Improve This Idea</strong> below the result. This tells the AI the first version was not sharp enough and forces a stronger, more specific second attempt. You can also make your input more specific and generate again.</div>
+          </div>
+        </div>
+
         <div class="how-cta">
           <div class="how-cta-text">Ready to generate something you can actually use today?</div>
           <button class="btn-how-start" onclick="showGenerators()">⚡ Start Generating</button>
@@ -711,6 +757,14 @@
           <!-- hidden input carries the final vibe value -->
           <input type="hidden" id="s-vibe-final" value="">
 
+          <div class="input-tip">
+            <strong>💡 How to get a non-generic hook:</strong> The more specific your input, the more powerful your hook.
+            <div class="tip-example">
+              <span class="tip-bad">✗ Weak: "fitness journey" — too vague, produces generic output</span>
+              <span class="tip-good">✓ Strong: "I trained every day for 90 days and lost nothing — then did this one thing" — specific, produces a wow hook</span>
+            </div>
+          </div>
+
           <div class="qty-picker">
             <span class="qty-label">Variations:</span>
             <div class="qty-btns">
@@ -774,6 +828,13 @@
             </div>
             <span class="qty-note">variations in one go</span>
           </div>
+          <div class="input-tip">
+            <strong>💡 Better ideas tip:</strong> The more specific your niche and audience, the more specific and usable your income ideas.
+            <div class="tip-example">
+              <span class="tip-bad">✗ Weak: "social media" + "anyone"</span>
+              <span class="tip-good">✓ Strong: "natural hair care" + "Black women who want to grow their hair without chemicals"</span>
+            </div>
+          </div>
           <button class="btn-generate" onclick="generate('money')">⚡ Generate My Income Ideas</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>💰 Real execution steps included</span></div>
         </div>
@@ -828,6 +889,13 @@
               <button class="qty-btn" onclick="setQty(3,this)">3</button>
             </div>
             <span class="qty-note">variations in one go</span>
+          </div>
+          <div class="input-tip">
+            <strong>💡 Hook tip:</strong> A specific topic produces an involuntary hook — one people physically cannot scroll past.
+            <div class="tip-example">
+              <span class="tip-bad">✗ Weak: "how to make money online"</span>
+              <span class="tip-good">✓ Strong: "I made £0 for 8 months then one video changed everything"</span>
+            </div>
           </div>
           <button class="btn-generate" onclick="generate('video')">⚡ Generate My Viral Script</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎬 Hook + full script + platform strategy</span></div>
@@ -1178,6 +1246,13 @@
               <button class="qty-btn" onclick="setQty(3,this)">3</button>
             </div>
             <span class="qty-note">variations in one go</span>
+          </div>
+          <div class="input-tip">
+            <strong>💡 Story hook tip:</strong> Include a real number, price, or specific day — it creates a question the reader cannot answer without reading more.
+            <div class="tip-example">
+              <span class="tip-bad">✗ Weak: "my business journey" — no tension, no question</span>
+              <span class="tip-good">✓ Strong: "I deleted £4,000 of content in 20 minutes and slept better than I had in months"</span>
+            </div>
           </div>
           <button class="btn-generate" onclick="generate('story')">⚡ Generate My Viral Story</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎭 Hook + twist + platform note</span></div>
@@ -1548,6 +1623,9 @@
             <button class="btn-action" onclick="copyOutput()">⎘ Copy</button>
             <button class="btn-action" onclick="saveOutput()">♡ Save</button>
           </div>
+        </div>
+        <div id="outputTipBar" class="output-tip-bar">
+          <span class="tip-label">💡 Pro tip:</span> Not happy with the output? Make your input more specific — add a real number, a named platform, or a specific situation. Then click <strong>Improve This Idea</strong> for a stronger version.
         </div>
         <div id="quickUseHint" style="display:none;background:rgba(79,172,254,.06);border:1px solid rgba(79,172,254,.15);border-radius:8px;padding:.6rem .85rem;margin-bottom:.85rem;font-size:.7rem;color:var(--text2);line-height:1.6;">
           <span style="color:var(--blue);font-weight:600;">💡 How to use:</span> Find the <strong>QUICK PROMPT</strong> section → copy it → paste into <a href="https://app.artistly.ai" target="_blank" style="color:var(--blue)">Artistly</a>, <a href="https://firefly.adobe.com" target="_blank" style="color:var(--blue)">Adobe Firefly</a>, <a href="https://canva.com" target="_blank" style="color:var(--blue)">Canva AI</a>, or <a href="https://chatgpt.com" target="_blank" style="color:var(--blue)">ChatGPT</a>. The Midjourney section is for advanced users only.
@@ -2115,7 +2193,7 @@ function displayMultipleOutputs(outputs, type) {
       div.className = 'output-section' + (isTitle ? ' section-concept-title' : '');
       div.style.animationDelay = delay + 's';
       delay += stagger;
-      div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
+      div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${renderContentWithActions(s.content)}</div>`;
       container.appendChild(div);
     });
   });
@@ -2136,6 +2214,10 @@ function displayMultipleOutputs(outputs, type) {
 
   const hint = document.getElementById('quickUseHint');
   if (hint) hint.style.display = (type === 'chibi' || type === 'image' || type === 'design') ? 'block' : 'none';
+
+  // Show tip bar for hook generators
+  const tipBar = document.getElementById('outputTipBar');
+  if (tipBar) tipBar.classList.toggle('show', ['surprise','video','story','money'].includes(type));
 
   document.getElementById('outputContent').classList.add('visible');
 }
@@ -2525,7 +2607,7 @@ function displayOutput(text, type) {
     } else if (isQuickPrompt && s.label.includes('WHERE TO PASTE')) {
       div.innerHTML = `<div class="output-section-label" style="color:#4ecdc4">📍 ${esc(s.label)}</div><div class="output-section-text" style="color:#9d94c8">${esc(s.content)}</div>`;
     } else {
-      div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${esc(s.content)}</div>`;
+      div.innerHTML = `<div class="output-section-label">${esc(s.label)}</div><div class="output-section-text">${renderContentWithActions(s.content)}</div>`;
     }
     container.appendChild(div);
   });
@@ -2667,16 +2749,18 @@ function parseOutput(text) {
     const t = line.trim();
     if (!t || t === '---') { if (cur) cur.content += '\n'; continue; }
 
-    // Match: ## SECTION TITLE or ALL CAPS LABEL: or **LABEL**
+    // Match: ## SECTION TITLE, ALL CAPS LABEL, **LABEL**, or emoji label like "🎯 YOUR HOOK:"
     const mdH = t.match(/^#{1,3}\s+(.+)$/);
-    const capsL = t.match(/^([A-Z][A-Z0-9\s\/&''£\-–—()\.]+):$/);
+    const capsL = t.match(/^([A-Z][A-Z0-9\s\/&\'\u2019£\-\u2013\u2014()\.]+ ):$/);
     const boldL = t.match(/^\*\*([A-Z][A-Za-z0-9\s\/&\-]+)\*\*:?$/);
+    // Emoji labels: starts with emoji, followed by text, optionally ending with :
+    const emojiL = t.match(/^(\p{Emoji}[\p{Emoji}\s\u{1F300}-\u{1FAFF}a-zA-Z0-9\s\/&£\-—.,!?']{2,65}?)\s*:?$/u);
 
     let label = null;
     if (mdH) label = cleanMd(mdH[1]).toUpperCase();
+    else if (emojiL && emojiL[1].length >= 4 && emojiL[1].length <= 70 && /\p{Emoji}/u.test(emojiL[1][0])) label = emojiL[1].trim();
     else if (capsL && capsL[1].length >= 2 && capsL[1].length <= 70) label = capsL[1].trim();
     else if (boldL) label = boldL[1].trim().toUpperCase();
-
     if (label) {
       if (cur && cur.content.trim()) sections.push({...cur, content: cur.content.trim()});
       cur = { label, content: '' };
@@ -2699,6 +2783,18 @@ function genName(type) {
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Render → action lines as highlighted blue instruction boxes
+function renderContentWithActions(text) {
+  if (!text) return '';
+  return text.split('\n').map(line => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('\u2192') || trimmed.startsWith('->') || trimmed.startsWith('→')) {
+      return '<div class="output-action-line">' + esc(trimmed) + '</div>';
+    }
+    return esc(line);
+  }).join('\n');
 }
 
 // ─── USAGE ───────────────────────────────────────────────────────────────────

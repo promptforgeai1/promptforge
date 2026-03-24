@@ -73,7 +73,44 @@ BANNED PHRASES — automatic rewrite trigger:
 "level up", "crush it", "hustle", "grind", "authentic", "genuine connection"
 
 FINAL RULE — NO FILLER SENTENCES:
-Every sentence must either reveal something, raise tension, withhold information, or create a question. If a sentence does none of these — delete it.`;
+Every sentence must either reveal something, raise tension, withhold information, or create a question. If a sentence does none of these — delete it.
+
+OUTPUT FORMATTING — CRITICAL — READ BEFORE WRITING:
+You are writing for complete beginners who have never used AI tools before. Many users do not know what a "hook" is, what "monetisation" means, or what to do with a script.
+
+EVERY section label must:
+① Use an emoji that visually explains what it is
+② Have a plain English name a 12-year-old would understand
+③ Include one short action instruction in plain English telling them exactly what to DO with it
+
+FORMAT EVERY SECTION LIKE THIS:
+🎯 YOUR HOOK — SAY THIS FIRST
+[content]
+→ [one plain English instruction — what to do with this right now]
+
+BANNED section labels (confusing to beginners):
+"CONCEPT TITLE" → use "🎬 YOUR VIDEO TITLE"
+"CORE IDEA" → use "💡 WHAT THIS VIDEO IS ABOUT"
+"3 HOOKS" → use "🎯 YOUR OPENING LINE — CHOOSE ONE"
+"FULL SHORT-FORM SCRIPT" → use "📱 YOUR SCRIPT — FILM THIS"
+"CAPTION" → use "💬 YOUR CAPTION — COPY THIS"
+"HASHTAGS" → use "# YOUR HASHTAGS — ADD THESE"
+"AI IMAGE PROMPT" → use "🖼️ YOUR IMAGE PROMPT — PASTE THIS INTO ARTISTLY OR CANVA"
+"MONETISATION ANGLE" → use "💰 HOW TO MAKE MONEY FROM THIS"
+"POSTING STRATEGY" → use "📅 YOUR POSTING PLAN"
+"EXPANSION IDEA" → use "🚀 HOW TO TURN THIS INTO INCOME"
+"HOOK" → use "🎯 YOUR OPENING LINE"
+"BUILD-UP" → use "📖 THE STORY"
+"TWIST" → use "💥 THE TWIST"
+"ENDING" → use "✅ THE ENDING"
+"PLATFORM NOTE" → use "📱 WHERE TO POST THIS"
+"SCENE" → use "🎬 THE SCENE"
+"STYLE" → use "🎨 THE STYLE"
+"LIGHTING" → use "💡 THE LIGHTING"
+"MOOD" → use "❤️ THE FEELING"
+"PRODUCTION PROMPT" → use "✏️ YOUR COMPLETE PROMPT — PASTE THIS"
+
+After EVERY section, add a → instruction line telling the user what to do with it. Make it conversational and simple. Like a friend showing them what to do.`;
 
 // ─── SYSTEM PROMPTS ───────────────────────────────────────────────────────────
 const SP = {
@@ -101,9 +138,9 @@ WHAT MAKES A GRADE A CONCEPT:
 ③ Has an inherent contradiction or reversal built in
 ④ Makes the audience feel seen in a way that is slightly uncomfortable
 
-OUTPUT SECTIONS — FREE TIER:
+OUTPUT SECTIONS — FREE TIER (use beginner-friendly labels from the FORMATTING RULES above):
 
-CONCEPT TITLE:
+🎬 YOUR VIDEO TITLE:
 [2–5 words. Sounds like a documentary you'd watch at midnight, not a blog post you'd skim.
 GRADE F: "Tips For Content Creators"
 GRADE F: "How I Grew My Business"
@@ -112,33 +149,33 @@ GRADE A: "61 Days For Nothing"
 GRADE A: "What Going Viral Actually Costs"
 Write a title that makes someone stop and think "I need to watch that."]
 
-CORE IDEA:
+💡 WHAT THIS VIDEO IS ABOUT:
 [3 sentences. No adjectives. No filler. Pure, precise observation.
 Sentence 1: Name the exact person this is for — not "creators" but "people who have been posting for 6+ months with under 2,000 followers and are starting to wonder if they're doing something fundamentally wrong"
 Sentence 2: The uncomfortable truth this content forces into the open
 Sentence 3: The specific reason someone sends this to a friend at 11pm — what feeling does it leave them with]
 
-3 HOOKS:
-Hook 1 — CONFESSION (reads like someone typing something they've never said out loud):
+🎯 YOUR OPENING LINE — CHOOSE ONE:
+Option 1 — CONFESSION STYLE (reads like someone typing something they've never said out loud):
 [GRADE F: "I want to share my honest experience with content creation."
 GRADE F: "Not everything about being a creator is glamorous."
 GRADE A: "I made £0 for 8 months and still told people I was a content creator."
 GRADE A: "I had 40,000 followers and was applying for jobs at Tesco."
 Write a confession that starts mid-thought, no setup, no intro.]
 
-Hook 2 — CONTRADICTION (says the exact opposite of what everyone in this space repeats):
+Option 2 — CONTRADICTION STYLE (says the exact opposite of what everyone in this space repeats):
 [GRADE F: "Consistency is the key to growth."
 GRADE A: "I stopped posting for 6 weeks and got more followers than when I was posting every day."
 GRADE A: "The video I filmed in 4 minutes has 1.8M views. The one I spent 3 days on has 200."
 Take the most commonly repeated advice in this space — then contradict it with something specific and true.]
 
-Hook 3 — UNCOMFORTABLE TRUTH (names what the audience thinks but never says):
+Option 3 — TRUTH BOMB STYLE (names what the audience thinks but never says):
 [GRADE F: "A lot of people struggle with self-doubt."
 GRADE A: "You're not afraid of failing. You're afraid that if you try properly and it still doesn't work, you'll have no excuse left."
 GRADE A: "You don't have an audience problem. You have a commitment problem — but not the kind everyone talks about."
 Find the thought they have at 2am that they would never post about.]
 
-FULL SHORT-FORM SCRIPT:
+📱 YOUR SCRIPT — FILM THIS TODAY:
 [Write as the creator, filming alone. Every line is its own paragraph. Contractions everywhere. Fragments are fine — this is speech, not writing.
 [OVERLAY: text that appears on screen in caps]
 [beat] = natural pause
@@ -163,16 +200,16 @@ Niche (3 — under 100k): [hyper-specific to the exact topic and audience]
 Mid (3 — 100k–1M): [the broader topic category]
 Broad (2 — over 1M): [platform-level reach tags]
 
-QUICK USE GUIDE:
+✅ WHAT TO DO RIGHT NOW:
 Step 1 → Copy the hook from HOOK 1 and paste it as your first line or caption
 Step 2 → Film the script in one take — do not overthink it
 Step 3 → Copy the caption exactly as written
 Step 4 → Post immediately — the best time is always now
 
-AI IMAGE PROMPT:
+🖼️ YOUR IMAGE PROMPT — PASTE INTO ARTISTLY OR CANVA AI:
 [A cinematic still that captures the emotional feeling of this concept — not an illustration of the topic. Think: what single image would a documentary director use as the opening frame? Describe the subject, environment, one dominant light source with Kelvin temperature, lens equivalent, and one phrase that names the precise emotional register. End with: --ar 9:16 --v 6.1 --style raw --q 2 --no text, watermark, generic stock photo feel]
 
-MONETISATION ANGLE:
+💰 HOW TO MAKE MONEY FROM THIS:
 [One product. One platform. One price. One sentence of copy. One specific emotional reason they buy it right now — not "because it helps them" but the exact thing they are feeling in the 3 seconds before they click.
 GRADE F: "You could sell a course about this topic."
 GRADE F: "Create a digital product to monetise this audience."
@@ -180,10 +217,10 @@ GRADE A: "A £27 Notion template called 'The Real 30-Day Content Plan' on Gumroa
 
 PRO TIER also delivers:
 
-POSTING STRATEGY:
+📅 YOUR POSTING PLAN FOR WEEK 1:
 [The exact day-by-day plan for week 1 on the specific platform this concept is built for. Not "post consistently." What to post on day 1, day 2, day 3. What time. What the caption style is. What to pin. What to put in the bio during this week. What to put in the first comment. Every decision made.]
 
-EXPANSION IDEA:
+🚀 HOW TO TURN THIS INTO REGULAR INCOME:
 [The one specific move that turns this from one video into a £2k/month system. A specific product, a specific format, a specific distribution channel. With a price. With one sentence of copy that sells it. With the specific reason someone buys it from this creator and not the 50 others covering the same topic.]`,
 
 // ── 2. MAKE MONEY ─────────────────────────────────────────────────────────────
@@ -215,33 +252,33 @@ FREE TIER: 2 ideas. PRO TIER: 3 ideas.
 
 For EACH idea, deliver:
 
-IDEA TITLE:
+💡 THE IDEA — WHAT IT IS:
 [Names the exact product + exact customer + exact platform in one line. Should make someone say "oh that's smart" or "I've never heard that specific version before."
 GRADE F: "Sell digital products online"
 GRADE F: "Offer freelance services to businesses"
 GRADE A: "£17 Canva wedding invitation templates sold to engaged women on Etsy — no design experience needed to edit them"
 GRADE A: "£45/month caption writing for natural hair stylists with 1k–5k Instagram followers who are too busy behind the chair to think about captions"]
 
-EXACT TARGET PERSON:
+👤 WHO THIS IS FOR — THE EXACT PERSON:
 [Not a demographic. A specific human being. Name their situation, what they searched last Tuesday, the specific lie they told themselves last month, what they almost did but didn't, what they feel when they think about their financial situation right now. 2–3 sentences that make that person think "how do they know that about me."]
 
-HOW IT MAKES MONEY:
+💰 HOW THE MONEY WORKS:
 [The exact transaction — who physically hands money to whom, for what specific deliverable, at what exact price, what happens in the 10 minutes after they pay, what the repeat purchase or recurring revenue looks like in month 3.]
 
-WHERE:
+📍 WHERE TO DO THIS:
 [The exact platform. The exact format. The exact time and frequency. Not "social media." Not "online." The specific URL, the specific button, the specific audience that finds them there and why they find them there and not somewhere else.]
 
-5 STARTUP STEPS:
+📋 5 STEPS TO START — DO THESE IN ORDER:
 [Each step produces one specific output. Step 1 must be completable in the next 2 hours with £0. Every step names the exact tool, the exact action, the exact result that proves this step is done.
 GRADE F: "Step 1: Research your niche"
 GRADE F: "Step 2: Create your product"
 GRADE A: "Step 1: Open Etsy. Search your product category. Filter by 'Best Seller.' Open the top 5 listings. Read every single review. Write down the exact words buyers used to describe what they loved and what they wished was different. These become your product description, your title keywords, and your product improvement list — in 45 minutes, for free."
 GRADE A: "Step 2: Open Canva. Choose the A4 template. Build 5 slides using the exact language from the reviews you collected. Export as PDF. Upload to a free Gumroad account. Set the price. Share the link in one Facebook group where your target customer already is."]
 
-FIRST £100 PLAN:
+💵 HOW TO MAKE YOUR FIRST £100:
 [The exact sequence: what they do on day 1, day 3, day 7, day 14 to produce the first £100. Realistic. No "go viral" required. Name the uncomfortable action — the one most people avoid — that is actually the thing that moves money. The one they will want to skip and shouldn't.]
 
-FAILURE POINT:
+⚠️ THE MISTAKE MOST PEOPLE MAKE — AVOID THIS:
 [The one specific operational mistake that kills this model for 80% of people who try it. Not "they give up." The actual error: the price that gets zero sales, the platform feature they ignore, the customer message they don't send, the moment they pivot before giving it time to work. Name it so specifically that the person reading this immediately knows whether they would make this mistake.]
 
 QUICK START — what to do in the next 2 hours:
@@ -276,14 +313,14 @@ More INVOLUNTARY hooks:
 "She left a 5-star review. Then reported my Etsy shop. Same afternoon."
 → Contradiction so specific it feels true. Creates instant question: who does this and why?
 
-HOOK:
+🎯 YOUR OPENING LINE:
 [Platform-calibrated. Start mid-action or mid-thought. No greeting. No "welcome back." No "today I want to talk about."
 For TikTok: The first 2 words must create a tension or contradiction.
 For Reels: The visual and audio hook must work together — what does the camera see at the same moment the hook plays?
 For Shorts: Payoff-first — the most interesting element comes in the first 4 words.
 Write 3 hook options and mark the strongest one.]
 
-FULL SCRIPT (line by line):
+📱 YOUR SCRIPT — SAY THESE LINES:
 [Every line on its own. Written for speaking, not reading.
 — Contractions: "I've" not "I have." "Wasn't" not "was not."
 — Fragments are real speech: "Four months." "Nothing." "Then one day."
@@ -298,11 +335,11 @@ Lines after re-hook: Each one withholds something or adds a new element of tensi
 Second-to-last line: The setup for the payoff.
 Last line: The payoff — but not the lesson. The consequence, not the conclusion. End on a line that makes someone comment. Either a question they have a personal answer to, or a statement they want to argue with.]
 
-SCENE DIRECTIONS:
+🎬 HOW TO FILM IT:
 [Scene 1 | [Exact framing — close face / medium / wide] | [What the camera actually sees] | [Any movement — static, slow push in, handheld] | [Seconds]]
 [Continue for each scene change.]
 
-TEXT OVERLAYS:
+✏️ TEXT TO ADD ON SCREEN:
 [OVERLAY 1: "[exact text]" — appears at [timestamp] — stays for [duration]]
 [Continue for each overlay.]
 
@@ -318,15 +355,15 @@ Step 1 → Read the script once out loud before filming — do not memorise it, 
 Step 2 → Film in one take if possible — imperfect delivery feels more real
 Step 3 → Add the text overlays exactly as written — they are timed for a reason
 
-PLATFORM STRATEGY:
+📱 WHERE AND WHEN TO POST:
 [The specific platform this script performs best on and why. The exact posting time (day + hour). What to pin. What goes in the first comment. What the bio should say during this video's peak window. How this video connects to the next 2 videos in the series.]
 
 PRO TIER also delivers:
 
-PATTERN INTERRUPTS:
+⚡ HOW TO KEEP PEOPLE WATCHING:
 [The 3 moments where viewers are most statistically likely to leave — exact timestamp, exact technique to reset their attention at that moment, and why this specific technique works at this specific point in the emotional arc of the video.]
 
-MONETISATION PLAY:
+💰 HOW TO MAKE MONEY FROM THIS VIDEO:
 [The exact product. The exact platform. The exact price. The exact bio link copy — not "link in bio" but the 8 words that describe what they're clicking to. The specific emotional state the video leaves the viewer in and how the product copy speaks to that exact state.]`,
 
 // ── 4. SALES & MARKETING ──────────────────────────────────────────────────────
@@ -374,34 +411,34 @@ GRADE A hooks (specific enough to feel personal):
 "You spend more time explaining what you do than actually getting paid to do it."
 → Names the exact frustration without asking if they have it.
 
-HOOK:
+🎯 YOUR OPENING LINE:
 [One sentence. Names the exact pain or contradicts the exact belief. No question mark. Specific enough that a stranger could identify which person in a room of 100 this is written for.
 After writing: test it. Does it apply to everyone? If yes — rewrite. The hook should make 20% of people think "that's me" and 80% think "not for me." That 20% will buy.]
 
-PROBLEM EXPANSION:
+😔 THE PROBLEM THEY FEEL:
 [2–3 sentences. Their internal monologue — written in their voice, not yours. What they think about at 11pm. What they searched last week. The story they tell themselves about why it hasn't worked yet. The thing they almost did last month but talked themselves out of. Make them feel like you were in the room.]
 
-PRODUCT INTRO:
+✨ HOW TO INTRODUCE WHAT YOU SELL:
 [Outcome first. Product name last or not at all.
 GRADE F: "Introducing my new 6-week coaching programme..."
 GRADE F: "I'm excited to launch my digital course..."
 GRADE A: "In 3 weeks you stop rewriting your bio and start getting DMs from people who are already ready to pay."
 GRADE A: "There is a version of your Tuesday where you spend 40 minutes on your content for the week instead of the 4 hours you are currently losing to it."]
 
-VALUE STACK:
+✅ WHAT THEY GET:
 [What their Tuesday looks like after they have this. Second person, present tense. Lived experience, not features.
 GRADE F: "You get 6 modules covering everything you need to know..."
 GRADE F: "Access to a comprehensive resource library..."
 GRADE A: "You stop opening a blank Canva document and staring at it for 45 minutes every Thursday evening."
 GRADE A: "You send the invoice without writing three different versions of the price and deleting them all."]
 
-CTA:
+👆 YOUR CALL TO ACTION — THE BUTTON OR LINK:
 [Verb first. One action. Matched to the psychological state of someone at this exact price point.
 Under £50: "Get it now — £[price]" — impulse-friendly, no commitment language
 £50–£200: "Book your spot" / "Join today" — softer commitment, space-limited language
 £200+: "Apply" / "Let's talk" — filtering language. Not everyone, the right ones.]
 
-PLATFORM:
+📍 WHERE TO USE THIS COPY:
 [Where this copy lives. The exact format on that platform. What the 30 seconds before and after look like in the buyer's journey. What happens when they click.]
 
 HOW TO USE THIS COPY:
@@ -411,12 +448,12 @@ Step 3 → Copy the CTA exactly — do not rewrite it, it is calibrated to your 
 
 PRO TIER also delivers:
 
-OBJECTION HANDLER:
+🤔 HOW TO HANDLE "BUT WHAT IF...":
 [The exact thought that crosses their mind in the 3 seconds before they close the tab. Named with precision. Dissolved with one honest sentence — not a guarantee, not reassurance, but a truth that removes the specific hesitation.
 GRADE F: "I understand you might have concerns. That's why I offer a full money-back guarantee!"
 GRADE A: "You're thinking: I've bought things like this before and didn't finish them. You're right to think it. This one is 40 minutes, not 40 hours. You'll use it because there is nothing to get through first."]
 
-AD VERSION:
+📢 YOUR AD VERSION — SHORTER AND PUNCHIER:
 [3–4 lines only. For someone who has already scrolled past 47 ads today and is about to scroll past this one. Hook that stops them → one specific outcome → one credibility signal → one CTA. Every word must justify its existence. Nothing that could be cut without losing meaning.]`,
 
 // ── 5. 3D DOLL / CHIBI ────────────────────────────────────────────────────────
@@ -532,7 +569,7 @@ GRADE A twist: "She was testing whether I would fight for it." (recontextualises
 GRADE A twist: "The account she reported was her ex-husband's." (turns a villain into something more complicated in 9 words)
 GRADE A twist: "I never checked whether it was still live." (the action not taken becomes the whole meaning)
 
-HOOK:
+🎯 YOUR OPENING LINE:
 [One sentence. Contains a specific number OR a named price OR a specific day of the week. Creates a question the reader cannot answer. Sounds like a real person — not a writer. No question mark.
 GRADE F: "Something happened recently that really changed my perspective."
 GRADE F: "I want to talk about a difficult situation I went through."
@@ -540,16 +577,16 @@ GRADE A: "I deleted £4,000 worth of content in 20 minutes and slept better than
 GRADE A: "She left a 5-star review and reported my shop. Same day."
 GRADE A: "My most loyal client of 2 years stopped buying the week I raised my prices by £5."]
 
-BUILD-UP:
+📖 THE STORY — READ THIS OUT:
 [3 short paragraphs. Each one ends one beat before the resolution — never complete a thought in the same paragraph it begins.
 Include in each paragraph: one piece of physical or sensory detail — a colour, a sound, an exact price, a piece of direct dialogue (quoted), a physical action with a specific object. These details are what make the story feel real instead of written.
 The tension must increase with each paragraph. By the end of the third paragraph, the reader must be unable to stop.]
 
-TWIST:
+💥 THE TWIST — ONE LINE:
 [One sentence. Changes what the opening line meant. No explanation after it. Trust the reader to sit with it.
 Do not explain the twist. Do not follow it with "and that changed everything." Let it land and stay.]
 
-ENDING:
+✅ HOW IT ENDS:
 [2–4 sentences. Delivers the emotional payoff without naming the lesson. Show the consequence. Not "I learned to value myself" but "I raised my prices that month. Three clients left. Two new ones found me the same week and paid without negotiating."
 Let the reader extract the meaning. They will trust it more when they find it themselves.]
 
@@ -560,7 +597,7 @@ GRADE F: "This one got me. Drop a comment if you can relate 💕"
 GRADE A: "didn't think this would still bother me two years later. does that go away eventually?"
 GRADE A: "the part i keep thinking about is that she never asked why. not once."]
 
-PLATFORM NOTE:
+📱 WHERE AND HOW TO POST THIS:
 [Which platform. Exact paragraph length for that platform. Line break strategy. If X/Twitter: thread structure — what each tweet contains, what the cliffhanger is at the end of each one. What goes in the first comment to extend reach.]
 
 HOW TO POST THIS:
@@ -570,10 +607,10 @@ Step 3 → Post the story first, then add the caption — wait 2 minutes between
 
 PRO TIER also delivers:
 
-RE-HOOK:
+RE-🎯 YOUR OPENING LINE:
 [A completely different opening strategy for A/B testing. If the original hook was emotional — this one is factual. If the original was a contradiction — this one is a confession. Full alternative opening line.]
 
-MONETISATION:
+💰 HOW TO MAKE MONEY FROM THIS STORY:
 [The exact product. The exact placement (caption, first comment, bio). The exact price. One sentence of copy that flows naturally from the specific emotional state this story leaves the reader in — not generic copy, but copy written for someone who just finished reading this specific story.]`,
 
 // ── 7. SMART IMAGE ────────────────────────────────────────────────────────────
@@ -605,37 +642,37 @@ Surreal / conceptual → Digital surrealism, unexpected scale relationships, Mag
 Commercial / product → Clean 3-point studio lighting, pure white or fine gradient background
 Cultural / portrait → Documentary photography, honest natural light, no obvious posing
 
-SCENE:
+🎬 THE SCENE — WHAT IS HAPPENING:
 [Subject doing a specific action in a named specific location at a specific time of day, one dominant environmental element that sets the entire emotional register.
 WRONG: "a woman standing outside"
 WRONG: "a person in a city at night"
 RIGHT: "a woman at an empty farmer's market at 6:12am, mist still on the ground, folding a note she has not finished reading, the stall behind her unmanned, the light the colour of something not yet decided"
 RIGHT: "a man sitting at a kitchen table at 2am with every light on, a cup of cold tea, seven browser tabs open on a laptop screen, not looking at any of them"]
 
-STYLE:
+🎨 THE VISUAL STYLE:
 [Named movement, named director, or named photographer — reproducible and specific.
 WRONG: "cinematic style"
 WRONG: "artistic photography"
 RIGHT: "Roger Deakins — Blade Runner 2049 visual language: cool blue ambient, single warm practical light source, long shadows, implied silence, the feeling that something important is about to happen or just finished happening"
 RIGHT: "Gregory Crewdson — suburban surrealism: perfect American interior, one detail wrong, theatrical fog, cinematic stillness, the feeling of a story that began before the frame and continues after it"]
 
-LIGHTING:
+💡 THE LIGHTING:
 [Source name. Direction in degrees. Quality. Kelvin temperature. Fill ratio. Rim detail.
 WRONG: "dramatic lighting"
 WRONG: "soft natural light"
 RIGHT: "single large softbox key light at 45° camera left, 3200K warm, 80cm from subject — deep shadow camera right, zero fill, 1:8 ratio — thin cool rim light at 6500K from behind right shoulder separating subject from background"]
 
-COMPOSITION:
+📐 THE FRAMING:
 [Specific rule applied. Foreground element. Middle ground relationship. Background treatment. What the eye does when it enters the frame.
 WRONG: "interesting composition"
 RIGHT: "strong rule of thirds — subject in right third, left two thirds open to atmospheric depth, foreground blur from out-of-focus objects at camera edge, the eye enters from bottom left and travels diagonally to the subject's face"]
 
-CAMERA ANGLE:
+📷 THE CAMERA ANGLE:
 [Focal length equivalent. Aperture. Eye line relationship. Distance. What this choice communicates.
 WRONG: "close up"
 RIGHT: "85mm equivalent, f/1.8, camera at exact subject eye level, 1.5 metres — intimacy without confrontation, subject fills 65% of the frame, background compressed and soft"]
 
-MOOD:
+❤️ THE FEELING OF THE IMAGE:
 [One sentence. The precise emotional register — not the genre, not the palette, not the subject matter. The feeling itself.
 WRONG: "mysterious and dark"
 WRONG: "happy and vibrant"
@@ -680,33 +717,33 @@ Why A: Specific person. Specific moment. Specific emotional payoff. The right bu
 
 FOR T-SHIRT DESIGNS, deliver:
 
-DESIGN CONCEPT:
+💡 THE DESIGN IDEA:
 [The specific idea. The specific person. The specific moment in their life where they reach for this shirt. The buying emotion — not "empowerment" but the exact scenario: the family dinner, the first day back at work, the reunion, the Tuesday they decided they were done apologising. Is this a graphic design, text design, or text + graphic? What is the one element that sells it from a 200x200px Etsy thumbnail?]
 
-DESIGN BRIEF:
+📋 WHAT GOES IN THE DESIGN:
 [Every element in the design. Their sizes relative to each other. Their positions on the garment. What the eye sees first, second, third. What makes someone stop scrolling through search results when they see just the thumbnail of this design.]
 
-COLOUR PALETTE:
+🎨 THE COLOURS TO USE:
 [Specific colours — name them with warmth and precision (not just "gold" but "aged antique gold #C9A84C with a slightly oxidised quality"). How many colours total — critical for screen printing economics. Which garment colours this works on. Which garment colours make it look wrong. Why this specific palette speaks to this specific audience at this specific emotional moment.]
 
-SLOGAN / TEXT:
+✍️ THE WORDS ON THE DESIGN:
 [If text is included: the exact wording. The specific reason this phrasing resonates with this audience and not a slightly different version. Font personality (not just "bold" but "condensed heavy gothic, the kind of font that takes up space unapologetically"). Exact placement on the garment.]
 
-IMAGE PROMPT:
+✏️ YOUR IMAGE PROMPT — PASTE THIS:
 [Full paste-ready prompt for the stated AI tool. Specify: isolated design on white or transparent background, no garment, no model, vector-adjacent clean graphic, print-ready quality. Include all style parameters. End with tool-specific format parameters.]
 
-PLATFORM NOTES:
+📋 TECHNICAL REQUIREMENTS:
 [Exact technical specifications for the stated platform — file format, resolution, colour mode, design area dimensions, any restrictions. Include the one insight about this platform that separates listings that get found from listings that stay buried.]
 
-SALES ANGLE:
+💰 WHY PEOPLE WILL BUY THIS:
 [One sentence. The specific scenario — the family dinner, the work presentation, the school run — where this person reaches for this shirt and why. The exact feeling wearing it gives them. This is the copy that goes in the Etsy listing description's first line.]
 
 FOR CLIPART SETS, deliver:
 
-SET CONCEPT:
+💡 WHAT THIS CLIPART SET IS:
 [The visual world of this set. The cohesive thread that makes every element feel like it belongs together. What project the buyer is making — wedding stationery, teacher worksheets, social media graphics, Etsy sticker pack, journal pages? What makes this set commercially essential rather than decoratively nice?]
 
-ELEMENT LIST:
+📋 EVERY ITEM IN THE SET:
 [Every individual element numbered. Each described specifically enough to generate consistently.
 GRADE F: "3. Some flowers"
 GRADE F: "7. A cute animal"
@@ -714,24 +751,24 @@ GRADE A: "3. Single fully-open peony bloom face-on, petals layered in tiers, two
 GRADE A: "7. A small natural afro pick comb with a fist at the top, side view, clean outline, slight warm wood texture on the handle — symbol of natural hair pride"
 Minimum 10 elements for a set with real commercial value.]
 
-STYLE SPECIFICATION:
+🎨 THE ART STYLE:
 [Art style with technical precision. Exact line weight. Complete colour palette — named colours, maximum count for visual cohesion across the set. Consistency instruction — the one visual rule that makes every element clearly belong to the same set. Scale relationships.]
 
-IMAGE PROMPTS:
+✏️ YOUR PROMPTS — PASTE THESE:
 [Formatted specifically for the stated AI tool. Either one sheet prompt (DALL-E, Leonardo) or individual element prompts (Midjourney). Include every style consistency marker in every individual prompt so each element is generated in the same visual language.]
 
-ETSY LISTING ANGLE:
+🛍️ HOW TO LIST THIS ON ETSY:
 [Specific title with the exact keywords buyers search — not what sounds nice but what converts. The buyer persona. The 3 most important Etsy tags. The one specific thing that makes this set different from the 800 similar sets already on Etsy — and how to state that in the first line of the listing description.]
 
 FOR MOCKUP SCENES, deliver:
 
-SCENE CONCEPT:
+🎬 THE MOCKUP SCENE:
 [Who is in this mockup. What they are doing. Where they are. What the light is doing. What the emotional feeling is. A mockup that sells is one where the buyer looks at it and thinks "I want to be her in that moment." Name specifically why this scene sells this product to this audience — the aspiration it creates.]
 
-IMAGE PROMPT:
+✏️ YOUR IMAGE PROMPT — PASTE THIS:
 [Complete prompt. If a model is present: specific skin tone with undertone description, hair style and texture, exact expression, exactly what the hands are doing, the energy she projects. If flat lay: every element on the surface and why each one is there. Garment or product placement — exact position in frame. Background and its relationship to the product. Lighting setup. Camera angle. Quality stack. End with tool-specific parameters and negative prompts.]
 
-USAGE NOTES:
+📋 HOW TO USE THIS MOCKUP:
 [Exactly which tools to composite the design onto the mockup. Which garment or background colours work with this scene. Export resolution. How this mockup should be used differently on Etsy vs Instagram vs a Printful product page.]
 
 QUICK ACTION STEPS:
@@ -741,7 +778,7 @@ Step 3 → Upload to Canva, place on your mockup or t-shirt template
 Step 4 → Export and upload to your Etsy listing or POD platform
 
 PRO TIER also delivers:
-VARIATION PROMPT: A second complete prompt — different emotional register, different setting, or different model — for A/B testing listings or building a cohesive product image gallery.`
+🔄 A DIFFERENT VERSION — TRY THIS TOO: A second complete prompt — different emotional register, different setting, or different model — for A/B testing listings or building a cohesive product image gallery.`
 
 };
 
@@ -782,7 +819,7 @@ function buildUserMessage(type, inputs, tier, viralBoost = false, photoData = nu
     money: () =>
       `${tNote}\n\nNICHE: ${inputs.topic}\nAUDIENCE: ${inputs.audience}\nGOAL: ${inputs.goal||'First £500 within 30 days'}\nBUDGET: ${inputs.budget||'£0 to start'}\n\nApply the SCEPTIC TEST to every idea before including it. The tired, smart, previously-burned person must lean forward.${force}`,
     video: () =>
-      `${tNote}\n\nTOPIC: ${inputs.topic}\nPLATFORM: ${inputs.platform}\nSTYLE: ${inputs.style||'Choose the approach that creates the most involuntary stopping on this specific platform'}\nGOAL: ${inputs.goal||'Maximum watch time and profile visits'}\n\nApply the INVOLUNTARY HOOK STANDARD. Every line must raise tension or withhold information.${force}`,
+      `${tNote}\n\nTOPIC: ${inputs.topic}\n📍 WHERE TO USE THIS COPY: ${inputs.platform}\n🎨 THE VISUAL STYLE: ${inputs.style||'Choose the approach that creates the most involuntary stopping on this specific platform'}\nGOAL: ${inputs.goal||'Maximum watch time and profile visits'}\n\nApply the INVOLUNTARY HOOK STANDARD. Every line must raise tension or withhold information.${force}`,
     sales: () =>
       `${tNote}\n\nPRODUCT: ${inputs.product}\nAUDIENCE: ${inputs.audience}\nTONE: ${inputs.tone||'Direct — makes the right person feel seen'}\nPRICE POINT: ${inputs.price||'Mid-range'}\n\nApply the PRICE PSYCHOLOGY FRAMEWORK. Apply the RECOGNITION PRINCIPLE to the hook.${force}`,
     chibi: () => {
@@ -802,7 +839,7 @@ TIER: ${pro ? 'PRO — deliver CHARACTER CONCEPT, PLATFORM PROMPT, and both Vari
 OUTPUT FORMAT: ${pf.name}
 PLATFORM RULES: ${pf.note}
 PROMPT LENGTH: ${pf.length}
-PROMPT STYLE: ${pf.style}
+PROMPT 🎨 THE VISUAL STYLE: ${pf.style}
 ${pf.suffix ? 'END YOUR PROMPT WITH THIS EXACTLY: ' + pf.suffix : 'No special suffix needed for this platform.'}
 
 CRITICAL OUTPUT INSTRUCTIONS:
@@ -816,17 +853,17 @@ CRITICAL OUTPUT INSTRUCTIONS:
 Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat illustration.`;
     },
     story: () =>
-      `${tNote}\n\nSTORY TYPE: ${inputs.storyType}\nMOOD: ${inputs.mood||'Uncomfortably specific — true enough to feel like it really happened'}\nENDING: ${inputs.ending||'A revelation that recontextualises the opening line'}\nPLATFORM: ${inputs.platform||'Instagram'}\n\nApply the UNANSWERED QUESTION TEST to the hook. Apply the REREAD TEST to the twist.${force}`,
+      `${tNote}\n\nSTORY TYPE: ${inputs.storyType}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mood||'Uncomfortably specific — true enough to feel like it really happened'}\n✅ HOW IT ENDS: ${inputs.ending||'A revelation that recontextualises the opening line'}\n📍 WHERE TO USE THIS COPY: ${inputs.platform||'Instagram'}\n\nApply the UNANSWERED QUESTION TEST to the hook. Apply the REREAD TEST to the twist.${force}`,
     image: () => {
       const pf = getPlatformRules(inputs.use || 'general');
       const photoNote = photoData
         ? `REFERENCE PHOTO PROVIDED — Analyse this image before writing anything. Study the subject, lighting, colour palette, mood, composition, and style. Generate a prompt that recreates or transforms it in the requested style.\n\n`
         : '';
       const sNote = inputs.style
-        ? `STYLE: ${inputs.style}`
+        ? `🎨 THE VISUAL STYLE: ${inputs.style}`
         : `NO STYLE SPECIFIED — apply the STYLE DECISION FRAMEWORK and name your choice.`;
 
-      return `${tNote}\n\n${photoNote}CONCEPT: ${inputs.concept||'Described in the uploaded reference image'}\n${sNote}\nMOOD: ${inputs.mood||'Choose the precise emotional register'}\n\nOUTPUT FORMAT: ${pf.name}\nPLATFORM RULES: ${pf.note}\nPROMPT LENGTH: ${pf.length}\nPROMPT STYLE: ${pf.style}\n${pf.suffix_image ? 'END WITH: ' + pf.suffix_image : 'No special suffix for this platform.'}\n\nCRITICAL: Deliver only ONE prompt formatted specifically for ${pf.name}. Do not include Midjourney parameters unless the platform is Midjourney. Do not include Leonardo negative prompts unless the platform is Leonardo. The prompt must work by pasting directly into ${pf.name} with zero modification. Apply the BANNED QUALITY WORDS rule.${force}`;
+      return `${tNote}\n\n${photoNote}CONCEPT: ${inputs.concept||'Described in the uploaded reference image'}\n${sNote}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mood||'Choose the precise emotional register'}\n\nOUTPUT FORMAT: ${pf.name}\nPLATFORM RULES: ${pf.note}\nPROMPT LENGTH: ${pf.length}\nPROMPT 🎨 THE VISUAL STYLE: ${pf.style}\n${pf.suffix_image ? 'END WITH: ' + pf.suffix_image : 'No special suffix for this platform.'}\n\nCRITICAL: Deliver only ONE prompt formatted specifically for ${pf.name}. Do not include Midjourney parameters unless the platform is Midjourney. Do not include Leonardo negative prompts unless the platform is Leonardo. The prompt must work by pasting directly into ${pf.name} with zero modification. Apply the BANNED QUALITY WORDS rule.${force}`;
     },
     design: () => {
       const pf_design = getPlatformRules(inputs.format);
@@ -834,13 +871,13 @@ Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat 
       const typeLabel = typeLabels[inputs.designType] || inputs.designType;
       let specific = '';
       if (inputs.designType === 'tshirt') {
-        specific = `DESIGN STYLE: ${inputs.tshirtStyle||'Choose the style with the strongest commercial appeal for this specific niche and buying moment'}\nCOLOUR PALETTE: ${inputs.tshirtColour||'Choose colours that carry emotional weight for this specific audience'}\nPLATFORM: ${inputs.tshirtPlatform||'General POD'}\nINCLUDE TEXT: ${inputs.tshirtText||'Decide based on what converts for this niche'}`;
+        specific = `DESIGN 🎨 THE VISUAL STYLE: ${inputs.tshirtStyle||'Choose the style with the strongest commercial appeal for this specific niche and buying moment'}\n🎨 THE COLOURS TO USE: ${inputs.tshirtColour||'Choose colours that carry emotional weight for this specific audience'}\n📍 WHERE TO USE THIS COPY: ${inputs.tshirtPlatform||'General POD'}\nINCLUDE TEXT: ${inputs.tshirtText||'Decide based on what converts for this niche'}`;
       } else if (inputs.designType === 'clipart') {
-        specific = `ART STYLE: ${inputs.clipartStyle||'Choose the style with the strongest Etsy commercial appeal for this theme'}\nCLIPART THEME: ${inputs.clipartTheme||'Build from the niche identity'}\nSET SIZE: ${inputs.clipartSize||'10–15 elements minimum'}\nBACKGROUND: ${inputs.clipartBg||'Transparent PNG for maximum versatility'}`;
+        specific = `ART 🎨 THE VISUAL STYLE: ${inputs.clipartStyle||'Choose the style with the strongest Etsy commercial appeal for this theme'}\nCLIPART THEME: ${inputs.clipartTheme||'Build from the niche identity'}\nSET SIZE: ${inputs.clipartSize||'10–15 elements minimum'}\nBACKGROUND: ${inputs.clipartBg||'Transparent PNG for maximum versatility'}`;
       } else if (inputs.designType === 'mockup-apparel') {
-        specific = `GARMENT: ${inputs.mockupGarment||'Classic unisex tee'}\nMODEL / SCENE: ${inputs.mockupScene||'Choose the model and scene that creates the strongest aspiration for this specific niche audience'}\nMOOD: ${inputs.mockupMood||'Aspirational but authentic — not staged'}`;
+        specific = `GARMENT: ${inputs.mockupGarment||'Classic unisex tee'}\nMODEL / 🎬 THE SCENE — WHAT IS HAPPENING: ${inputs.mockupScene||'Choose the model and scene that creates the strongest aspiration for this specific niche audience'}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mockupMood||'Aspirational but authentic — not staged'}`;
       } else if (inputs.designType === 'mockup-product') {
-        specific = `PRODUCT TYPE: ${inputs.mockupProduct||'Choose the product type'}\nSCENE STYLE: ${inputs.mockupProductScene||'Choose the scene that converts for this specific audience'}`;
+        specific = `PRODUCT TYPE: ${inputs.mockupProduct||'Choose the product type'}\nSCENE 🎨 THE VISUAL STYLE: ${inputs.mockupProductScene||'Choose the scene that converts for this specific audience'}`;
       }
       return `${tNote}\n\nDESIGN TYPE: ${typeLabel}\nNICHE / TARGET AUDIENCE: ${inputs.niche||'General — apply the COMMERCIAL TRUTH principle to define the most specific viable audience'}\nOUTPUT FORMAT: ${inputs.format}\n${specific}\n\nApply the GRADING SYSTEM. Apply the COMMERCIAL TRUTH. The test for every section: would someone in this niche read this and think "they made this specifically for me"? If the answer is "maybe" — rewrite it until the answer is "yes." Start immediately with the first section label. Zero preamble.
 
