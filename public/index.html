@@ -553,7 +553,7 @@
 
 <div class="app">
   <aside class="sidebar" id="mobileSidebar">
-  <button onclick="closeMobileSidebar()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:1.1rem;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10000;">✕</button>
+  <button onclick="closeMobileSidebar()" id="sidebarCloseBtn" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:1.1rem;width:36px;height:36px;cursor:pointer;align-items:center;justify-content:center;z-index:10000;display:none;">✕</button>
     <span class="sidebar-label">Generators</span>
     <div class="sidebar-section">
       <button class="sidebar-item active" onclick="switchGen('surprise',this)"><span class="icon">🎁</span><span class="label">Surprise Me</span><span class="badge">HOT</span></button>
@@ -2460,6 +2460,7 @@ if (localStorage.getItem('pf_onboarded')) {
 
 // ─── HOW IT WORKS ────────────────────────────────────────────────────────────
 function showHowPage() {
+  closeMobileSidebar();
   document.getElementById('howPage').classList.add('active');
   document.getElementById('generatorArea').style.display = 'none';
   document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
@@ -3056,9 +3057,11 @@ function showToast(msg) {
 }
 
 // ─── MODALS ──────────────────────────────────────────────────────────────────
-function openModal() { document.getElementById('proModal').classList.add('open'); }
+function openModal() {
+  closeMobileSidebar(); document.getElementById('proModal').classList.add('open'); }
 function closeModal() { document.getElementById('proModal').classList.remove('open'); }
 function openSettings() {
+  closeMobileSidebar();
   const sp = document.getElementById('settingsPlan');
   if (sp) sp.textContent = isPro ? 'Pro' : 'Free';
   if (sp) sp.className = 'settings-value' + (isPro ? ' pro' : '');
@@ -3072,6 +3075,7 @@ function openSettings() {
 function closeSettings() { document.getElementById('settingsModal').classList.remove('open'); }
 
 function signOut() {
+  closeMobileSidebar();
   // Clear all session data
   try {
     const DEPLOY_VERSION = 'pf_v8';
@@ -3179,6 +3183,7 @@ if (window.location.search.includes('session_id=')) {
 <style>
 @media(max-width:900px){
   .main { margin-left:0 !important; }
+  #sidebarCloseBtn { display:flex !important; }
   #mobileSidebar {
     position:fixed !important;
     top:0 !important;
