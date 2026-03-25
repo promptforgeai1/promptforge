@@ -448,7 +448,7 @@
   /* ── HAMBURGER MENU ── */
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;flex-shrink:0;}
   .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
-  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:8000;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:8000;}
   .mobile-overlay.show{display:block;}
 
   /* ── DESKTOP (>900px) ── */
@@ -480,16 +480,15 @@
       width:100vw !important;
       height:100vh !important;
       z-index:9000 !important;
-      background:#09071e !important;
+      background:rgb(9,7,30) !important;
       padding-top:70px !important;
       padding-bottom:2rem !important;
       overflow-y:auto !important;
       overflow-x:hidden !important;
       transform:translateX(-105%) !important;
       transition:transform .3s ease !important;
-      /* Override desktop sidebar position */
-      top:0 !important;
       border-right:none !important;
+      opacity:1 !important;
     }
     #mobileSidebar.mobile-open{
       transform:translateX(0) !important;
@@ -506,36 +505,39 @@
     #mobileSidebar .sidebar-item{
       width:100% !important;
       box-sizing:border-box !important;
-      padding:18px 24px !important;
+      padding:20px 28px !important;
       margin:0 !important;
       border-radius:0 !important;
       border:none !important;
-      border-bottom:1px solid rgba(255,255,255,.07) !important;
-      font-size:1rem !important;
-      color:#d0c8ff !important;
-      background:transparent !important;
+      border-bottom:1px solid rgba(255,255,255,.1) !important;
+      font-size:1.05rem !important;
+      color:#ffffff !important;
+      background:rgb(9,7,30) !important;
       display:flex !important;
       align-items:center !important;
-      gap:14px !important;
+      gap:16px !important;
       text-align:left !important;
       cursor:pointer !important;
-      -webkit-tap-highlight-color:rgba(139,120,255,.2) !important;
+      -webkit-tap-highlight-color:rgba(139,120,255,.3) !important;
+      font-family:var(--font-body) !important;
     }
     #mobileSidebar .sidebar-item:active{
-      background:rgba(139,120,255,.2) !important;
+      background:rgba(139,120,255,.3) !important;
     }
     #mobileSidebar .sidebar-item.active{
-      background:rgba(139,120,255,.15) !important;
-      border-left:3px solid #8b78ff !important;
+      background:rgba(139,120,255,.2) !important;
+      border-left:4px solid #8b78ff !important;
       color:#fff !important;
     }
     #mobileSidebar .sidebar-label{
       display:block !important;
-      padding:16px 24px 6px !important;
-      font-size:.65rem !important;
-      color:#6060a0 !important;
+      padding:16px 28px 8px !important;
+      font-size:.7rem !important;
+      color:#8880b0 !important;
       width:100% !important;
       box-sizing:border-box !important;
+      background:rgb(9,7,30) !important;
+      letter-spacing:.1em !important;
     }
     #mobileSidebar .sidebar-divider{margin:4px 0 !important;}
     #mobileSidebar .usage-bar-wrap{padding:1rem 24px !important;}
