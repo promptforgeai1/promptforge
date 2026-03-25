@@ -3326,9 +3326,35 @@ function drawerSelect(type) {
   document.querySelectorAll('.drawer-btn').forEach(b => b.classList.remove('active-gen'));
   const btn = document.getElementById('dbtn-' + type);
   if (btn) btn.classList.add('active-gen');
-  // Switch generator
-  switchGen(type, null);
+
+  // Hide all generator forms
+  document.querySelectorAll('.gen-form').forEach(f => {
+    f.classList.remove('active');
+    f.style.display = 'none';
+  });
+  // Show the selected one
+  const form = document.getElementById('form-' + type);
+  if (form) {
+    form.classList.add('active');
+    form.style.display = 'block';
+  }
+
+  // Update sidebar active state on desktop
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+
+  // Make sure generator area is visible
+  const ga = document.getElementById('generatorArea');
+  if (ga) { ga.style.display = 'grid'; ga.style.visibility = 'visible'; }
+  const hp = document.getElementById('howPage');
+  if (hp) hp.classList.remove('active');
+
+  // Store current type
+  currentType = type;
+
   closeDrawer();
+
+  // Scroll to top
+  window.scrollTo(0, 0);
 }
 </script>
 
