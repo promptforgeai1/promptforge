@@ -638,8 +638,8 @@
       <span id="tierLabel">Free Plan</span>
     </div>
     <span id="navUsageDisplay" style="font-size:.68rem;color:var(--text3);display:none;">0/5</span>
-    <button class="btn-ghost" onclick="showLanding()">Sign In</button>
-    <button class="btn-pro" onclick="openModal()">⚡ Upgrade to Pro</button>
+    <button class="btn-ghost" id="navSignIn" onclick="showLanding()">Sign In</button>
+    <button class="btn-pro" id="navUpgrade" onclick="openModal()">⚡ Upgrade to Pro</button>
   </div>
 </nav>
 
@@ -2496,17 +2496,36 @@ function switchAuthTab(tab) {
     url.searchParams.delete('session_id');
     window.history.replaceState({}, '', url.toString());
     // Activate Pro and show success message
+    // Enter app first then activate pro
+    enterApp();
     setTimeout(() => {
       setProActive();
-      // Show a prominent success message
       const toast = document.getElementById('toast');
       if (toast) {
         toast.textContent = '🎉 Welcome to Pro! Unlimited generations unlocked.';
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 5000);
       }
-    }, 500);
+    }, 600);
   }
+})();
+
+// Check if user was previously Pro
+(function() {
+  try {
+    if (localStorage.getItem('pf_pro') === '1') {
+      // Restore pro status silently
+      isPro = true;
+      const badge = document.getElementById('tierBadge');
+      const label = document.getElementById('tierLabel');
+      const signIn = document.getElementById('navSignIn');
+      const upgrade = document.getElementById('navUpgrade');
+      if (badge) badge.className = 'tier-badge pro';
+      if (label) label.textContent = 'Pro Plan';
+      if (signIn) signIn.style.display = 'none';
+      if (upgrade) upgrade.style.display = 'none';
+    }
+  } catch(e) {}
 })();
 
 // Landing page — version-aware init
@@ -3231,8 +3250,14 @@ function setProActive() {
   isPro = true;
   document.getElementById('tierBadge').className = 'tier-badge pro';
   document.getElementById('tierLabel').textContent = 'Pro Plan';
+  // Hide Sign In and Upgrade buttons when Pro
+  const signIn = document.getElementById('navSignIn');
+  const upgrade = document.getElementById('navUpgrade');
+  if (signIn) signIn.style.display = 'none';
+  if (upgrade) upgrade.style.display = 'none';
+  // Store pro status so it persists on refresh
+  try { localStorage.setItem('pf_pro', '1'); } catch(e) {}
   updateUsage();
-  showToast('⚡ Pro activated — unlimited generations unlocked');
 }
 
 
