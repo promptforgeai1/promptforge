@@ -893,7 +893,7 @@ Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat 
     },
     design: () => {
       const pf_design = getPlatformRules(inputs.format);
-      const typeLabels = { 'tshirt':'T-SHIRT DESIGN', 'clipart':'CLIPART SET', 'mockup-apparel':'APPAREL MOCKUP', 'mockup-product':'PRODUCT MOCKUP' };
+      const typeLabels = { 'tshirt':'T-SHIRT DESIGN', 'clipart':'CLIPART SET', 'sticker':'STICKER SHEET', 'mockup-apparel':'APPAREL MOCKUP', 'mockup-product':'PRODUCT MOCKUP' };
       const typeLabel = typeLabels[inputs.designType] || inputs.designType;
       let specific = '';
       if (inputs.designType === 'tshirt') {
@@ -904,6 +904,8 @@ Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat 
         specific = `GARMENT: ${inputs.mockupGarment||'Classic unisex tee'}\nMODEL / 🎬 THE SCENE — WHAT IS HAPPENING: ${inputs.mockupScene||'Choose the model and scene that creates the strongest aspiration for this specific niche audience'}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mockupMood||'Aspirational but authentic — not staged'}`;
       } else if (inputs.designType === 'mockup-product') {
         specific = `PRODUCT TYPE: ${inputs.mockupProduct||'Choose the product type'}\nSCENE 🎨 THE VISUAL STYLE: ${inputs.mockupProductScene||'Choose the scene that converts for this specific audience'}`;
+      } else if (inputs.designType === 'sticker') {
+        specific = `STICKER SHEET — generate a complete sticker sheet brief:\nSTICKER COUNT: 8-12 individual die-cut stickers on one sheet\nSTYLE: Bold, clear illustration — readable at small size. White border around each sticker for die-cutting.\nBACKGROUND: Transparent PNG\nINCLUDE: Mix of character stickers, word/quote stickers, and mini accent stickers\nSELL ON: Etsy as digital download — average price £3-8\nTHEME FROM NICHE: Build all stickers around the niche identity`;
       }
       return `${tNote}\n\nDESIGN TYPE: ${typeLabel}\nNICHE / TARGET AUDIENCE: ${inputs.niche||'General — apply the COMMERCIAL TRUTH principle to define the most specific viable audience'}\nOUTPUT FORMAT: ${inputs.format}\n${specific}\n\nApply the GRADING SYSTEM. Apply the COMMERCIAL TRUTH. The test for every section: would someone in this niche read this and think "they made this specifically for me"? If the answer is "maybe" — rewrite it until the answer is "yes." Start immediately with the first section label. Zero preamble.
 
