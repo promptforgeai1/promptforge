@@ -653,7 +653,7 @@
   <button onclick="closeMobileSidebar()" id="sidebarCloseBtn" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:1.1rem;width:36px;height:36px;cursor:pointer;align-items:center;justify-content:center;z-index:10000;display:none;">✕</button>
     <div style="display:block;padding:14px 24px 6px;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9090c0;background:#0d0b24;">GENERATORS</div>
     <div style="display:flex;flex-direction:column;">
-      <button class="sidebar-item active" onclick="switchGen('surprise',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">🎁</span><span style="flex:1;">Surprise Me</span><span style="font-size:.6rem;background:#7c6fd4;color:#fff;padding:2px 7px;border-radius:4px;font-weight:700;">HOT</span></button>
+      <button class="sidebar-item active" onclick="switchGen('surprise',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:rgba(139,120,255,0.25);border:none;border-left:3px solid #8b78ff;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">🎁</span><span style="flex:1;">Surprise Me</span><span style="font-size:.6rem;background:#7c6fd4;color:#fff;padding:2px 7px;border-radius:4px;font-weight:700;">HOT</span></button>
       <button class="sidebar-item" onclick="switchGen('money',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">💰</span><span style="flex:1;">Make Money</span></button>
       <button class="sidebar-item" onclick="switchGen('video',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">🎬</span><span style="flex:1;">Short-Form Video</span></button>
       <button class="sidebar-item" onclick="switchGen('sales',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">📢</span><span style="flex:1;">Sales & Marketing</span></button>
@@ -2708,10 +2708,25 @@ function switchGen(id, el) {
   closeMobileSidebar();
   document.getElementById('howPage').classList.remove('active');
   document.getElementById('generatorArea').style.display = 'grid';
+  document.getElementById('generatorArea').style.visibility = 'visible';
   document.querySelectorAll('.gen-form').forEach(f => f.classList.remove('active'));
-  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+
+  // Reset ALL sidebar items to default inline style
+  document.querySelectorAll('.sidebar-item').forEach(i => {
+    i.classList.remove('active');
+    i.style.background = '#0d0b24';
+    i.style.borderLeft = 'none';
+  });
+
   document.getElementById('form-' + id).classList.add('active');
-  el.classList.add('active');
+
+  // Set active state with inline style so it cannot be overridden
+  if (el) {
+    el.classList.add('active');
+    el.style.background = 'rgba(139,120,255,0.25)';
+    el.style.borderLeft = '3px solid #8b78ff';
+  }
+
   const panel = document.getElementById('outputPanel');
   panel.className = panel.className.replace(/gen-accent-\S+/g, '').trim();
   panel.classList.add('gen-accent-' + id);
