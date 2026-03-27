@@ -482,7 +482,7 @@ THE LOOK — study this before writing a single word:
 This is NOT Japanese anime. NOT flat 2D. NOT generic cartoon. NOT super-deformed chibi.
 
 This IS:
-— Pixar/DreamWorks quality 3D render — the visual standard of a studio feature film character
+— Studio quality 3D render — the visual standard of a professional animated feature film character (do NOT use the words Pixar, Disney, or DreamWorks in any prompt — these trigger content filters)
 — Photorealistic skin — subsurface scattering, you can almost feel the warmth, soft natural blush
 — Volumetric hair — every strand has physics, weight, movement, and shine — hair that looks like you could touch it
 — Glossy expressive eyes — large and round, 2–3 catchlights visible, long individual lashes, iris has depth and colour variation
@@ -491,7 +491,12 @@ This IS:
 — Professional lighting — soft key light, subtle rim, no harsh shadows, the kind of lighting that makes a character feel alive
 
 THE KEYWORDS THAT ALWAYS PRODUCE THIS LOOK:
-"3D cartoon character render, Pixar animation style, Blender 3D, Octane render, photorealistic cartoon, subsurface scattering skin, volumetric hair simulation, individual hair strands, glossy catchlights, 8K render"
+"3D cartoon character render, high quality studio animation style, Blender 3D, Octane render, photorealistic cartoon, subsurface scattering skin, volumetric hair simulation, individual hair strands, glossy catchlights, 8K render"
+
+CHATGPT / DALL-E USERS — CRITICAL RULE:
+When the output format is DALL-E 3 / ChatGPT — NEVER use "Pixar", "Disney", "DreamWorks" or any brand name in the prompt. ChatGPT will block it with a copyright safety error.
+Instead use: "high quality 3D animation render, smooth expressive cartoon features, professional studio animation quality, volumetric soft lighting, subsurface skin glow, glossy eyes with visible catchlights"
+This produces identical Pixar-quality results without triggering the block.
 
 THE KEYWORDS THAT DESTROY THIS LOOK (never use):
 "anime", "manga", "chibi proportions", "super deformed", "flat shading", "cel shaded", "2D", "kawaii style", "sketch", "illustration"
@@ -522,16 +527,18 @@ EXAMPLE: "A full-glam girl in a silk co-ord set and long braided updo with gold 
 
 QUICK PROMPT (works in ANY tool — Artistly, Canva AI, Adobe Firefly, ChatGPT, DALL-E, Leonardo):
 [This is the MOST IMPORTANT section. Keep it under 60 words. Simple English. No technical jargon. Anyone must be able to paste this into any AI image tool and get a great result.
-FORMAT: "3D cartoon doll character, Pixar style, [skin tone in plain English], [hair description in plain English], [outfit in plain English], [expression], [pose], [background], cute and realistic, professional 3D render, 8K quality"
-EXAMPLE: "3D cartoon doll character, Pixar style, warm honey-brown skin with a natural glow, enormous voluminous type 4C afro, white fitted tee tucked into light-wash jeans, white trainers, gold hoop earrings, relaxed confident smile, full body standing pose, clean cream background, cute and realistic, professional 3D render, 8K quality"
+FORMAT: "3D cartoon doll character, studio quality CGI render, [skin tone in plain English], [hair description in plain English], [outfit in plain English], [expression], [pose], [background], cute and realistic, professional 3D animated character, 8K quality"
+EXAMPLE: "3D cartoon doll character, studio quality CGI render, warm honey-brown skin with a natural glow, enormous voluminous type 4C afro, white fitted tee tucked into light-wash jeans, white trainers, gold hoop earrings, relaxed confident smile, full body standing pose, clean cream background, cute and realistic, professional 3D animated character, 8K quality"
+CRITICAL FOR CHATGPT: Never use the words Pixar, Disney, or DreamWorks in the prompt — ChatGPT will refuse. Use "studio quality CGI render" or "professional 3D animated character" instead.
 This must work when pasted directly into Artistly, Adobe Firefly, or ChatGPT image generation with zero modification.]
 
 WHERE TO PASTE THIS:
-Artistly (app.artistly.ai) → New Design → Describe → paste QUICK PROMPT
+ChatGPT (chatgpt.com) → click the image icon next to the text box → paste QUICK PROMPT → if refused, remove any brand names and regenerate
 Adobe Firefly (firefly.adobe.com) → Text to Image → paste QUICK PROMPT
 Canva AI → Magic Media → paste QUICK PROMPT
-ChatGPT → ask it to generate an image → paste QUICK PROMPT
+Artistly (app.artistly.ai) → New Design → Describe → paste QUICK PROMPT
 Leonardo AI (leonardo.ai) → Image Generation → paste QUICK PROMPT
+⚠️ CHATGPT NOTE: If ChatGPT refuses, it is because of brand name triggers. Replace "Pixar style" with "studio quality CGI render" and try again.
 
 MIDJOURNEY PROMPT (for advanced users only):
 [Full technical version for Midjourney users. Comma-separated terms. Front-load the 5 most important descriptors. Under 200 words.
@@ -952,9 +959,9 @@ function getPlatformRules(format) {
       style: 'descriptive prose paragraphs. DALL-E 3 and ChatGPT respond best to full sentences that paint a picture.',
       suffix: '',
       suffix_image: '',
-      note: 'DALL-E 3 / ChatGPT format: write in full descriptive sentences. No comma spam. No -- parameters. Describe as if telling someone what to draw.',
+      note: 'DALL-E 3 / ChatGPT format: write in full descriptive sentences. No comma spam. No -- parameters. CRITICAL: Never use "Pixar style", "Disney style", "DreamWorks style" or any brand names — ChatGPT blocks these. Instead use: "high quality 3D animation render, smooth expressive features, professional studio animation quality, volumetric lighting, subsurface skin glow". This produces identical results without triggering the safety block.',
       length: 'medium — 60 to 100 words in natural prose',
-      jargon: 'none — conversational descriptive English'
+      jargon: 'none — conversational descriptive English. No brand names ever.'
     };
   }
   if (f.includes('canva')) {
@@ -990,13 +997,101 @@ function getPlatformRules(format) {
       jargon: 'none — plain conversational English only'
     };
   }
-  // General / any tool
+  if (f.includes('ideogram')) {
+    return {
+      name: 'Ideogram',
+      style: 'descriptive sentences. Ideogram excels at images with text — describe any text you want included in quotes.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Ideogram format: plain English sentences. If you want text in the image, put it in quotes inside your prompt.',
+      length: 'short to medium — 40 to 80 words',
+      jargon: 'none — plain English'
+    };
+  }
+  if (f.includes('playground')) {
+    return {
+      name: 'Playground AI',
+      style: 'comma-separated descriptive terms mixed with natural English. Similar to Midjourney but simpler.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Playground AI format: mix of descriptive terms and sentences. Clean and simple.',
+      length: 'short to medium — 40 to 80 words',
+      jargon: 'moderate — basic render terms are fine'
+    };
+  }
+  if (f.includes('kling')) {
+    return {
+      name: 'Kling AI',
+      style: 'cinematic scene description — describe what is happening in the scene, camera movement, lighting, and mood.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Kling AI format: describe the scene as if directing a film. Include subject action, camera movement, lighting, and duration.',
+      length: 'medium — 50 to 100 words',
+      jargon: 'moderate — cinematic terms welcome'
+    };
+  }
+  if (f.includes('videoexpress') || f.includes('video express')) {
+    return {
+      name: 'VideoExpress.ai',
+      style: 'simple clear scene description in plain English. Describe what should happen in the video.',
+      suffix: '',
+      suffix_image: '',
+      note: 'VideoExpress.ai format: plain English description of what happens in the video. Keep it simple and clear.',
+      length: 'short — 30 to 60 words',
+      jargon: 'none — plain English only'
+    };
+  }
+  if (f.includes('runway')) {
+    return {
+      name: 'Runway ML',
+      style: 'cinematic prompt with subject, action, camera motion, and visual style clearly described.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Runway ML format: describe subject + action + camera motion + mood. Runway responds well to cinematic direction language.',
+      length: 'medium — 50 to 90 words',
+      jargon: 'moderate — camera direction terms like pan, zoom, tracking shot are ideal'
+    };
+  }
+  if (f.includes('pika')) {
+    return {
+      name: 'Pika Labs',
+      style: 'short punchy description of the scene and motion. Pika works best with concise clear prompts.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Pika Labs format: short and punchy. Describe the subject, what they are doing, and the mood. Under 50 words.',
+      length: 'short — 20 to 50 words',
+      jargon: 'none — simple and direct'
+    };
+  }
+  if (f.includes('luma') || f.includes('dream machine')) {
+    return {
+      name: 'Luma Dream Machine',
+      style: 'realistic scene description focusing on subject, environment, lighting and movement.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Luma Dream Machine format: describe a realistic scene with clear subject, environment, and natural movement.',
+      length: 'medium — 40 to 80 words',
+      jargon: 'none — natural descriptive language'
+    };
+  }
+  if (f.includes('hailuo')) {
+    return {
+      name: 'Hailuo AI',
+      style: 'cinematic scene description with dramatic lighting and camera angles for epic video content.',
+      suffix: '',
+      suffix_image: '',
+      note: 'Hailuo AI format: dramatic cinematic description. Works well for epic, emotional, and action scenes.',
+      length: 'medium — 50 to 90 words',
+      jargon: 'moderate — cinematic terms welcome'
+    };
+  }
+  // Universal / any tool — improved
   return {
-    name: 'General',
-    style: 'simple plain English that works in any AI image tool',
+    name: 'Universal',
+    style: 'simple plain English that works in any AI image or video tool — no tool-specific parameters',
     suffix: '',
     suffix_image: '',
-    note: 'General format: plain English, no tool-specific parameters. Works in Artistly, Canva, Firefly, ChatGPT, and Leonardo.',
+    note: 'Universal format: plain English only. No -- parameters. No negative prompts. Works in any tool including ones not listed.',
     length: 'short — 40 to 70 words',
     jargon: 'none — plain English only'
   };
