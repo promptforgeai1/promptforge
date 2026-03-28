@@ -764,49 +764,73 @@ FOR T-SHIRT DESIGNS, deliver:
 💰 WHY PEOPLE WILL BUY THIS:
 [One sentence. The specific scenario — the family dinner, the work presentation, the school run — where this person reaches for this shirt and why. The exact feeling wearing it gives them. This is the copy that goes in the Etsy listing description's first line.]
 
-FOR CLIPART SETS AND STICKER SHEETS, deliver ONLY these 3 sections:
+FOR CLIPART SETS AND STICKER SHEETS, deliver ONLY these sections:
 
 ✏️ QUICK PROMPT — PASTE THIS:
-[This is the ONLY thing the user needs to paste into their AI tool. Write ONE single prompt that generates the ENTIRE clipart set or sticker sheet as ONE image. The prompt must describe all characters/elements together on one sheet. Under 80 words. No preamble. Start directly with the description.
+[ONE single prompt. All characters together in one description. Under 80 words. No preamble.
+FORMAT: "Clipart set of [NUMBER] [character description] in different poses: [pose 1], [pose 2], [pose 3], [pose 4], [pose 5]. [Art style]. Transparent background. Consistent style throughout."
+ABSOLUTE RULE: ONE prompt. If you write "Element 1" or "Prompt 1" — start again.]
 
-EXAMPLE FORMAT: "Clipart sheet of 6 cute [character description] in different poses: [pose 1], [pose 2], [pose 3], [pose 4], [pose 5], [pose 6]. [Art style]. Transparent background. White space between each character. Sticker sheet layout."
+🛍️ COMPLETE ETSY LISTING:
 
-DO NOT generate individual prompts for each element separately. ONE prompt. ONE sheet. That is all.]
+TITLE:
+[Keyword-rich title. Include: character type + clipart/PNG + digital download + commercial use. Under 140 characters.]
 
-🎨 WHAT IS IN THIS SET:
-[2 sentences only — what characters and poses are in the set. Nothing else.]
+DESCRIPTION:
+[3 short paragraphs:
+Paragraph 1 — What is in the set and who it is for. Specific. 2-3 sentences.
+Paragraph 2 — What buyers can use it for: sticker sheets, invitations, teacher resources, scrapbooking, social media, print-on-demand products. 2-3 sentences.
+Paragraph 3 — File details: PNG format, transparent background, high resolution, instant digital download, commercial use licence included. 2 sentences.]
 
-🛍️ ETSY TITLE:
-[One keyword-rich Etsy title. Nothing else.]
+TAGS (13 tags — these are the exact words Etsy buyers search):
+[List exactly 13 tags separated by commas. Mix of broad and specific. Include: clipart, PNG, digital download, commercial use, instant download, plus 8 niche-specific tags]
+
+PRICE SUGGESTION:
+[Specific price in £ based on set size: Small £4-6, Medium £6-10, Large £12-18]
 
 ABSOLUTE RULES — NEVER BREAK THESE:
 — ONE prompt only — not one per element
-— The prompt must generate all elements together as ONE sheet image
-— No individual element descriptions
-— No buyer persona
-— No market analysis
-— No art direction essays
-— No element-by-element breakdown
-— If you find yourself writing "Element 1", "Element 2" — STOP and rewrite as one sheet prompt
+— No individual element descriptions numbered separately
+— No buyer persona essays
+— No art direction paragraphs
 
 FOR SINGLE CLIPART, deliver ONLY:
 
 ✏️ QUICK PROMPT — PASTE THIS:
-[ONE single prompt that generates ONE character or element as a complete clipart image. Transparent background. Under 60 words. Paste-ready. No preamble.]
+[ONE single prompt. One character or element only. Transparent background. Under 60 words. Paste-ready. No preamble.]
 
-🛍️ ETSY TITLE:
-[One keyword-rich title for selling this as a single clipart digital download.]
+🛍️ COMPLETE ETSY LISTING:
+
+TITLE:
+[Keyword-rich title. Under 140 characters.]
+
+DESCRIPTION:
+[2 short paragraphs: what it is and who it is for, then file details — PNG, transparent background, high resolution, instant download, commercial use.]
+
+TAGS:
+[13 tags separated by commas.]
+
+PRICE SUGGESTION:
+[Single clipart: £2-4]
 
 FOR COLOURING BOOK PAGES, deliver ONLY:
 
 ✏️ QUICK PROMPT — PASTE THIS:
-[ONE prompt that generates a black and white line art colouring page. Must specify: black outlines only, no colour fills, no shading, white background, clean lines ready to colour. Under 80 words. Paste-ready.]
+[ONE prompt. Black outlines only, no colour fills, no shading, white background, clean lines. Under 80 words. Paste-ready.]
 
-📄 WHAT IS ON THE PAGE:
-[2 sentences describing the scene or character on the colouring page.]
+🛍️ COMPLETE ETSY LISTING:
 
-🛍️ ETSY TITLE:
-[One keyword-rich title for selling this as a colouring page digital download.]
+TITLE:
+[Keyword-rich title. Include: colouring page/printable + theme + digital download + commercial use. Under 140 characters.]
+
+DESCRIPTION:
+[2 short paragraphs: what the colouring page shows and who it is for, then file details — PDF/PNG, print at home, instant download, commercial use.]
+
+TAGS:
+[13 tags separated by commas.]
+
+PRICE SUGGESTION:
+[Single page: £1-3. Pack of 5: £4-8. Pack of 10+: £8-15]
 
 FOR MOCKUP SCENES, deliver:
 
