@@ -933,7 +933,22 @@ Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat 
       if (inputs.designType === 'tshirt') {
         specific = `DESIGN 🎨 THE VISUAL STYLE: ${inputs.tshirtStyle||'Choose the style with the strongest commercial appeal for this specific niche and buying moment'}\n🎨 THE COLOURS TO USE: ${inputs.tshirtColour||'Choose colours that carry emotional weight for this specific audience'}\n📍 WHERE TO USE THIS COPY: ${inputs.tshirtPlatform||'General POD'}\nINCLUDE TEXT: ${inputs.tshirtText||'Decide based on what converts for this niche'}`;
       } else if (inputs.designType === 'clipart') {
-        specific = `ART 🎨 THE VISUAL STYLE: ${inputs.clipartStyle||'Choose the style with the strongest Etsy commercial appeal for this theme'}\nCLIPART THEME: ${inputs.clipartTheme||'Build from the niche identity'}\nSET SIZE: ${inputs.clipartSize||'10–15 elements minimum'}\nBACKGROUND: ${inputs.clipartBg||'Transparent PNG for maximum versatility'}`;
+        specific = `CLIPART SET RULES — READ CAREFULLY BEFORE WRITING ANYTHING:
+YOU MUST WRITE EXACTLY ONE PROMPT. NOT ONE PER ELEMENT. ONE TOTAL.
+The prompt describes ALL characters together in one sentence listing their poses.
+
+ART STYLE: ${inputs.clipartStyle||'3D cartoon Pixar style, cute and detailed'}
+CLIPART THEME: ${inputs.clipartTheme||'Build from the niche identity'}
+SET SIZE: ${inputs.clipartSize||'Small set — 5 to 8 elements'} — include this many poses in ONE prompt
+BACKGROUND: ${inputs.clipartBg||'Transparent PNG'}
+
+REQUIRED PROMPT FORMAT — follow this exactly:
+"Clipart set of [NUMBER] [CHARACTER DESCRIPTION] in different poses: [pose 1], [pose 2], [pose 3], [pose 4], [pose 5]. [ART STYLE]. Transparent background. Each character clearly separated. Commercial use quality."
+
+EXAMPLE OF CORRECT OUTPUT:
+"Clipart set of 6 cute little Black girls with voluminous natural afros in different poses: reading a book, dancing with arms out, holding a gold crown, painting at an easel, holding a star above her head, sitting cross-legged praying. 3D cartoon Pixar style, warm deep brown skin, bright colourful outfits, big expressive eyes, transparent background, 8K quality."
+
+THAT IS THE ENTIRE PROMPT. Nothing more. No separate prompts. No element breakdowns.`;
       } else if (inputs.designType === 'mockup-apparel') {
         specific = `GARMENT: ${inputs.mockupGarment||'Classic unisex tee'}\nMODEL / 🎬 THE SCENE — WHAT IS HAPPENING: ${inputs.mockupScene||'Choose the model and scene that creates the strongest aspiration for this specific niche audience'}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mockupMood||'Aspirational but authentic — not staged'}`;
       } else if (inputs.designType === 'mockup-product') {
