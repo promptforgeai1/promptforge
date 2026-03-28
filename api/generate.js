@@ -4,7 +4,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 
 const MODEL           = 'claude-sonnet-4-6';
-const FREE_MAX_TOKENS = 1600;
+const FREE_MAX_TOKENS = 800;
 const PRO_MAX_TOKENS  = 4500;
 
 // ─── RATE LIMITER ─────────────────────────────────────────────────────────────
@@ -764,27 +764,49 @@ FOR T-SHIRT DESIGNS, deliver:
 💰 WHY PEOPLE WILL BUY THIS:
 [One sentence. The specific scenario — the family dinner, the work presentation, the school run — where this person reaches for this shirt and why. The exact feeling wearing it gives them. This is the copy that goes in the Etsy listing description's first line.]
 
-FOR CLIPART SETS, deliver:
+FOR CLIPART SETS AND STICKER SHEETS, deliver ONLY these 3 sections:
 
-💡 WHAT THIS CLIPART SET IS:
-[The visual world of this set. The cohesive thread that makes every element feel like it belongs together. What project the buyer is making — wedding stationery, teacher worksheets, social media graphics, Etsy sticker pack, journal pages? What makes this set commercially essential rather than decoratively nice?]
+✏️ QUICK PROMPT — PASTE THIS:
+[This is the ONLY thing the user needs to paste into their AI tool. Write ONE single prompt that generates the ENTIRE clipart set or sticker sheet as ONE image. The prompt must describe all characters/elements together on one sheet. Under 80 words. No preamble. Start directly with the description.
 
-📋 EVERY ITEM IN THE SET:
-[Every individual element numbered. Each described specifically enough to generate consistently.
-GRADE F: "3. Some flowers"
-GRADE F: "7. A cute animal"
-GRADE A: "3. Single fully-open peony bloom face-on, petals layered in tiers, two visible dew drops on the outermost petal, stem cut cleanly 3cm below the bloom — the hero element of the set"
-GRADE A: "7. A small natural afro pick comb with a fist at the top, side view, clean outline, slight warm wood texture on the handle — symbol of natural hair pride"
-Minimum 10 elements for a set with real commercial value.]
+EXAMPLE FORMAT: "Clipart sheet of 6 cute [character description] in different poses: [pose 1], [pose 2], [pose 3], [pose 4], [pose 5], [pose 6]. [Art style]. Transparent background. White space between each character. Sticker sheet layout."
 
-🎨 THE ART STYLE:
-[Art style with technical precision. Exact line weight. Complete colour palette — named colours, maximum count for visual cohesion across the set. Consistency instruction — the one visual rule that makes every element clearly belong to the same set. Scale relationships.]
+DO NOT generate individual prompts for each element separately. ONE prompt. ONE sheet. That is all.]
 
-✏️ YOUR PROMPTS — PASTE THESE:
-[Formatted specifically for the stated AI tool. Either one sheet prompt (DALL-E, Leonardo) or individual element prompts (Midjourney). Include every style consistency marker in every individual prompt so each element is generated in the same visual language.]
+🎨 WHAT IS IN THIS SET:
+[2 sentences only — what characters and poses are in the set. Nothing else.]
 
-🛍️ HOW TO LIST THIS ON ETSY:
-[Specific title with the exact keywords buyers search — not what sounds nice but what converts. The buyer persona. The 3 most important Etsy tags. The one specific thing that makes this set different from the 800 similar sets already on Etsy — and how to state that in the first line of the listing description.]
+🛍️ ETSY TITLE:
+[One keyword-rich Etsy title. Nothing else.]
+
+ABSOLUTE RULES — NEVER BREAK THESE:
+— ONE prompt only — not one per element
+— The prompt must generate all elements together as ONE sheet image
+— No individual element descriptions
+— No buyer persona
+— No market analysis
+— No art direction essays
+— No element-by-element breakdown
+— If you find yourself writing "Element 1", "Element 2" — STOP and rewrite as one sheet prompt
+
+FOR SINGLE CLIPART, deliver ONLY:
+
+✏️ QUICK PROMPT — PASTE THIS:
+[ONE single prompt that generates ONE character or element as a complete clipart image. Transparent background. Under 60 words. Paste-ready. No preamble.]
+
+🛍️ ETSY TITLE:
+[One keyword-rich title for selling this as a single clipart digital download.]
+
+FOR COLOURING BOOK PAGES, deliver ONLY:
+
+✏️ QUICK PROMPT — PASTE THIS:
+[ONE prompt that generates a black and white line art colouring page. Must specify: black outlines only, no colour fills, no shading, white background, clean lines ready to colour. Under 80 words. Paste-ready.]
+
+📄 WHAT IS ON THE PAGE:
+[2 sentences describing the scene or character on the colouring page.]
+
+🛍️ ETSY TITLE:
+[One keyword-rich title for selling this as a colouring page digital download.]
 
 FOR MOCKUP SCENES, deliver:
 
@@ -827,7 +849,19 @@ function buildUserMessage(type, inputs, tier, viralBoost = false, photoData = nu
   const pro   = tier === 'pro';
   const tNote = pro
     ? 'TIER: PRO — Deliver every section completely and without cutting short. This user is paying. Give everything. No summarising. No stopping early. Full quality throughout.'
-    : 'TIER: FREE — Deliver a preview that is genuinely impressive. Strong enough that they want more. Show the quality first — then stop. For Surprise Me: stop after MONETISATION ANGLE. For Make Money: stop after idea 2. For all others: stop after CAPTION or equivalent first-half marker.';
+    : `TIER: FREE — Deliver a SHORT preview only. The goal is to show quality and make them want Pro.
+
+FREE LIMITS PER GENERATOR — follow these strictly:
+• Surprise Me: Deliver ONE hook only (the best one) + script (first 5 lines only) + caption. Stop there. No image prompt. No monetisation. No hashtags.
+• Make Money: Deliver ONE income idea only with execution steps. Stop after the first idea. No second or third idea.
+• Short-Form Video: Deliver hook + first 4 lines of script only. Stop there. No full script. No platform strategy.
+• Sales & Marketing: Deliver hook + problem section only. Stop there.
+• Viral Story: Deliver hook + first half of build-up only. Stop with "— Upgrade to Pro to see how this ends —"
+• Smart Image: Deliver the prompt but cut the style analysis and camera direction. Just the core prompt.
+• Design Studio: Deliver the Quick Prompt only. No Etsy title. No set description.
+• 3D Doll: Deliver CHARACTER CONCEPT and QUICK PROMPT only. No Midjourney prompt. No variations.
+
+After stopping — add exactly this line: "⚡ Upgrade to Pro for the complete output — unlimited generations, full scripts, all hooks, and every section."`;
 
   const boostInstruction = viralBoost
     ? '\n\nVIRAL BOOST MODE — This is a second attempt. The user wants better. This version must:\n— Find the non-obvious angle. Not the first interpretation. The second or third one.\n— Make the hook more involuntary — more specific, more honest, harder to scroll past\n— Make the twist or payoff land harder — it should make them re-read the opening\n— Cut every line that does not raise tension or create a question\n— Include at least 2 more specificity anchors than a standard output\nThis must be meaningfully different — not a variation, a better version.'
@@ -893,7 +927,7 @@ Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat 
     },
     design: () => {
       const pf_design = getPlatformRules(inputs.format);
-      const typeLabels = { 'tshirt':'T-SHIRT DESIGN', 'clipart':'CLIPART SET', 'sticker':'STICKER SHEET', 'mockup-apparel':'APPAREL MOCKUP', 'mockup-product':'PRODUCT MOCKUP' };
+      const typeLabels = { 'tshirt':'T-SHIRT DESIGN', 'clipart-single':'SINGLE CLIPART', 'clipart':'CLIPART SET', 'sticker':'STICKER SHEET', 'colouring':'COLOURING BOOK PAGE', 'mockup-apparel':'APPAREL MOCKUP', 'mockup-product':'PRODUCT MOCKUP' };
       const typeLabel = typeLabels[inputs.designType] || inputs.designType;
       let specific = '';
       if (inputs.designType === 'tshirt') {
@@ -906,6 +940,10 @@ Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat 
         specific = `PRODUCT TYPE: ${inputs.mockupProduct||'Choose the product type'}\nSCENE 🎨 THE VISUAL STYLE: ${inputs.mockupProductScene||'Choose the scene that converts for this specific audience'}`;
       } else if (inputs.designType === 'sticker') {
         specific = `STICKER SHEET — generate a complete sticker sheet brief:\nSTICKER COUNT: 8-12 individual die-cut stickers on one sheet\nSTYLE: Bold, clear illustration — readable at small size. White border around each sticker for die-cutting.\nBACKGROUND: Transparent PNG\nINCLUDE: Mix of character stickers, word/quote stickers, and mini accent stickers\nSELL ON: Etsy as digital download — average price £3-8\nTHEME FROM NICHE: Build all stickers around the niche identity`;
+      } else if (inputs.designType === 'clipart-single') {
+        specific = `SINGLE CLIPART IMAGE — generate ONE single character or element:\nONE character or element only — not a set\nFULL BODY if a character\nBACKGROUND: Transparent PNG\nSTYLE: Clean commercial illustration quality\nThe prompt must generate exactly ONE image of ONE character or element. Not a sheet. Not a set.`;
+      } else if (inputs.designType === 'colouring') {
+        specific = `COLOURING BOOK PAGE:\nSTYLE: Black outlines ONLY — no colour, no shading, no grey fills anywhere\nLINE WEIGHT: Bold clean lines easy to colour inside\nBACKGROUND: White\nFORMAT: Full page portrait illustration\nSELL ON: Etsy digital download — £1-5 per page or £5-15 for a pack\nTHEME: Build the scene around the niche — faith, Black excellence, children, nature, animals etc`;
       }
       return `${tNote}\n\nDESIGN TYPE: ${typeLabel}\nNICHE / TARGET AUDIENCE: ${inputs.niche||'General — apply the COMMERCIAL TRUTH principle to define the most specific viable audience'}\nOUTPUT FORMAT: ${inputs.format}\n${specific}\n\nApply the GRADING SYSTEM. Apply the COMMERCIAL TRUTH. The test for every section: would someone in this niche read this and think "they made this specifically for me"? If the answer is "maybe" — rewrite it until the answer is "yes." Start immediately with the first section label. Zero preamble.
 

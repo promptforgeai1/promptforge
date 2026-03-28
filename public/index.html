@@ -1792,8 +1792,10 @@
             <select class="form-select" id="ds-type" onchange="updateDesignForm()" required>
               <option value="">Select design type...</option>
               <option value="tshirt">👕 T-Shirt Design</option>
-              <option value="clipart">🎨 Clipart Set</option>
+              <option value="clipart-single">🎨 Single Clipart — one image, one character</option>
+              <option value="clipart">🎨 Clipart Set — multiple characters on one sheet</option>
               <option value="sticker">✨ Sticker Sheet</option>
+              <option value="colouring">🖊️ Colouring Book Page — black and white line art</option>
               <option value="mockup-apparel">🧍 Mockup — Apparel / Clothing</option>
               <option value="mockup-product">📦 Mockup — Product / Digital</option>
             </select>
@@ -2054,15 +2056,6 @@
             </select>
           </div>
 
-          <div class="qty-picker">
-            <span class="qty-label">Variations:</span>
-            <div class="qty-btns">
-              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
-              <button class="qty-btn" onclick="setQty(2,this)">2</button>
-              <button class="qty-btn" onclick="setQty(3,this)">3</button>
-            </div>
-            <span class="qty-note">variations in one go</span>
-          </div>
           <button class="btn-generate" onclick="generate('design')">⚡ Generate My Design Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 T-shirt · Clipart · Sticker · Mockup — Ready to paste</span></div>
         </div>
@@ -3182,46 +3175,46 @@ function displayOutput(text, type) {
   if (!isPro) {
     const resultMap = {
       surprise: [
-        'Your full posting strategy — exactly what to do each day for 7 days',
-        'The expansion mechanism that turns this into £2k/month',
-        'All 3 scroll-stopping hooks ready to test against each other',
-        'Monetisation copy — the one sentence that converts viewers into buyers'
+        'All 3 scroll-stopping hooks — free gives you 1',
+        'Full script — not just the first 5 lines',
+        'AI image prompt + monetisation angle',
+        'Hashtags + complete posting strategy'
       ],
       money: [
-        'A third income idea — often the most unexpected and scalable one',
-        'Month 3 and Month 6 revenue projections with the lever that determines them',
-        'The exact failure point — the specific mistake that kills each model',
-        'Full 5-step startup sequence with named tools and specific outputs'
+        '2 more income ideas — free gives you 1',
+        'Month 3 and Month 6 revenue projections',
+        'The exact failure point for each idea',
+        'Full 5-step startup sequence with named tools'
       ],
       video: [
-        'Full line-by-line script — every word, every pause, every emphasis',
-        'Complete scene directions and text overlays for the whole video',
-        'Platform strategy — when to post, what to pin, what the first comment should be',
-        '3 pattern interrupt moments with exact timestamps and techniques'
+        'Full line-by-line script — free gives you 4 lines',
+        'Complete scene directions and text overlays',
+        'Platform strategy — when to post and what to pin',
+        '3 pattern interrupt moments with timestamps'
       ],
       sales: [
-        'Full body copy — the complete persuasion arc from problem to close',
-        'The objection handler — the exact thought before they close the tab, dissolved',
-        'Ad version for paid social — 3–4 lines engineered for cold audiences',
-        'Organic caption version — sounds like a recommendation, not a pitch'
+        'Full body copy — the complete persuasion arc',
+        'The objection handler that dissolves last-minute doubt',
+        'Ad version for paid social — cold audience ready',
+        'Organic caption version that sounds like a recommendation'
       ],
       chibi: [
-        'Full production prompt with all 9 visual layers completely specified',
-        'Lighting, background, and rendering engine — nothing left to chance',
-        'Variation A, B, and C — different emotional register, era, and commercial use',
-        'Complete Midjourney parameter block ready to paste'
+        'Midjourney prompt with full parameters',
+        'Variation A — completely different mood and outfit',
+        'Variation B — different era and setting',
+        'Full rendering and lighting specifications'
       ],
       story: [
-        'Complete story — build-up, twist, and ending written in full',
-        'Platform delivery note — exactly how to format this for maximum impact',
-        'Caption + re-hook — two different opening strategies to A/B test',
-        'The monetisation play — the product this story feeds and the CTA placement'
+        'Complete story — build-up, twist, and ending',
+        'Platform delivery note for maximum impact',
+        'Caption + re-hook — two strategies to A/B test',
+        'The monetisation play and CTA placement'
       ],
       image: [
-        'Full technical brief — lighting in Kelvin, camera lens, rendering engine',
-        'Midjourney parameter block formatted for direct paste',
-        'Variation A, B, and C — different lighting, emotional register, and use case',
-        'Style rationale — the specific reason this style serves this concept'
+        'Full technical brief — lens, lighting, rendering engine',
+        'Midjourney parameter block ready to paste',
+        'Style rationale — why this style serves this concept',
+        'Variation prompts for different moods and uses'
       ]
     };
     const results = resultMap[type] || ['Full output','Complete structure','Advanced variations','Monetisation angle'];
