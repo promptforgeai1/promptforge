@@ -879,7 +879,7 @@ CRITICAL OUTPUT INSTRUCTIONS:
 Apply SKIN TONE STANDARD and HAIR STANDARD. Apply SELF-CHECK. No anime, no flat illustration.`;
     },
     story: () =>
-      `${tNote}\n\nSTORY TYPE: ${inputs.storyType}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mood||'Uncomfortably specific — true enough to feel like it really happened'}\n✅ HOW IT ENDS: ${inputs.ending||'A revelation that recontextualises the opening line'}\n📍 WHERE TO USE THIS COPY: ${inputs.platform||'Instagram'}\n\nApply the UNANSWERED QUESTION TEST to the hook. Apply the REREAD TEST to the twist.${force}`,
+      `${tNote}\n\nSTORY TYPE: ${inputs.storyType}\n❤️ THE FEELING OF THE IMAGE: ${inputs.mood||'Uncomfortably specific — true enough to feel like it really happened'}\n✅ HOW IT ENDS: ${inputs.ending||'A revelation that recontextualises the opening line'}\n📍 WHERE TO USE THIS COPY: ${inputs.platform||'Instagram'}\n${inputs.storyType === "Children's story / Bible story" ? 'IMPORTANT: Write for children aged 6-10. Simple sentences. Clear moral. Vivid characters. If a specific Bible story was mentioned — honour the original story while making it exciting and accessible to young minds.' : ''}\n${inputs.storyType === 'Life lesson / Moral story' ? 'IMPORTANT: The life lesson must emerge naturally from the events — never state it directly. The reader must arrive at the truth themselves through the story.' : ''}\n\nApply the UNANSWERED QUESTION TEST to the hook. Apply the REREAD TEST to the twist.${force}`,
     image: () => {
       const pf = getPlatformRules(inputs.use || 'general');
       const photoNote = photoData

@@ -431,6 +431,12 @@
   .lp-btn-mid-cta{background:linear-gradient(135deg,rgba(139,120,255,.15),rgba(79,172,254,.1));border:1px solid var(--border2);color:var(--text);padding:13px 32px;border-radius:12px;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:all .2s;}
   .lp-btn-mid-cta:hover{background:linear-gradient(135deg,var(--purple2),var(--blue));border-color:transparent;}
 
+
+  /* ── IDEA PICKER ── */
+  .idea-picker{margin-bottom:.5rem;}
+  .idea-picker-label{font-size:.68rem;color:var(--text3);margin-bottom:.35rem;display:block;}
+  .idea-picker select{width:100%;padding:8px 12px;background:rgba(139,120,255,.06);border:1px solid rgba(139,120,255,.15);border-radius:8px;color:var(--text2);font-size:.75rem;font-family:var(--font-body);cursor:pointer;}
+  .idea-picker select:focus{outline:none;border-color:var(--purple);}
   /* ── INPUT TIPS ── */
   .input-tip{background:linear-gradient(135deg,rgba(139,120,255,.06),rgba(79,172,254,.04));border:1px solid rgba(139,120,255,.15);border-radius:9px;padding:.65rem .85rem;margin-bottom:.85rem;font-size:.71rem;color:var(--text3);line-height:1.65;}
   .input-tip strong{color:var(--purple);font-weight:600;}
@@ -956,6 +962,31 @@
           <div id="surpriseOwnMode" style="display:none">
             <div class="form-group" style="margin-bottom:.75rem">
               <label class="form-label">Your theme or idea</label>
+              <div class="idea-picker">
+                <span class="idea-picker-label">💡 No idea yet? Pick one to start (optional):</span>
+                <select onchange="pickIdea(this,'s-vibe')">
+                  <option value="">— pick an idea or type your own above —</option>
+                  <optgroup label="── Creator & Business ──">
+                    <option value="I built a business from my phone with no money, no plan, and no one believed in me">I built a business from my phone with no money and no one believed in me</option>
+                    <option value="I posted every day for 6 months and got zero results — then I stopped posting and went viral">I posted every day for 6 months, got nothing — then stopped and went viral</option>
+                    <option value="I left a stable job everyone told me was stupid to leave — here is what happened one year later">I left a stable job everyone said was stupid — one year later</option>
+                    <option value="I made my first £100 online while my kids were sleeping and cried in the kitchen">I made my first £100 online while my kids were sleeping</option>
+                    <option value="I gave AI one week to run my entire content strategy — here is the honest truth">I gave AI one week to run my content — honest truth</option>
+                  </optgroup>
+                  <optgroup label="── Life & Real Talk ──">
+                    <option value="My mum thought AI and digital business was a scam — now she asks me to teach her">My mum thought AI was a scam — now she asks me to teach her</option>
+                    <option value="I was the most hardworking person in the room and still the most broke — here is why">I was the hardest worker in the room and still broke — here is why</option>
+                    <option value="The moment I realised I was working hard in completely the wrong direction">The moment I realised I was working hard in the wrong direction</option>
+                    <option value="Nobody talks about what it actually feels like to build something from nothing while raising children">What it feels like to build something from nothing while raising children</option>
+                    <option value="I stopped trying to go viral and started going deep — my results surprised me">I stopped chasing viral and went deep — what happened</option>
+                  </optgroup>
+                  <optgroup label="── Faith & Purpose ──">
+                    <option value="The prayer I prayed when I had nothing left — and what came after">The prayer I prayed when I had nothing left — and what came after</option>
+                    <option value="I almost gave up on everything I was building — then one thing kept me going">I almost gave up on everything — then one thing kept me going</option>
+                    <option value="What losing everything taught me about what actually matters">What losing everything taught me about what actually matters</option>
+                  </optgroup>
+                </select>
+              </div>
               <input type="text" class="form-input" id="s-vibe" placeholder="e.g. I lost everything and rebuilt, toxic productivity culture, making £0 for 6 months...">
               <div class="field-note">The AI will build the full content package around exactly this — hooks, script, monetisation, image prompt.</div>
             </div>
@@ -1001,10 +1032,53 @@
           </div>
           <div class="form-group">
             <label class="form-label">Topic or Niche <span class="req">*</span></label>
+            <div class="idea-picker">
+              <span class="idea-picker-label">💡 Not sure? Pick a niche (optional):</span>
+              <select onchange="pickIdea(this,'m-topic')">
+                <option value="">— pick a niche or type your own above —</option>
+                <optgroup label="── Content & Digital ──">
+                  <option value="AI tools and content creation">AI tools and content creation</option>
+                  <option value="Short-form video and TikTok content">Short-form video and TikTok content</option>
+                  <option value="Digital products and Etsy shop">Digital products and Etsy shop</option>
+                  <option value="Canva templates and design">Canva templates and design</option>
+                </optgroup>
+                <optgroup label="── Culture & Lifestyle ──">
+                  <option value="Natural hair care and protective styles">Natural hair care and protective styles</option>
+                  <option value="African fashion and cultural clothing">African fashion and cultural clothing</option>
+                  <option value="Faith-based and Christian lifestyle">Faith-based and Christian lifestyle</option>
+                  <option value="Black excellence and Afrocentric content">Black excellence and Afrocentric content</option>
+                </optgroup>
+                <optgroup label="── Family & Education ──">
+                  <option value="Kids educational content and learning">Kids educational content and learning</option>
+                  <option value="Parenting and mum life">Parenting and mum life</option>
+                  <option value="Home education and tutoring">Home education and tutoring</option>
+                  <option value="Children's books and storytelling">Children's books and storytelling</option>
+                </optgroup>
+                <optgroup label="── Health & Wellness ──">
+                  <option value="Mental health and self-care">Mental health and self-care</option>
+                  <option value="Fitness and healthy lifestyle">Fitness and healthy lifestyle</option>
+                  <option value="Nutrition and meal planning">Nutrition and meal planning</option>
+                </optgroup>
+              </select>
+            </div>
             <input type="text" class="form-input" id="m-topic" placeholder="e.g. fitness, photography, finance, cooking...">
           </div>
           <div class="form-group">
             <label class="form-label">Target Audience <span class="req">*</span></label>
+            <div class="idea-picker">
+              <span class="idea-picker-label">💡 Not sure? Pick an audience (optional):</span>
+              <select onchange="pickIdea(this,'m-audience')">
+                <option value="">— pick an audience or type your own above —</option>
+                <option value="Busy mums who want extra income without leaving home">Busy mums who want extra income without leaving home</option>
+                <option value="Black women aged 25-40 building their own brand">Black women aged 25-40 building their own brand</option>
+                <option value="Christian women who want faith-aligned income">Christian women who want faith-aligned income</option>
+                <option value="Nurses and healthcare workers with no spare time">Nurses and healthcare workers with no spare time</option>
+                <option value="Young professionals wanting to leave their 9-5">Young professionals wanting to leave their 9-5</option>
+                <option value="Stay at home parents wanting to contribute financially">Stay at home parents wanting to contribute financially</option>
+                <option value="Creators who post content but make no money from it">Creators who post but make no money from it</option>
+                <option value="Anyone over 40 starting their digital journey late">Anyone over 40 starting their digital journey late</option>
+              </select>
+            </div>
             <input type="text" class="form-input" id="m-audience" placeholder="e.g. busy mums, junior designers, freelancers over 40...">
           </div>
           <div class="form-group">
@@ -1057,6 +1131,35 @@
           </div>
           <div class="form-group">
             <label class="form-label">Topic <span class="req">*</span></label>
+            <div class="idea-picker">
+              <span class="idea-picker-label">💡 No topic yet? Pick one (optional):</span>
+              <select onchange="pickIdea(this,'v-topic')">
+                <option value="">— pick a topic or type your own above —</option>
+                <optgroup label="── Creator & Business ──">
+                  <option value="Why your content is not converting even though people like it">Why your content gets likes but no sales</option>
+                  <option value="The one thing nobody tells you about making money online">The one thing nobody tells you about making money online</option>
+                  <option value="I stopped trying to go viral and started going deep — here is what changed">I stopped chasing viral and went deep — what changed</option>
+                  <option value="Why I deleted 2 years of content and started again">Why I deleted 2 years of content and started again</option>
+                  <option value="The moment I realised I was working hard in the wrong direction">The moment I realised I was working hard in the wrong direction</option>
+                </optgroup>
+                <optgroup label="── Life & Real Talk ──">
+                  <option value="What nobody tells you about building something while raising children">What nobody tells you about building something while raising children</option>
+                  <option value="I was the most hardworking person I knew and still struggling — here is why">I worked the hardest and still struggled — here is why</option>
+                  <option value="The decision that changed everything — and why I almost did not make it">The decision that changed everything</option>
+                  <option value="What I wish someone had told me before I started">What I wish someone had told me before I started</option>
+                </optgroup>
+                <optgroup label="── Faith & Inspiration ──">
+                  <option value="What God taught me through my biggest failure">What God taught me through my biggest failure</option>
+                  <option value="The season that almost broke me — and what came after">The season that almost broke me — and what came after</option>
+                  <option value="Why I believe your purpose is connected to your pain">Why your purpose is connected to your pain</option>
+                </optgroup>
+                <optgroup label="── Kids & Education ──">
+                  <option value="3 things I do every morning to help my child love learning">3 things that help my child love learning</option>
+                  <option value="Why I started teaching my child about money at age 5">Why I started teaching my child about money at age 5</option>
+                  <option value="The Bible story that changed how I parent">The Bible story that changed how I parent</option>
+                </optgroup>
+              </select>
+            </div>
             <input type="text" class="form-input" id="v-topic" placeholder="e.g. why I quit my job, how I lost 3k followers, my honest opinion on...">
           </div>
           <div class="form-group">
@@ -1421,6 +1524,56 @@
           </div>
           <div class="form-group">
             <label class="form-label">Story Type <span class="req">*</span></label>
+            <div class="idea-picker">
+              <span class="idea-picker-label">💡 Need a story idea? Pick one (optional) — it will guide the AI:</span>
+              <select onchange="
+                var ideas = {
+                  'life-lesson': 'A woman who worked two jobs for 3 years to buy her mother a house — the day she handed over the keys',
+                  'rebuild': 'A man who quit his corporate job with £200 in his account and built something real from nothing',
+                  'child-lesson': 'A child who asked her dad why he was always tired — and it changed how he worked forever',
+                  'late-start': 'Someone who was told they were too old to start — and started anyway at 47 and won',
+                  'faith': 'A woman who prayed for a way out and then realised she already had everything she needed',
+                  'forgiveness': 'A person who forgave the one who hurt them most — and what that did to their own life',
+                  'david': 'David and Goliath — the boy who trusted God when everyone around him doubted',
+                  'samaritan': 'The Good Samaritan — who is really your neighbour when it costs you something',
+                  'joseph': 'Joseph and his brothers — what happens when you forgive the people who hurt you most',
+                  'tortoise': 'The tortoise and the hare — why slow and steady still wins in a world that celebrates speed',
+                  'biscuit': 'A little girl who shared her last biscuit — and got back more than she gave'
+                };
+                var mood = document.getElementById('st-mood');
+                var ending = document.getElementById('st-ending');
+                if (this.value && ideas[this.value]) {
+                  // Set story type based on category
+                  var stType = document.getElementById('st-type');
+                  if (this.value === 'life-lesson' || this.value === 'rebuild' || this.value === 'late-start') { stType.value = 'Underdog arc'; }
+                  else if (this.value === 'child-lesson' || this.value === 'forgiveness') { stType.value = 'Reversal / I was wrong'; }
+                  else if (this.value.includes('david') || this.value.includes('joseph') || this.value.includes('samaritan') || this.value.includes('tortoise') || this.value.includes('biscuit')) { stType.value = 'Underdog arc'; }
+                  // Store idea for use in generation
+                  window._storyIdea = ideas[this.value];
+                  showToast('✅ Story idea selected — click Generate');
+                }
+                this.value = '';
+              ">
+                <option value="">— pick a story idea to guide the AI (optional) —</option>
+                <optgroup label="── Real Life Stories ──">
+                  <option value="life-lesson">A mother who sacrificed everything — the day it all paid off</option>
+                  <option value="rebuild">A man who quit everything with £200 and built something real</option>
+                  <option value="child-lesson">A child who asked one question that changed how her parent worked</option>
+                  <option value="late-start">Someone told they were too old to start — who started at 47 and won</option>
+                  <option value="forgiveness">A person who forgave the one who hurt them most — and what it did to their life</option>
+                </optgroup>
+                <optgroup label="── Faith & Purpose ──">
+                  <option value="faith">A woman who prayed for a way out — and realised she already had everything</option>
+                </optgroup>
+                <optgroup label="── Children & Bible Stories ──">
+                  <option value="david">David and Goliath — the boy who trusted God when no one else did</option>
+                  <option value="samaritan">The Good Samaritan — who is really your neighbour</option>
+                  <option value="joseph">Joseph and his brothers — forgiving the people who hurt you most</option>
+                  <option value="tortoise">The tortoise and the hare — why slow and steady still wins</option>
+                  <option value="biscuit">The little girl who shared her last biscuit — and got back more than she gave</option>
+                </optgroup>
+              </select>
+            </div>
             <select class="form-select" id="st-type">
               <option value="">Select type...</option>
               <option>Confession / Uncomfortable truth</option>
@@ -1429,6 +1582,8 @@
               <option>Sad / Emotional</option>
               <option>Mystery / Thriller</option>
               <option>Underdog arc</option>
+              <option>Life lesson / Moral story</option>
+              <option>Children's story / Bible story</option>
             </select>
           </div>
           <div class="form-group">
@@ -2529,6 +2684,18 @@ function closeMobileSidebar() {
 // Close sidebar when a generator is selected on mobile
 const origSwitchGen = window.switchGen;
 
+
+// ── IDEA PICKER ──────────────────────────────────────────────────────────────
+function pickIdea(selectEl, targetId) {
+  const val = selectEl.value;
+  if (!val) return;
+  const target = document.getElementById(targetId);
+  if (target) {
+    target.value = val;
+    target.focus();
+  }
+  selectEl.value = ''; // reset picker
+}
 function enterApp() {
   const DEPLOY_VERSION = 'pf_v8';
   const lp = document.getElementById('landingPage');
