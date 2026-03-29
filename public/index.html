@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#8b78ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PromptForge">
+  <meta name="mobile-web-app-capable" content="yes">
 <title>PromptForge AI — Premium Content & Income Engine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,6 +145,9 @@
   .gen-accent-image .output-section:first-child{border-left-color:#45aaf2;}
   .gen-accent-image .output-section-label{color:#45aaf2;}
   .gen-accent-image .output-section-label::before{background:#45aaf2;}
+  .gen-accent-youtube .output-section:first-child{border-left-color:#ff4444;}
+  .gen-accent-youtube .output-section-label{color:#ff6b6b;}
+  .gen-accent-youtube .output-section-label::before{background:#ff6b6b;}
 
   /* LOADING */
   .output-loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;flex:1;padding:3rem 0;}
@@ -176,6 +185,13 @@
   .gen-form.active{display:block;}
 
   /* TOAST */
+  .pwa-banner{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1a1740,#0d0b24);border-top:1px solid rgba(139,120,255,.3);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:99999;transform:translateY(100%);transition:transform .4s cubic-bezier(.22,.68,0,1.1);}
+  .pwa-banner.show{transform:translateY(0);}
+  .pwa-banner-text{font-size:.8rem;color:var(--text2);line-height:1.4;}
+  .pwa-banner-text strong{color:#fff;display:block;margin-bottom:2px;}
+  .pwa-banner-btns{display:flex;gap:8px;flex-shrink:0;}
+  .pwa-banner-install{background:var(--purple2);border:none;color:#fff;padding:8px 16px;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;}
+  .pwa-banner-dismiss{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text3);padding:8px 12px;border-radius:8px;font-size:.78rem;cursor:pointer;font-family:inherit;}
   .toast{position:fixed;bottom:2rem;right:2rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:10px 18px;border-radius:10px;font-size:.85rem;z-index:999;transform:translateY(100px);transition:transform .3s ease;pointer-events:none;}
   .toast.show{transform:translateY(0);}
 
@@ -667,6 +683,7 @@
       <button class="sidebar-item" onclick="switchGen('story',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">🎭</span><span style="flex:1;">Viral Story</span></button>
       <button class="sidebar-item" onclick="switchGen('image',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">🎨</span><span style="flex:1;">Smart Image</span></button>
       <button class="sidebar-item" onclick="switchGen('design',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">✏️</span><span style="flex:1;">Design Studio</span><span style="font-size:.6rem;background:linear-gradient(135deg,#f7b731,#ff6b6b);color:#fff;padding:2px 7px;border-radius:4px;font-weight:700;">NEW</span></button>
+      <button class="sidebar-item" onclick="switchGen('youtube',this)" style="display:flex;align-items:center;gap:16px;width:100%;padding:18px 24px;background:#0d0b24;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;"><span style="font-size:1.1rem;">📺</span><span style="flex:1;">YouTube Studio</span><span style="font-size:.6rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:2px 7px;border-radius:4px;font-weight:700;">NEW</span></button>
     </div>
     <div style="height:1px;background:rgba(255,255,255,.1);margin:.5rem 0;"></div>
     <div style="display:block;padding:14px 24px 6px;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9090c0;background:#0d0b24;">ACCOUNT</div>
@@ -2097,6 +2114,130 @@
           <button class="btn-generate" onclick="generate('design')">⚡ Generate My Design Prompt</button>
           <div class="micro-trust"><span>⚡ Takes 5–10 seconds</span><span>·</span><span>🎨 T-shirt · Clipart · Sticker · Mockup — Ready to paste</span></div>
         </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- YOUTUBE STUDIO GENERATOR                                        -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <div class="gen-form" id="form-youtube">
+          <div class="generator-header">
+            <div class="generator-icon">📺</div>
+            <div>
+              <div class="generator-title">YouTube Studio</div>
+              <div class="generator-desc">Complete video packages for faceless YouTube channels — title, hook, full script, thumbnail prompt, SEO description, tags, and monetisation angle. One click, ready to record.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Video Topic <span class="req">*</span></label>
+            <div class="idea-picker">
+              <span class="idea-picker-label">💡 No idea? Pick one (optional):</span>
+              <select onchange="pickIdea(this,'yt-topic')">
+                <option value="">— pick a topic or type your own below —</option>
+                <optgroup label="── Faith & Bible ──">
+                  <option value="5 Bible verses that will change how you see your problems">5 Bible verses that change how you see your problems</option>
+                  <option value="What the Bible says about money that nobody talks about">What the Bible says about money nobody talks about</option>
+                  <option value="How to trust God when everything is going wrong">How to trust God when everything is going wrong</option>
+                  <option value="Signs that God is about to change your life completely">Signs God is about to change your life completely</option>
+                </optgroup>
+                <optgroup label="── AI & Income ──">
+                  <option value="How I made my first £100 online using AI tools for free">How I made my first £100 online using free AI tools</option>
+                  <option value="5 AI tools that can make you money while you sleep">5 AI tools that make money while you sleep</option>
+                  <option value="How to start an Etsy shop with AI in one weekend">Start an Etsy shop with AI in one weekend</option>
+                  <option value="The AI income strategy busy mums are using to earn from home">AI income strategy busy mums use to earn from home</option>
+                </optgroup>
+                <optgroup label="── Kids & Education ──">
+                  <option value="The story of David and Goliath told for children">David and Goliath — story for children</option>
+                  <option value="How to teach your child to read at home in 5 simple steps">Teach your child to read at home — 5 steps</option>
+                  <option value="ABC learning for toddlers — fun and interactive">ABC learning for toddlers</option>
+                  <option value="Noah's Ark — Bible story for children">Noah's Ark — Bible story for children</option>
+                </optgroup>
+                <optgroup label="── Motivation & Life ──">
+                  <option value="Morning habits that will change your life in 30 days">Morning habits that change your life in 30 days</option>
+                  <option value="Stop doing these 5 things if you want to be successful">Stop doing these 5 things if you want success</option>
+                  <option value="Why most people stay broke and how to change it">Why most people stay broke and how to change it</option>
+                  <option value="What nobody tells you about starting over at 30 40 or 50">What nobody tells you about starting over</option>
+                </optgroup>
+              </select>
+            </div>
+            <input type="text" class="form-input" id="yt-topic" placeholder="e.g. 5 Bible verses about money, How I earned £500 with AI, Teaching kids to read...">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Channel Niche <span class="req">*</span></label>
+            <select class="form-select" id="yt-niche">
+              <option value="">Select your channel niche...</option>
+              <optgroup label="── Faith & Bible ──">
+                <option>Christian faith and Bible teaching</option>
+                <option>Children's Bible stories and Sunday school</option>
+                <option>Faith and business — Christian entrepreneurs</option>
+                <option>Prayer and spiritual growth</option>
+              </optgroup>
+              <optgroup label="── AI & Income ──">
+                <option>AI tools and passive income</option>
+                <option>Etsy digital products and side hustle</option>
+                <option>YouTube automation and faceless channels</option>
+                <option>Work from home for mums</option>
+              </optgroup>
+              <optgroup label="── Kids & Education ──">
+                <option>Kids learning — ABC numbers colours</option>
+                <option>Children's stories and bedtime stories</option>
+                <option>Homeschool resources and activities</option>
+                <option>Toddler learning and development</option>
+              </optgroup>
+              <optgroup label="── Lifestyle & Motivation ──">
+                <option>Motivation and personal development</option>
+                <option>Black excellence and empowerment</option>
+                <option>Natural hair care and beauty</option>
+                <option>Healthy living and wellness</option>
+              </optgroup>
+              <optgroup label="── African & Cultural ──">
+                <option>African stories and mythology</option>
+                <option>African culture and heritage</option>
+                <option>Afrocentric lifestyle and identity</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Target Audience</label>
+            <input type="text" class="form-input" id="yt-audience" placeholder="e.g. Christian women 25-45, mums with young children, beginners learning AI...">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Video Length</label>
+            <select class="form-select" id="yt-length">
+              <option value="">AI chooses best length</option>
+              <option>Short — 3 to 5 minutes</option>
+              <option>Medium — 8 to 12 minutes</option>
+              <option>Long — 15 to 20 minutes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Channel Style</label>
+            <select class="form-select" id="yt-style">
+              <option>Faceless — voiceover only, no camera needed</option>
+              <option>AI avatar — AI presenter reads the script</option>
+              <option>Screen recording — show your screen with commentary</option>
+              <option>Text on screen — words appear as narrator speaks</option>
+              <option>Story narration — cinematic visuals with storytelling voice</option>
+            </select>
+          </div>
+
+          <div class="qty-picker">
+            <span class="qty-label">Variations:</span>
+            <div class="qty-btns">
+              <button class="qty-btn active" onclick="setQty(1,this)">1</button>
+              <button class="qty-btn" onclick="setQty(2,this)">2</button>
+              <button class="qty-btn" onclick="setQty(3,this)">3</button>
+            </div>
+            <span class="qty-note">variations in one go</span>
+          </div>
+
+          <button class="btn-generate" onclick="generate('youtube')">📺 Generate My YouTube Package</button>
+          <div class="micro-trust"><span>⚡ Takes 5-10 seconds</span><span>·</span><span>📺 Title · Script · Thumbnail · SEO · Tags — all in one</span></div>
+        </div><!-- end form-youtube -->
+
       </div><!-- /input-panel -->
 
       <!-- OUTPUT PANEL -->
@@ -2162,6 +2303,18 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- PWA Install Banner -->
+<div class="pwa-banner" id="pwaBanner">
+  <div class="pwa-banner-text">
+    <strong>⚡ Add PromptForge to your home screen</strong>
+    Works like an app — open instantly, no browser needed
+  </div>
+  <div class="pwa-banner-btns">
+    <button class="pwa-banner-dismiss" onclick="dismissPWA()">Not now</button>
+    <button class="pwa-banner-install" onclick="installPWA()">Add to Home</button>
+  </div>
+</div>
 
 <!-- ONBOARDING POPUP -->
 <div class="onboarding-overlay" id="onboardingOverlay">
@@ -2706,7 +2859,7 @@ function displayMultipleOutputs(outputs, type) {
 
   // Show tip bar for hook generators
   const tipBar = document.getElementById('outputTipBar');
-  if (tipBar) tipBar.classList.toggle('show', ['surprise','video','story','money'].includes(type));
+  if (tipBar) tipBar.classList.toggle('show', ['surprise','video','story','money','youtube'].includes(type));
 
   // Show repurpose button for content generators
   const repurposeBtn = document.getElementById('repurposeBtn');
@@ -2936,6 +3089,7 @@ const loadingSubtexts = {
   sales:'Price point psychology applied',
   chibi:'3D Pixar-style doll · Fashion outfit · Ready to paste',
   story:'Hook + Build-up + Twist + Ending',
+  youtube:'Title · Script · Thumbnail · SEO — all in one',
   design:'T-shirt · Clipart · Mockup — Ready to paste',
   image:'Scene + Style + Lighting + Composition'
 };
@@ -3055,6 +3209,16 @@ function collectInputs(type) {
     image: () => {
       if (!v('i-concept')) return null;
       return { concept: v('i-concept'), style: v('i-style'), mood: v('i-mood'), use: v('i-use') };
+    },
+    youtube: () => {
+      if (!v('yt-topic') || !v('yt-niche')) return null;
+      return {
+        ytTopic:    v('yt-topic'),
+        ytNiche:    v('yt-niche'),
+        ytAudience: v('yt-audience'),
+        ytLength:   v('yt-length'),
+        ytStyle:    v('yt-style')
+      };
     }
   };
   return collectors[type] ? collectors[type]() : null;
@@ -3253,6 +3417,12 @@ function displayOutput(text, type) {
         'Midjourney parameter block ready to paste',
         'Style rationale — why this style serves this concept',
         'Variation prompts for different moods and uses'
+      ],
+      youtube: [
+        'Full word-for-word script — every line ready to record',
+        'Complete SEO description — paste directly into YouTube',
+        'All 15 tags — exact search terms buyers use',
+        'Monetisation angle — how to earn beyond AdSense'
       ]
     };
     const results = resultMap[type] || ['Full output','Complete structure','Advanced variations','Monetisation angle'];
@@ -3273,7 +3443,7 @@ function displayOutput(text, type) {
   const actionBar = document.createElement('div');
   actionBar.className = 'output-action-bar';
   actionBar.style.animationDelay = delay + 's';
-  const showRepurpose = ['surprise','video','story'].includes(type);
+  const showRepurpose = ['surprise','video','story','youtube'].includes(type);
   actionBar.innerHTML = `
     <button class="btn-act btn-act-copy" onclick="copyEverything()">⎘ Copy Everything</button>
     <button class="btn-act btn-act-again" onclick="generateAnother()">↺ Generate Another</button>
@@ -3771,6 +3941,52 @@ function drawerSelect(type) {
 
   // Scroll to top
   window.scrollTo(0, 0);
+}
+
+// ─── PWA ──────────────────────────────────────────────────────────────────────
+let deferredPrompt = null;
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (!localStorage.getItem('pwa-dismissed')) {
+    setTimeout(() => {
+      const b = document.getElementById('pwaBanner');
+      if (b) b.classList.add('show');
+    }, 45000);
+  }
+});
+
+function installPWA() {
+  const b = document.getElementById('pwaBanner');
+  if (b) b.classList.remove('show');
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  } else {
+    showToast('📱 Tap Share → "Add to Home Screen" to install');
+  }
+}
+
+function dismissPWA() {
+  const b = document.getElementById('pwaBanner');
+  if (b) b.classList.remove('show');
+  localStorage.setItem('pwa-dismissed', '1');
+}
+
+const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+if (isIOS && !isStandalone && !localStorage.getItem('pwa-dismissed')) {
+  setTimeout(() => {
+    const b = document.getElementById('pwaBanner');
+    if (b) b.classList.add('show');
+  }, 45000);
 }
 </script>
 
